@@ -25,9 +25,9 @@ const Carousel = () => {
             />
           <MDBMask />
           </MDBView>
-          <MDBCarouselCaption>
+          <MDBCarouselCaption className="carousel-caption">
             <h3 className="h3-responsive">Explore</h3>
-            <p>First text</p>
+            <p>the history of cities, their landmarks and hidden gems.</p>
           </MDBCarouselCaption>
         </MDBCarouselItem>
         <MDBCarouselItem itemId="2">
@@ -39,9 +39,9 @@ const Carousel = () => {
             />
           <MDBMask />
           </MDBView>
-          <MDBCarouselCaption>
-            <h3 className="h3-responsive">Strong mask</h3>
-            <p>Second text</p>
+          <MDBCarouselCaption className="carousel-caption">
+            <h3 className="h3-responsive">Discover</h3>
+            <p>local attractions, landmarks, museums and public spaces.</p>
           </MDBCarouselCaption>
         </MDBCarouselItem>
         <MDBCarouselItem itemId="3">
@@ -53,9 +53,9 @@ const Carousel = () => {
             />
           <MDBMask overlay="black-slight" />
           </MDBView>
-          <MDBCarouselCaption>
-            <h3 className="h3-responsive">Slight Mast</h3>
-            <p>Third text</p>
+          <MDBCarouselCaption className="carousel-caption">
+            <h3 className="h3-responsive">Share</h3>
+            <p>your personal experiences and recommendations for others to discover.</p>
           </MDBCarouselCaption>
         </MDBCarouselItem>
       </MDBCarouselInner>

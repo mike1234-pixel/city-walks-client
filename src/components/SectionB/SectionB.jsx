@@ -13,7 +13,7 @@ const SectionB = (props) => {
   return (
     <div className='section-b grid-container-b'>
         <div className='grid-item-b grid-item-b-image-box'>
-          <MDBView hover zoom>
+          <MDBView hover zoom id="grid-item-overlay">
             <img className="grid-item-b-img" src={img} alt={alt}></img>
           </MDBView>
         </div>

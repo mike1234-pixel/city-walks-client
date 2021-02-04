@@ -16,7 +16,7 @@ const SectionA = (props) => {
             <div dangerouslySetInnerHTML={createMarkup(content)}></div> 
         </div>
         <div className='grid-item-a grid-item-a-image-box'>
-          <MDBView hover zoom>
+          <MDBView hover zoom id="grid-item-overlay">
             <img className="grid-item-a-img" src={img} alt={alt}></img>
           </MDBView>
         </div>

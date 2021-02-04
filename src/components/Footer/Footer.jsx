@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Link } from "react-router-dom"
-import { MDBCol, MDBContainer, MDBRow, MDBFooter } from 'mdbreact'
+import { MDBIcon, MDBCol, MDBContainer, MDBRow, MDBFooter } from 'mdbreact'
 import { LoginContext } from "../../context/LoginContext"
 import axios from "axios"
 import './Footer.css'
@@ -31,12 +31,13 @@ const Footer = () => {
     <MDBFooter className="font-small pt-4 mt-4 footer">
       <MDBContainer fluid className="text-center text-md-left">
         <MDBRow>
-          <MDBCol md="6">
-            <h5 className="title">City Walks is...</h5>
+          <MDBCol md="3">
+            <h5 className="title">City Walks... <MDBIcon icon="walking"/></h5>
             <p>
-              (City Walks description)
+              City Walks is a website that publishes illustrated guided walks, with routes, maps and local attractions to explore.
             </p>
           </MDBCol>
+          <MDBCol md="3"></MDBCol>
           <MDBCol md="3">
             <h5 className="title">Site Links</h5>
             <ul className="footer-ul">
@@ -53,7 +54,7 @@ const Footer = () => {
                 <Link to="/about">About</Link>
               </li>
               <li className="list-unstyled">
-                <Link to="/blog">Blog</Link>
+                <Link to="/sights">Sights</Link>
               </li>
               <li className="list-unstyled">
                 <Link to="/contact">Contact</Link>

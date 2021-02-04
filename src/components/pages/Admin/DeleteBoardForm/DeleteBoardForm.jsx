@@ -20,7 +20,7 @@ const DeleteBoardForm = () => {
         }
 
         axios
-        .delete("http://localhost:5000/delete-board", {data: payload})
+        .delete("https://city-walks.herokuapp.com/delete-board", {data: payload})
         .then((res, err) => {
             if (err) {
               console.log(err);

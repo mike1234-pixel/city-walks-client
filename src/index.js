@@ -13,10 +13,12 @@ import { ForumContextProvider } from "./context/ForumContext"
 import { WalksContextProvider } from "./context/WalksContext"
 import { BlogsContextProvider } from "./context/BlogsContext"
 
-const requestOne = axios.get('http://localhost:5000/walks');
-const requestTwo = axios.get('http://localhost:5000/cities');
-const requestThree = axios.get('http://localhost:5000/boards');
-const requestFour = axios.get('http://localhost:5000/blog');
+// http://localhost:5000
+
+const requestOne = axios.get('https://city-walks.herokuapp.com/walks');
+const requestTwo = axios.get('https://city-walks.herokuapp.com/cities');
+const requestThree = axios.get('https://city-walks.herokuapp.com/boards');
+const requestFour = axios.get('https://city-walks.herokuapp.com/blog');
 
 axios
   .all([requestOne, requestTwo, requestThree, requestFour])

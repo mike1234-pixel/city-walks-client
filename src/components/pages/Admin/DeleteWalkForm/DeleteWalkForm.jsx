@@ -24,7 +24,7 @@ const DeleteWalkForm = () => {
           };
 
         axios
-        .delete("http://localhost:5000/delete-walk",{ data: payload } )
+        .delete("https://city-walks.herokuapp.com/delete-walk",{ data: payload } )
         .then((res, err) => {
           if (err) {
             console.log(err);

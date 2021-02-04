@@ -30,7 +30,7 @@ const AddBoardForm = () => {
           };
 
         axios
-        .post("http://localhost:5000/add-board", qs.stringify(payload))
+        .post("https://city-walks.herokuapp.com/add-board", qs.stringify(payload))
         .then((res, err) => {
           if (err) {
             console.log(err);

@@ -35,7 +35,7 @@ const AddCityForm = () => {
           };
 
         axios
-        .post("http://localhost:5000/add-city", qs.stringify(payload))
+        .post("https://city-walks.herokuapp.com/add-city", qs.stringify(payload))
         .then((res, err) => {
           if (err) {
             console.log(err);

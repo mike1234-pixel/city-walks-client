@@ -31,7 +31,7 @@ const ThreadBox = (props) => {
           };
 
         axios
-        .post("http://localhost:5000/add-reply", qs.stringify(payload))
+        .post("https://city-walks.herokuapp.com/add-reply", qs.stringify(payload))
         .then((res, err) => {
           if (err) {
             console.log(err);
@@ -50,7 +50,7 @@ const ThreadBox = (props) => {
           };
 
         axios
-        .delete("http://localhost:5000/delete-reply", { data: payload })
+        .delete("https://city-walks.herokuapp.com/delete-reply", { data: payload })
         .then((res, err) => {
           if (err) {
             console.log(err);
@@ -70,7 +70,7 @@ const ThreadBox = (props) => {
       };
 
       axios
-      .delete("http://localhost:5000/delete-thread", { data: payload })
+      .delete("https://city-walks.herokuapp.com/delete-thread", { data: payload })
       .then((res, err) => {
         if (err) {
           console.log(err);

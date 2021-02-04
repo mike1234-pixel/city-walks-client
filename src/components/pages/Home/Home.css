@@ -34,3 +34,9 @@
 hr {
   border: 1px solid var(--elegant-color-dark);
 }
+
+/* @media (max-wdith: 1050px) {
+  .featured-walk-btn {
+
+  }
+} */

@@ -40,8 +40,8 @@ const Walk = ({match}) => {
             <div>
             <div className="walk-heading-container">
               <h1 className="walk-heading display-font">{`${selectedWalk.walk} -- ${selectedWalk.city}`}</h1>
-              <p>{selectedWalk.description}</p>
-              <p>Starting Point: {selectedWalk.startingPoint}</p>
+              <p className="walk-description">{selectedWalk.description}</p>
+              <p className="walk-description">Starting Point: {selectedWalk.startingPoint}</p>
             </div>
               <SectionA content={selectedWalk.content1} img={selectedWalk.img1} alt={selectedWalk.walk}/>
               <SectionB content={selectedWalk.content2} img={selectedWalk.img2} alt={selectedWalk.walk}/>
@@ -59,7 +59,7 @@ const Walk = ({match}) => {
                   </div>
                 </MDBAnimation>
                 <MDBBtn id="see-map-btn" onClick={handleClick} >
-                {togglePopUp ? "Unsee Map" : "See Map" } <MDBIcon icon="map-marked-alt" />
+                {togglePopUp ? "Hide Map" : "See Map" } <MDBIcon icon="map-marked-alt" />
                 </MDBBtn>
                 {togglePopUp && <PopUp mapImg={selectedWalk.mapImg} handleClick={handleClick}/>}
               </div>

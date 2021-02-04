@@ -11,11 +11,11 @@ import './BlogPost.css'
 
 const BlogPost = ({match}) => {
 
-    // useEffect(() => {
-    //     window.scrollTo(0, 0);
-    //   });
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
 
-      const blogTitle = toTitleCase(match.url.replace("/blog/", "").replace(/-/g, " "))
+      const blogTitle = toTitleCase(match.url.replace("/sights/", "").replace(/-/g, " "))
 
       const { blogPosts, blogsLoading } = useContext(BlogsContext)
       const { loggedIn, userFirstName, userId, popupVisible } = useContext(LoginContext)
@@ -38,7 +38,7 @@ const BlogPost = ({match}) => {
         };
 
       axios
-      .post("http://localhost:5000/add-blog-comment", qs.stringify(payload))
+      .post("https://city-walks.herokuapp.com/add-blog-comment", qs.stringify(payload))
       .then((res, err) => {
         if (err) {
           console.log(err);
@@ -62,7 +62,7 @@ const BlogPost = ({match}) => {
         };
   
         axios
-        .delete("http://localhost:5000/delete-blog-comment", { data: payload })
+        .delete("https://city-walks.herokuapp.com/delete-blog-comment", { data: payload })
         .then((res, err) => {
           if (err) {
             console.log(err);
@@ -89,8 +89,10 @@ const BlogPost = ({match}) => {
       } else {
         post = 
         <div className="blog-post-container">
+          <div className="page-heading-container">
             <h1 className="page-heading">{selectedBlogPost.title}</h1>
-            <h2 className="blog-subtitle page-heading">{selectedBlogPost.subtitle}</h2>
+            <h2 className="blog-subtitle page-subheading">{selectedBlogPost.subtitle}</h2>
+          </div>
             <img className="blog-post-img" src={selectedBlogPost.img}/>
             <div className="blog-post-content" dangerouslySetInnerHTML={createMarkup(selectedBlogPost.content)}></div>
             <p>{selectedBlogPost.submittedOn.replace('T', ' ').substring(0, 19)}</p>

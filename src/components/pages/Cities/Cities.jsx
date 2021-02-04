@@ -36,6 +36,7 @@ const Cities = (props) => {
             {popupVisible && <PopUp/>}
             <div data-testid="cities-page-heading" className="page-heading-container">
                 <h1 className="page-heading">Cities</h1>
+                <h2 className="page-subheading">search walks by city</h2>
             </div>
                 <div className="card-container">{cities}</div>
         </div>

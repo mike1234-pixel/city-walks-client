@@ -24,7 +24,8 @@ const Blog = (props) => {
         <div className="min-page-height">
             {popupVisible && <PopUp/>}
             <div className="page-heading-container">
-                <h1 className="page-heading">Blog</h1>
+                <h1 className="page-heading">Sights</h1>
+                <h2 className="page-subheading">find more sights and visitor attractions to explore</h2>
             </div>
             <div className="card-container">
             {blogPosts.map((post) => {
@@ -35,7 +36,7 @@ const Blog = (props) => {
                         <MDBCardBody>
                         <MDBCardTitle className="display-font">{post.title}</MDBCardTitle>
                         <MDBCardText>{removeMarkdown(post.content.slice(0,199) + "...")}</MDBCardText>
-                        <Link to={'/blog/'+urlify(post.title)}><MDBBtn outline color="elegant" className="city-card-btn">Read <MDBIcon icon="book-open" /></MDBBtn></Link>
+                        <Link to={'/sights/'+urlify(post.title)}><MDBBtn outline color="elegant" className="city-card-btn">Read <MDBIcon icon="book-open" /></MDBBtn></Link>
                         </MDBCardBody>
                     </MDBCard>
                     </MDBCol>

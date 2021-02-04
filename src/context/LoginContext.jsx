@@ -88,7 +88,7 @@ export const LoginContextProvider = (props) => {
           };
   
     axios
-        .post("http://localhost:5000/register-user", qs.stringify(payload))
+        .post("https://city-walks.herokuapp.com/register-user", qs.stringify(payload))
         .then((res, err) => {
           if (err) {
             console.log(err);
@@ -131,7 +131,7 @@ export const LoginContextProvider = (props) => {
         };
   
   axios
-      .post("http://localhost:5000/login-user", qs.stringify(payload))
+      .post("https://city-walks.herokuapp.com/login-user", qs.stringify(payload))
       .then((res, err) => {
         if (err) {
           console.log(err);
@@ -175,7 +175,7 @@ const handleSubmitVerification = (event) => {
       };
 
 axios
-    .post("http://localhost:5000/reverify-user", qs.stringify(payload))
+    .post("https://city-walks.herokuapp.com/reverify-user", qs.stringify(payload))
     .then((res, err) => {
       if (err) {
         console.log(err);
@@ -218,7 +218,7 @@ const handleSubmitResetPassword = (event) => {
 
       if (resetPasswordNewPassword === resetPasswordConfirmNewPassword) {
         axios
-        .post("http://localhost:5000/reset-password-with-old-password", qs.stringify(payload))
+        .post("https://city-walks.herokuapp.com/reset-password-with-old-password", qs.stringify(payload))
         .then((res, err) => {
           if (err) {
             console.log(err);
@@ -260,7 +260,7 @@ const handleSubmitForgotPassword = (event) => {
       };
 
 axios
-    .post("http://localhost:5000/forgot-password", qs.stringify(payload))
+    .post("https://city-walks.herokuapp.com/forgot-password", qs.stringify(payload))
     .then((res, err) => {
       if (err) {
         console.log(err);

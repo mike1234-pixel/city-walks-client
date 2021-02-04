@@ -76,7 +76,7 @@ const Threads = ({match}) => {
           };
 
         axios
-        .post("http://localhost:5000/add-thread", qs.stringify(payload))
+        .post("https://city-walks.herokuapp.com/add-thread", qs.stringify(payload))
         .then((res, err) => {
           if (err) {
             console.log(err);

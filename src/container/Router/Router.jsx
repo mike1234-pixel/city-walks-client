@@ -29,8 +29,8 @@ const Router = (props) => {
             <Route path="/walks/:walks" component={Walk}/>
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
-            <Route exact path="/blog" component={() => <Blog blogPosts={blogPosts}/>} />
-            <Route path="/blog/:blogpost" component={BlogPost} />
+            <Route exact path="/sights" component={() => <Blog blogPosts={blogPosts}/>} />
+            <Route path="/sights/:sight" component={BlogPost} />
             {/* the render method here ensures the inputs in the forms don't lose focus */}
             {/* https://www.xspdf.com/resolution/59715158.html */}
             <Route exact path="/boards" render={() => <LoginPage />} />

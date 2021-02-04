@@ -9,6 +9,10 @@
   margin: 20px 0;
 }
 
+.walk-description {
+  padding: 20px;
+}
+
 .author-info-container {
   width: 100%;
   text-align: center;

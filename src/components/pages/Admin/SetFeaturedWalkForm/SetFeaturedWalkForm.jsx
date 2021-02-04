@@ -34,7 +34,7 @@ const SetFeaturedWalkForm = () => {
           };
 
         axios
-        .patch("http://localhost:5000/set-featured-walk", qs.stringify(payload))
+        .patch("https://city-walks.herokuapp.com/set-featured-walk", qs.stringify(payload))
         .then((res, err) => {
           if (err) {
             console.log(err);

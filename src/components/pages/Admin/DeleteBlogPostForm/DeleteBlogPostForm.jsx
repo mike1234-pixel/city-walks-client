@@ -24,7 +24,7 @@ const DeleteBlogPostForm = () => {
           };
 
         axios
-        .delete("http://localhost:5000/delete-blog-post",{ data: payload } )
+        .delete("https://city-walks.herokuapp.com/delete-blog-post",{ data: payload } )
         .then((res, err) => {
           if (err) {
             console.log(err);

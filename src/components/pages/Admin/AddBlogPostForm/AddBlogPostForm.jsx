@@ -45,7 +45,7 @@ const AddBlogPostForm = () => {
           };
 
         axios
-        .post("http://localhost:5000/add-blog-post", qs.stringify(payload))
+        .post("https://city-walks.herokuapp.com/add-blog-post", qs.stringify(payload))
         .then((res, err) => {
           if (err) {
             console.log(err);

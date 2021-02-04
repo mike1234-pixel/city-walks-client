@@ -110,7 +110,7 @@ const AddWalkForm = () => {
           };
 
         axios
-        .post("http://localhost:5000/add-walk", qs.stringify(payload))
+        .post("https://city-walks.herokuapp.com/add-walk", qs.stringify(payload))
         .then((res, err) => {
           if (err) {
             console.log(err);
