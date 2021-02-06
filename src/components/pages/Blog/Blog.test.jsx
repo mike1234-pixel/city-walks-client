@@ -1,6 +1,7 @@
 import renderer from 'react-test-renderer'
 import BlogsTestData from "../../../container/BlogsTestData.json"
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { LoginContextProvider } from "../../../context/LoginContext"
 import Blog from './Blog'
 
 // snapshot test
@@ -10,9 +11,11 @@ it('Blogs Page renders correctly', () => {
 
   const tree = renderer
     .create(
-        <BrowserRouter>
+      <LoginContextProvider>
+        <Router>
           <Blog blogPosts={blogPosts}/>
-        </BrowserRouter>
+        </Router>
+      </LoginContextProvider>
     )
     .toJSON();
   expect(tree).toMatchSnapshot();

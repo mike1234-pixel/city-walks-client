@@ -13,6 +13,11 @@ exports[`Cities Page renders correctly 1`] = `
     >
       Cities
     </h1>
+    <h2
+      className="page-subheading"
+    >
+      search walks by city
+    </h2>
   </div>
   <div
     className="card-container"

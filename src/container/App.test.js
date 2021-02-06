@@ -36,7 +36,7 @@ describe("App integration tests", () => {
     </ForumContextProvider>
     )
     // assert element exists
-    getByLabelText("Search")
+    getByLabelText("Search Walks")
 
     // test is on Home page - redirect to Walk page
     // simulate redirect from homepage featured walk to the same walk

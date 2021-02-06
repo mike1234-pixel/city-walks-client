@@ -60,7 +60,7 @@ const Admin = () => {
           };
   
     axios
-        .post("http://localhost:5000/admin-login", qs.stringify(payload))
+        .post("https://city-walks.herokuapp.com/admin-login", qs.stringify(payload))
         .then((res, err) => {
           if (err) {
             console.log(err);

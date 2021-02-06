@@ -10,8 +10,13 @@ exports[`Blogs Page renders correctly 1`] = `
     <h1
       className="page-heading"
     >
-      Blog
+      Sights
     </h1>
+    <h2
+      className="page-subheading"
+    >
+      find more sights and visitor attractions to explore
+    </h2>
   </div>
   <div
     className="card-container"
@@ -41,7 +46,7 @@ exports[`Blogs Page renders correctly 1`] = `
             }
           >
             <img
-              alt="Lorem Ipsum Dolor Sit Amet Consectetuer Adipiscing Elit"
+              alt="Blogpost4"
               className="cutter img-fluid"
               data-test="card-image"
               src="https://images.pexels.com/photos/1578332/pexels-photo-1578332.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
@@ -72,7 +77,7 @@ exports[`Blogs Page renders correctly 1`] = `
             className="card-title display-font"
             data-test="card-title"
           >
-            Lorem Ipsum Dolor Sit Amet Consectetuer Adipiscing Elit
+            Blogpost4
           </h4>
           <p
             className="card-text"
@@ -81,7 +86,104 @@ exports[`Blogs Page renders correctly 1`] = `
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec q...
           </p>
           <a
-            href="/blog/lorem-ipsum-dolor-sit-amet-consectetuer-adipiscing-elit"
+            href="/sights/blogpost4"
+            onClick={[Function]}
+          >
+            <button
+              className="btn-elegant btn-outline-elegant btn Ripple-parent city-card-btn"
+              data-test="button"
+              onMouseUp={[Function]}
+              onTouchStart={[Function]}
+              type="button"
+            >
+              Read 
+              <i
+                className="fa fa-book-open"
+                data-test="fa"
+              />
+              <div
+                className="Ripple Ripple-outline "
+                data-test="waves"
+                style={
+                  Object {
+                    "height": "0px",
+                    "left": "0px",
+                    "top": "0px",
+                    "width": "0px",
+                  }
+                }
+              />
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="col"
+      data-test="col"
+    >
+      <div
+        className="card blog-card"
+        data-test="card"
+      >
+        <div
+          className="view"
+          data-test="view"
+          onMouseDown={[Function]}
+          onTouchStart={[Function]}
+          style={Object {}}
+        >
+          <div
+            className="Ripple-parent"
+            onMouseDown={[Function]}
+            style={
+              Object {
+                "touchAction": "unset",
+              }
+            }
+          >
+            <img
+              alt="Blogpost2"
+              className="cutter img-fluid"
+              data-test="card-image"
+              src="https://images.pexels.com/photos/1578332/pexels-photo-1578332.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            />
+            <div
+              className="mask rgba-white-slight"
+              data-test="mask"
+            />
+            <div
+              className="Ripple "
+              data-test="waves"
+              style={
+                Object {
+                  "height": "0px",
+                  "left": "0px",
+                  "top": "0px",
+                  "width": "0px",
+                }
+              }
+            />
+          </div>
+        </div>
+        <div
+          className="card-body"
+          data-test="card-body"
+        >
+          <h4
+            className="card-title display-font"
+            data-test="card-title"
+          >
+            Blogpost2
+          </h4>
+          <p
+            className="card-text"
+            data-test="card-text"
+          >
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec q...
+          </p>
+          <a
+            href="/sights/blogpost2"
             onClick={[Function]}
           >
             <button
@@ -178,7 +280,7 @@ exports[`Blogs Page renders correctly 1`] = `
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec q...
           </p>
           <a
-            href="/blog/blogpost2"
+            href="/sights/blogpost2"
             onClick={[Function]}
           >
             <button
@@ -235,7 +337,7 @@ exports[`Blogs Page renders correctly 1`] = `
             }
           >
             <img
-              alt="Blogpost2"
+              alt="Lorem Ipsum Dolor Sit Amet Consectetuer Adipiscing Elit"
               className="cutter img-fluid"
               data-test="card-image"
               src="https://images.pexels.com/photos/1578332/pexels-photo-1578332.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
@@ -266,7 +368,7 @@ exports[`Blogs Page renders correctly 1`] = `
             className="card-title display-font"
             data-test="card-title"
           >
-            Blogpost2
+            Lorem Ipsum Dolor Sit Amet Consectetuer Adipiscing Elit
           </h4>
           <p
             className="card-text"
@@ -275,104 +377,7 @@ exports[`Blogs Page renders correctly 1`] = `
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec q...
           </p>
           <a
-            href="/blog/blogpost2"
-            onClick={[Function]}
-          >
-            <button
-              className="btn-elegant btn-outline-elegant btn Ripple-parent city-card-btn"
-              data-test="button"
-              onMouseUp={[Function]}
-              onTouchStart={[Function]}
-              type="button"
-            >
-              Read 
-              <i
-                className="fa fa-book-open"
-                data-test="fa"
-              />
-              <div
-                className="Ripple Ripple-outline "
-                data-test="waves"
-                style={
-                  Object {
-                    "height": "0px",
-                    "left": "0px",
-                    "top": "0px",
-                    "width": "0px",
-                  }
-                }
-              />
-            </button>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div
-      className="col"
-      data-test="col"
-    >
-      <div
-        className="card blog-card"
-        data-test="card"
-      >
-        <div
-          className="view"
-          data-test="view"
-          onMouseDown={[Function]}
-          onTouchStart={[Function]}
-          style={Object {}}
-        >
-          <div
-            className="Ripple-parent"
-            onMouseDown={[Function]}
-            style={
-              Object {
-                "touchAction": "unset",
-              }
-            }
-          >
-            <img
-              alt="Blogpost4"
-              className="cutter img-fluid"
-              data-test="card-image"
-              src="https://images.pexels.com/photos/1578332/pexels-photo-1578332.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-            />
-            <div
-              className="mask rgba-white-slight"
-              data-test="mask"
-            />
-            <div
-              className="Ripple "
-              data-test="waves"
-              style={
-                Object {
-                  "height": "0px",
-                  "left": "0px",
-                  "top": "0px",
-                  "width": "0px",
-                }
-              }
-            />
-          </div>
-        </div>
-        <div
-          className="card-body"
-          data-test="card-body"
-        >
-          <h4
-            className="card-title display-font"
-            data-test="card-title"
-          >
-            Blogpost4
-          </h4>
-          <p
-            className="card-text"
-            data-test="card-text"
-          >
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec q...
-          </p>
-          <a
-            href="/blog/blogpost4"
+            href="/sights/lorem-ipsum-dolor-sit-amet-consectetuer-adipiscing-elit"
             onClick={[Function]}
           >
             <button

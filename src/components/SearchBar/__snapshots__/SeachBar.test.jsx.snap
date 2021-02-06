@@ -40,7 +40,7 @@ exports[`SearchBar renders correctly 1`] = `
         id=""
         onClick={[Function]}
       >
-        Search
+        Search Walks
       </label>
     </div>
     <button

@@ -44,6 +44,37 @@ exports[`AddBlogPostForm Page renders correctly 1`] = `
       className="md-form"
     >
       
+      <input
+        aria-disabled={false}
+        className="form-control"
+        data-test="input"
+        disabled={false}
+        id="post-subtitle"
+        name="post-subtitle"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        required={true}
+        type="text"
+        value=""
+      />
+      <label
+        aria-labelledby=""
+        className=""
+        data-error=""
+        data-success=""
+        htmlFor="post-subtitle"
+        id=""
+        onClick={[Function]}
+      >
+        post sub-title
+      </label>
+    </div>
+    <div
+      className="md-form"
+    >
+      
       <textarea
         aria-disabled={false}
         className="md-textarea form-control"
@@ -100,6 +131,37 @@ exports[`AddBlogPostForm Page renders correctly 1`] = `
         onClick={[Function]}
       >
         post image link
+      </label>
+    </div>
+    <div
+      className="md-form"
+    >
+      
+      <input
+        aria-disabled={false}
+        className="form-control"
+        data-test="input"
+        disabled={false}
+        id="post-author"
+        name="post-author"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        required={true}
+        type="text"
+        value=""
+      />
+      <label
+        aria-labelledby=""
+        className=""
+        data-error=""
+        data-success=""
+        htmlFor="post-author"
+        id=""
+        onClick={[Function]}
+      >
+        post author
       </label>
     </div>
     <button

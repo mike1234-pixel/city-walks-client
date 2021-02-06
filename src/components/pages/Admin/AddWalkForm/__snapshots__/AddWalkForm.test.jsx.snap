@@ -147,7 +147,7 @@ exports[`AddWalkForm Page renders correctly 1`] = `
         data-test="input"
         disabled={false}
         id="content1"
-        maxLength="569"
+        maxLength="700"
         name="content1"
         onBlur={[Function]}
         onChange={[Function]}
@@ -166,7 +166,7 @@ exports[`AddWalkForm Page renders correctly 1`] = `
         id=""
         onClick={[Function]}
       >
-        paragraph 1 (569 character limit)
+        paragraph 1 (569 character limit - excl formatting). Format using Markdown.
       </label>
     </div>
     <div
@@ -179,7 +179,7 @@ exports[`AddWalkForm Page renders correctly 1`] = `
         data-test="input"
         disabled={false}
         id="content2"
-        maxLength="569"
+        maxLength="700"
         name="content2"
         onBlur={[Function]}
         onChange={[Function]}
@@ -198,7 +198,7 @@ exports[`AddWalkForm Page renders correctly 1`] = `
         id=""
         onClick={[Function]}
       >
-        paragraph 2 (569 character limit)
+        paragraph 2 (569 character limit - excl formatting). Format using Markdown.
       </label>
     </div>
     <div
@@ -211,7 +211,7 @@ exports[`AddWalkForm Page renders correctly 1`] = `
         data-test="input"
         disabled={false}
         id="content3"
-        maxLength="569"
+        maxLength="700"
         name="content3"
         onBlur={[Function]}
         onChange={[Function]}
@@ -230,7 +230,7 @@ exports[`AddWalkForm Page renders correctly 1`] = `
         id=""
         onClick={[Function]}
       >
-        paragraph 3 (569 character limit)
+        paragraph 3 (569 character limit - excl formatting). Format using Markdown.
       </label>
     </div>
     <div

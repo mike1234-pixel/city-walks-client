@@ -10,6 +10,7 @@ exports[`Section B renders correctly 1`] = `
     <div
       className="view overlay zoom"
       data-test="view"
+      id="grid-item-overlay"
       onMouseDown={[Function]}
       onTouchStart={[Function]}
       style={Object {}}
@@ -24,9 +25,14 @@ exports[`Section B renders correctly 1`] = `
   <div
     className="grid-item-b grid-item-b-text-box"
   >
-    <p>
-      mock content
-    </p>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<p>mock content</p>
+",
+        }
+      }
+    />
   </div>
 </div>
 `;

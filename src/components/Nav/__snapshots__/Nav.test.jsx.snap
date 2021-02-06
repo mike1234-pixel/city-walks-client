@@ -182,12 +182,12 @@ exports[`Nav renders correctly 1`] = `
             aria-current={null}
             className="nav-link Ripple-parent white-text"
             data-test="nav-link"
-            href="/blog"
+            href="/sights"
             onClick={[Function]}
             onMouseUp={[Function]}
             onTouchStart={[Function]}
           >
-            Blog
+            Sights
             <div
               className="Ripple "
               data-test="waves"
@@ -334,7 +334,7 @@ exports[`Nav renders correctly 1`] = `
                   id=""
                   onClick={[Function]}
                 >
-                  Search
+                  Search Walks
                 </label>
               </div>
               <button

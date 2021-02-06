@@ -14,18 +14,26 @@ exports[`Footer renders correctly 1`] = `
       data-test="row"
     >
       <div
-        className="col-md-6"
+        className="col-md-3"
         data-test="col"
       >
         <h5
           className="title"
         >
-          City Walks is...
+          City Walks... 
+          <i
+            className="fa fa-walking"
+            data-test="fa"
+          />
         </h5>
         <p>
-          (City Walks description)
+          City Walks is a website that publishes illustrated guided walks, with routes, maps and local attractions to explore.
         </p>
       </div>
+      <div
+        className="col-md-3"
+        data-test="col"
+      />
       <div
         className="col-md-3"
         data-test="col"
@@ -82,10 +90,10 @@ exports[`Footer renders correctly 1`] = `
             className="list-unstyled"
           >
             <a
-              href="/blog"
+              href="/sights"
               onClick={[Function]}
             >
-              Blog
+              Sights
             </a>
           </li>
           <li
