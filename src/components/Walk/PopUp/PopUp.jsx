@@ -2,7 +2,7 @@ import './PopUp.css'
 
 const PopUp = (props) => {
 
-    const { mapImg, setTogglePopUp } = props
+    const { mapImg } = props
 
     return (
         <div className="popup-container">
@@ -15,6 +15,3 @@ const PopUp = (props) => {
 }
 
 export default PopUp
-
-// on click outside the image, change the state to popup hidden
-// a child is limited to the stacking context of its parent in the z index

@@ -13,10 +13,6 @@ const Walk = ({match}) => {
 
   const [togglePopUp, setTogglePopUp] = useState(false)
 
-  const handleClick = () => {
-    setTogglePopUp(!togglePopUp)
-  }
-
   const { walks, isLoading } = useContext(WalksContext)
   const { popupVisible } = useContext(LoginContext)
 
@@ -29,13 +25,14 @@ const Walk = ({match}) => {
 
       let walk = "loading";
 
+      const handleClick = (e) => {
+        setTogglePopUp(!togglePopUp)
+        console.log(e.target.id)
+      }
+
       const handleClickOutside = (e) => {
-        if (
-          e.target.id !== "popup-img"
-        ) {
-          if (togglePopUp === true) {
+        if (e.target.id !== "popup-img" && e.target.id !== "see-map-btn" && e.target.id !== "map-icon") {
             setTogglePopUp(false)
-          }
         }
       }
 
@@ -69,10 +66,10 @@ const Walk = ({match}) => {
                     {selectedWalk.twitterLink !== undefined && <a href={selectedWalk.twitterLink} target="_blank"><MDBIcon fab icon="twitter" /></a>}
                   </div>
                 </MDBAnimation>
-                <MDBBtn id="see-map-btn" onClick={handleClick} >
-                {togglePopUp ? "Hide Map" : "See Map" } <MDBIcon icon="map-marked-alt" />
-                </MDBBtn>
-                {togglePopUp && <PopUp mapImg={selectedWalk.mapImg} setTogglePopUp={setTogglePopUp} />}
+                {!togglePopUp && <MDBBtn id="see-map-btn" onClick={handleClick}>
+                See Map <MDBIcon icon="map-marked-alt" id="map-icon"/>
+                </MDBBtn>}
+                {togglePopUp && <PopUp mapImg={selectedWalk.mapImg} />}
               </div>
           </div>
         }
