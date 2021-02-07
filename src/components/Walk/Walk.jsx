@@ -24,9 +24,20 @@ const Walk = ({match}) => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        document.addEventListener("mousedown", handleClickOutside);
       });
 
       let walk = "loading";
+
+      const handleClickOutside = (e) => {
+        if (
+          e.target.id !== "popup-img"
+        ) {
+          if (togglePopUp === true) {
+            setTogglePopUp(false)
+          }
+        }
+      }
 
       if (!isLoading) {
 
@@ -61,7 +72,7 @@ const Walk = ({match}) => {
                 <MDBBtn id="see-map-btn" onClick={handleClick} >
                 {togglePopUp ? "Hide Map" : "See Map" } <MDBIcon icon="map-marked-alt" />
                 </MDBBtn>
-                {togglePopUp && <PopUp mapImg={selectedWalk.mapImg} handleClick={handleClick}/>}
+                {togglePopUp && <PopUp mapImg={selectedWalk.mapImg} setTogglePopUp={setTogglePopUp} />}
               </div>
           </div>
         }

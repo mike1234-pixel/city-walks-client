@@ -96,9 +96,6 @@ export const LoginContextProvider = (props) => {
             alert("An account with this email already exists.")
           } else if (res.data === "We have sent you an email. Please verify your account by clicking the link in the mail.") {
             alert("We have sent you an email. Please verify your account by clicking the link in the email. (This code expires after 10 minutes)")
-           } else {
-            alert("Registration Complete")
-            setLoggedIn(true)
             setFirstName("")
             setLastName("")
             setRegistrationEmail("")
@@ -106,6 +103,9 @@ export const LoginContextProvider = (props) => {
             setUserFirstName(res.data.fname)
             setUserLastName(res.data.lname)
             window.scrollTo(0, 0)
+           } else {
+            alert("Registration Complete")
+            // setLoggedIn(true)
           }
         });
     }

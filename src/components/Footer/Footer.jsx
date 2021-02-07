@@ -15,7 +15,7 @@ const Footer = () => {
       userId: userId,
     }
 
-    axios.delete("http://localhost:5000/delete-account", {data: payload})
+    axios.delete("https://city-walks.herokuapp.com/delete-account", {data: payload})
         .then((err) => {
             if (err) {
               console.log(err);
