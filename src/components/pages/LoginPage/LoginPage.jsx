@@ -89,7 +89,7 @@ const LoginPage = () => {
                     <a className="user-portal-link"
                       onClick={() => setForm("verificationForm")}
                     >
-                      Resend Account Verification Email <MDBIcon far icon="envelope" />
+                      Resend Email <MDBIcon far icon="envelope" />
                     </a>
                   </MDBNavItem>
                   <MDBNavItem>

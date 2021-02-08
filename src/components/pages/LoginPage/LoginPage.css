@@ -9,6 +9,12 @@
   background: var(--blue);
 }
 
+@media (max-width: 767px) {
+  .login-panel {
+    line-height: 2.5;
+  }
+}
+
 .user-portal-link {
   padding: 20px;
 }

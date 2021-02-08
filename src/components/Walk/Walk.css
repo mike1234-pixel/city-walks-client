@@ -37,3 +37,8 @@
   color: var(--elegant-color-dark);
   border: 2px var(--elegant-color-dark) solid;
 }
+
+#see-map-btn:hover {
+  background-color: black !important;
+  color: white;
+}

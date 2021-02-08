@@ -17,7 +17,7 @@ const Blog = (props) => {
     const { blogPosts } = props;
 
     const removeMarkdown = (markup) => {
-        return markup.replace(/\**/g, "").replace(/#/g, "")
+        return markup.replace(/\**/g, "").replace(/#/g, "").replace(/<br\/>/g, "")
       }
 
     return (
