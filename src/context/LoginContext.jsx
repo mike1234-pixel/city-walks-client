@@ -129,7 +129,7 @@ export const LoginContextProvider = (props) => {
           localStorage.setItem("loggedIn", true)
           localStorage.setItem("userId", res.data._id)
           localStorage.setItem("userFirstName", res.data.fname)
-          history.push("/boards");
+          history.push("/forum");
           window.scrollTo(0, 0)
         }
       });
@@ -211,7 +211,7 @@ const handleSubmitResetPassword = (event) => {
             setResetPasswordOldPassword("")
             setResetPasswordNewPassword("")
             setResetPasswordConfirmNewPassword("")
-            history.push("/boards/login");
+            history.push("/forum/login");
             window.scrollTo(0, 0)
           }
         })
@@ -260,7 +260,7 @@ axios
     setUserFirstName("")
     setUserLastName("")
     alert("Logged out successfully.")
-    history.push("/boards");
+    history.push("/forum");
   }
 
     return (

@@ -60,7 +60,7 @@ const Footer = () => {
                 <Link to="/contact">Contact</Link>
               </li>
               <li className="list-unstyled">
-                <Link to="/boards">User Login</Link>
+                <Link to="/forum/login">User Login</Link>
               </li>
             </ul>
           </MDBCol>

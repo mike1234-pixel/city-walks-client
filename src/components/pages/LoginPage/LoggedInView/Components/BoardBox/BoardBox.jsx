@@ -22,7 +22,7 @@ const BoardBox = (props) => {
                 {description}
                 </MDBCardText>
                 <div className="flex-row">
-                <Link to={'boards/'+urlify(name)}>Read More...</Link>
+                <Link to={'forum/'+urlify(name)}>Read More...</Link>
             </div>
       </MDBCard>
     )

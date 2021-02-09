@@ -75,19 +75,19 @@ const UserPortalNav = () => {
               >
                 <MDBNavbarNav justify="true">
                   <MDBNavItem>
-                  <Link to="/boards/login" className="user-portal-link">Login <MDBIcon icon="key" /></Link>
+                  <Link to="/forum/login" className="user-portal-link">Login <MDBIcon icon="key" /></Link>
                   </MDBNavItem>
                   <MDBNavItem>
-                  <Link to="/boards/register" className="user-portal-link">Register <MDBIcon far icon="edit" /></Link>
+                  <Link to="/forum/register" className="user-portal-link">Register <MDBIcon far icon="edit" /></Link>
                   </MDBNavItem>
                   <MDBNavItem>
-                  <Link to="/boards/verify" className="user-portal-link">Resend Email <MDBIcon far icon="envelope" /></Link>
+                  <Link to="/forum/verify" className="user-portal-link">Resend Email <MDBIcon far icon="envelope" /></Link>
                   </MDBNavItem>
                   <MDBNavItem>
-                  <Link to="/boards/reset-password" className="user-portal-link">Reset Password <MDBIcon icon="unlock-alt" /></Link>
+                  <Link to="/forum/reset-password" className="user-portal-link">Reset Password <MDBIcon icon="unlock-alt" /></Link>
                   </MDBNavItem>
                   <MDBNavItem>
-                  <Link to="/boards/forgot-password" className="user-portal-link">Forgot Password <MDBIcon far icon="question-circle" /></Link>
+                  <Link to="/forum/forgot-password" className="user-portal-link">Forgot Password <MDBIcon far icon="question-circle" /></Link>
                   </MDBNavItem>
                 </MDBNavbarNav>
               </MDBCollapse>

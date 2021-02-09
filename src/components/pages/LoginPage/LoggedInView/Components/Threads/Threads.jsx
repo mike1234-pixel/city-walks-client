@@ -14,7 +14,7 @@ const Threads = ({match}) => {
     const { boards, loadingBoards } = useContext(ForumContext)
     const { loggedIn, userId, userFirstName, popupVisible } = useContext(LoginContext)
 
-    const boardName = toTitleCase(match.url.replace("/boards/", "").replace(/-/g, " "))
+    const boardName = toTitleCase(match.url.replace("/forum/", "").replace(/-/g, " "))
 
     useEffect(() => {
         window.scrollTo(0, 0);

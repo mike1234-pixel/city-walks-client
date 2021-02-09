@@ -47,7 +47,7 @@ const Nav = () => {
                 <MDBNavLink className="white-text" to="/sights">Sights</MDBNavLink>
               </MDBNavItem>
               <MDBNavItem>
-                <MDBNavLink className="white-text" to="/boards">Forum</MDBNavLink>
+                <MDBNavLink className="white-text" to="/forum">Forum</MDBNavLink>
               </MDBNavItem>
               <MDBNavItem>
                 <MDBNavLink className="white-text" to="/about">About</MDBNavLink>

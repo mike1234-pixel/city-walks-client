@@ -38,13 +38,13 @@ const Router = (props) => {
             <Route path="/sights/:sight" component={BlogPost} />
             {/* the render method here ensures the inputs in the forms don't lose focus */}
             {/* https://www.xspdf.com/resolution/59715158.html */}
-            <Route exact path="/boards" render={() => <Boards />} />
-            <Route exact path="/boards/login" render={() => <LoginForm/>}/>
-            <Route exact path="/boards/register" render={() => <RegistrationForm/>}/>
-            <Route exact path="/boards/verify" render={() => <VerificationForm/>}/>
-            <Route exact path="/boards/reset-password" render={() => <ResetPasswordForm/>}/>
-            <Route exact path="/boards/forgot-password" render={() => <ForgotPasswordForm/>}/>
-            <Route path="/boards/:board" component={Threads}/>
+            <Route exact path="/forum" render={() => <Boards />} />
+            <Route exact path="/forum/login" render={() => <LoginForm/>}/>
+            <Route exact path="/forum/register" render={() => <RegistrationForm/>}/>
+            <Route exact path="/forum/verify" render={() => <VerificationForm/>}/>
+            <Route exact path="/forum/reset-password" render={() => <ResetPasswordForm/>}/>
+            <Route exact path="/forum/forgot-password" render={() => <ForgotPasswordForm/>}/>
+            <Route path="/forum/:board" component={Threads}/>
             <Route path="/admin" component={Admin} />
             <Route path="/privacy" component={PrivacyPolicy}/>
             <Route component={NotFound404} />
