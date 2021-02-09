@@ -1,16 +1,16 @@
 import renderer from 'react-test-renderer'
 import { LoginContextProvider } from "../../../context/LoginContext";
 import { ForumContextProvider } from "../../../context/ForumContext"
-import LoginPage from "./LoginPage"
+import UserPortalNav from "./UserPortalNav"
 
 // snapshot test
-it('LoginPage Page renders correctly', () => {  
+it('UserPortalNav Page renders correctly', () => {  
 
   const tree = renderer
     .create(
         <LoginContextProvider>
             <ForumContextProvider>
-                <LoginPage />
+                <UserPortalNav />
             </ForumContextProvider>
         </LoginContextProvider>)
     .toJSON();

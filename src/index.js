@@ -12,6 +12,7 @@ import { LoginContextProvider } from "./context/LoginContext"
 import { ForumContextProvider } from "./context/ForumContext"
 import { WalksContextProvider } from "./context/WalksContext"
 import { BlogsContextProvider } from "./context/BlogsContext"
+import { BrowserRouter as Router } from "react-router-dom"
 
 // http://localhost:5000
 
@@ -29,6 +30,7 @@ axios
       const boardsData = responses[2];
       const blogPosts = responses[3];
       ReactDOM.render(
+      <Router>
         <ForumContextProvider>
           <RecaptchaContextProvider>
             <LoginContextProvider>
@@ -42,6 +44,7 @@ axios
             </LoginContextProvider>
           </RecaptchaContextProvider>
         </ForumContextProvider>
+      </Router>
       , document.getElementById('root'));
     })
   )

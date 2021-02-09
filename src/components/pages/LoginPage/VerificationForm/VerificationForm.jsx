@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { LoginContext } from '../../../../context/LoginContext'
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
+import UserPortalNav from "../UserPortalNav"
 import './VerificationForm.css'
 
 const VerificationForm = () => {
@@ -13,6 +14,7 @@ const VerificationForm = () => {
 
     return (
         <div key="user-verification">
+        <UserPortalNav/>
         <div className="verification-header-container">
           <h2 className="verification-header">Activate Your Account</h2>
           <p>Submit your email address to resend the verification email to activate your account.</p>

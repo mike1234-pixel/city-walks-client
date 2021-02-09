@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { LoginContext } from '../../../../context/LoginContext'
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
+import UserPortalNav from "../UserPortalNav"
 import './RegistrationForm.css'
 
 const RegistrationForm = () => {
@@ -18,6 +19,7 @@ const RegistrationForm = () => {
 
     return (
     <div key="user-registration">
+    <UserPortalNav/>
       <div className="registration-header-container">
         <h2 className="registration-header">Register</h2>
         <p>Create a new account.</p>

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { ForumContext } from "../../../../context/ForumContext"
 import { LoginContext } from "../../../../context/LoginContext";
 import PopUp from "../../../../components/PopUp/PopUp"
+import UserPortalNav from "../UserPortalNav"
 import './Boards.css'
 
 const Boards = () => {
@@ -15,6 +16,7 @@ const Boards = () => {
         <div>
             {popupVisible && <PopUp/>}
             <div className="page-heading-container">
+            <UserPortalNav/>
                 <h1 className="page-heading">Forum</h1>
                 <h2 className="login-heading">Welcome back {userFirstName}</h2>
                 <p>Here you can join in the discussion and put forward your own recomendations. Discussions are subdivided by category:</p>

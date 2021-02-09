@@ -1,12 +1,7 @@
 import { createContext, useState } from "react"
 import axios from "axios"
+import { useHistory } from "react-router-dom"
 import qs from "qs"
-import LoginForm from "../components/pages/LoginPage/LoginForm/LoginForm";
-import RegistrationForm from "../components/pages/LoginPage/RegistrationForm/RegistrationForm"
-import VerificationForm from "../components/pages/LoginPage/VerificationForm/VerificationForm";
-import ResetPasswordForm from "../components/pages/LoginPage/ResetPasswordForm/ResetPasswordForm";
-import ForgotPasswordForm from "../components/pages/LoginPage/ForgotPasswordForm/ForgotPasswordForm";
-import Boards from "../components/pages/LoginPage/LoggedInView/Boards"
 
 export const LoginContext = createContext();
 
@@ -36,27 +31,11 @@ export const LoginContextProvider = (props) => {
 
     const [forgotPasswordEmail, setForgotPasswordEmail] = useState("")
 
+    const history = useHistory()
+
     const handlePopup = () => {
       setPopupVisible(false)
       localStorage.setItem("popupVisible", false)
-    }
-
-    // set display form on LoginPage
-    const [form, setForm] = useState("loggedOutView");
-
-    let displayForm = <Boards/>;
-    if (form === "boards") {
-      displayForm = <Boards/>;
-    } else if (form === "loginForm") {
-      displayForm = <LoginForm />;
-    } else if (form === "registrationForm") {
-      displayForm = <RegistrationForm />;
-    } else if (form === "verificationForm") {
-      displayForm = <VerificationForm />;
-    } else if (form === "resetPasswordForm") {
-      displayForm = <ResetPasswordForm />;
-    } else if (form === "forgotPasswordForm") {
-      displayForm = <ForgotPasswordForm />;
     }
 
     const handleChangeRegistration = (event) => {
@@ -144,13 +123,13 @@ export const LoginContextProvider = (props) => {
           setLoggedIn(true)
           setLoginEmail("")
           setLoginPassword("")
-          setForm("")
           setUserId(res.data._id)
           setUserFirstName(res.data.fname)
           setUserLastName(res.data.lname)
           localStorage.setItem("loggedIn", true)
           localStorage.setItem("userId", res.data._id)
           localStorage.setItem("userFirstName", res.data.fname)
+          history.push("/boards");
           window.scrollTo(0, 0)
         }
       });
@@ -232,6 +211,7 @@ const handleSubmitResetPassword = (event) => {
             setResetPasswordOldPassword("")
             setResetPasswordNewPassword("")
             setResetPasswordConfirmNewPassword("")
+            history.push("/boards/login");
             window.scrollTo(0, 0)
           }
         })
@@ -279,7 +259,8 @@ axios
     setUserId("")
     setUserFirstName("")
     setUserLastName("")
-    setForm("boards")
+    alert("Logged out successfully.")
+    history.push("/boards");
   }
 
     return (
@@ -288,9 +269,6 @@ axios
               popupVisible,
               setPopupVisible,
               handlePopup,
-               // display form
-               displayForm,
-               setForm,
                // logged in state 
                loggedIn,
                // registration state and functions

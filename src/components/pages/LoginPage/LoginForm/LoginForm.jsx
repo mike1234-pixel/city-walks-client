@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { LoginContext } from '../../../../context/LoginContext'
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
+import UserPortalNav from "../UserPortalNav"
 import './LoginForm.css'
 
 const LoginForm = () => {
@@ -13,6 +14,7 @@ const LoginForm = () => {
 
     return (
     <div key="user-login">
+    <UserPortalNav/>
       <div className="login-header-container">
         <h2 className="login-form-header">Login</h2>
         <p>Login to Your Account.</p>
