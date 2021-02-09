@@ -55,7 +55,7 @@ const Carousel = () => {
           </MDBView>
           <MDBCarouselCaption className="carousel-caption">
             <h3 className="h3-responsive">Share</h3>
-            <p>your experiences, recommendations and favourite spots.</p>
+            <p>your experiences and recommendations.</p>
           </MDBCarouselCaption>
         </MDBCarouselItem>
       </MDBCarouselInner>
