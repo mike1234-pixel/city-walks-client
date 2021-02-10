@@ -12,3 +12,9 @@
 #request-activation-link {
   color: var(--blue);
 }
+
+.emphasis {
+  background: rgba(63, 63, 63, 0.219);
+  font-weight: bold;
+  color: white;
+}

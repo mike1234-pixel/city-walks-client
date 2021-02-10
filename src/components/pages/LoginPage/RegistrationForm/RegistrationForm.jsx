@@ -1,7 +1,8 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { LoginContext } from '../../../../context/LoginContext'
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
 import UserPortalNav from "../UserPortalNav"
+import { Link } from "react-router-dom"
 import './RegistrationForm.css'
 
 const RegistrationForm = () => {
@@ -13,9 +14,8 @@ const RegistrationForm = () => {
         registrationPassword, 
         handleChangeRegistration,
         handleSubmitRegistration,
-        setForm
+        activationMessageEmphasis,
     } = useContext(LoginContext)
-
 
     return (
     <div key="user-registration">
@@ -23,9 +23,11 @@ const RegistrationForm = () => {
       <div className="registration-header-container">
         <h2 className="registration-header">Register</h2>
         <p>Create a new account.</p>
-        <p>You will receive an email containing an activation link to verify your email and activate your account.</p>
-        <p>The activation link expires after 10 minutes.</p>
-        <p>If the activation link expires, you can <a id="request-activation-link" onClick={() => setForm("verificationForm")}>request a fresh activation link.</a></p>
+        <div className={activationMessageEmphasis}>
+          <p>You will receive an email containing an activation link to verify your email and activate your account.</p>
+          <p>The activation link expires after 10 minutes.</p>
+          <p>If the activation link expires, you can <Link id="request-activation-link" to="/forum/verify">request a fresh activation link.</Link></p>
+        </div>
       </div>
         <form onSubmit={handleSubmitRegistration} className="user-registration-form display-form" key="user-registration-form">
             <MDBInput key="input-1" type="text" name="registration-fname" id="registration-fname" value={firstName} label="first Name" onChange={handleChangeRegistration} pattern="^[A-Za-z\-]+$" required/>

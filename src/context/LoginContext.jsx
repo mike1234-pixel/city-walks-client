@@ -31,6 +31,8 @@ export const LoginContextProvider = (props) => {
 
     const [forgotPasswordEmail, setForgotPasswordEmail] = useState("")
 
+    const [activationMessageEmphasis, setActivationMessageEmphasis] = useState("no-emphasis")
+
     const history = useHistory()
 
     const handlePopup = () => {
@@ -81,6 +83,7 @@ export const LoginContextProvider = (props) => {
             setRegistrationPassword("")
             setUserFirstName(res.data.fname)
             setUserLastName(res.data.lname)
+            setActivationMessageEmphasis("emphasis")
             window.scrollTo(0, 0)
            } else {
             alert("Registration Complete")
@@ -286,6 +289,7 @@ axios
                 setLoggedIn,
                 setUserFirstName,
                 setUserId,
+                activationMessageEmphasis,
                 // logged in user data
                 userFirstName,
                 userId,

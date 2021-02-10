@@ -17,8 +17,8 @@ const ResetPasswordForm = () => {
 
     return (
     <div>
+    <UserPortalNav/>
       <div className="reset-password-header-container">
-      <UserPortalNav/>
         <h2 className="reset-password-header">Reset Password</h2>
         <p>Reset your account password by submitting your old password and the password you want to replace it with.</p>
       </div>
