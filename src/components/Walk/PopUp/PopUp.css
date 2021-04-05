@@ -15,9 +15,11 @@
   display: flex;
 }
 
+/* popup-img height and width in vw to retain aspect ratio */
+
 .popup-img {
   width: 80vw;
-  height: 80vh;
+  height: 80vw;
   margin: auto;
   border: 2px black solid;
   position: relative;
@@ -28,9 +30,9 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0;
+  left: 30px;
   right: 10;
-  content: "\274c Hide Map";
+  content: "\274c \00a0 Hide Map";
   font-size: 30px;
   color: #fff;
   line-height: 100px;
@@ -41,12 +43,14 @@
 @media (min-width: 1000px) {
   .popup-img {
     width: 40vw;
+    height: 40vw;
   }
 }
 
 @media (max-width: 500px) {
   .popup-img {
     width: 97vw;
+    height: 150vw;
   }
 }
 

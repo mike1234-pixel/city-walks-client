@@ -9,6 +9,10 @@
   padding: 0;
 }
 
+.home-carousel {
+  margin-top: 50px;
+}
+
 .z-depth-1 {
   box-shadow: none !important;
 }
@@ -25,6 +29,13 @@
   /* background-color: rgba(0, 0, 0, 0.726); */
   text-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px black;
   font-weight: 700;
+}
+
+@media (max-width: 410px) {
+  .carousel-caption {
+    visibility: hidden;
+    display: none;
+  }
 }
 
 /* end mdbreact corrections */

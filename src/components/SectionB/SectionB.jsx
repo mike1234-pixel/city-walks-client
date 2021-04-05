@@ -1,4 +1,4 @@
-import { MDBView } from "mdbreact"
+import { MDBView, MDBContainer } from "mdbreact"
 import marked from "marked"
 import "./SectionB.css";
 
@@ -11,16 +11,18 @@ const SectionB = (props) => {
     }
 
   return (
-    <div className='section-b grid-container-b'>
-        <div className='grid-item-b grid-item-b-image-box'>
-          <MDBView hover zoom id="grid-item-overlay">
-            <img className="grid-item-b-img" src={img} alt={alt}></img>
-          </MDBView>
-        </div>
-        <div className='grid-item-b grid-item-b-text-box'>
-            <div  dangerouslySetInnerHTML={createMarkup(content)}></div>
-        </div>
-    </div>
+    <MDBContainer>
+      <div className='section-b grid-container-b'>
+          <div className='grid-item-b grid-item-b-image-box'>
+            <MDBView hover zoom id="grid-item-overlay">
+              <img className="grid-item-b-img" src={img} alt={alt}></img>
+            </MDBView>
+          </div>
+          <div className='grid-item-b grid-item-b-text-box'>
+              <div  dangerouslySetInnerHTML={createMarkup(content)}></div>
+          </div>
+      </div>
+    </MDBContainer>
   );
 };
 

@@ -6,11 +6,11 @@ This is a React client built to interact with the express server contained in th
 
 ## Getting Started
 
+### 1) Server
+
 Clone the repo:
 
 `gh repo clone mike1234-pixel/city-walks`
-
-### 1) Server
 
 To install dependencies, cd into the root directory and run:
 
@@ -21,6 +21,10 @@ To start the API run:
 `yarn server`
 
 ### 2) Client
+
+Clone the repo:
+
+`gh repo clone mike1234-pixel/city-walks-client`
 
 To install dependencies, cd into the **client** directory and run:
 

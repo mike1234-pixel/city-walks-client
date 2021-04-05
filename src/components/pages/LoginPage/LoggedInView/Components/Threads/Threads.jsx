@@ -3,7 +3,7 @@ import { ForumContext } from "../../../../../../context/ForumContext"
 import { LoginContext } from "../../../../../../context/LoginContext"
 import ThreadBox from "../ThreadBox/ThreadBox"
 import toTitleCase from "../../../../../../functions/toTitleCase"
-import { MDBBtn, MDBInput } from "mdbreact"
+import { MDBBtn, MDBInput, MDBContainer } from "mdbreact"
 import axios from "axios"
 import qs from "qs"
 import PopUp from "../../../../../PopUp/PopUp"
@@ -100,12 +100,14 @@ const addThread =
 </div>
 
     return (
-        <div className="threads-container">
-            {popupVisible && <PopUp/>}
-            <h1 className="page-heading">{boardName}</h1>
-                {loggedIn && addThread}
-            <div>{threads}</div>
-        </div>
+        <MDBContainer>
+            <div className="threads-container">
+                {popupVisible && <PopUp/>}
+                <h1 className="page-heading">{boardName}</h1>
+                    {loggedIn && addThread}
+                <div>{threads}</div>
+            </div>
+        </MDBContainer>
     )
 }
 

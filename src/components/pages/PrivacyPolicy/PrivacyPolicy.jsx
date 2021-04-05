@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import { MDBContainer } from "mdbreact"
 import "./PrivacyPolicy.css"
 
 const PrivacyPolicy = () => {
@@ -8,6 +9,7 @@ const PrivacyPolicy = () => {
       }, []);
 
     return (
+        <MDBContainer>
         <div className="privacy-policy-container">
             <div className="page-heading-container">
                 <h1 className="page-heading">City Walks Privacy Policy</h1>
@@ -92,6 +94,7 @@ const PrivacyPolicy = () => {
                 <p>Address: Information Commissioner's Office Wycliffe House Water Lane Wilmslow Cheshire SK9 5AF</p>
                 <p>Helpline: 0303 123 1113</p>
         </div>
+    </MDBContainer>
     )
 }
 

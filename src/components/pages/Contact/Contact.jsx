@@ -2,7 +2,7 @@
 
 import { useState, useContext, useEffect } from "react"
 import { RecaptchaContext } from "../../../context/RecaptchaContext"
-import { MDBInput, MDBBtn, MDBIcon } from "mdbreact";
+import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact";
 import PopUp from "../../PopUp/PopUp"
 import { LoginContext } from "../../../context/LoginContext"
 import axios from "axios";
@@ -74,48 +74,50 @@ const Contact = () => {
 }
 
   return (
-  <div>
-  {popupVisible && <PopUp/>}
-    <div className="page-heading-container min-page-height">
-      <h1 className="page-heading">Contact</h1>
-      <form onSubmit={handleSubmit} className="contact-form display-form">
-        <MDBInput
-          key="input-5"
-          type="text"
-          name="contact-name"
-          id="contact-name"
-          value={contactName}
-          label="name"
-          onChange={handleChange}
-          required
-        />
-        <MDBInput
-          key="input-6"
-          type="email"
-          name="contact-email"
-          id="contact-email"
-          value={contactEmail}
-          label="email"
-          onChange={handleChange}
-          required
-        />
-        <MDBInput
-          key="input-7"
-          type="textarea"
-          rows="5"
-          name="contact-message"
-          id="contact-message"
-          value={contactMessage}
-          label="message"
-          onChange={handleChange}
-          required
-        />
-        <MDBBtn outline color="elegant" type="submit">
-          Send Message <MDBIcon far icon="paper-plane" />
-        </MDBBtn>
-      </form>
-    </div>
-  </div>
+    <MDBContainer>
+      <div>
+      {popupVisible && <PopUp/>}
+        <div className="page-heading-container min-page-height">
+          <h1 className="page-heading">Contact</h1>
+          <form onSubmit={handleSubmit} className="contact-form display-form">
+            <MDBInput
+              key="input-5"
+              type="text"
+              name="contact-name"
+              id="contact-name"
+              value={contactName}
+              label="name"
+              onChange={handleChange}
+              required
+            />
+            <MDBInput
+              key="input-6"
+              type="email"
+              name="contact-email"
+              id="contact-email"
+              value={contactEmail}
+              label="email"
+              onChange={handleChange}
+              required
+            />
+            <MDBInput
+              key="input-7"
+              type="textarea"
+              rows="5"
+              name="contact-message"
+              id="contact-message"
+              value={contactMessage}
+              label="message"
+              onChange={handleChange}
+              required
+            />
+            <MDBBtn outline color="elegant" type="submit">
+              Send Message <MDBIcon far icon="paper-plane" />
+            </MDBBtn>
+          </form>
+        </div>
+      </div>
+  </MDBContainer>
   );
 };
 

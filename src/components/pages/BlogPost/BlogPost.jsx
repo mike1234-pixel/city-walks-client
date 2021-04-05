@@ -3,7 +3,7 @@ import { BlogsContext } from "../../../context/BlogsContext"
 import PopUp from "../../PopUp/PopUp"
 import { LoginContext } from "../../../context/LoginContext"
 import toTitleCase from "../../../functions/toTitleCase"
-import { MDBInput, MDBBtn, MDBIcon, MDBCard, MDBCardTitle, MDBCardText } from "mdbreact"
+import { MDBInput, MDBBtn, MDBIcon, MDBCard, MDBCardTitle, MDBCardText, MDBContainer } from "mdbreact"
 import axios from "axios"
 import qs from "qs"
 import marked from "marked";
@@ -88,29 +88,32 @@ const BlogPost = ({match}) => {
         post = "walk not found"
       } else {
         post = 
-        <div className="blog-post-container">
-          <div className="page-heading-container">
-            <h1 className="page-heading">{selectedBlogPost.title}</h1>
-            <h2 className="blog-subtitle page-subheading">{selectedBlogPost.subtitle}</h2>
+        <MDBContainer>
+          <div className="blog-post-container">
+            <div className="page-heading-container">
+              <h1 className="page-heading">{selectedBlogPost.title}</h1>
+              <h2 className="blog-subtitle page-subheading">{selectedBlogPost.subtitle}</h2>
+            </div>
+              <img className="blog-post-img" src={selectedBlogPost.img}/>
+              <div className="blog-post-content" dangerouslySetInnerHTML={createMarkup(selectedBlogPost.content)}></div>
+              <p>{selectedBlogPost.submittedOn.replace('T', ' ').substring(0, 19)}</p>
+              {selectedBlogPost.comments.map((comment) => {
+                return (
+                  <MDBCard className="blog-post-comment-card" key={comment._id}>
+                    <MDBCardTitle>{comment.userFirstName} commented:</MDBCardTitle>
+                    <MDBCardText>{comment.comment}</MDBCardText>
+                    <MDBCardText>{comment.submittedOn.replace('T', ' ').substring(0, 19)}</MDBCardText>
+                    {userId === comment.userId && <MDBBtn className="blog-post-comment-card-btn" onClick={() => handleDeleteComment(comment._id)}>Delete Comment</MDBBtn>}
+                  </MDBCard>
+                )
+              })}
           </div>
-            <img className="blog-post-img" src={selectedBlogPost.img}/>
-            <div className="blog-post-content" dangerouslySetInnerHTML={createMarkup(selectedBlogPost.content)}></div>
-            <p>{selectedBlogPost.submittedOn.replace('T', ' ').substring(0, 19)}</p>
-            {selectedBlogPost.comments.map((comment) => {
-              return (
-                <MDBCard className="blog-post-comment-card" key={comment._id}>
-                  <MDBCardTitle>{comment.userFirstName} commented:</MDBCardTitle>
-                  <MDBCardText>{comment.comment}</MDBCardText>
-                  <MDBCardText>{comment.submittedOn.replace('T', ' ').substring(0, 19)}</MDBCardText>
-                  {userId === comment.userId && <MDBBtn className="blog-post-comment-card-btn" onClick={() => handleDeleteComment(comment._id)}>Delete Comment</MDBBtn>}
-                </MDBCard>
-              )
-            })}
-        </div>
+        </MDBContainer>
       }
     }
 
     return (
+      <MDBContainer>
         <div>
             {popupVisible && <PopUp/>}
             <div>{post}</div>
@@ -123,6 +126,7 @@ const BlogPost = ({match}) => {
               </form>
             }
         </div>
+      </MDBContainer>
     )
 }
 

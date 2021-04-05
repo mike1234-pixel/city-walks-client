@@ -1,13 +1,16 @@
 import './NotFound404.css'
+import { MDBContainer } from "mdbreact"
 
 const nf404 = ({ location }) => {
     const errorMessage = `404 Error: Page not found at ${location.pathname}`
     return (
-        <div className="nf404-page-container min-page-height">
-            <div className="page-heading-container">
-                <h1 className="page-heading">{errorMessage}</h1>
+        <MDBContainer>
+            <div className="nf404-page-container min-page-height">
+                <div className="page-heading-container">
+                    <h1 className="page-heading">{errorMessage}</h1>
+                </div>
             </div>
-        </div>
+        </MDBContainer>
     )
 }
 

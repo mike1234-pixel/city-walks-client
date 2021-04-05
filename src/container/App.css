@@ -76,23 +76,17 @@ html {
   display: grid;
   width: 100%;
   grid-gap: 20px;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   margin-bottom: 20px;
 }
 
 @media (max-width: 4000px) {
   .card-container {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 2500px) {
-  .card-container {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
-
-@media (max-width: 1350px) {
   .card-container {
     grid-template-columns: repeat(3, 1fr);
   }

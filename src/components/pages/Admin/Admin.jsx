@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { MDBBtn, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBHamburgerToggler, MDBCollapse, MDBIcon, MDBInput } from "mdbreact";
+import { MDBBtn, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBHamburgerToggler, MDBCollapse, MDBIcon, MDBInput, MDBContainer } from "mdbreact";
 import axios from "axios"
 import qs from "qs"
 import AddWalkForm from './AddWalkForm/AddWalkForm'
@@ -93,7 +93,8 @@ const Admin = () => {
     }
 
     return (
-        <div className="admin-portal">
+      <MDBContainer>
+        <div className="admin-portal min-page-height">
             {adminLoggedIn ? 
             <div>
               <MDBNavbar className="admin-panel" dark expand="md">
@@ -150,6 +151,7 @@ const Admin = () => {
             </form>
             }
         </div>
+      </MDBContainer>
     )
 }
 

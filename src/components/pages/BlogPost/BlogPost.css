@@ -1,7 +1,6 @@
 /** @format */
 
 .blog-post-container {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,18 +11,17 @@
 }
 
 .blog-post-img {
-  width: 80vw;
   margin: 20px;
+  width: 100%;
 }
 
 .blog-post-content {
-  width: 80vw;
 }
 
 .blog-post-comment-card {
-  width: 60vw;
   margin: 20px;
   padding: 20px;
+  width: 100%;
 }
 
 .add-blog-comment-form {

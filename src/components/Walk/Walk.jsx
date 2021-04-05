@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react"
-import { MDBIcon, MDBAnimation, MDBBtn } from "mdbreact"
+import { MDBIcon, MDBAnimation, MDBBtn, MDBContainer } from "mdbreact"
 import SectionA from '../SectionA/SectionA'
 import SectionB from '../SectionB/SectionB'
 import PopUp from './PopUp/PopUp'
@@ -66,7 +66,7 @@ const Walk = ({match}) => {
                     {selectedWalk.twitterLink !== undefined && <a href={selectedWalk.twitterLink} target="_blank"><MDBIcon fab icon="twitter" /></a>}
                   </div>
                 </MDBAnimation>
-                {!togglePopUp && <MDBBtn id="see-map-btn" onClick={handleClick}>
+                {!togglePopUp && <MDBBtn id="see-map-btn" onClick={handleClick}> 
                 See Map <MDBIcon icon="map-marked-alt" id="map-icon"/>
                 </MDBBtn>}
                 {togglePopUp && <PopUp mapImg={selectedWalk.mapImg} />}
@@ -77,12 +77,14 @@ const Walk = ({match}) => {
 
 
     return (
-      <div data-testid="walk-page">
-        {popupVisible && <PrivacyPopUp/>}
-        <div className="min-page-height center">
-          {walk}
+      <MDBContainer>
+        <div data-testid="walk-page">
+          {popupVisible && <PrivacyPopUp/>}
+          <div className="min-page-height center">
+            {walk}
+          </div>
         </div>
-      </div>
+      </MDBContainer>
     )
 }
 

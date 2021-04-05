@@ -29,7 +29,7 @@ const Footer = () => {
 
   return (
     <MDBFooter className="font-small pt-4 mt-4 footer">
-      <MDBContainer fluid className="text-center text-md-left">
+      <MDBContainer className="text-left">
         <MDBRow>
           <MDBCol md="3">
             <h5 className="title">City Walks... <MDBIcon icon="walking"/></h5>
@@ -38,7 +38,7 @@ const Footer = () => {
             </p>
           </MDBCol>
           <MDBCol md="3"></MDBCol>
-          <MDBCol md="3">
+          <MDBCol md="3" className="footer-site-links">
             <h5 className="title">Site Links</h5>
             <ul className="footer-ul">
             <li className="list-unstyled">
@@ -64,7 +64,7 @@ const Footer = () => {
               </li>
             </ul>
           </MDBCol>
-          <MDBCol md="3">
+          <MDBCol md="3" className="footer-extra-links">
           <h5 className="title">Extra Links</h5>
           <ul className="footer-ul">
             <li className="list-unstyled">
@@ -83,7 +83,7 @@ const Footer = () => {
       </MDBContainer>
       <div className="footer-copyright text-center py-3">
         <MDBContainer fluid>
-          &copy; {new Date().getFullYear()} Copyright
+          &copy; {new Date().getFullYear()} Copyright Michael Tandy
         </MDBContainer>
       </div>
     </MDBFooter>
