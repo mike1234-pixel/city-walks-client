@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import { MDBIcon, MDBCol, MDBContainer, MDBRow, MDBFooter } from 'mdbreact'
 import { LoginContext } from "../../context/LoginContext"
 import axios from "axios"
+import { GiWalkingBoot } from 'react-icons/gi'
 import './Footer.scss'
 
 const Footer = () => {
@@ -32,7 +33,7 @@ const Footer = () => {
       <MDBContainer className="text-left">
         <MDBRow>
           <MDBCol md="3">
-            <h5 className="title">City Walks... <MDBIcon icon="walking"/></h5>
+            <h5 className="title">City Walks... <GiWalkingBoot/></h5>
             <p>
               City Walks is a website that publishes illustrated guided walks, with routes, maps and local attractions to explore.
             </p>
@@ -83,7 +84,7 @@ const Footer = () => {
       </MDBContainer>
       <div className="footer-copyright text-center py-3">
         <MDBContainer fluid>
-          &copy; {new Date().getFullYear()} Copyright Michael Tandy
+          &copy; {new Date().getFullYear()} Copyright <a href='https://github.com/mike1234-pixel' target='_blank' className="footer-github-link">Michael Tandy</a>
         </MDBContainer>
       </div>
     </MDBFooter>

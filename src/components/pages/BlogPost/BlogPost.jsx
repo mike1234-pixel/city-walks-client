@@ -1,6 +1,5 @@
 import { useEffect, useContext, useState } from "react"
 import { BlogsContext } from "../../../context/BlogsContext"
-import PopUp from "../../PopUp/PopUp"
 import { LoginContext } from "../../../context/LoginContext"
 import toTitleCase from "../../../functions/toTitleCase"
 import { MDBInput, MDBBtn, MDBIcon, MDBCard, MDBCardTitle, MDBCardText, MDBContainer } from "mdbreact"
@@ -90,9 +89,8 @@ const BlogPost = ({match}) => {
         post = "walk not found"
       } else {
         post = 
-        <MDBContainer>
           <div className="blog-post-container">
-            <div className="page-heading-container">
+            <div>
               <h1 className="page-heading">{selectedBlogPost.title}</h1>
               <h2 className="blog-subtitle page-subheading">{selectedBlogPost.subtitle}</h2>
             </div>
@@ -110,33 +108,31 @@ const BlogPost = ({match}) => {
                 )
               })}
           </div>
-        </MDBContainer>
       }
     }
 
     return (
       <motion.div
-          style={{ position: "relative" }}
-          exit={pageTransition.out}
-          animate={pageTransition.in}
-          initial={pageTransition.initial}
-          transition={pageTransition.duration}
-          className="motion-div"
+        style={{ position: "relative" }}
+        exit={pageTransition.out}
+        animate={pageTransition.in}
+        initial={pageTransition.initial}
+        transition={{ duration: 0.5 }}
+        className="motion-div"
       >
-      <MDBContainer>
-        <div>
-            {/* {popupVisible && <PopUp/>} */}
-            <div>{post}</div>
-            {loggedIn &&
-              <form onSubmit={handleSubmit} className="add-blog-comment-form">
-                <MDBInput type="textarea" rows="5" name="comment" id="comment" value={comment} label="comment" onChange={handleChange} required/>
-                <MDBBtn outline color="elegant" type="submit">
-                    Add Comment <MDBIcon icon="plus"/>
-                </MDBBtn>
-              </form>
-            }
-        </div>
-      </MDBContainer>
+        <MDBContainer>
+          <div>
+              <div>{post}</div>
+              {loggedIn &&
+                <form onSubmit={handleSubmit} className="add-blog-comment-form">
+                  <MDBInput type="textarea" rows="5" name="comment" id="comment" value={comment} label="comment" onChange={handleChange} required/>
+                  <MDBBtn outline color="elegant" type="submit">
+                      Add Comment <MDBIcon icon="plus"/>
+                  </MDBBtn>
+                </form>
+              }
+          </div>
+        </MDBContainer>
       </motion.div>
     )
 }

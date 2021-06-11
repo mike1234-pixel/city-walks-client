@@ -25,7 +25,6 @@ const Boards = () => {
                 className="motion-div"
             >
             <div>
-                {/* {popupVisible && <PopUp/>} */}
                 <div className="page-heading-container">
                 <UserPortalNav/>
                 <MDBContainer>

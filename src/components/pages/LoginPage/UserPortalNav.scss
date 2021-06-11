@@ -30,7 +30,7 @@ label[for="hamburger2"] {
 }
 
 .login-panel {
-  background: var(--blue);
+  background: black;
 }
 
 @media (max-width: 767px) {
@@ -41,7 +41,7 @@ label[for="hamburger2"] {
 
 .user-portal-link {
   padding: 20px;
-  color: var(--elegant-color-dark);
+  color: var(--blue);
   &:hover,
   &:active,
   &:focus {

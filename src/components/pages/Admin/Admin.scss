@@ -1,11 +1,23 @@
+/** @format */
+
 .admin-portal {
   text-align: center;
 }
 
 .admin-login-form {
-  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .admin-panel {
-  background: var(--blue);
+  background: black;
+  .nav-link {
+    font-size: 12px;
+  }
+}
+
+.navbar-collapse {
+  @media (max-width: 767px) {
+    text-align: left;
+  }
 }

@@ -7,8 +7,11 @@ import toTitleCase from "../../functions/toTitleCase"
 import { WalksContext } from "../../context/WalksContext"
 import PrivacyPopUp from "../../components/PopUp/PopUp"
 import { LoginContext } from "../../context/LoginContext"
-// import { motion } from "framer-motion"
-// import pageTransition from "../../constants/pageTransition"
+import { MdLocationCity } from 'react-icons/md'
+import { FaRoad, FaMapMarkerAlt } from 'react-icons/fa'
+import { IoMdTrain } from 'react-icons/io'
+import { motion } from "framer-motion"
+import pageTransition from "../../constants/pageTransition"
 import './Walk.scss'
 
 const Walk = ({match}) => {
@@ -26,10 +29,10 @@ const Walk = ({match}) => {
       });
 
       let walk = "loading";
+      let currentWalk;
 
       const handleClick = (e) => {
         setTogglePopUp(!togglePopUp)
-        console.log(e.target.id)
       }
 
       const handleClickOutside = (e) => {
@@ -43,16 +46,18 @@ const Walk = ({match}) => {
         let selectedWalk = walks.filter((walk) => walk.walk === walkName)
         selectedWalk = selectedWalk[0]
 
+        currentWalk = selectedWalk
+
         if (selectedWalk === undefined) {
           walk = "walk not found"
         } else {
             walk = 
             <div>
             <div className="walk-heading-container">
-              <h1 className="walk-heading display-font">{selectedWalk.walk} <i className="far fa-flag"></i> {selectedWalk.city}</h1>
-              <p className="walk-description">{selectedWalk.description}</p>
-              <p className="walk-description">Starting Point: {selectedWalk.startingPoint}</p>
-              <p className="walk-description">Length: {selectedWalk.length}</p>
+              <h1 className="walk-heading display-font">{selectedWalk.walk} <MdLocationCity/> {selectedWalk.city}</h1>
+              <p className="walk-description"><FaMapMarkerAlt/> {selectedWalk.description}</p>
+              <p className="walk-description"><IoMdTrain/> Starting Point: {selectedWalk.startingPoint}</p>
+              <p className="walk-description"><FaRoad/> Length: {selectedWalk.length}</p>
             </div>
               <SectionA content={selectedWalk.content1} img={selectedWalk.img1} alt={selectedWalk.walk}/>
               <SectionB content={selectedWalk.content2} img={selectedWalk.img2} alt={selectedWalk.walk}/>
@@ -69,10 +74,10 @@ const Walk = ({match}) => {
                     {selectedWalk.twitterLink !== undefined && <a href={selectedWalk.twitterLink} target="_blank"><MDBIcon fab icon="twitter" /></a>}
                   </div>
                 </MDBAnimation>
-                {!togglePopUp && <MDBBtn id="see-map-btn" onClick={handleClick}> 
+                {/* {!togglePopUp && <MDBBtn id="see-map-btn" onClick={handleClick}> 
                 See Map <MDBIcon icon="map-marked-alt" id="map-icon"/>
                 </MDBBtn>}
-                {togglePopUp && <PopUp mapImg={selectedWalk.mapImg} iframeLink={selectedWalk.iframeLink} iframeTitle={selectedWalk.iframeTitle}/>}
+                {togglePopUp && <PopUp mapImg={selectedWalk.mapImg} iframeLink={selectedWalk.iframeLink} iframeTitle={selectedWalk.iframeTitle}/>} */}
               </div>
           </div>
         }
@@ -80,25 +85,29 @@ const Walk = ({match}) => {
 
 
     return (
-    
-  //     <motion.div
-  //     style={{ position: "relative" }}
-  //     exit={pageTransition.out}
-  //     animate={pageTransition.in}
-  //     initial={pageTransition.initial}
-  //     transition={{ duration: 0.5 }}
-  //     className="motion-div"
-  // >
-
-      <MDBContainer>
-      {popupVisible && <PrivacyPopUp/>}
-        <div data-testid="walk-page">
-          <div className="min-page-height center">
-            {walk}
+      <div>
+      <motion.div
+          style={{ position: "relative" }}
+          exit={pageTransition.out}
+          animate={pageTransition.in}
+          initial={pageTransition.initial}
+          transition={{ duration: 0.5 }}
+          className="motion-div"
+      >
+        <MDBContainer>
+         {popupVisible && <PrivacyPopUp/>} 
+          <div data-testid="walk-page">
+            <div className="min-page-height center">
+              {walk}
+            </div>
           </div>
-        </div>
-      </MDBContainer>
-      // </motion.div>
+        </MDBContainer>
+      </motion.div>
+      {!togglePopUp && <MDBBtn id="see-map-btn" onClick={handleClick}> 
+      See Map <MDBIcon icon="map-marked-alt" id="map-icon"/>
+      </MDBBtn>}
+      {togglePopUp && <PopUp mapImg={currentWalk.mapImg} iframeLink={currentWalk.iframeLink} iframeTitle={currentWalk.iframeTitle}/>}
+      </div>
     )
 }
 

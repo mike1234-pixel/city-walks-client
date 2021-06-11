@@ -29,7 +29,9 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  transition: all 0.2s;
+  transition: all 0.4s;
+  box-sizing: border-box;
+  border: 2px solid transparent;
 }
 
 #grid-item-overlay {
@@ -49,6 +51,11 @@
   text-align: left;
   background: var(--elegant-color-dark);
   color: white;
+  &:hover,
+  &:focus,
+  &:active {
+    border: 2px dashed grey;
+  }
 }
 
 .grid-item-a-img {

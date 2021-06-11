@@ -27,3 +27,10 @@
     display: none;
   }
 }
+
+.footer-github-link {
+  color: rgba(255, 255, 255, 0.6) !important;
+  &:hover {
+    color: var(--blue) !important;
+  }
+}

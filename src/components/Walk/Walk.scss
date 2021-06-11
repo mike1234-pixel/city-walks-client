@@ -2,28 +2,23 @@
 
 .walk-heading-container {
   width: 100%;
-  text-align: center;
+  text-align: left;
 }
 
 .walk-heading {
   margin: 20px 0;
 }
 
-.walk-description {
-  padding: 20px;
-}
-
 .author-info-container {
   width: 100%;
-  text-align: center;
+  text-align: left;
 }
 
 .social-links {
   width: 30%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: 30px;
-  margin: auto;
   margin-bottom: 20px;
   a {
     margin-right: 10px;

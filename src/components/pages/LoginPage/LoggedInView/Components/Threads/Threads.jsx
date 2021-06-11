@@ -102,7 +102,6 @@ const addThread =
     return (
         <MDBContainer>
             <div className="threads-container">
-                {/* {popupVisible && <PopUp/>} */}
                 <h1 className="page-heading">{boardName}</h1>
                     {loggedIn && addThread}
                 <div>{threads}</div>

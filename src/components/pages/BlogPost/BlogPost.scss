@@ -3,7 +3,7 @@
 .blog-post-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  // align-items: center;
 }
 
 .blog-subtitle {
@@ -11,12 +11,14 @@
 }
 
 .blog-post-img {
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   width: 100%;
 }
 
 .blog-post-comment-card {
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 20px;
   width: 100%;
 }

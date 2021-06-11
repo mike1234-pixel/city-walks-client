@@ -93,11 +93,11 @@ const Admin = () => {
     }
 
     return (
-      <MDBContainer>
         <div className="admin-portal min-page-height">
             {adminLoggedIn ? 
             <div>
               <MDBNavbar className="admin-panel" dark expand="md">
+              <MDBContainer>
                 <MDBNavbarBrand>
                   <strong className="white-text">Admin Portal</strong>
                 </MDBNavbarBrand>
@@ -138,20 +138,25 @@ const Admin = () => {
                     </MDBNavItem>
                     </MDBNavbarNav>
                   </MDBCollapse>
+                  </MDBContainer>
               </MDBNavbar>
             <br/>
             <br/>
             <br/>
-            {displayForm} 
+            <MDBContainer>
+              {displayForm} 
+            </MDBContainer>
             </div> : 
+            <MDBContainer>
             <form className="admin-login-form" onSubmit={handleSubmitAdminLogin}>
             <MDBInput type="text" name="admin-username" id="admin-username" value={adminUserName} label="admin username" onChange={handleChangeAdminLogin} maxLength="70" required/>
             <MDBInput type="password" name="admin-password" id="admin-password" value={adminPassword} label="admin password" onChange={handleChangeAdminLogin} maxLength="70" required/>
             <MDBBtn outline color="elegant" type="submit">Administrator Login <MDBIcon icon="sign-in-alt" /></MDBBtn>
             </form>
+            </MDBContainer>
             }
         </div>
-      </MDBContainer>
+        
     )
 }
 
