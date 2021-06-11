@@ -5,7 +5,9 @@ import PopUp from "../../PopUp/PopUp"
 import { LoginContext } from "../../../context/LoginContext"
 import { MDBBtn, MDBIcon, MDBCard, MDBCol, MDBCardBody, MDBCardImage, MDBCardText, MDBCardTitle, MDBContainer} from  "mdbreact"
 import urlify from "../../../functions/urlify"
-import "./Blog.css"
+import { motion } from "framer-motion"
+import pageTransition from "../../../constants/pageTransition"
+import "./Blog.scss"
 
 const Blog = (props) => {
 
@@ -55,9 +57,17 @@ const Blog = (props) => {
 
 
     return (
+        <motion.div
+            style={{ position: "relative" }}
+            exit={pageTransition.out}
+            animate={pageTransition.in}
+            initial={pageTransition.initial}
+            transition={pageTransition.duration}
+            className="motion-div"
+        >
         <MDBContainer>
             <div className="min-page-height">
-                {popupVisible && <PopUp/>}
+                {/* {popupVisible && <PopUp/>} */}
                 <div className="page-heading-container">
                     <h1 className="page-heading">Sights</h1>
                     <h2 className="page-subheading">find more sights and visitor attractions to explore</h2>
@@ -78,6 +88,7 @@ const Blog = (props) => {
                 />
             </div>
         </MDBContainer>
+        </motion.div>
     )
 }
 

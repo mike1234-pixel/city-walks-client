@@ -3,7 +3,7 @@ import { LoginContext } from '../../../../context/LoginContext'
 import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact"
 import UserPortalNav from "../UserPortalNav"
 import { Link } from "react-router-dom"
-import './RegistrationForm.css'
+import './RegistrationForm.scss'
 
 const RegistrationForm = () => {
 

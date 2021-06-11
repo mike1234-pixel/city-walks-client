@@ -1,4 +1,4 @@
-import './NotFound404.css'
+import './NotFound404.scss'
 import { MDBContainer } from "mdbreact"
 
 const nf404 = ({ location }) => {

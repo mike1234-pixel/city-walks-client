@@ -3,7 +3,7 @@ import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
 import axios from "axios";
 import qs from "qs";
 import toTitleCase from '../../../../functions/toTitleCase'
-import './AddBlogPostForm.css'
+import './AddBlogPostForm.scss'
 
 const AddBlogPostForm = () => {
 

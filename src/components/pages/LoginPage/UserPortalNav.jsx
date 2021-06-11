@@ -13,7 +13,7 @@ import {
 } from "mdbreact";
 import { Link } from "react-router-dom"
 import { LoginContext } from "../../../context/LoginContext";
-import "./UserPortalNav.css";
+import "./UserPortalNav.scss";
 
 const UserPortalNav = () => {
   const [toggleLoginPanel, setToggleLoginPanel] = useState(false);

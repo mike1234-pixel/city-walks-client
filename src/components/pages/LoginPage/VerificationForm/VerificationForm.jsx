@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { LoginContext } from '../../../../context/LoginContext'
 import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact"
 import UserPortalNav from "../UserPortalNav"
-import './VerificationForm.css'
+import './VerificationForm.scss'
 
 const VerificationForm = () => {
 

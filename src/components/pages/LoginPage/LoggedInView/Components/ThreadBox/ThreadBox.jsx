@@ -3,7 +3,7 @@ import { MDBInput, MDBBtn, MDBCard, MDBCardTitle, MDBCardText } from "mdbreact"
 import axios from "axios"
 import qs from "qs"
 import { LoginContext } from "../../../../../../context/LoginContext"
-import './ThreadBox.css'
+import './ThreadBox.scss'
 
 const ThreadBox = (props) => {
 

@@ -3,7 +3,7 @@ import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
 import axios from "axios";
 import qs from "qs";
 import toTitleCase from '../../../../functions/toTitleCase'
-import './AddWalkForm.css'
+import './AddWalkForm.scss'
 
 const AddWalkForm = () => {
 
@@ -25,6 +25,11 @@ const AddWalkForm = () => {
     const [instagramLink, setInstagramLink] = useState("")
     const [facebookLink, setFacebookLink] = useState("")
     const [twitterLink, setTwitterLink] = useState("")
+    const [lat, setLat] = useState("")
+    const [lng, setLng] = useState("")
+    const [length, setLength] = useState("")
+    const [iframeLink, setIframeLink] = useState("")
+    const [iframeTitle, setIframeTitle] = useState("")
 
     const handleChange = (event) => {
         switch(event.target.name) {
@@ -82,6 +87,21 @@ const AddWalkForm = () => {
             case "twitter-link":
               setTwitterLink(event.target.value)
               break;
+            case "lat":
+              setLat(event.target.value)
+              break;
+            case "lng":
+              setLng(event.target.value)
+              break;
+            case "length":
+              setLength(event.target.value)
+              break;
+            case "iframe-link":
+              setIframeLink(event.target.value)
+              break;
+            case "iframe-title":
+              setIframeTitle(event.target.value)
+              break;
           } 
     }
 
@@ -91,22 +111,27 @@ const AddWalkForm = () => {
         let payload = {
             walk: toTitleCase(walk),
             city: toTitleCase(city),
-            description: description,
+            description,
             startingPoint: toTitleCase(startingPoint),
-            content1: content1,
-            content2: content2,
-            content3: content3,
-            coverImg: coverImg,
-            mapImg: mapImg,
-            img1: img1,
-            img2: img2, 
-            img3: img3, 
+            content1,
+            content2,
+            content3,
+            coverImg,
+            mapImg,
+            img1,
+            img2, 
+            img3, 
             author: toTitleCase(author),
-            aboutTheAuthor: aboutTheAuthor,
-            websiteLink: websiteLink,
-            instagramLink: instagramLink,
-            facebookLink: facebookLink,
-            twitterLink: twitterLink
+            aboutTheAuthor,
+            websiteLink,
+            instagramLink,
+            facebookLink,
+            twitterLink,
+            lat,
+            lng,
+            length,
+            iframeLink,
+            iframeTitle
           };
 
         axios
@@ -139,6 +164,11 @@ const AddWalkForm = () => {
         setInstagramLink("")
         setFacebookLink("")
         setTwitterLink("")
+        setLat("")
+        setLng("")
+        setLength("")
+        setIframeLink("")
+        setIframeTitle("")
         window.scrollTo(0, 0);
     }
 
@@ -164,6 +194,11 @@ const AddWalkForm = () => {
             <MDBInput type="text" name="instagram-link" id="instagram-link" value={instagramLink} label="instagram link (optional)" onChange={handleChange} />
             <MDBInput type="text" name="facebook-link" id="facebook-link" value={facebookLink} label="facebook link (optional)" onChange={handleChange} />
             <MDBInput type="text" name="twitter-link" id="twitter-link" value={twitterLink} label="twitter link (optional)" onChange={handleChange} />
+            <MDBInput type="text" name="lat" id="lat" value={lat} label="latitude" onChange={handleChange} required />
+            <MDBInput type="text" name="lng" id="lng" value={lng} label="longitude" onChange={handleChange} required />
+            <MDBInput type="text" name="length" id="length" value={length} label="walk length (e.g. '3.5 km / 2.1 miles')" onChange={handleChange} required />
+            <MDBInput type="text" name="iframe-link" id="iframe-link" value={iframeLink} label="iframe link (should include '/maps/d/embed?')" onChange={handleChange} required />
+            <MDBInput type="text" name="iframe-title" id="iframe-title" value={iframeTitle} label="iframe title (e.g. 'Canterbury Cathedral Google Map')" onChange={handleChange} required />
             <MDBBtn outline color="elegant" type="submit">
                 Send Walk
             <MDBIcon far icon="paper-plane" className="ml-2" />

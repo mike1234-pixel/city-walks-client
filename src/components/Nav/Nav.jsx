@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar'
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBHamburgerToggler, MDBCollapse, MDBInput, MDBContainer, MDBRow, MDBCol } from "mdbreact"
 import { SearchContext } from '../../context/SearchContext';
-import './Nav.css'
+import './Nav.scss'
 
 const Nav = () => {
 
@@ -26,11 +26,12 @@ const Nav = () => {
   }
 
   return (
-        <div className="nav-container">
-            <MDBNavbar className="nav-bar" dark expand="md">
-              <MDBContainer>
+        // <div className="nav-container">
+        
+            <MDBNavbar className="nav-bar" dark expand="lg">
+            <MDBContainer>
                 <MDBNavbarBrand>
-                  <b className="white-text"><MDBNavLink className="white-text logo" to="/">City Walks</MDBNavLink></b>
+                  <span className="white-text"><MDBNavLink className="white-text logo" to="/">City Walks</MDBNavLink></span>
                 </MDBNavbarBrand>
                 <MDBHamburgerToggler color="#fff" className="hamburger1" id="hamburger1" onClick={handleClick} />
                 <MDBCollapse id="navbarCollapse3" isOpen={toggleNav} navbar>
@@ -65,7 +66,7 @@ const Nav = () => {
                 </MDBCollapse>
                 </MDBContainer>
               </MDBNavbar>
-          </div>
+          // </div>
     )
   }
 

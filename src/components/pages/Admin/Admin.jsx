@@ -11,7 +11,7 @@ import AddBoardForm from './AddBoardForm/AddBoardForm'
 import DeleteBoardForm from "./DeleteBoardForm/DeleteBoardForm"
 import AddBlogPostForm from "./AddBlogPostForm/AddBlogPostForm"
 import DeleteBlogPostForm from "./DeleteBlogPostForm/DeleteBlogPostForm"
-import './Admin.css'
+import './Admin.scss'
 
 const Admin = () => {
 

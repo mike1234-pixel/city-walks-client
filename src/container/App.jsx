@@ -4,7 +4,7 @@ import { ForumContext } from "../context/ForumContext"
 import { WalksContext } from "../context/WalksContext"
 import { LoginContext } from "../context/LoginContext"
 import { BlogsContext } from "../context/BlogsContext"
-import './App.css'
+import './App.scss'
 
 const App = (props) => {
 
@@ -25,7 +25,6 @@ const App = (props) => {
         setBlogsLoading(false)
         
         if (localStorage.getItem("popupVisible") === null) {
-           localStorage.setItem("popupVisible", true)
            setPopupVisible(true)
         }
 

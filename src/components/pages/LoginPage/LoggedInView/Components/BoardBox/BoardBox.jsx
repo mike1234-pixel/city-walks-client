@@ -1,9 +1,9 @@
 import { MDBCard, MDBCardTitle, MDBCardText } from "mdbreact"
 import { useEffect, useContext } from "react"
 import { ForumContext } from "../../../../../../context/ForumContext"
-import './BoardBox.css'
 import { Link } from "react-router-dom"
 import urlify from "../../../../../../functions/urlify"
+import './BoardBox.scss'
 
 const BoardBox = (props) => {
 
@@ -22,7 +22,7 @@ const BoardBox = (props) => {
                 {description}
                 </MDBCardText>
                 <div className="flex-row">
-                <Link to={'forum/'+urlify(name)}>Read More...</Link>
+                <Link to={'forum/'+urlify(name)} className="board-link">Read More...</Link>
             </div>
       </MDBCard>
     )

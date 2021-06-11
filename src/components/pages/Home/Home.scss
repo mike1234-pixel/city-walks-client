@@ -29,6 +29,16 @@
   font-weight: bold;
   min-width: 50%;
   border-radius: 50px;
+  transition: all 0.2s;
+  &:hover,
+  &:focus,
+  &:active {
+    background: var(--blue);
+    color: var(--elegant-color-dark);
+  }
+  @media (max-width: 991px) {
+    margin-bottom: 30px;
+  }
 }
 
 hr {

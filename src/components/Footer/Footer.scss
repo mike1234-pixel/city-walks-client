@@ -14,8 +14,15 @@
   padding-left: 0;
 }
 
+.footer-ul > li > a:hover,
+.footer-ul > li > a:focus,
+.footer-ul > li > a:active {
+  color: var(--blue);
+}
+
 @media (max-width: 777px) {
-  .footer-site-links, .footer-extra-links {
+  .footer-site-links,
+  .footer-extra-links {
     visibility: hidden;
     display: none;
   }

@@ -4,7 +4,9 @@ import { MDBIcon, MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBC
 import ReactPaginate from "react-paginate"
 import PopUp from "../../PopUp/PopUp"
 import { LoginContext } from "../../../context/LoginContext"
-import './Cities.css'
+import { motion } from "framer-motion"
+import pageTransition from "../../../constants/pageTransition"
+import './Cities.scss'
 
 const Cities = (props) => {
 
@@ -48,27 +50,36 @@ const Cities = (props) => {
       }, []);
 
     return (
-        <MDBContainer>
-            <div className="cities-page-container min-page-height">
-                {popupVisible && <PopUp/>}
-                <div data-testid="cities-page-heading" className="page-heading-container">
-                    <h1 className="page-heading">Cities</h1>
-                    <h2 className="page-subheading">search walks by city</h2>
+        <motion.div
+            style={{ position: "relative" }}
+            exit={pageTransition.out}
+            animate={pageTransition.in}
+            initial={pageTransition.initial}
+            transition={{ duration: 0.5 }}
+            className="motion-div"
+        >
+            <MDBContainer>
+                <div className="cities-page-container min-page-height">
+                    {/* {popupVisible && <PopUp/>} */}
+                    <div data-testid="cities-page-heading" className="page-heading-container">
+                        <h1 className="page-heading">Cities</h1>
+                        <h2 className="page-subheading">search walks by city</h2>
+                    </div>
+                        <div className="card-container">{displayAllCities()}</div>
+                        <ReactPaginate
+                            previousLabel={"Previous"}
+                            nextLabel={"Next"}
+                            pageCount={pageCount}
+                            onPageChange={changePage}
+                            containerClassName={"pagination-buttons"}
+                            previousLinkClassName={"previous-button"}
+                            nextLinkClassName={"next-button"}
+                            disabledClassName={"pagination-disabled"}
+                            activeClassName={"pagination-active"}
+                        />
                 </div>
-                    <div className="card-container">{displayAllCities()}</div>
-                    <ReactPaginate
-                        previousLabel={"Previous"}
-                        nextLabel={"Next"}
-                        pageCount={pageCount}
-                        onPageChange={changePage}
-                        containerClassName={"pagination-buttons"}
-                        previousLinkClassName={"previous-button"}
-                        nextLinkClassName={"next-button"}
-                        disabledClassName={"pagination-disabled"}
-                        activeClassName={"pagination-active"}
-                    />
-            </div>
-        </MDBContainer>
+            </MDBContainer>
+        </motion.div>
     )
 }
 

@@ -1,13 +1,13 @@
 import React from "react"
-import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from "mdbreact"
+import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask } from "mdbreact"
 import carouselImage1 from "./carousel-images/carousel-illustration-1-2.jpg"
 import carouselImage2 from "./carousel-images/carousel-illustration-2-2.jpg"
 import carouselImage3 from "./carousel-images/carousel-illustration-3-2.jpg"
-import './Carousel.css'
+import './Carousel.scss'
 
 const Carousel = () => {
   return (
-    <MDBContainer className="home-carousel">
+    <div className="home-carousel">
       <MDBCarousel
       activeItem={1}
       length={3}
@@ -17,7 +17,7 @@ const Carousel = () => {
     >
       <MDBCarouselInner>
         <MDBCarouselItem itemId="1">
-          <MDBView>
+          <MDBView className='carousel-view'>
             <img
               className="d-block w-100 carousel-img"
               src={carouselImage1}
@@ -31,7 +31,7 @@ const Carousel = () => {
           </MDBCarouselCaption>
         </MDBCarouselItem>
         <MDBCarouselItem itemId="2">
-          <MDBView>
+          <MDBView className='carousel-view'>
             <img
               className="d-block w-100 carousel-img"
               src={carouselImage2}
@@ -45,7 +45,7 @@ const Carousel = () => {
           </MDBCarouselCaption>
         </MDBCarouselItem>
         <MDBCarouselItem itemId="3">
-          <MDBView>
+          <MDBView className='carousel-view'>
             <img
               className="d-block w-100 carousel-img"
               src={carouselImage3}
@@ -60,7 +60,7 @@ const Carousel = () => {
         </MDBCarouselItem>
       </MDBCarouselInner>
     </MDBCarousel>
-    </MDBContainer>
+    </div>
   );
 }
 

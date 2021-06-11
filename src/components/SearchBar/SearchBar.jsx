@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { MDBInput } from "mdbreact"
 import { FaSearchLocation } from "react-icons/fa"
 import { SearchContext } from "../../context/SearchContext"
-import './SeachBar.css'
+import './SeachBar.scss'
 
 let SearchBar = () => {
 
@@ -10,13 +10,14 @@ let SearchBar = () => {
 
     return (
       <form onSubmit={handleSubmitSearch}>
-        <span style={{ marginRight: "40px"}} className="search-container">
+        <span className="search-container">
           <MDBInput  
             data-testid="search-input" 
             label="Search Walks" 
             name="search-input" 
             id="search-input" 
             type="text" placeholder="Search" 
+            className="search-input" 
             value={searchValue} 
             onChange={handleChangeSearch}
             />

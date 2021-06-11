@@ -23,6 +23,18 @@
 
 .carousel-img {
   max-height: 400px;
+  position: relative;
+}
+
+/* carousel img overlay */
+.carousel-view::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(to top, black, transparent);
 }
 
 .carousel-caption {

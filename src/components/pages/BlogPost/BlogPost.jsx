@@ -6,8 +6,10 @@ import toTitleCase from "../../../functions/toTitleCase"
 import { MDBInput, MDBBtn, MDBIcon, MDBCard, MDBCardTitle, MDBCardText, MDBContainer } from "mdbreact"
 import axios from "axios"
 import qs from "qs"
-import marked from "marked";
-import './BlogPost.css'
+import marked from "marked"
+import { motion } from "framer-motion"
+import pageTransition from "../../../constants/pageTransition"
+import './BlogPost.scss'
 
 const BlogPost = ({match}) => {
 
@@ -113,9 +115,17 @@ const BlogPost = ({match}) => {
     }
 
     return (
+      <motion.div
+          style={{ position: "relative" }}
+          exit={pageTransition.out}
+          animate={pageTransition.in}
+          initial={pageTransition.initial}
+          transition={pageTransition.duration}
+          className="motion-div"
+      >
       <MDBContainer>
         <div>
-            {popupVisible && <PopUp/>}
+            {/* {popupVisible && <PopUp/>} */}
             <div>{post}</div>
             {loggedIn &&
               <form onSubmit={handleSubmit} className="add-blog-comment-form">
@@ -127,6 +137,7 @@ const BlogPost = ({match}) => {
             }
         </div>
       </MDBContainer>
+      </motion.div>
     )
 }
 

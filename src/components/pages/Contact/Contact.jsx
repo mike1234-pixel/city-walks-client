@@ -1,5 +1,3 @@
-/** @format */
-
 import { useState, useContext, useEffect } from "react"
 import { RecaptchaContext } from "../../../context/RecaptchaContext"
 import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact";
@@ -7,7 +5,9 @@ import PopUp from "../../PopUp/PopUp"
 import { LoginContext } from "../../../context/LoginContext"
 import axios from "axios";
 import qs from "qs"
-import "./Contact.css";
+import { motion } from "framer-motion"
+import pageTransition from "../../../constants/pageTransition"
+import "./Contact.scss";
 
 const Contact = () => {
 
@@ -74,9 +74,17 @@ const Contact = () => {
 }
 
   return (
+    <motion.div
+        style={{ position: "relative" }}
+        exit={pageTransition.out}
+        animate={pageTransition.in}
+        initial={pageTransition.initial}
+        transition={pageTransition.duration}
+        className="motion-div"
+    >
     <MDBContainer>
       <div>
-      {popupVisible && <PopUp/>}
+      {/* {popupVisible && <PopUp/>} */}
         <div className="page-heading-container min-page-height">
           <h1 className="page-heading">Contact</h1>
           <form onSubmit={handleSubmit} className="contact-form display-form">
@@ -118,6 +126,7 @@ const Contact = () => {
         </div>
       </div>
   </MDBContainer>
+  </motion.div>
   );
 };
 

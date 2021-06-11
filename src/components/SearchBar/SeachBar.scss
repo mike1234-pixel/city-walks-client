@@ -1,5 +1,8 @@
+/** @format */
+
 .search-container {
   position: relative;
+  margin-right: 30px;
 }
 
 /* hide the button element */
@@ -18,10 +21,19 @@
   color: grey;
 }
 
-@media (min-width: 860px) {
+@media (min-width: 991px) {
   .search-btn {
     position: absolute;
     top: 30px;
     right: 30px;
+  }
+}
+
+@media (max-width: 991px) {
+  .search-container {
+    .md-form {
+      margin-top: 15px !important;
+      margin-bottom: 15px !important;
+    }
   }
 }

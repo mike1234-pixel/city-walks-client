@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { MDBContainer } from "mdbreact"
-import "./PrivacyPolicy.css"
+import "./PrivacyPolicy.scss"
 
 const PrivacyPolicy = () => {
 

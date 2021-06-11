@@ -2,7 +2,7 @@ import { useState } from "react"
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
 import axios from "axios"
 import toTitleCase from '../../../../functions/toTitleCase'
-import './DeleteWalkForm.css'
+import './DeleteWalkForm.scss'
 
 const DeleteWalkForm = () => {
 

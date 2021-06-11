@@ -7,7 +7,9 @@ import { Link } from "react-router-dom"
 import ReactPaginate from "react-paginate"
 import PopUp from "../../PopUp/PopUp"
 import { LoginContext } from "../../../context/LoginContext"
-import './Walks.css'
+import { motion } from "framer-motion"
+import pageTransition from "../../../constants/pageTransition"
+import './Walks.scss'
 
 const Walks = (props) => {
 
@@ -57,9 +59,17 @@ const Walks = (props) => {
     
     if (searchValue === "") {
     return (
+        <motion.div
+            style={{ position: "relative" }}
+            exit={pageTransition.out}
+            animate={pageTransition.in}
+            initial={pageTransition.initial}
+            transition={pageTransition.duration}
+            className="motion-div"
+        >
         <MDBContainer>
             <div className="min-page-height">
-                {popupVisible && <PopUp/>}
+                {/* {popupVisible && <PopUp/>} */}
                 <div className="page-heading-container">
                     <h1 className="page-heading">Walks</h1>
                     <MDBBtn outline color="elegant" className="city-card-btn" onClick={() => setSearchValue("")}>Show all walks</MDBBtn>
@@ -81,9 +91,18 @@ const Walks = (props) => {
                 />
             </div>
         </MDBContainer>
+        </motion.div>
     )
     } else if (walksArr.map(v => { v.walk.toLowerCase().includes(searchValue.toLowerCase()) || v.city.toLowerCase().includes(searchValue.toLowerCase()) } )) {
         return (
+        <motion.div
+            style={{ position: "relative" }}
+            exit={pageTransition.out}
+            animate={pageTransition.in}
+            initial={pageTransition.initial}
+            transition={{ duration: 0.5 }}
+            className="motion-div"
+        >
         <MDBContainer>
             <div className="min-page-height">
                 <div className="page-heading-container">
@@ -114,6 +133,7 @@ const Walks = (props) => {
                 </div>
             </div>
         </MDBContainer>
+        </motion.div>
         )
     }
 }

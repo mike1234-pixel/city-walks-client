@@ -7,7 +7,9 @@ import toTitleCase from "../../functions/toTitleCase"
 import { WalksContext } from "../../context/WalksContext"
 import PrivacyPopUp from "../../components/PopUp/PopUp"
 import { LoginContext } from "../../context/LoginContext"
-import './Walk.css'
+// import { motion } from "framer-motion"
+// import pageTransition from "../../constants/pageTransition"
+import './Walk.scss'
 
 const Walk = ({match}) => {
 
@@ -47,9 +49,10 @@ const Walk = ({match}) => {
             walk = 
             <div>
             <div className="walk-heading-container">
-              <h1 className="walk-heading display-font">{`${selectedWalk.walk} -- ${selectedWalk.city}`}</h1>
+              <h1 className="walk-heading display-font">{selectedWalk.walk} <i className="far fa-flag"></i> {selectedWalk.city}</h1>
               <p className="walk-description">{selectedWalk.description}</p>
               <p className="walk-description">Starting Point: {selectedWalk.startingPoint}</p>
+              <p className="walk-description">Length: {selectedWalk.length}</p>
             </div>
               <SectionA content={selectedWalk.content1} img={selectedWalk.img1} alt={selectedWalk.walk}/>
               <SectionB content={selectedWalk.content2} img={selectedWalk.img2} alt={selectedWalk.walk}/>
@@ -69,7 +72,7 @@ const Walk = ({match}) => {
                 {!togglePopUp && <MDBBtn id="see-map-btn" onClick={handleClick}> 
                 See Map <MDBIcon icon="map-marked-alt" id="map-icon"/>
                 </MDBBtn>}
-                {togglePopUp && <PopUp mapImg={selectedWalk.mapImg} />}
+                {togglePopUp && <PopUp mapImg={selectedWalk.mapImg} iframeLink={selectedWalk.iframeLink} iframeTitle={selectedWalk.iframeTitle}/>}
               </div>
           </div>
         }
@@ -77,14 +80,25 @@ const Walk = ({match}) => {
 
 
     return (
+    
+  //     <motion.div
+  //     style={{ position: "relative" }}
+  //     exit={pageTransition.out}
+  //     animate={pageTransition.in}
+  //     initial={pageTransition.initial}
+  //     transition={{ duration: 0.5 }}
+  //     className="motion-div"
+  // >
+
       <MDBContainer>
+      {popupVisible && <PrivacyPopUp/>}
         <div data-testid="walk-page">
-          {popupVisible && <PrivacyPopUp/>}
           <div className="min-page-height center">
             {walk}
           </div>
         </div>
       </MDBContainer>
+      // </motion.div>
     )
 }
 

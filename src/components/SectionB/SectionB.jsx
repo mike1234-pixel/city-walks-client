@@ -1,6 +1,6 @@
-import { MDBView, MDBContainer } from "mdbreact"
+import { MDBView } from "mdbreact"
 import marked from "marked"
-import "./SectionB.css";
+import "./SectionB.scss";
 
 const SectionB = (props) => {
 
@@ -11,10 +11,9 @@ const SectionB = (props) => {
     }
 
   return (
-    <MDBContainer>
       <div className='section-b grid-container-b'>
           <div className='grid-item-b grid-item-b-image-box'>
-            <MDBView hover zoom id="grid-item-overlay">
+            <MDBView hover zoom id="grid-item-overlay" waves>
               <img className="grid-item-b-img" src={img} alt={alt}></img>
             </MDBView>
           </div>
@@ -22,7 +21,6 @@ const SectionB = (props) => {
               <div  dangerouslySetInnerHTML={createMarkup(content)}></div>
           </div>
       </div>
-    </MDBContainer>
   );
 };
 

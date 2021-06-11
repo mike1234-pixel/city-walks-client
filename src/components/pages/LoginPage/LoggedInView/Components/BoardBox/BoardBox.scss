@@ -10,3 +10,9 @@
 #board-box-link {
   color: var(--blue);
 }
+
+.board-link:hover,
+.board-link:active,
+.board-link:focus {
+  color: white;
+}

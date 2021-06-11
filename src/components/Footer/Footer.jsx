@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { MDBIcon, MDBCol, MDBContainer, MDBRow, MDBFooter } from 'mdbreact'
 import { LoginContext } from "../../context/LoginContext"
 import axios from "axios"
-import './Footer.css'
+import './Footer.scss'
 
 const Footer = () => {
 

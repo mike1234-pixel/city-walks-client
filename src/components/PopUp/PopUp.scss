@@ -22,3 +22,19 @@
 .popup-google-note {
   font-size: 15px;
 }
+
+.popup-link {
+  color: var(--blue);
+}
+
+.popup-link:hover,
+.popup-link:focus,
+.popup-link:active {
+  color: #2bbbad;
+}
+
+.popup-accept-btn:hover,
+.popup-accept-btn:active,
+.popup-accept-btn:focus {
+  background: var(--blue) !important;
+}

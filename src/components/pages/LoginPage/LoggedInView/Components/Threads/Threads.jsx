@@ -7,7 +7,7 @@ import { MDBBtn, MDBInput, MDBContainer } from "mdbreact"
 import axios from "axios"
 import qs from "qs"
 import PopUp from "../../../../../PopUp/PopUp"
-import "./Threads.css"
+import "./Threads.scss"
 
 const Threads = ({match}) => {
 
@@ -102,7 +102,7 @@ const addThread =
     return (
         <MDBContainer>
             <div className="threads-container">
-                {popupVisible && <PopUp/>}
+                {/* {popupVisible && <PopUp/>} */}
                 <h1 className="page-heading">{boardName}</h1>
                     {loggedIn && addThread}
                 <div>{threads}</div>

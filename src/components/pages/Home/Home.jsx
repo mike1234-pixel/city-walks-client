@@ -8,8 +8,11 @@ import SectionB from '../../SectionB/SectionB'
 import urlify from '../../../functions/urlify'
 import PopUp from "../../PopUp/PopUp"
 import { LoginContext } from "../../../context/LoginContext"
-import './Home.css'
-
+import { motion } from "framer-motion"
+import pageTransition from "../../../constants/pageTransition"
+import LocatorMap from "../../LocatorMap/LocatorMap"
+import './Home.scss'
+  
 const Home = (props) => {
 
     const { walks } = props
@@ -28,9 +31,17 @@ const Home = (props) => {
     const { popupVisible } = useContext(LoginContext)
 
     return (
+        <motion.div
+            style={{ position: "relative" }}
+            exit={pageTransition.out}
+            animate={pageTransition.in}
+            initial={pageTransition.initial}
+            transition={pageTransition.duration}
+            className="motion-div"
+      >
         <MDBContainer>
             <div>
-                {popupVisible && <PopUp/>}
+                {/* {popupVisible && <PopUp/>} */}
                 <Carousel/>
                 <div className="page-heading-container featured-walks-heading-container">
                     <h2 className="page-heading"><a href="#featured-walk-1" className="featured-walks-link"><FaArrowAltCircleDown className="arrow" /> Featured Walks <FaArrowAltCircleDown className="arrow"/></a></h2>
@@ -66,7 +77,9 @@ const Home = (props) => {
                 </div>
                 </Link>
             </div>
+            <LocatorMap walks={walks}/>
         </MDBContainer>
+        </motion.div>
     )
 }
 

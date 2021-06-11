@@ -3,7 +3,9 @@ import PopUp from "../../PopUp/PopUp"
 import { Link } from "react-router-dom"
 import { LoginContext } from "../../../context/LoginContext"
 import { MDBIcon, MDBContainer } from "mdbreact"
-import './About.css'
+import { motion } from "framer-motion"
+import './About.scss'
+import pageTransition from "../../../constants/pageTransition"
 
 const About = () => {
 
@@ -14,9 +16,17 @@ const About = () => {
       }, []);
 
     return (
+        <motion.div
+        style={{ position: "relative" }}
+        exit={pageTransition.out}
+        animate={pageTransition.in}
+        initial={pageTransition.initial}
+        transition={pageTransition.duration}
+        className="motion-div"
+      >
         <MDBContainer>
             <div>
-                {popupVisible && <PopUp/>}
+                {/* {popupVisible && <PopUp/>} */}
                 <div className="page-heading-container min-page-height">
                     <h1 className="page-heading">About</h1>
                     <div className="about-page-container">
@@ -30,6 +40,7 @@ const About = () => {
                 </div>
             </div>
         </MDBContainer>
+        </motion.div>
     )
 }
 

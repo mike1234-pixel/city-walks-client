@@ -3,7 +3,7 @@ import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
 import axios from "axios";
 import qs from "qs";
 import toTitleCase from "../../../../functions/toTitleCase"
-import './SetFeaturedWalkForm.css'
+import './SetFeaturedWalkForm.scss'
 
 const SetFeaturedWalkForm = () => {
     const [featuredWalk1, setFeaturedWalk1] = useState("")

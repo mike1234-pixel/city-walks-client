@@ -2,7 +2,7 @@ import { useState } from "react"
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
 import axios from "axios"
 import toTitleCase from '../../../../functions/toTitleCase'
-import './DeleteCityForm.css'
+import './DeleteCityForm.scss'
 
 const DeleteCityForm = () => {
 
