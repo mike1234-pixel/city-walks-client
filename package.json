@@ -4,6 +4,7 @@
   "private": true,
   "author": "Michael Tandy",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.7.1",
     "axios": "^0.21.1",
     "framer-motion": "^4.1.17",
     "marked": "^1.2.8",
@@ -15,9 +16,11 @@
     "react-hook-google-maps": "0.0.3",
     "react-icons": "^4.2.0",
     "react-paginate": "^7.1.2",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "^4.0.1",
-    "react-spring": "^8.0.27"
+    "react-spring": "^8.0.27",
+    "redux": "^4.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,6 +35,7 @@
     "@testing-library/dom": "^7.29.0",
     "@testing-library/react": "^11.2.2",
     "react-test-renderer": "^17.0.1",
+    "redux-devtools": "^3.7.0",
     "renamer": "^1.0.0",
     "rimraf": "^2.6.2",
     "sass-loader": "^12.0.0"

@@ -11,15 +11,18 @@ import { SearchContextProvider } from "./context/SearchContext"
 import { LoginContextProvider } from "./context/LoginContext"
 import { ForumContextProvider } from "./context/ForumContext"
 import { WalksContextProvider } from "./context/WalksContext"
-import { BlogsContextProvider } from "./context/BlogsContext"
+// import { BlogsContextProvider } from "./context/BlogsContext"
 import { BrowserRouter as Router } from "react-router-dom"
+import store from './store';
 
-// http://localhost:5000
+import { Provider } from 'react-redux'
 
 const requestOne = axios.get('https://city-walks.herokuapp.com/walks');
 const requestTwo = axios.get('https://city-walks.herokuapp.com/cities');
 const requestThree = axios.get('https://city-walks.herokuapp.com/boards');
 const requestFour = axios.get('https://city-walks.herokuapp.com/blog');
+
+// replace these context providers one by one, start with the simplest... BlogsContext
 
 axios
   .all([requestOne, requestTwo, requestThree, requestFour])
@@ -28,7 +31,6 @@ axios
       const walksData = responses[0];
       const citiesData = responses[1];
       const boardsData = responses[2];
-      const blogPosts = responses[3];
       ReactDOM.render(
       <Router>
         <ForumContextProvider>
@@ -36,9 +38,11 @@ axios
             <LoginContextProvider>
               <SearchContextProvider>
                 <WalksContextProvider>
-                  <BlogsContextProvider>
-                    <App walks={walksData.data} cities={citiesData.data} boards={boardsData} blogPosts={blogPosts.data}/>
-                  </BlogsContextProvider>
+                  {/* <BlogsContextProvider> */}
+                  <Provider store={store}>
+                    <App walks={walksData.data} cities={citiesData.data} boards={boardsData}/>
+                  </Provider>
+                  {/* </BlogsContextProvider> */}
                 </WalksContextProvider>
               </SearchContextProvider>
             </LoginContextProvider>

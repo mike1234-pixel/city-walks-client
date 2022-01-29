@@ -4,8 +4,8 @@ import Home from '../../components/pages/Home/Home'
 import Cities from '../../components/pages/Cities/Cities'
 import Walks from '../../components/pages/Walks/Walks'
 import About from '../../components/pages/About/About'
-import Blog from "../../components/pages/Blog/Blog"
-import BlogPost from "../../components/pages/BlogPost/BlogPost"
+import Sights from "../../components/pages/Sights/Sights"
+import Sight from "../../components/pages/Sight/Sight"
 import Contact from '../../components/pages/Contact/Contact'
 import Boards from '../../components/pages/LoginPage/LoggedInView/Boards'
 import LoginForm from '../../components/pages/LoginPage/LoginForm/LoginForm'
@@ -21,7 +21,7 @@ import Footer from '../../components/Footer/Footer'
 import Walk from '../../components/Walk/Walk'
 import Threads from '../../components/pages/LoginPage/LoggedInView/Components/Threads/Threads'
 import { LoginContext } from "../../context/LoginContext"
-import { BrowserRouter, Route, Switch, useLocation } from "react-router-dom"
+import { Route, Switch, useLocation } from "react-router-dom"
 import { AnimatePresence } from "framer-motion"
 
 const Router = (props) => {
@@ -30,7 +30,7 @@ const Router = (props) => {
 
     const { popupVisible } = useContext(LoginContext)
 
-    const {walks, cities, blogPosts} = props
+    const {walks, cities} = props
 
     return (
       <div>
@@ -45,8 +45,8 @@ const Router = (props) => {
                 <Route path="/walks/:walks" component={Walk}/>
                 <Route path="/about" component={About} />
                 <Route path="/contact" component={Contact} />
-                <Route exact path="/sights" component={() => <Blog blogPosts={blogPosts}/>} />
-                <Route path="/sights/:sight" component={BlogPost} />
+                <Route exact path="/sights" component={() => <Sights/>} />
+                <Route path="/sights/:sight" component={Sight} />
                 {/* the render method here ensures the inputs in the forms don't lose focus */}
                 {/* https://www.xspdf.com/resolution/59715158.html */}
                 <Route exact path="/forum" render={() => <Boards />} />

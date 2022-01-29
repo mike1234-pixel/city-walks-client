@@ -1,5 +1,4 @@
 import { useEffect, useContext, useState } from "react"
-import { BlogsContext } from "../../../context/BlogsContext"
 import { LoginContext } from "../../../context/LoginContext"
 import toTitleCase from "../../../functions/toTitleCase"
 import { MDBInput, MDBBtn, MDBIcon, MDBCard, MDBCardTitle, MDBCardText, MDBContainer } from "mdbreact"
@@ -8,17 +7,19 @@ import qs from "qs"
 import marked from "marked"
 import { motion } from "framer-motion"
 import pageTransition from "../../../constants/pageTransition"
-import './BlogPost.scss'
+import './Sight.scss'
+import store from "../../../store"
 
-const BlogPost = ({match}) => {
+const Sight = ({match}) => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
       }, []);
 
       const blogTitle = toTitleCase(match.url.replace("/sights/", "").replace(/-/g, " "))
+      const sights = store.getState().sightsState.sights
+      const sightsLoading = store.getState().sightsState.sightsLoading// -> this works but i want to map state to props and get state from there
 
-      const { blogPosts, blogsLoading } = useContext(BlogsContext)
       const { loggedIn, userFirstName, userId, popupVisible } = useContext(LoginContext)
 
       const [comment, setComment] = useState("")
@@ -76,9 +77,9 @@ const BlogPost = ({match}) => {
 
       let post = "loading"
 
-      if (!blogsLoading) {
+      if (!sightsLoading) {
 
-      let selectedBlogPost = blogPosts.filter((post) => post.title === blogTitle)
+      let selectedBlogPost = sights.filter((post) => post.title === blogTitle)
       selectedBlogPost = selectedBlogPost[0]
     
       const createMarkup = (markup) => {
@@ -137,4 +138,4 @@ const BlogPost = ({match}) => {
     )
 }
 
-export default BlogPost
+export default Sight;

@@ -5,11 +5,12 @@ import { MDBBtn, MDBIcon, MDBCard, MDBCardBody, MDBCardImage, MDBCardText, MDBCa
 import urlify from "../../../functions/urlify"
 import { motion } from "framer-motion"
 import pageTransition from "../../../constants/pageTransition"
-import "./Blog.scss"
+import { connect } from 'react-redux';
+import "./Sights.scss"
 
-const Blog = (props) => {
+const Sights = (props) => {
 
-    const { blogPosts } = props;
+    const { sights } = props;
 
     const removeMarkdown = (markup) => {
         return markup.replace(/\**/g, "").replace(/#/g, "").replace(/<br\/>/g, "")
@@ -20,11 +21,11 @@ const Blog = (props) => {
     const sightsPerPage = 3;
     const pagesVisited = pageNumber * sightsPerPage;
 
-    const pageCount = Math.ceil(blogPosts.length / sightsPerPage);
+    const pageCount = Math.ceil(sights.length / sightsPerPage);
 
     const displayAllSights = () => {
         return (
-            blogPosts.slice(pagesVisited, pagesVisited + sightsPerPage).map((post) => {
+            sights.slice(pagesVisited, pagesVisited + sightsPerPage).map((post) => {
                 return (
                     <div key={post._id}>
                         <Link to={'/sights/'+urlify(post.title)}>
@@ -87,5 +88,9 @@ const Blog = (props) => {
     )
 }
 
-export default Blog
+const mapStateToProps = state => ({
+    sights: state.sightsState.sights,
+    sightsLoading: state.sightsState.sightsLoading,
+  });
 
+export default connect(mapStateToProps)(Sights);
