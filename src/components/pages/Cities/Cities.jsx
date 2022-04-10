@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react"
-import { SearchContext } from '../../../context/SearchContext'
+import { useEffect, useState } from "react"
 import { MDBIcon, MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBContainer } from 'mdbreact'
 import ReactPaginate from "react-paginate"
 import { motion } from "framer-motion"
@@ -9,11 +8,7 @@ import './Cities.scss'
 
 const Cities = (props) => {
 
-    const { cities } = props;
-
-    console.log(typeof cities)
-
-    const { handleClickSearch } = useContext(SearchContext)
+    const { cities, handleClickSearch, setRedirect } = props;
 
     const [pageNumber, setPageNumber] = useState(0)
 
@@ -22,12 +17,17 @@ const Cities = (props) => {
 
     const pageCount = Math.ceil(cities.length / citiesPerPage);
 
+    function submitSearch(cityName) {
+        handleClickSearch(cityName)
+        setRedirect(true)
+    }
+
     const displayAllCities = () => {
         return (
             cities.slice(pagesVisited, pagesVisited + citiesPerPage).map((city) => {
                 return (
                     <div key={city._id}>
-                        <MDBCard className="city-card" onClick={() => handleClickSearch(city.city)}>
+                        <MDBCard className="city-card" onClick={() => submitSearch(city.city)}>
                             <MDBCardImage className="cutter img-fluid" src={city.img} alt={city.city} waves />
                             <MDBCardBody>
                                 <MDBCardTitle>{city.city}</MDBCardTitle>
@@ -82,10 +82,17 @@ const Cities = (props) => {
     )
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleClickSearch: (cityToSearch) => dispatch({ type: 'HANDLE_CLICK_SEARCH', cityToSearch }),
+        setRedirect: (boolValue) => dispatch({ type: 'SET_REDIRECT', boolValue }),
+    }
+}
+
 const mapStateToProps = state => ({
     cities: state.citiesState.cities,
 });
 
-export default connect(mapStateToProps)(Cities);
+export default connect(mapStateToProps, mapDispatchToProps)(Cities);
 
 // these cards will conduct a search and filter the walks by city -- each one will link to the walks page

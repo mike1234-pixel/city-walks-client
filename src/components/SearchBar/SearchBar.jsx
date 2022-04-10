@@ -1,36 +1,50 @@
-import { useContext } from "react"
 import { MDBInput } from "mdbreact"
 import { FaSearchLocation } from "react-icons/fa"
-import { SearchContext } from "../../context/SearchContext"
+import { connect } from 'react-redux'
 import './SeachBar.scss'
 
-let SearchBar = () => {
+let SearchBar = (props) => {
 
-  const { handleSubmitSearch, searchValue, handleChangeSearch } = useContext(SearchContext)
+  const { handleChangeSearch, setRedirect, searchValue } = props;
 
-    return (
-      <form onSubmit={handleSubmitSearch}>
-        <span className="search-container">
-          <MDBInput  
-            data-testid="search-input" 
-            label="Search Walks" 
-            name="search-input" 
-            id="search-input" 
-            type="text" placeholder="Search" 
-            className="search-input" 
-            value={searchValue} 
-            onChange={handleChangeSearch}
-            />
-         <button type="submit" data-testid="search-btn" className="search-btn"><FaSearchLocation id="search-btn-icon" className="search-location-icon"/></button> 
-        </span>
-      </form>
-    )
+  function submitSearch(e) {
+    e.preventDefault()
+    setRedirect(true)
+  }
+
+  function processInputValue(e) {
+    const inputValue = e.target.value
+    handleChangeSearch(inputValue)
+  }
+
+  return (
+    <form onSubmit={submitSearch}>
+      <span className="search-container">
+        <MDBInput
+          data-testid="search-input"
+          label="Search Walks"
+          name="search-input"
+          id="search-input"
+          type="text" placeholder="Search"
+          className="search-input"
+          value={searchValue}
+          onChange={processInputValue}
+        />
+        <button type="submit" data-testid="search-btn" className="search-btn"><FaSearchLocation id="search-btn-icon" className="search-location-icon" /></button>
+      </span>
+    </form>
+  )
 }
 
-export default SearchBar;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleChangeSearch: (inputValue) => dispatch({ type: 'HANDLE_CHANGE_SEARCH', inputValue }),
+    setRedirect: (boolValue) => dispatch({ type: 'SET_REDIRECT', boolValue }),
+  }
+}
 
-// controlled input:
-// --> input value is set with *props* provided through React 
-// --> the form data and the input value is updated through on *onChange* handler
+const mapStateToProps = state => ({
+  searchValue: state.searchState.searchValue,
+});
 
-
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

@@ -29,7 +29,6 @@ const Threads = (props) => {
         if (selectedBoard === undefined) {
             threads = "thread not found"
         } else {
-
             threads = selectedBoard.threads.map((thread, index) => {
                 return (
                     <ThreadBox
