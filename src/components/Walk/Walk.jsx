@@ -111,8 +111,6 @@ const Walk = (props) => {
 //export default Walk
 const mapStateToProps = state => ({
   walks: state.walksState.walks,
-  //walksLoading: state.walksLoadingState.walksLoading,
-
 });
 
 export default connect(mapStateToProps)(Walk);

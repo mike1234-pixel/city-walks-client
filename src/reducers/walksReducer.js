@@ -1,7 +1,7 @@
 const INITIAL_STATE = {
-    walks: [],
-  };
-  
+  walks: [],
+};
+
 const walksReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'SAVE_WALKS':
