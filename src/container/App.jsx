@@ -8,8 +8,7 @@ import './App.scss'
 
 const App = (props) => {
 
-  const { saveBoards, saveSights, saveWalks, saveCities } = props
-
+  const { saveBoards, saveSights, saveWalks, saveCities, sitekey } = props
 
   const { setPopupVisible, setLoggedIn, setUserId, setUserFirstName } = useContext(LoginContext)
 
@@ -19,7 +18,7 @@ const App = (props) => {
     const boardsRequest = axios.get('https://city-walks.herokuapp.com/boards');
     const sightsRequest = axios.get('https://city-walks.herokuapp.com/blog');
 
-    // save data to redux store
+    // REQUEST DATA AND SAVE TO REDUX STORE
     axios.all([walksRequest, citiesRequest, boardsRequest, sightsRequest])
       .then(
         axios.spread((...responses) => {
@@ -32,7 +31,6 @@ const App = (props) => {
           saveWalks(walks)
           saveCities(cities)
           saveBoards(boards)
-
         }
         )
       ).catch(error => console.log(error.message))
@@ -46,6 +44,30 @@ const App = (props) => {
       setUserId(localStorage.getItem("userId"))
       setUserFirstName(localStorage.getItem("userFirstName"))
     }
+
+    // RECAPTCHA
+
+    const loadScriptByURL = (id, url, callback) => {
+      const doesScriptExist = document.getElementById(id);
+
+      if (!doesScriptExist) {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = url;
+        script.id = id;
+        script.onload = function () {
+          if (callback) callback();
+        };
+        document.body.appendChild(script);
+      }
+
+      if (doesScriptExist && callback) callback();
+    }
+
+    // load the script by passing the URL
+    loadScriptByURL("recaptcha-key", `https://www.google.com/recaptcha/api.js?render=${sitekey}`, () => {
+      console.log("recaptcha script loaded!");
+    });
 
   }, [])
 
@@ -63,4 +85,8 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(App);
+const mapStateToProps = state => ({
+  sitekey: state.recaptchaState.sitekey,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

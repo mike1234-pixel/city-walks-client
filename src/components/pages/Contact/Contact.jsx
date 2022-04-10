@@ -1,14 +1,14 @@
 import { useState, useContext, useEffect } from "react"
-import { RecaptchaContext } from "../../../context/RecaptchaContext"
 import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact"
 import { LoginContext } from "../../../context/LoginContext"
 import axios from "axios"
 import qs from "qs"
 import { motion } from "framer-motion"
 import pageTransition from "../../../constants/pageTransition"
+import { connect } from 'react-redux'
 import "./Contact.scss"
 
-const Contact = () => {
+const Contact = (props) => {
 
   const { popupVisible } = useContext(LoginContext)
 
@@ -20,7 +20,7 @@ const Contact = () => {
   const [contactEmail, setContactEmail] = useState("");
   const [contactMessage, setContactMessage] = useState("");
 
-  const {siteKey} = useContext(RecaptchaContext)
+  const { sitekey } = props
 
   const handleChange = (event) => {
     switch (event.target.name) {
@@ -40,7 +40,7 @@ const Contact = () => {
     event.preventDefault();
 
     window.grecaptcha.ready(() => {
-      window.grecaptcha.execute(siteKey, { action: 'submit' }).then(token => {
+      window.grecaptcha.execute(sitekey, { action: 'submit' }).then(token => {
         submitData(token);
       });
     });
@@ -54,23 +54,23 @@ const Contact = () => {
         gRecaptchaResponse: token
       };
 
-    axios
-      .post("https://city-walks.herokuapp.com/contact-form", qs.stringify(payload))
-      .then((res, err) => {
-        if (err) {
-          console.log(err);
-        } if (res.data === "request failed recaptcha") {
-          alert("request failed recaptcha.")
-        } else {
-          alert("Thanks for getting in touch. We will be in touch shortly.");
-          setContactName("");
-          setContactEmail("");
-          setContactMessage("");
-          window.scrollTo(0, 0);
-        }
-      });
-  };
-}
+      axios
+        .post("https://city-walks.herokuapp.com/contact-form", qs.stringify(payload))
+        .then((res, err) => {
+          if (err) {
+            console.log(err);
+          } if (res.data === "request failed recaptcha") {
+            alert("request failed recaptcha.")
+          } else {
+            alert("Thanks for getting in touch. We will be in touch shortly.");
+            setContactName("");
+            setContactEmail("");
+            setContactMessage("");
+            window.scrollTo(0, 0);
+          }
+        });
+    };
+  }
 
   return (
     <motion.div
@@ -123,9 +123,13 @@ const Contact = () => {
             </form>
           </div>
         </div>
-    </MDBContainer>
-  </motion.div>
+      </MDBContainer>
+    </motion.div>
   );
 };
 
-export default Contact;
+const mapStateToProps = state => ({
+  sitekey: state.recaptchaState.sitekey,
+});
+
+export default connect(mapStateToProps)(Contact);
