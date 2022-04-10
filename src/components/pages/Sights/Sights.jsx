@@ -90,7 +90,6 @@ const Sights = (props) => {
 
 const mapStateToProps = state => ({
     sights: state.sightsState.sights,
-    sightsLoading: state.sightsState.sightsLoading,
   });
 
 export default connect(mapStateToProps)(Sights);

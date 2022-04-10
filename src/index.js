@@ -10,40 +10,30 @@ import { RecaptchaContextProvider } from "./context/RecaptchaContext"
 import { SearchContextProvider } from "./context/SearchContext"
 import { LoginContextProvider } from "./context/LoginContext"
 import { ForumContextProvider } from "./context/ForumContext"
-import { WalksContextProvider } from "./context/WalksContext"
-// import { BlogsContextProvider } from "./context/BlogsContext"
 import { BrowserRouter as Router } from "react-router-dom"
 import store from './store';
-
 import { Provider } from 'react-redux'
 
-const requestOne = axios.get('https://city-walks.herokuapp.com/walks');
-const requestTwo = axios.get('https://city-walks.herokuapp.com/cities');
-const requestThree = axios.get('https://city-walks.herokuapp.com/boards');
-const requestFour = axios.get('https://city-walks.herokuapp.com/blog');
-
-// replace these context providers one by one, start with the simplest... BlogsContext
+const requestCities = axios.get('https://city-walks.herokuapp.com/cities');
+const requestBoards = axios.get('https://city-walks.herokuapp.com/boards');
 
 axios
-  .all([requestOne, requestTwo, requestThree, requestFour])
+  .all([requestCities, requestBoards])
   .then(
     axios.spread((...responses) => {
-      const walksData = responses[0];
-      const citiesData = responses[1];
-      const boardsData = responses[2];
+      const citiesData = responses[0];
+      const boardsData = responses[1];
       ReactDOM.render(
       <Router>
         <ForumContextProvider>
           <RecaptchaContextProvider>
             <LoginContextProvider>
               <SearchContextProvider>
-                <WalksContextProvider>
-                  {/* <BlogsContextProvider> */}
-                  <Provider store={store}>
-                    <App walks={walksData.data} cities={citiesData.data} boards={boardsData}/>
-                  </Provider>
-                  {/* </BlogsContextProvider> */}
-                </WalksContextProvider>
+                 {/* replace these context providers with the redux provider */}
+                <Provider store={store}>
+                  <App cities={citiesData.data} boards={boardsData}/>
+                </Provider>
+                {/* replace these context providers with the redux provider */}
               </SearchContextProvider>
             </LoginContextProvider>
           </RecaptchaContextProvider>

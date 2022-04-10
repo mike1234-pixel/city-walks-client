@@ -8,6 +8,7 @@ import ReactPaginate from "react-paginate"
 import { motion } from "framer-motion"
 import pageTransition from "../../../constants/pageTransition"
 import { GiWalkingBoot } from 'react-icons/gi'
+import { connect } from 'react-redux';
 import './Walks.scss'
 
 const Walks = (props) => {
@@ -135,4 +136,8 @@ const Walks = (props) => {
     }
 }
 
-export default Walks
+const mapStateToProps = state => ({
+    walks: state.walksState.walks,
+  });
+
+export default connect(mapStateToProps)(Walks);

@@ -30,7 +30,7 @@ const Router = (props) => {
 
     const { popupVisible } = useContext(LoginContext)
 
-    const {walks, cities} = props
+    const {cities} = props
 
     return (
       <div>
@@ -39,9 +39,10 @@ const Router = (props) => {
             <div style={{ position: "relative" }}>
             <AnimatePresence exitBeforeEnter>
               <Switch location={location} key={location.pathname}>
-                <Route exact path="/" component={() => <Home walks={walks}/>} />
+                <Route exact path="/" component={() => <Home/>} />
                 <Route path="/cities" component={() => <Cities cities={cities}/>} />
-                <Route exact path="/walks" component={() => <Walks walks={walks}/>}/>
+                <Route exact path="/walks" component={() => <Walks/>}/>
+                {/* components with a dynamic route have to passed like this (no callback) */}
                 <Route path="/walks/:walks" component={Walk}/>
                 <Route path="/about" component={About} />
                 <Route path="/contact" component={Contact} />
