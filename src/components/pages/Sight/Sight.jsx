@@ -1,5 +1,4 @@
-import { useEffect, useContext, useState } from "react"
-import { LoginContext } from "../../../context/LoginContext"
+import { useEffect, useState } from "react"
 import toTitleCase from "../../../functions/toTitleCase"
 import { MDBInput, MDBBtn, MDBIcon, MDBCard, MDBCardTitle, MDBCardText, MDBContainer } from "mdbreact"
 import axios from "axios"
@@ -15,13 +14,9 @@ const Sight = (props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const { sights } = props
-
-  //console.log("PROPS=" + JSON.stringify(props))
+  const { sights, loggedIn, userFirstName, userId } = props
 
   const blogTitle = toTitleCase(props.history.location.pathname.replace("/sights/", "").replace(/-/g, " "))
-
-  const { loggedIn, userFirstName, userId } = useContext(LoginContext)
 
   const [comment, setComment] = useState("")
 
@@ -146,6 +141,9 @@ const Sight = (props) => {
 
 const mapStateToProps = state => ({
   sights: state.sightsState.sights,
+  loggedIn: state.loginState.loggedIn,
+  userFirstName: state.loginState.userFirstName,
+  userId: state.loginState.userId
 });
 
 export default connect(mapStateToProps)(Sight);

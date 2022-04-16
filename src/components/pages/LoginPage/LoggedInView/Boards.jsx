@@ -1,6 +1,4 @@
 import BoardBox from "../LoggedInView/Components/BoardBox/BoardBox"
-import { useContext } from "react"
-import { LoginContext } from "../../../../context/LoginContext"
 import { MDBContainer } from "mdbreact"
 import UserPortalNav from "../UserPortalNav"
 import { motion } from "framer-motion"
@@ -10,9 +8,7 @@ import './Boards.scss'
 
 const Boards = (props) => {
 
-    const { boards } = props;
-
-    const { userFirstName } = useContext(LoginContext)
+    const { boards, userFirstName } = props;
 
     return (
         <motion.div
@@ -52,6 +48,7 @@ const Boards = (props) => {
 
 const mapStateToProps = state => ({
     boards: state.boardsState.boards,
+    userFirstName: state.loginState.userFirstName
 });
 
 export default connect(mapStateToProps)(Boards);

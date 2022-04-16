@@ -1,14 +1,26 @@
-import React, { useContext } from 'react'
-import { Link } from "react-router-dom"
-import { MDBIcon, MDBCol, MDBContainer, MDBRow, MDBFooter } from 'mdbreact'
-import { LoginContext } from "../../context/LoginContext"
-import axios from "axios"
+import { Link, useHistory } from "react-router-dom"
+import { MDBCol, MDBContainer, MDBRow, MDBFooter } from 'mdbreact'
 import { GiWalkingBoot } from 'react-icons/gi'
+import axios from "axios"
+import { connect } from 'react-redux'
 import './Footer.scss'
 
-const Footer = () => {
+const Footer = (props) => {
 
-  const { loggedIn, userId, logOut } = useContext(LoginContext)
+  const { loggedIn, userId, setLoggedIn, setUserId, setUserFirstName, setUserLastName } = props
+
+  const history = useHistory()
+
+  const logOut = () => {
+    localStorage.clear()
+    localStorage.setItem("popupVisible", false)
+    setLoggedIn(false)
+    setUserId("")
+    setUserFirstName("")
+    setUserLastName("")
+    alert("Logged out successfully.")
+    history.push("/forum");
+  }
 
   const deleteAccount = () => {
 
@@ -16,16 +28,16 @@ const Footer = () => {
       userId: userId,
     }
 
-    axios.delete("https://city-walks.herokuapp.com/delete-account", {data: payload})
-        .then((err) => {
-            if (err) {
-              console.log(err);
-            }
-          });
-  
-          alert("Account Deleted. You can sign up again at any time.")
-          logOut()
-          window.scrollTo(0, 0);
+    axios.delete("https://city-walks.herokuapp.com/delete-account", { data: payload })
+      .then((err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+
+    alert("Account Deleted. You can sign up again at any time.")
+    logOut()
+    window.scrollTo(0, 0);
   }
 
   return (
@@ -33,7 +45,7 @@ const Footer = () => {
       <MDBContainer className="text-left">
         <MDBRow>
           <MDBCol md="3">
-            <h5 className="title">City Walks... <GiWalkingBoot/></h5>
+            <h5 className="title">City Walks... <GiWalkingBoot /></h5>
             <p>
               City Walks is a website that publishes illustrated guided walks, with routes, maps and local attractions to explore.
             </p>
@@ -42,7 +54,7 @@ const Footer = () => {
           <MDBCol md="3" className="footer-site-links">
             <h5 className="title">Site Links</h5>
             <ul className="footer-ul">
-            <li className="list-unstyled">
+              <li className="list-unstyled">
                 <Link to="/">Home</Link>
               </li>
               <li className="list-unstyled">
@@ -66,18 +78,18 @@ const Footer = () => {
             </ul>
           </MDBCol>
           <MDBCol md="3" className="footer-extra-links">
-          <h5 className="title">Extra Links</h5>
-          <ul className="footer-ul">
-            <li className="list-unstyled">
+            <h5 className="title">Extra Links</h5>
+            <ul className="footer-ul">
+              <li className="list-unstyled">
                 <Link to="/admin">Admin portal</Link>
-            </li>
-            <li className="list-unstyled">
+              </li>
+              <li className="list-unstyled">
                 <Link to="/privacy">Privacy Policy</Link>
-            </li>
-            {loggedIn && 
-            <li className="list-unstyled">
-                <a onClick={deleteAccount}>Delete Account</a>
-            </li>}
+              </li>
+              {loggedIn &&
+                <li className="list-unstyled">
+                  <a onClick={deleteAccount}>Delete Account</a>
+                </li>}
             </ul>
           </MDBCol>
         </MDBRow>
@@ -91,4 +103,18 @@ const Footer = () => {
   );
 }
 
-export default Footer;
+const mapStateToProps = state => ({
+  loggedIn: state.loginState.loggedIn,
+  userId: state.loginState.userId,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setLoggedIn: (boolValue) => dispatch({ type: 'SET_LOGGED_IN', boolValue }),
+    setUserId: (userID) => dispatch({ type: 'SET_USER_ID', userID }),
+    setUserFirstName: (userFirstName) => dispatch({ type: 'SET_USER_FIRST_NAME', userFirstName }),
+    setUserLastName: (userLastName) => dispatch({ type: 'SET_USER_LAST_NAME', userLastName }),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Footer);

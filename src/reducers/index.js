@@ -6,6 +6,7 @@ import boardsReducer from './boardsReducer';
 import recaptchaReducer from './recaptchaReducer';
 import searchReducer from './searchReducer';
 import privacyPopupReducer from './privacyPopupReducer';
+import loginReducer from './loginReducer';
 
 const rootReducer = combineReducers({
   sightsState: sightsReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   boardsState: boardsReducer,
   recaptchaState: recaptchaReducer,
   searchState: searchReducer,
-  privacyPopupState: privacyPopupReducer
+  privacyPopupState: privacyPopupReducer,
+  loginState: loginReducer
 });
 
 export default rootReducer;

@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react"
-import { LoginContext } from "../../../../../../context/LoginContext"
+import { useEffect, useState } from "react"
 import ThreadBox from "../ThreadBox/ThreadBox"
 import toTitleCase from "../../../../../../functions/toTitleCase"
 import { MDBBtn, MDBInput, MDBContainer } from "mdbreact"
@@ -10,8 +9,7 @@ import "./Threads.scss"
 
 const Threads = (props) => {
 
-    const { boards } = props;
-    const { loggedIn, userId, userFirstName } = useContext(LoginContext)
+    const { boards, loggedIn, userId, userFirstName } = props;
 
     const boardName = toTitleCase(props.history.location.pathname.replace("/forum/", "").replace(/-/g, " "))
 
@@ -110,6 +108,9 @@ const Threads = (props) => {
 
 const mapStateToProps = state => ({
     boards: state.boardsState.boards,
+    loggedIn: state.loginState.loggedIn,
+    userId: state.loginState.userId,
+    userFirstName: state.loginState.userFirstName
 });
 
 export default connect(mapStateToProps)(Threads);

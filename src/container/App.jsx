@@ -1,6 +1,5 @@
 import Router from './Router/Router'
-import { useContext, useEffect } from "react"
-import { LoginContext } from "../context/LoginContext"
+import { useEffect } from "react"
 import axios from "axios"
 import { connect } from 'react-redux'
 import './App.scss'
@@ -8,9 +7,7 @@ import './App.scss'
 
 const App = (props) => {
 
-  const { saveBoards, saveSights, saveWalks, saveCities, setPrivacyPopupVisible, sitekey } = props
-
-  const { setLoggedIn, setUserId, setUserFirstName } = useContext(LoginContext)
+  const { saveBoards, saveSights, saveWalks, saveCities, setPrivacyPopupVisible, setLoggedIn, setUserId, setUserFirstName, sitekey } = props
 
   useEffect(() => {
     const walksRequest = axios.get('https://city-walks.herokuapp.com/walks');
@@ -74,6 +71,10 @@ const App = (props) => {
   return (<Router />)
 }
 
+const mapStateToProps = state => ({
+  sitekey: state.recaptchaState.sitekey,
+});
+
 // this works...
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -83,11 +84,10 @@ const mapDispatchToProps = (dispatch) => {
     saveCities: (cities) => dispatch({ type: 'SAVE_CITIES', cities }),
     saveBoards: (boards) => dispatch({ type: 'SAVE_BOARDS', boards }),
     setPrivacyPopupVisible: (boolValue) => dispatch({ type: 'SET_POPUP_VISIBLE', boolValue }),
+    setLoggedIn: (boolValue) => dispatch({ type: 'SET_LOGGED_IN', boolValue }),
+    setUserId: (userId) => dispatch({ type: 'SET_USER_ID', userId }),
+    setUserFirstName: (userFirstName) => dispatch({ type: 'SET_USER_FIRST_NAME', userFirstName }),
   }
 }
-
-const mapStateToProps = state => ({
-  sitekey: state.recaptchaState.sitekey,
-});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

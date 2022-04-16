@@ -4,21 +4,20 @@ import { MDBContainer } from "mdbreact"
 
 const PopUp = (props) => {
 
-    const { mapImg, iframeLink, iframeTitle } = props
+    const { iframeLink, iframeTitle } = props
 
-    const fade = useSpring({ from: { opacity: 0}, opacity: 1 })
+    const fade = useSpring({ from: { opacity: 0 }, opacity: 1 })
 
     return (
         <MDBContainer>
             <animated.div className="popup-container" style={fade}>
-                <div className="popup"> 
+                <div className="popup">
                     {/* orientation will be portrait */}
-                    {/* <img id="popup-img" className="popup-img" src={mapImg}/> */}
-                    <iframe 
-                        src={iframeLink} 
+                    <iframe
+                        src={iframeLink}
                         title={iframeTitle}
                         className="popup-img"
-                        >
+                    >
                     </iframe>
                 </div>
             </animated.div>

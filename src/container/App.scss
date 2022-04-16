@@ -14,6 +14,7 @@
 strong {
   font-weight: 700;
 }
+
 /* variables */
 :root {
   --blue: #6495ed;
@@ -25,11 +26,12 @@ strong {
 }
 
 #root {
-  background-image: url("../site-images/leeds-trinity-illustration-background.jpg");
+  background-image: url("../assets/leeds-trinity-illustration-background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
+
 /* utililty classes */
 .display-font {
   font-family: var(--display-font);
@@ -52,6 +54,7 @@ html {
 #root {
   font-family: var(--display-font);
 }
+
 /* body styles end */
 
 /* heading styles start */
@@ -68,6 +71,7 @@ html {
 .page-subheading {
   margin-bottom: 30px;
 }
+
 /* heading styles end */
 
 /* grid layout start */
@@ -114,6 +118,7 @@ html {
 .cutter {
   clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 }
+
 /* card styles end*/
 
 .btn {

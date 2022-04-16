@@ -1,24 +1,18 @@
-import React from "react";
 import ReactDOM from "react-dom";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import App from "./container/App.jsx";
 import registerServiceWorker from './registerServiceWorker';
-import { LoginContextProvider } from "./context/LoginContext"
 import { BrowserRouter as Router } from "react-router-dom"
 import store from './store';
 import { Provider } from 'react-redux'
 
 ReactDOM.render(
   <Router>
-    <LoginContextProvider>
-      {/* replace these context providers with the redux provider */}
-      <Provider store={store}>
-        <App />
-      </Provider>
-      {/* replace these context providers with the redux provider */}
-    </LoginContextProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </Router>, document.getElementById('root'));
 
 

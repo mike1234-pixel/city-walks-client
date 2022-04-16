@@ -1,15 +1,13 @@
-import { useState, useContext } from "react"
+import { useState } from "react"
 import { MDBInput, MDBBtn, MDBCard, MDBCardTitle, MDBCardText } from "mdbreact"
 import axios from "axios"
 import qs from "qs"
-import { LoginContext } from "../../../../../../context/LoginContext"
+import { connect } from 'react-redux'
 import './ThreadBox.scss'
 
 const ThreadBox = (props) => {
 
-    const { userFirstName: currentUserFirstName, userId: currentUserId, loggedIn } = useContext(LoginContext)
-
-    const { currentBoardName, threadId, userFirstName, title, content, replies, submittedOn, userId } = props
+    const { currentBoardName, threadId, userFirstName, title, content, replies, submittedOn, userId, loggedIn, userFirstName: currentUserFirstName, userId: currentUserId } = props
 
     const [showAllReplies, setShowAllReplies] = useState(false)
     const [reply, setReply] = useState("")
@@ -123,7 +121,14 @@ const ThreadBox = (props) => {
     )
 }
 
-export default ThreadBox
+const mapStateToProps = state => ({
+  loggedIn: state.loginState.loggedIn,
+  userFirstName: state.loginState.userFirstName,
+  userId: state.loginState.userId,
+});
+
+export default connect(mapStateToProps)(ThreadBox);
+
 
 // // setter
 // localStorage.setItem('myData', data);

@@ -1,5 +1,5 @@
 import { MDBCard, MDBCardTitle, MDBCardText } from "mdbreact"
-import { useEffect, useContext } from "react"
+import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import urlify from "../../../../../../functions/urlify"
 import './BoardBox.scss'

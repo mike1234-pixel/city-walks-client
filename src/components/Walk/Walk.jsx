@@ -1,10 +1,9 @@
-import { useEffect, useState, useContext } from "react"
+import { useEffect, useState } from "react"
 import { MDBIcon, MDBAnimation, MDBBtn, MDBContainer } from "mdbreact"
 import SectionA from '../SectionA/SectionA'
 import SectionB from '../SectionB/SectionB'
 import PopUp from './PopUp/PopUp'
 import toTitleCase from "../../functions/toTitleCase"
-import PrivacyPopUp from "../PopUp/PrivacyPopUp"
 import { MdLocationCity } from 'react-icons/md'
 import { FaRoad, FaMapMarkerAlt } from 'react-icons/fa'
 import { IoMdTrain } from 'react-icons/io'
@@ -16,7 +15,7 @@ import './Walk.scss'
 
 const Walk = (props) => {
 
-  const { walks, privacyPopupVisible } = props
+  const { walks } = props
 
   const [togglePopUp, setTogglePopUp] = useState(false)
 
@@ -108,7 +107,6 @@ const Walk = (props) => {
 //export default Walk
 const mapStateToProps = state => ({
   walks: state.walksState.walks,
-  privacyPopupVisible: state.privacyPopupState.privacyPopupVisible
 });
 
 export default connect(mapStateToProps)(Walk);
