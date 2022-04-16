@@ -8,9 +8,9 @@ import './App.scss'
 
 const App = (props) => {
 
-  const { saveBoards, saveSights, saveWalks, saveCities, sitekey } = props
+  const { saveBoards, saveSights, saveWalks, saveCities, setPrivacyPopupVisible, sitekey } = props
 
-  const { setPopupVisible, setLoggedIn, setUserId, setUserFirstName } = useContext(LoginContext)
+  const { setLoggedIn, setUserId, setUserFirstName } = useContext(LoginContext)
 
   useEffect(() => {
     const walksRequest = axios.get('https://city-walks.herokuapp.com/walks');
@@ -36,7 +36,7 @@ const App = (props) => {
       ).catch(error => console.log(error.message))
 
     if (localStorage.getItem("popupVisible") === null) {
-      setPopupVisible(true)
+      setPrivacyPopupVisible(true)
     }
 
     if (localStorage.getItem("loggedIn") !== null) {
@@ -82,6 +82,7 @@ const mapDispatchToProps = (dispatch) => {
     saveWalks: (walks) => dispatch({ type: 'SAVE_WALKS', walks }),
     saveCities: (cities) => dispatch({ type: 'SAVE_CITIES', cities }),
     saveBoards: (boards) => dispatch({ type: 'SAVE_BOARDS', boards }),
+    setPrivacyPopupVisible: (boolValue) => dispatch({ type: 'SET_POPUP_VISIBLE', boolValue }),
   }
 }
 

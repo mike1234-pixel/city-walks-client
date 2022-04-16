@@ -6,7 +6,6 @@ import qs from "qs"
 export const LoginContext = createContext();
 
 export const LoginContextProvider = (props) => {
-    const [popupVisible, setPopupVisible] = useState(false)
 
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -34,11 +33,6 @@ export const LoginContextProvider = (props) => {
     const [activationMessageEmphasis, setActivationMessageEmphasis] = useState("no-emphasis")
 
     const history = useHistory()
-
-    const handlePopup = () => {
-      setPopupVisible(false)
-      localStorage.setItem("popupVisible", false)
-    }
 
     const handleChangeRegistration = (event) => {
         switch(event.target.name) {
@@ -269,9 +263,6 @@ axios
     return (
         <LoginContext.Provider 
             value={{
-              popupVisible,
-              setPopupVisible,
-              handlePopup,
                // logged in state 
                loggedIn,
                // registration state and functions

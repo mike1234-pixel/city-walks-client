@@ -5,14 +5,13 @@ import toTitleCase from "../../../../../../functions/toTitleCase"
 import { MDBBtn, MDBInput, MDBContainer } from "mdbreact"
 import axios from "axios"
 import qs from "qs"
-import PopUp from "../../../../../PopUp/PopUp"
 import { connect } from 'react-redux'
 import "./Threads.scss"
 
 const Threads = (props) => {
 
     const { boards } = props;
-    const { loggedIn, userId, userFirstName, popupVisible } = useContext(LoginContext)
+    const { loggedIn, userId, userFirstName } = useContext(LoginContext)
 
     const boardName = toTitleCase(props.history.location.pathname.replace("/forum/", "").replace(/-/g, " "))
 

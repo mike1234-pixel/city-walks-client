@@ -21,7 +21,7 @@ const Sight = (props) => {
 
   const blogTitle = toTitleCase(props.history.location.pathname.replace("/sights/", "").replace(/-/g, " "))
 
-  const { loggedIn, userFirstName, userId, popupVisible } = useContext(LoginContext)
+  const { loggedIn, userFirstName, userId } = useContext(LoginContext)
 
   const [comment, setComment] = useState("")
 

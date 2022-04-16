@@ -2,7 +2,6 @@ import BoardBox from "../LoggedInView/Components/BoardBox/BoardBox"
 import { useContext } from "react"
 import { LoginContext } from "../../../../context/LoginContext"
 import { MDBContainer } from "mdbreact"
-import PopUp from "../../../../components/PopUp/PopUp"
 import UserPortalNav from "../UserPortalNav"
 import { motion } from "framer-motion"
 import pageTransition from "../../../../constants/pageTransition"
@@ -14,8 +13,6 @@ const Boards = (props) => {
     const { boards } = props;
 
     const { userFirstName } = useContext(LoginContext)
-
-    const { popupVisible } = useContext(LoginContext)
 
     return (
         <motion.div

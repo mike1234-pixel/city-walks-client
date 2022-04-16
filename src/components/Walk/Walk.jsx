@@ -4,23 +4,21 @@ import SectionA from '../SectionA/SectionA'
 import SectionB from '../SectionB/SectionB'
 import PopUp from './PopUp/PopUp'
 import toTitleCase from "../../functions/toTitleCase"
-import PrivacyPopUp from "../../components/PopUp/PopUp"
-import { LoginContext } from "../../context/LoginContext"
+import PrivacyPopUp from "../PopUp/PrivacyPopUp"
 import { MdLocationCity } from 'react-icons/md'
 import { FaRoad, FaMapMarkerAlt } from 'react-icons/fa'
 import { IoMdTrain } from 'react-icons/io'
 import { motion } from "framer-motion"
 import pageTransition from "../../constants/pageTransition"
-import './Walk.scss'
 import { connect } from "react-redux"
+import './Walk.scss'
+
 
 const Walk = (props) => {
 
+  const { walks, privacyPopupVisible } = props
+
   const [togglePopUp, setTogglePopUp] = useState(false)
-
-  const { walks } = props
-
-  const { popupVisible } = useContext(LoginContext)
 
   const walkName = toTitleCase(props.history.location.pathname.replace("/walks/", "").replace(/-/g, " "))
 
@@ -92,7 +90,6 @@ const Walk = (props) => {
         className="motion-div"
       >
         <MDBContainer>
-          {popupVisible && <PrivacyPopUp />}
           <div data-testid="walk-page">
             <div className="min-page-height center">
               {walk}
@@ -111,6 +108,7 @@ const Walk = (props) => {
 //export default Walk
 const mapStateToProps = state => ({
   walks: state.walksState.walks,
+  privacyPopupVisible: state.privacyPopupState.privacyPopupVisible
 });
 
 export default connect(mapStateToProps)(Walk);

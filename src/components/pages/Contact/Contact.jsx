@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from "react"
 import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact"
-import { LoginContext } from "../../../context/LoginContext"
 import axios from "axios"
 import qs from "qs"
 import { motion } from "framer-motion"
@@ -10,17 +9,15 @@ import "./Contact.scss"
 
 const Contact = (props) => {
 
-  const { popupVisible } = useContext(LoginContext)
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const { sitekey } = props
 
   const [contactName, setContactName] = useState("");
   const [contactEmail, setContactEmail] = useState("");
   const [contactMessage, setContactMessage] = useState("");
 
-  const { sitekey } = props
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleChange = (event) => {
     switch (event.target.name) {
