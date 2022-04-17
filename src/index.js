@@ -5,7 +5,7 @@ import "mdbreact/dist/css/mdb.css";
 import App from "./container/App.jsx";
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router } from "react-router-dom"
-import store from './store';
+import store from './store/index';
 import { Provider } from 'react-redux'
 
 ReactDOM.render(

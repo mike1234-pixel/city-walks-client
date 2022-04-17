@@ -1,4 +1,26 @@
-const INITIAL_STATE = {
+import { AnyAction } from "redux";
+
+interface LoginState {
+    firstName: string,
+    lastName: string,
+    userId: string,
+    registrationEmail: string,
+    registrationPassword: string,
+    loginEmail: string,
+    loginPassword: string,
+    loggedIn: boolean,
+    userFirstName: string,
+    userLastName: string,
+    verificationEmail: string,
+    resetPasswordEmail: string,
+    resetPasswordOldPassword: string,
+    resetPasswordNewPassword: string,
+    resetPasswordConfirmNewPassword: string,
+    forgotPasswordEmail: string,
+    activationMessageEmphasis: string
+}
+
+const INITIAL_STATE: LoginState = {
     firstName: '',
     lastName: '',
     userId: '',
@@ -18,7 +40,7 @@ const INITIAL_STATE = {
     activationMessageEmphasis: 'no-emphasis'
 };
 
-const loginReducer = (state = INITIAL_STATE, action) => {
+const loginReducer = (state = INITIAL_STATE, action: AnyAction) => {
     switch (action.type) {
         case 'SET_FIRST_NAME':
             return { ...state, firstName: action.firstName };
