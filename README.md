@@ -107,3 +107,8 @@ To run tests for a single component run:
 ## Future Improvements
 
 - If the database grows significantly in size then **lazy loading / infinite scrolling** should be implemented.
+
+
+## NEXT STEPS:
+- set up tslint using https://khalilstemmler.com/blogs/typescript/eslint-for-typescript/ and follow the guidance the linter gives you.
+- ensure each component is fully typesafe before moving onto the next
