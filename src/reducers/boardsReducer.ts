@@ -1,16 +1,19 @@
-import { AnyAction } from "redux";
+import BoardsState from '../types/BoardsState'
+import Board from '../types/Board'
 
-interface BoardsState {
-    boards: Array<Object>
+interface Action {
+    type: string;
+    boards: Array<Board>
 }
 
 const INITIAL_STATE: BoardsState = {
     boards: [],
 };
 
-const boardsReducer = (state = INITIAL_STATE, action: AnyAction) => {
+const boardsReducer = (state: BoardsState = INITIAL_STATE, action: Action) => {
     switch (action.type) {
         case 'SAVE_BOARDS':
+            console.log(action.boards)
             return { ...state, boards: action.boards };
         default: return state;
     }
