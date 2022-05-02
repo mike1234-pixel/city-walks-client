@@ -11,15 +11,16 @@ import { motion } from "framer-motion"
 import pageTransition from "../../constants/pageTransition"
 import { connect } from "react-redux";
 import GlobalState from "../../types/State/Global/State"
-import WalkType from '../../types/Walks/Walk'
+import WalkT from '../../types/Walks/Walk'
 import './Walk.scss'
 
 interface Props {
-  walks: Array<any>; // THIS SHOULD BE ANY ARRAY OF WALKS
+  walks: Array<WalkT>;
   history: any; // CAN THIS BE MORE SPECIFIC?
 }
 
-const Walk: React.FC<Props> = (props: Props) => {
+// change this any to correct props type
+const Walk: React.FC<any> = (props: Props) => {
 
   const { walks } = props
 
@@ -33,7 +34,7 @@ const Walk: React.FC<Props> = (props: Props) => {
   });
 
   let walk: string | ReactNode = "loading";
-  let currentWalk: WalkType | { iframeLink: string; iframeTitle: string } = { iframeLink: '', iframeTitle: '' }
+  let currentWalk: WalkT | { iframeLink: string; iframeTitle: string } = { iframeLink: '', iframeTitle: '' }
 
   const handleClick: () => void = () => {
     setTogglePopUp(!togglePopUp)
@@ -49,7 +50,7 @@ const Walk: React.FC<Props> = (props: Props) => {
 
   if (walks.length) {
 
-    let selectedWalk: Array<WalkType> | WalkType | undefined = walks.filter((walk) => walk.walk === walkName)
+    let selectedWalk: Array<WalkT> | WalkT | undefined = walks.filter((walk) => walk.walk === walkName)
     selectedWalk = selectedWalk[0]
 
     currentWalk = selectedWalk

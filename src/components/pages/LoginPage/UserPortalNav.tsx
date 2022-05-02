@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"
 import {
   MDBIcon,
   MDBNavbar,
@@ -9,29 +9,40 @@ import {
   MDBCollapse,
   MDBContainer
 } from "mdbreact";
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import { connect } from 'react-redux'
-import "./UserPortalNav.scss";
+import GlobalState from "../../../types/State/Global/State"
+import "./UserPortalNav.scss"
 
-const UserPortalNav = (props) => {
+interface Props {
+  loggedIn: boolean;
+  setLoggedIn: Function;
+  setUserId: Function;
+  setUserFirstName: Function;
+  setUserLastName: Function;
+}
+
+const UserPortalNav: React.FC<Props> = (props: Props) => {
 
   const { loggedIn, setLoggedIn, setUserId, setUserFirstName, setUserLastName } = props
 
-  const [toggleLoginPanel, setToggleLoginPanel] = useState(false);
+  const [toggleLoginPanel, setToggleLoginPanel] = useState<boolean>(false);
 
   const handleToggleLoginPanel = () => {
     setToggleLoginPanel(!toggleLoginPanel);
   };
 
+  const pushSlug: Function = useHistory().push
+
   const logOut = () => {
     localStorage.clear()
-    localStorage.setItem("popupVisible", false)
+    localStorage.setItem('popupVisible', 'false')
     setLoggedIn(false)
-    setUserId("")
-    setUserFirstName("")
-    setUserLastName("")
+    setUserId('')
+    setUserFirstName('')
+    setUserLastName('')
     alert("Logged out successfully.")
-    history.push("/forum");
+    pushSlug("/forum");
   }
 
   useEffect(() => {
@@ -117,16 +128,16 @@ const UserPortalNav = (props) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: GlobalState) => ({
   loggedIn: state.loginState.loggedIn,
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Function) => {
   return {
-    setLoggedIn: (boolValue) => dispatch({ type: 'SET_LOGGED_IN', boolValue }),
-    setUserId: (userID) => dispatch({ type: 'SET_USER_ID', userID }),
-    setUserFirstName: (userFirstName) => dispatch({ type: 'SET_USER_FIRST_NAME', userFirstName }),
-    setUserLastName: (userLastName) => dispatch({ type: 'SET_USER_LAST_NAME', userLastName }),
+    setLoggedIn: (boolValue: boolean) => dispatch({ type: 'SET_LOGGED_IN', boolValue }),
+    setUserId: (userID: string) => dispatch({ type: 'SET_USER_ID', userID }),
+    setUserFirstName: (userFirstName: string) => dispatch({ type: 'SET_USER_FIRST_NAME', userFirstName }),
+    setUserLastName: (userLastName: string) => dispatch({ type: 'SET_USER_LAST_NAME', userLastName }),
   }
 }
 

@@ -18,11 +18,11 @@ const Nav: React.FC<Props> = (props: Props) => {
 
   const { redirect, setRedirect } = props;
 
-  let history = useHistory()
+  const pushSlug: Function = useHistory().push
 
   useEffect(() => {
     if (redirect) {
-      history.push("/walks")
+      pushSlug("/walks")
       setRedirect(false)
     }
   })

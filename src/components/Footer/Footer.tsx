@@ -20,7 +20,7 @@ const Footer: React.FC<Props> = (props: Props) => {
 
   const { loggedIn, userId, setLoggedIn, setUserId, setUserFirstName, setUserLastName } = props
 
-  const history = useHistory()
+  const pushSlug: Function = useHistory().push
 
   const logOut = () => {
     localStorage.clear()
@@ -30,7 +30,7 @@ const Footer: React.FC<Props> = (props: Props) => {
     setUserFirstName('')
     setUserLastName('')
     alert('Logged out successfully.')
-    history.push('/forum');
+    pushSlug('/forum');
   }
 
   const deleteAccount = () => {

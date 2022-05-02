@@ -9,12 +9,12 @@ import GlobalState from "../../../types/State/Global/State"
 import './Cities.scss'
 
 interface Props {
-    cities: Array<any>;
+    cities: Array<City>;
     handleClickSearch: Function;
     setRedirect: Function;
 }
 
-const Cities: React.FC<Props> = (props: Props) => {
+const Cities: React.FC<any> = (props: Props) => {
 
     const { cities, handleClickSearch, setRedirect } = props;
 
@@ -49,7 +49,7 @@ const Cities: React.FC<Props> = (props: Props) => {
         )
     }
 
-    const changePage = ({ selected }: any) => {
+    const changePage = ({ selected }: { selected: number }) => {
         setPageNumber(selected);
     }
 

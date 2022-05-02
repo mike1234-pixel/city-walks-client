@@ -1,18 +1,31 @@
+import React from 'react'
 import { useHistory } from "react-router-dom"
 import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact"
 import UserPortalNav from "../UserPortalNav"
-import axios from "axios"
+import axios, { AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
+import GlobalState from '../../../../types/State/Global/State'
 import './ResetPasswordForm.scss'
 
-const ResetPasswordForm = (props) => {
+interface Props {
+  resetPasswordEmail: string;
+  resetPasswordOldPassword: string;
+  resetPasswordNewPassword: string;
+  resetPasswordConfirmNewPassword: string;
+  setResetPasswordEmail: Function;
+  setResetPasswordOldPassword: Function;
+  setResetPasswordNewPassword: Function;
+  setResetPasswordConfirmNewPassword: Function
+}
 
-  const history = useHistory()
+const ResetPasswordForm: React.FC<Props> = (props: Props) => {
+
+  const pushSlug: Function = useHistory().push
 
   const { resetPasswordEmail, resetPasswordOldPassword, resetPasswordNewPassword, resetPasswordConfirmNewPassword, setResetPasswordEmail, setResetPasswordOldPassword, setResetPasswordNewPassword, setResetPasswordConfirmNewPassword } = props
 
-  const handleChangeResetPassword = (event) => {
+  const handleChangeResetPassword = (event: React.ChangeEvent<any>) => {
     switch (event.target.name) {
       case "reset-email":
         setResetPasswordEmail(event.target.value)
@@ -29,7 +42,7 @@ const ResetPasswordForm = (props) => {
     }
   }
 
-  const handleSubmitResetPassword = (event) => {
+  const handleSubmitResetPassword = (event: React.FormEvent<any>) => {
     console.log("handle submit reset password")
     event.preventDefault()
 
@@ -42,10 +55,8 @@ const ResetPasswordForm = (props) => {
     if (resetPasswordNewPassword === resetPasswordConfirmNewPassword) {
       axios
         .post("https://city-walks.herokuapp.com/reset-password-with-old-password", qs.stringify(payload))
-        .then((res, err) => {
-          if (err) {
-            console.log(err);
-          } else if (res.data === "user not found") {
+        .then((res: AxiosResponse) => {
+          if (res.data === "user not found") {
             alert("We could not find your account. Please try again.")
           } else if (res.data === "old password does not match password in the database") {
             alert("The password you entered does not match the account. Please try again or use the Forgot Password option.")
@@ -55,7 +66,7 @@ const ResetPasswordForm = (props) => {
             setResetPasswordOldPassword("")
             setResetPasswordNewPassword("")
             setResetPasswordConfirmNewPassword("")
-            history.push("/forum/login");
+            pushSlug("/forum/login");
             window.scrollTo(0, 0)
           }
         })
@@ -87,19 +98,19 @@ const ResetPasswordForm = (props) => {
   )
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: GlobalState) => ({
   resetPasswordEmail: state.loginState.resetPasswordEmail,
   resetPasswordOldPassword: state.loginState.resetPasswordOldPassword,
   resetPasswordNewPassword: state.loginState.resetPasswordNewPassword,
   resetPasswordConfirmNewPassword: state.loginState.resetPasswordConfirmNewPassword
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Function) => {
   return {
-    setResetPasswordEmail: (resetPasswordEmail) => dispatch({ type: 'SET_RESET_PASSWORD_EMAIL', resetPasswordEmail }),
-    setResetPasswordOldPassword: (resetPasswordOldPassword) => dispatch({ type: 'SET_RESET_PASSWORD_OLD_PASSWORD', resetPasswordOldPassword }),
-    setResetPasswordNewPassword: (resetPasswordNewPassword) => dispatch({ type: 'SET_RESET_PASSWORD_NEW_PASSWORD', resetPasswordNewPassword }),
-    setResetPasswordConfirmNewPassword: (resetPasswordConfirmNewPassword) => dispatch({ type: 'SET_RESET_PASSWORD_CONFIRM_NEW_PASSWORD', resetPasswordConfirmNewPassword }),
+    setResetPasswordEmail: (resetPasswordEmail: string) => dispatch({ type: 'SET_RESET_PASSWORD_EMAIL', resetPasswordEmail }),
+    setResetPasswordOldPassword: (resetPasswordOldPassword: string) => dispatch({ type: 'SET_RESET_PASSWORD_OLD_PASSWORD', resetPasswordOldPassword }),
+    setResetPasswordNewPassword: (resetPasswordNewPassword: string) => dispatch({ type: 'SET_RESET_PASSWORD_NEW_PASSWORD', resetPasswordNewPassword }),
+    setResetPasswordConfirmNewPassword: (resetPasswordConfirmNewPassword: string) => dispatch({ type: 'SET_RESET_PASSWORD_CONFIRM_NEW_PASSWORD', resetPasswordConfirmNewPassword }),
   }
 }
 

@@ -1,31 +1,44 @@
+import React from 'react'
 import { useHistory } from "react-router-dom"
 import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact"
 import UserPortalNav from "../UserPortalNav"
-import axios from "axios"
+import axios, { AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
+import GlobalState from '../../../../types/State/Global/State'
 import './LoginForm.scss'
 
-const LoginForm = (props) => {
+interface Props {
+  loginEmail: string;
+  loginPassword: string;
+  setLoginEmail: Function;
+  setLoginPassword: Function;
+  setLoggedIn: Function;
+  setUserId: Function;
+  setUserFirstName: Function;
+  setUserLastName: Function;
+}
+
+const LoginForm: React.FC<Props> = (props: Props) => {
 
   const { loginEmail, loginPassword, setLoginEmail, setLoginPassword, setLoggedIn, setUserId, setUserFirstName, setUserLastName } = props
 
-  const history = useHistory()
+  const pushSlug: Function = useHistory().push
 
-  const handleChangeLogin = (event) => {
-    switch (event.target.name) {
+  const handleChangeLogin = (e: React.ChangeEvent<any>) => {
+    switch (e.target.name) {
       case "login-email":
-        setLoginEmail(event.target.value)
+        setLoginEmail(e.target.value)
         break;
       case "login-password":
-        setLoginPassword(event.target.value)
+        setLoginPassword(e.target.value)
         break;
     }
   }
 
-  const handleSubmitLogin = (event) => {
+  const handleSubmitLogin = (e: { preventDefault: () => void }) => {
     console.log("handle submit login triggered")
-    event.preventDefault()
+    e.preventDefault()
 
     const payload = {
       email: loginEmail,
@@ -34,10 +47,8 @@ const LoginForm = (props) => {
 
     axios
       .post("https://city-walks.herokuapp.com/login-user", qs.stringify(payload))
-      .then((res, err) => {
-        if (err) {
-          console.log(err);
-        } else if (res.data === "Your account exists but is not activated. Please click 'verify account' for email verification.") {
+      .then((res: AxiosResponse) => {
+        if (res.data === "Your account exists but is not activated. Please click 'verify account' for email verification.") {
           alert("Your account exists but is not activated. Please click 'verify account' for email verification.")
         } else if (res.data === "unsuccessful login attempt") {
           alert("Unsuccessful Login Attempt. Please Try Again.")
@@ -49,10 +60,10 @@ const LoginForm = (props) => {
           setUserId(res.data._id)
           setUserFirstName(res.data.fname)
           setUserLastName(res.data.lname)
-          localStorage.setItem("loggedIn", true)
+          localStorage.setItem("loggedIn", 'true')
           localStorage.setItem("userId", res.data._id)
           localStorage.setItem("userFirstName", res.data.fname)
-          history.push("/forum");
+          pushSlug("/forum");
           window.scrollTo(0, 0)
         }
       });
@@ -78,19 +89,19 @@ const LoginForm = (props) => {
   )
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: GlobalState) => ({
   loginEmail: state.loginState.loginEmail,
   loginPassword: state.loginState.loginPassword,
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Function) => {
   return {
-    setLoginEmail: (loginEmail) => dispatch({ type: 'SET_LOGIN_EMAIL', loginEmail }),
-    setLoginPassword: (loginPassword) => dispatch({ type: 'SET_LOGIN_PASSWORD', loginPassword }),
-    setLoggedIn: (boolValue) => dispatch({ type: 'SET_LOGGED_IN', boolValue }),
-    setUserId: (userId) => dispatch({ type: 'SET_USER_ID', userId }),
-    setUserFirstName: (userFirstName) => dispatch({ type: 'SET_USER_ID', userFirstName }),
-    setUserLastName: (userLastName) => dispatch({ type: 'SET_USER_ID', userLastName }),
+    setLoginEmail: (loginEmail: string) => dispatch({ type: 'SET_LOGIN_EMAIL', loginEmail }),
+    setLoginPassword: (loginPassword: string) => dispatch({ type: 'SET_LOGIN_PASSWORD', loginPassword }),
+    setLoggedIn: (boolValue: boolean) => dispatch({ type: 'SET_LOGGED_IN', boolValue }),
+    setUserId: (userId: string) => dispatch({ type: 'SET_USER_ID', userId }),
+    setUserFirstName: (userFirstName: string) => dispatch({ type: 'SET_USER_ID', userFirstName }),
+    setUserLastName: (userLastName: string) => dispatch({ type: 'SET_USER_ID', userLastName }),
   }
 }
 
