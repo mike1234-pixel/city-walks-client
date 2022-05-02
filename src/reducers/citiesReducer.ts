@@ -1,14 +1,16 @@
-import { AnyAction } from "redux";
+import CitiesState from '../types/Cities/CitiesState';
+import City from '../types/Cities/City'
 
-interface CitiesState {
-    cities: Array<Object>
+interface Action {
+    type: string,
+    cities: Array<City>
 }
 
 const INITIAL_STATE: CitiesState = {
     cities: [],
 };
 
-const citiesReducer = (state = INITIAL_STATE, action: AnyAction) => {
+const citiesReducer = (state: CitiesState = INITIAL_STATE, action: Action) => {
     switch (action.type) {
         case 'SAVE_CITIES':
             return { ...state, cities: action.cities };

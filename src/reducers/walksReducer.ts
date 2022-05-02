@@ -1,14 +1,16 @@
-import { AnyAction } from "redux";
+import WalksState from '../types/Walks/WalksState'
+import Walk from '../types/Walks/Walk'
 
-interface WalksState {
-  walks: Array<Object>
+interface Action {
+  type: string;
+  walks: Array<Walk>
 }
 
 const INITIAL_STATE: WalksState = {
   walks: [],
 };
 
-const walksReducer = (state = INITIAL_STATE, action: AnyAction) => {
+const walksReducer = (state = INITIAL_STATE, action: Action) => {
   switch (action.type) {
     case 'SAVE_WALKS':
       return { ...state, walks: action.walks };
