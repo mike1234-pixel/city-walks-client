@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import React, { ReactNode, useEffect, useState } from "react"
 import { MDBIcon, MDBAnimation, MDBBtn, MDBContainer } from "mdbreact"
 import SectionA from '../SectionA/SectionA'
 import SectionB from '../SectionB/SectionB'
@@ -9,31 +9,39 @@ import { FaRoad, FaMapMarkerAlt } from 'react-icons/fa'
 import { IoMdTrain } from 'react-icons/io'
 import { motion } from "framer-motion"
 import pageTransition from "../../constants/pageTransition"
-import { connect } from "react-redux"
+import { connect } from "react-redux";
+import GlobalState from "../../types/State/Global/State"
+import WalkType from '../../types/Walks/Walk'
 import './Walk.scss'
 
+interface Props {
+  walks: Array<any>; // THIS SHOULD BE ANY ARRAY OF WALKS
+  history: any; // CAN THIS BE MORE SPECIFIC?
+}
 
-const Walk = (props) => {
+const Walk: React.FC<Props> = (props: Props) => {
 
   const { walks } = props
 
-  const [togglePopUp, setTogglePopUp] = useState(false)
+  const [togglePopUp, setTogglePopUp] = useState<boolean>(false)
 
-  const walkName = toTitleCase(props.history.location.pathname.replace("/walks/", "").replace(/-/g, " "))
+  const walkName: string = toTitleCase(props.history.location.pathname.replace("/walks/", "").replace(/-/g, " "))
 
   useEffect(() => {
     window.scrollTo(0, 0);
     document.addEventListener("mousedown", handleClickOutside);
   });
 
-  let walk = "loading";
-  let currentWalk;
+  let walk: string | ReactNode = "loading";
+  let currentWalk: WalkType | { iframeLink: string; iframeTitle: string } = { iframeLink: '', iframeTitle: '' }
 
-  const handleClick = (e) => {
+  const handleClick: () => void = () => {
     setTogglePopUp(!togglePopUp)
   }
 
-  const handleClickOutside = (e) => {
+  // THIS EVENT SHOULD HAVE A MORE SPECIFIC TYPE
+  const handleClickOutside: (e: any) => void = (e) => {
+
     if (e.target.id !== "popup-img" && e.target.id !== "see-map-btn" && e.target.id !== "map-icon") {
       setTogglePopUp(false)
     }
@@ -41,7 +49,7 @@ const Walk = (props) => {
 
   if (walks.length) {
 
-    let selectedWalk = walks.filter((walk) => walk.walk === walkName)
+    let selectedWalk: Array<WalkType> | WalkType | undefined = walks.filter((walk) => walk.walk === walkName)
     selectedWalk = selectedWalk[0]
 
     currentWalk = selectedWalk
@@ -99,13 +107,13 @@ const Walk = (props) => {
       {!togglePopUp && <MDBBtn id="see-map-btn" onClick={handleClick}>
         See Map <MDBIcon icon="map-marked-alt" id="map-icon" />
       </MDBBtn>}
-      {togglePopUp && <PopUp mapImg={currentWalk.mapImg} iframeLink={currentWalk.iframeLink} iframeTitle={currentWalk.iframeTitle} />}
+      {togglePopUp && <PopUp iframeLink={currentWalk.iframeLink} iframeTitle={currentWalk.iframeTitle} />}
     </div>
   )
 }
 
 //export default Walk
-const mapStateToProps = state => ({
+const mapStateToProps = (state: GlobalState) => ({
   walks: state.walksState.walks,
 });
 

@@ -1,23 +1,31 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { MDBIcon, MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBContainer } from 'mdbreact'
 import ReactPaginate from "react-paginate"
 import { motion } from "framer-motion"
 import pageTransition from "../../../constants/pageTransition"
 import { connect } from 'react-redux'
+import City from "../../../types/Cities/City"
+import GlobalState from "../../../types/State/Global/State"
 import './Cities.scss'
 
-const Cities = (props) => {
+interface Props {
+    cities: Array<any>;
+    handleClickSearch: Function;
+    setRedirect: Function;
+}
+
+const Cities: React.FC<Props> = (props: Props) => {
 
     const { cities, handleClickSearch, setRedirect } = props;
 
-    const [pageNumber, setPageNumber] = useState(0)
+    const [pageNumber, setPageNumber] = useState<number>(0)
 
-    const citiesPerPage = 3;
-    const pagesVisited = pageNumber * citiesPerPage;
+    const citiesPerPage: number = 3;
+    const pagesVisited: number = pageNumber * citiesPerPage;
 
-    const pageCount = Math.ceil(cities.length / citiesPerPage);
+    const pageCount: number = Math.ceil(cities.length / citiesPerPage);
 
-    function submitSearch(cityName) {
+    function submitSearch(cityName: string) {
         handleClickSearch(cityName)
         setRedirect(true)
     }
@@ -32,7 +40,7 @@ const Cities = (props) => {
                             <MDBCardBody>
                                 <MDBCardTitle>{city.city}</MDBCardTitle>
                                 <MDBCardText>{city.description}</MDBCardText>
-                                <MDBBtn outline color="white" className="city-card-btn">Find walks <MDBIcon icon="search" /></MDBBtn>
+                                <MDBBtn outline className="city-card-btn">Find walks <MDBIcon icon="search" /></MDBBtn>
                             </MDBCardBody>
                         </MDBCard>
                     </div>
@@ -41,7 +49,7 @@ const Cities = (props) => {
         )
     }
 
-    const changePage = ({ selected }) => {
+    const changePage = ({ selected }: any) => {
         setPageNumber(selected);
     }
 
@@ -82,16 +90,16 @@ const Cities = (props) => {
     )
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        handleClickSearch: (cityToSearch) => dispatch({ type: 'HANDLE_CLICK_SEARCH', cityToSearch }),
-        setRedirect: (boolValue) => dispatch({ type: 'SET_REDIRECT', boolValue }),
-    }
-}
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state: GlobalState) => ({
     cities: state.citiesState.cities,
 });
+
+const mapDispatchToProps = (dispatch: Function) => {
+    return {
+        handleClickSearch: (cityToSearch: string) => dispatch({ type: 'HANDLE_CLICK_SEARCH', cityToSearch }),
+        setRedirect: (boolValue: boolean) => dispatch({ type: 'SET_REDIRECT', boolValue }),
+    }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cities);
 

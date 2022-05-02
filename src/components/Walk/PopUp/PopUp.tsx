@@ -1,8 +1,14 @@
-import './PopUp.css'
+import React from 'react'
 import { useSpring, animated } from "react-spring"
 import { MDBContainer } from "mdbreact"
+import './PopUp.css'
 
-const PopUp = (props) => {
+interface Props {
+    iframeLink: string;
+    iframeTitle: string;
+}
+
+const PopUp: React.FC<Props> = (props: Props) => {
 
     const { iframeLink, iframeTitle } = props
 

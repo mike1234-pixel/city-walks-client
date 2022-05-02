@@ -1,7 +1,16 @@
-import './NotFound404.scss'
 import { MDBContainer } from "mdbreact"
+import React from 'react'
+import Location from "../../../types/Generic/Location"
+import './NotFound404.scss'
 
-const nf404 = ({ location }) => {
+interface Props {
+    location: Location
+}
+
+const nf404: React.FC<Props> = ({ location }: { location: Location }) => {
+
+    console.log(location)
+
     const errorMessage = `404 Error: Page not found at ${location.pathname}`
     return (
         <MDBContainer>

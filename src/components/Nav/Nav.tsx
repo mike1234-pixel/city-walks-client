@@ -1,11 +1,17 @@
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { useHistory } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar'
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBHamburgerToggler, MDBCollapse, MDBInput, MDBContainer, MDBRow, MDBCol } from "mdbreact"
 import { connect } from 'react-redux'
+import GlobalState from "../../types/State/Global/State"
 import './Nav.scss'
 
-const Nav = (props) => {
+interface Props {
+  redirect: boolean;
+  setRedirect: Function;
+}
+
+const Nav: React.FC<Props> = (props: Props) => {
 
   // local state
   const [toggleNav, setToggleNav] = useState(false)
@@ -67,13 +73,13 @@ const Nav = (props) => {
   )
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Function) => {
   return {
-    setRedirect: (boolValue) => dispatch({ type: 'SET_REDIRECT', boolValue }),
+    setRedirect: (boolValue: boolean) => dispatch({ type: 'SET_REDIRECT', boolValue }),
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: GlobalState) => ({
   redirect: state.searchState.redirect,
 });
 

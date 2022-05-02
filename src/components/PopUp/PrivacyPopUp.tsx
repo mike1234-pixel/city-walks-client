@@ -1,15 +1,20 @@
+import React from 'react'
 import { MDBBtn, MDBContainer } from "mdbreact"
 import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
 import "./PrivacyPopUp.scss"
 
-const PrivacyPopUp = (props) => {
+interface Props {
+    setPrivacyPopupVisible: Function;
+}
+
+const PrivacyPopUp: React.FC<Props> = (props: Props) => {
 
     const { setPrivacyPopupVisible } = props
 
     const handlePrivacyPopup = () => {
         setPrivacyPopupVisible(false)
-        localStorage.setItem("popupVisible", false)
+        localStorage.setItem('popupVisible', 'false')
     }
 
     return (
@@ -25,9 +30,9 @@ const PrivacyPopUp = (props) => {
     )
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Function) => {
     return {
-        setPrivacyPopupVisible: (boolValue) => dispatch({ type: 'SET_POPUP_VISIBLE', boolValue }),
+        setPrivacyPopupVisible: (boolValue: boolean) => dispatch({ type: 'SET_POPUP_VISIBLE', boolValue }),
     }
 }
 

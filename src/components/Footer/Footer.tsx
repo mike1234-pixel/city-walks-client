@@ -1,3 +1,4 @@
+import React from 'react'
 import { Link, useHistory } from "react-router-dom"
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from 'mdbreact'
 import { GiWalkingBoot } from 'react-icons/gi'
@@ -15,7 +16,7 @@ interface Props {
   setUserLastName: Function;
 }
 
-const Footer = (props: Props) => {
+const Footer: React.FC<Props> = (props: Props) => {
 
   const { loggedIn, userId, setLoggedIn, setUserId, setUserFirstName, setUserLastName } = props
 

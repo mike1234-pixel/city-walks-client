@@ -112,3 +112,10 @@ To run tests for a single component run:
 ## NEXT STEPS:
 - set up tslint using https://khalilstemmler.com/blogs/typescript/eslint-for-typescript/ and follow the guidance the linter gives you.
 - ensure each component is fully typesafe before moving onto the next
+
+
+
+
+
+## components to return to ts
+- Walk.tsx

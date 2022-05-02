@@ -1,18 +1,26 @@
+import React from 'react'
 import { MDBInput } from "mdbreact"
 import { FaSearchLocation } from "react-icons/fa"
 import { connect } from 'react-redux'
+import GlobalState from "../../types/State/Global/State"
 import './SeachBar.scss'
 
-let SearchBar = (props) => {
+interface Props {
+  handleChangeSearch: Function;
+  setRedirect: Function;
+  searchValue: string;
+}
+
+let SearchBar: React.FC<Props> = (props: Props) => {
 
   const { handleChangeSearch, setRedirect, searchValue } = props;
 
-  function submitSearch(e) {
+  function submitSearch(e: React.FormEvent) {
     e.preventDefault()
     setRedirect(true)
   }
 
-  function processInputValue(e) {
+  function processInputValue(e: React.ChangeEvent<any>) {
     const inputValue = e.target.value
     handleChangeSearch(inputValue)
   }
@@ -36,15 +44,16 @@ let SearchBar = (props) => {
   )
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    handleChangeSearch: (inputValue) => dispatch({ type: 'HANDLE_CHANGE_SEARCH', inputValue }),
-    setRedirect: (boolValue) => dispatch({ type: 'SET_REDIRECT', boolValue }),
-  }
-}
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state: GlobalState) => ({
   searchValue: state.searchState.searchValue,
 });
+
+
+const mapDispatchToProps = (dispatch: Function) => {
+  return {
+    handleChangeSearch: (inputValue: string) => dispatch({ type: 'HANDLE_CHANGE_SEARCH', inputValue }),
+    setRedirect: (boolValue: boolean) => dispatch({ type: 'SET_REDIRECT', boolValue }),
+  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
