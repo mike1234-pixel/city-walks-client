@@ -1,16 +1,18 @@
-import { AnyAction } from "redux";
+import State from '../types/State/Search/State'
 
-interface SearchState {
-    redirect: boolean,
-    searchValue: string
+interface Action {
+    type: string;
+    boolValue?: boolean;
+    inputValue?: string;
+    cityToSearch?: string;
 }
 
-const INITIAL_STATE: SearchState = {
+const INITIAL_STATE: State = {
     redirect: false,
     searchValue: '',
 };
 
-const searchReducer = (state = INITIAL_STATE, action: AnyAction) => {
+const searchReducer = (state: State = INITIAL_STATE, action: Action) => {
     switch (action.type) {
         case 'SET_REDIRECT':
             return { ...state, redirect: action.boolValue };

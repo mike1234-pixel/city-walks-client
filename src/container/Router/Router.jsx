@@ -16,7 +16,7 @@ import Admin from '../../components/pages/Admin/Admin'
 import NotFound404 from '../../components/pages/404/NotFound404'
 import PrivacyPolicy from "../../components/pages/PrivacyPolicy/PrivacyPolicy"
 import PrivacyPopUp from '../../components/PopUp/PrivacyPopUp'
-import Footer from '../../components/Footer/Footer'
+import Footer from '../../components/Footer/Footer.tsx'
 import Walk from '../../components/Walk/Walk'
 import Threads from '../../components/pages/LoginPage/LoggedInView/Components/Threads/Threads'
 import { Route, Switch, useLocation } from "react-router-dom"

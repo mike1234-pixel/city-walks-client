@@ -3,9 +3,19 @@ import { MDBCol, MDBContainer, MDBRow, MDBFooter } from 'mdbreact'
 import { GiWalkingBoot } from 'react-icons/gi'
 import axios from "axios"
 import { connect } from 'react-redux'
+import GlobalState from '../../types/State/Global/State'
 import './Footer.scss'
 
-const Footer = (props) => {
+interface Props {
+  loggedIn: boolean;
+  userId: string;
+  setLoggedIn: Function;
+  setUserId: Function;
+  setUserFirstName: Function;
+  setUserLastName: Function;
+}
+
+const Footer = (props: Props) => {
 
   const { loggedIn, userId, setLoggedIn, setUserId, setUserFirstName, setUserLastName } = props
 
@@ -13,13 +23,13 @@ const Footer = (props) => {
 
   const logOut = () => {
     localStorage.clear()
-    localStorage.setItem("popupVisible", false)
+    localStorage.setItem('popupVisible', 'false')
     setLoggedIn(false)
-    setUserId("")
-    setUserFirstName("")
-    setUserLastName("")
-    alert("Logged out successfully.")
-    history.push("/forum");
+    setUserId('')
+    setUserFirstName('')
+    setUserLastName('')
+    alert('Logged out successfully.')
+    history.push('/forum');
   }
 
   const deleteAccount = () => {
@@ -103,17 +113,17 @@ const Footer = (props) => {
   );
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: GlobalState) => ({
   loggedIn: state.loginState.loggedIn,
   userId: state.loginState.userId,
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Function) => {
   return {
-    setLoggedIn: (boolValue) => dispatch({ type: 'SET_LOGGED_IN', boolValue }),
-    setUserId: (userID) => dispatch({ type: 'SET_USER_ID', userID }),
-    setUserFirstName: (userFirstName) => dispatch({ type: 'SET_USER_FIRST_NAME', userFirstName }),
-    setUserLastName: (userLastName) => dispatch({ type: 'SET_USER_LAST_NAME', userLastName }),
+    setLoggedIn: (boolValue: boolean) => dispatch({ type: 'SET_LOGGED_IN', boolValue }),
+    setUserId: (userID: string) => dispatch({ type: 'SET_USER_ID', userID }),
+    setUserFirstName: (userFirstName: string) => dispatch({ type: 'SET_USER_FIRST_NAME', userFirstName }),
+    setUserLastName: (userLastName: string) => dispatch({ type: 'SET_USER_LAST_NAME', userLastName }),
   }
 }
 
