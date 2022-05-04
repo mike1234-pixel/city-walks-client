@@ -69,6 +69,8 @@ const LoginForm: React.FC<Props> = (props: Props) => {
       });
   }
 
+  // ADD .CATCH() HERE (AND TO ALL RESPONSES?)
+
   return (
     <div key="user-login" className="min-page-height">
       <UserPortalNav />

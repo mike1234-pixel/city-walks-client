@@ -13,7 +13,6 @@ interface Props {
 
 const Nav: React.FC<Props> = (props: Props) => {
 
-  // local state
   const [toggleNav, setToggleNav] = useState(false)
 
   const { redirect, setRedirect } = props;
