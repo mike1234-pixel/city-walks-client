@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { ReactNode, useState, useEffect } from "react"
 import { MDBBtn, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBHamburgerToggler, MDBCollapse, MDBIcon, MDBInput, MDBContainer } from "mdbreact";
 import axios, { AxiosResponse } from "axios"
 import qs from "qs"
@@ -11,6 +11,7 @@ import AddBoardForm from './AddBoardForm/AddBoardForm'
 import DeleteBoardForm from "./DeleteBoardForm/DeleteBoardForm"
 import AddBlogPostForm from "./AddBlogPostForm/AddBlogPostForm"
 import DeleteBlogPostForm from "./DeleteBlogPostForm/DeleteBlogPostForm"
+import AdminCredentials from "../../../types/PostRequests/AdminCredentials";
 import './Admin.scss'
 
 const Admin: React.FC = () => {
@@ -22,7 +23,7 @@ const Admin: React.FC = () => {
     setToggleAdminPanel(!toggleAdminPanel)
   }
 
-  let displayForm
+  let displayForm: ReactNode
   if (form === "addWalk") {
     displayForm = <AddWalkForm />;
   } else if (form === "addCity") {
@@ -51,10 +52,10 @@ const Admin: React.FC = () => {
   const [adminPassword, setAdminPassword] = useState<string>("")
   const [adminLoggedIn, setAdminLoggedIn] = useState<boolean>(false)
 
-  const handleSubmitAdminLogin = (event: { preventDefault: () => void; }) => {
+  const handleSubmitAdminLogin: (event: React.FormEvent) => void = (event) => {
     event.preventDefault()
 
-    const payload = {
+    const payload: AdminCredentials = {
       username: adminUserName,
       password: adminPassword,
     };
@@ -75,7 +76,7 @@ const Admin: React.FC = () => {
 
   }
 
-  const handleChangeAdminLogin = (event: React.ChangeEvent<any>) => {
+  const handleChangeAdminLogin: (event: React.ChangeEvent<any>) => void = (event) => {
     switch (event.target.name) {
       case "admin-username":
         setAdminUserName(event.target.value)
@@ -86,7 +87,7 @@ const Admin: React.FC = () => {
     }
   }
 
-  const adminLogOut = () => {
+  const adminLogOut: () => void = () => {
     setAdminLoggedIn(false)
   }
 

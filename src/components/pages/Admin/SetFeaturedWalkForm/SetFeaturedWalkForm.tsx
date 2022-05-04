@@ -3,7 +3,7 @@ import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
 import axios, { AxiosResponse } from "axios";
 import qs from "qs";
 import toTitleCase from "../../../../functions/toTitleCase"
-import FeaturedWalks from "../../../../types/Requests/FeaturedWalks";
+import FeaturedWalks from "../../../../types/PostRequests/FeaturedWalks";
 import './SetFeaturedWalkForm.scss'
 
 const SetFeaturedWalkForm: React.FC = () => {
@@ -11,7 +11,7 @@ const SetFeaturedWalkForm: React.FC = () => {
   const [featuredWalk2, setFeaturedWalk2] = useState<string>("")
   const [featuredWalk3, setFeaturedWalk3] = useState<string>("")
 
-  const handleChange = (event: React.ChangeEvent<any>) => {
+  const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
     switch (event.target.name) {
       case "featured-walk-1":
         setFeaturedWalk1(event.target.value)
@@ -25,7 +25,7 @@ const SetFeaturedWalkForm: React.FC = () => {
     }
   }
 
-  const handleSubmit = (event: { preventDefault: () => void; }) => {
+  const handleSubmit: (event: React.FormEvent) => void = (event) => {
     event.preventDefault()
 
     let payload: FeaturedWalks = {
