@@ -1,16 +1,34 @@
+import React from 'react'
 import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact"
 import UserPortalNav from "../UserPortalNav"
 import { Link } from "react-router-dom"
-import axios from "axios"
+import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
+import GlobalState from '../../../../types/State/Global/State'
+import RegistrationCredentials from '../../../../types/PostRequests/RegistrationCredentials'
 import './RegistrationForm.scss'
 
-const RegistrationForm = (props) => {
+interface Props {
+  firstName: string;
+  lastName: string;
+  registrationEmail: string;
+  registrationPassword: string;
+  activationMessageEmphasis: string;
+  setFirstName: Function;
+  setLastName: Function;
+  setRegistrationEmail: Function;
+  setRegistrationPassword: Function;
+  setUserFirstName: Function;
+  setUserLastName: Function;
+  setActivationMessageEmphasis: Function;
+}
+
+const RegistrationForm: React.FC<Props> = (props: Props) => {
 
   const { firstName, lastName, registrationEmail, registrationPassword, activationMessageEmphasis, setFirstName, setLastName, setRegistrationEmail, setRegistrationPassword, setUserFirstName, setUserLastName, setActivationMessageEmphasis } = props
 
-  const handleChangeRegistration = (event) => {
+  const handleChangeRegistration: (event: React.ChangeEvent<any>) => void = (event) => {
     switch (event.target.name) {
       case "registration-fname":
         setFirstName(event.target.value)
@@ -27,11 +45,11 @@ const RegistrationForm = (props) => {
     }
   }
 
-  const handleSubmitRegistration = (event) => {
-    console.log("handle submit triggered")
+  const handleSubmitRegistration: (event: React.FormEvent) => void = (event) => {
+
     event.preventDefault()
 
-    const payload = {
+    const payload: RegistrationCredentials = {
       fname: firstName,
       lname: lastName,
       email: registrationEmail,
@@ -40,10 +58,8 @@ const RegistrationForm = (props) => {
 
     axios
       .post("https://city-walks.herokuapp.com/register-user", qs.stringify(payload))
-      .then((res, err) => {
-        if (err) {
-          console.log(err);
-        } else if (res.data === "An account with this email already exists.") {
+      .then((res: AxiosResponse) => {
+        if (res.data === "An account with this email already exists.") {
           alert("An account with this email already exists.")
         } else if (res.data === "We have sent you an email. Please verify your account by clicking the link in the mail.") {
           alert("We have sent you an email. Please verify your account by clicking the link in the email. (This code expires after 10 minutes)")
@@ -58,6 +74,8 @@ const RegistrationForm = (props) => {
         } else {
           alert("Registration Complete")
         }
+      }).catch((err: AxiosError) => {
+        console.log(err)
       });
   }
 
@@ -89,22 +107,22 @@ const RegistrationForm = (props) => {
   )
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: GlobalState) => ({
   firstName: state.loginState.firstName,
   lastName: state.loginState.lastName,
   registrationEmail: state.loginState.registrationEmail,
   activationMessageEmphasis: state.loginState.activationMessageEmphasis
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Function) => {
   return {
-    setFirstName: (firstName) => dispatch({ type: 'SET_FIRST_NAME', firstName }),
-    setLastName: (lastName) => dispatch({ type: 'SET_NAME_NAME', lastName }),
-    setRegistrationEmail: (registrationEmail) => dispatch({ type: 'SET_REGISTRATION_EMAIL', registrationEmail }),
-    setRegistrationPassword: (registrationPassword) => dispatch({ type: 'SET_REGISTRATION_PASSWORD', registrationPassword }),
-    setUserFirstName: (userFirstName) => dispatch({ type: 'SET_USER_FIRST_NAME', userFirstName }),
-    setUserLastName: (userLastName) => dispatch({ type: 'SET_USER_LAST_NAME', userLastName }),
-    setActivationMessageEmphasis: (activationMessageEmphasis) => dispatch({ type: 'SET_ACTIVATION_MESSAGE_EMPHASIS', activationMessageEmphasis }),
+    setFirstName: (firstName: string) => dispatch({ type: 'SET_FIRST_NAME', firstName }),
+    setLastName: (lastName: string) => dispatch({ type: 'SET_NAME_NAME', lastName }),
+    setRegistrationEmail: (registrationEmail: string) => dispatch({ type: 'SET_REGISTRATION_EMAIL', registrationEmail }),
+    setRegistrationPassword: (registrationPassword: string) => dispatch({ type: 'SET_REGISTRATION_PASSWORD', registrationPassword }),
+    setUserFirstName: (userFirstName: string) => dispatch({ type: 'SET_USER_FIRST_NAME', userFirstName }),
+    setUserLastName: (userLastName: string) => dispatch({ type: 'SET_USER_LAST_NAME', userLastName }),
+    setActivationMessageEmphasis: (activationMessageEmphasis: string) => dispatch({ type: 'SET_ACTIVATION_MESSAGE_EMPHASIS', activationMessageEmphasis }),
   }
 }
 

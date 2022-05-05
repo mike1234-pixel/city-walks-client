@@ -1,25 +1,32 @@
+import React from 'react'
 import { useState, useEffect } from "react"
 import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact"
-import axios from "axios"
+import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { motion } from "framer-motion"
 import pageTransition from "../../../constants/pageTransition"
 import { connect } from 'react-redux'
+import Message from '../../../types/PostRequests/Message'
+import GlobalState from '../../../types/State/Global/State'
 import "./Contact.scss"
 
-const Contact = (props) => {
+interface Props {
+  sitekey: string;
+}
+
+const Contact: React.FC<Props> = (props: Props) => {
 
   const { sitekey } = props
 
-  const [contactName, setContactName] = useState("");
-  const [contactEmail, setContactEmail] = useState("");
-  const [contactMessage, setContactMessage] = useState("");
+  const [contactName, setContactName] = useState<string>("");
+  const [contactEmail, setContactEmail] = useState<string>("");
+  const [contactMessage, setContactMessage] = useState<string>("");
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleChange = (event) => {
+  const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
     switch (event.target.name) {
       case "contact-name":
         setContactName(event.target.value);
@@ -33,18 +40,18 @@ const Contact = (props) => {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit: (event: React.FormEvent) => void = (event) => {
     event.preventDefault();
 
     window.grecaptcha.ready(() => {
-      window.grecaptcha.execute(sitekey, { action: 'submit' }).then(token => {
+      window.grecaptcha.execute(sitekey, { action: 'submit' }).then((token: string) => {
         submitData(token);
       });
     });
 
-    const submitData = token => {
+    const submitData = (token: string) => {
 
-      const payload = {
+      const payload: Message = {
         name: contactName,
         email: contactEmail,
         message: contactMessage,
@@ -53,10 +60,8 @@ const Contact = (props) => {
 
       axios
         .post("https://city-walks.herokuapp.com/contact-form", qs.stringify(payload))
-        .then((res, err) => {
-          if (err) {
-            console.log(err);
-          } if (res.data === "request failed recaptcha") {
+        .then((res: AxiosResponse) => {
+          if (res.data === "request failed recaptcha") {
             alert("request failed recaptcha.")
           } else {
             alert("Thanks for getting in touch. We will be in touch shortly.");
@@ -65,6 +70,8 @@ const Contact = (props) => {
             setContactMessage("");
             window.scrollTo(0, 0);
           }
+        }).catch((err: AxiosError) => {
+          console.log(err)
         });
     };
   }
@@ -125,7 +132,7 @@ const Contact = (props) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: GlobalState) => ({
   sitekey: state.recaptchaState.sitekey,
 });
 

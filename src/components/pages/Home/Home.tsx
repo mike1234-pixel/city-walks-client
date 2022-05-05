@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 import { MDBBtn, MDBContainer } from "mdbreact"
 import { Link } from "react-router-dom"
 import Carousel from '../../Carousel/Carousel'
@@ -11,19 +11,23 @@ import LocatorMap from "../../LocatorMap/LocatorMap"
 import { GiWalkingBoot } from 'react-icons/gi'
 import { RiArrowDropDownLine } from 'react-icons/ri'
 import { connect } from 'react-redux'
+import Walk from '../../../types/Walks/Walk'
 import './Home.scss'
+import GlobalState from "../../../types/State/Global/State"
 
-const Home = (props) => {
+interface Props {
+    walks: Array<Walk>
+}
+
+const Home: React.FC<Props> = (props: Props) => {
 
     const { walks } = props
-
-    console.log(props)
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    let featuredWalks = walks.filter(walk => walk.featuredWalk === true);
+    let featuredWalks: Array<Walk> = walks.filter(walk => walk.featuredWalk === true);
 
     // if there are less than 3 featured walks set in the db just use the first 3 entries in walks
     if (featuredWalks.length < 3) {
@@ -93,7 +97,7 @@ const Home = (props) => {
     }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: GlobalState) => ({
     walks: state.walksState.walks
 });
 

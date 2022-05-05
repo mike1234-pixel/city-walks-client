@@ -1,33 +1,46 @@
-import { useEffect, useState } from "react"
+import React, { ReactNode, useEffect, useState } from "react"
 import toTitleCase from "../../../functions/toTitleCase"
 import { MDBInput, MDBBtn, MDBIcon, MDBCard, MDBCardTitle, MDBCardText, MDBContainer } from "mdbreact"
-import axios from "axios"
+import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import marked from "marked"
 import { motion } from "framer-motion"
 import pageTransition from "../../../constants/pageTransition"
-import './Sight.scss'
+import SelectedComment from "../../../types/PostRequests/SelectedComment"
+import GlobalState from "../../../types/State/Global/State"
+import SightT from "../../../types/Sights/Sight"
+import Comment from "../../../types/Sights/Comment"
 import { connect } from 'react-redux'
+import CommentToSubmit from "../../../types/PostRequests/CommentToSubmit"
+import './Sight.scss'
 
-const Sight = (props) => {
+interface Props {
+  history: any;
+  sights: Array<SightT>;
+  loggedIn: boolean;
+  userFirstName: string;
+  userId: string;
+}
+
+const Sight: React.FC<Props> = (props: Props) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   const { sights, loggedIn, userFirstName, userId } = props
 
-  const blogTitle = toTitleCase(props.history.location.pathname.replace("/sights/", "").replace(/-/g, " "))
+  const blogTitle: string = toTitleCase(props.history.location.pathname.replace("/sights/", "").replace(/-/g, " "))
 
-  const [comment, setComment] = useState("")
+  const [comment, setComment] = useState<string>("")
 
-  const handleChange = (event) => {
+  const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
     setComment(event.target.value)
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit: (event: React.FormEvent) => void = (event) => {
     event.preventDefault()
 
-    let payload = {
+    let payload: CommentToSubmit = {
       currentBlogTitle: blogTitle,
       comment: comment,
       userFirstName: userFirstName,
@@ -36,14 +49,14 @@ const Sight = (props) => {
 
     axios
       .post("https://city-walks.herokuapp.com/add-blog-comment", qs.stringify(payload))
-      .then((res, err) => {
-        if (err) {
-          console.log(err);
-        } else if (res.data === "comment submitted") {
+      .then((res: AxiosResponse) => {
+        if (res.data === "comment submitted") {
           console.log("comment submitted")
         } else {
           console.log("comment not submitted")
         }
+      }).catch((err: AxiosResponse) => {
+        console.log(err)
       });
 
     alert("Comment Submitted")
@@ -51,33 +64,32 @@ const Sight = (props) => {
     window.location.reload()
   }
 
-  const handleDeleteComment = (commentId) => {
+  const handleDeleteComment: (commentId: string) => void = (commentId) => {
 
-    let payload = {
+    let payload: SelectedComment = {
       currentBlogTitle: blogTitle,
       commentId: commentId,
     };
 
     axios
       .delete("https://city-walks.herokuapp.com/delete-blog-comment", { data: payload })
-      .then((res, err) => {
-        if (err) {
-          console.log(err);
-        } else {
-          alert("comment deleted.")
-          window.location.reload()
-        }
+      .then((res: AxiosResponse) => {
+
+        alert("comment deleted.")
+        window.location.reload()
+
+      }).catch((err: AxiosError) => {
+        console.log(err)
       });
   }
 
-  let post = "loading"
+  let post: string | ReactNode = "loading"
 
   if (sights) {
 
-    let selectedBlogPost = sights.filter((post) => post.title === blogTitle)
-    selectedBlogPost = selectedBlogPost[0]
+    let selectedBlogPost: SightT | any = sights.filter((post: SightT) => post.title === blogTitle)[0]
 
-    const createMarkup = (markup) => {
+    const createMarkup: (markup: string) => ({ __html: string }) = (markup) => {
       return { __html: marked(markup, { breaks: true }) }
     }
 
@@ -93,7 +105,7 @@ const Sight = (props) => {
           <img className="blog-post-img" src={selectedBlogPost.img} />
           <div className="blog-post-content" dangerouslySetInnerHTML={createMarkup(selectedBlogPost.content)}></div>
           <p>{selectedBlogPost.submittedOn.replace('T', ' ').substring(0, 19)}</p>
-          {selectedBlogPost.comments.map((comment) => {
+          {selectedBlogPost.comments.map((comment: Comment) => {
             return (
               <MDBCard className="blog-post-comment-card" key={comment._id}>
                 <MDBCardTitle>{comment.userFirstName} commented:</MDBCardTitle>
@@ -139,12 +151,12 @@ const Sight = (props) => {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: GlobalState) => ({
   sights: state.sightsState.sights,
   loggedIn: state.loginState.loggedIn,
   userFirstName: state.loginState.userFirstName,
   userId: state.loginState.userId
 });
 
-export default connect(mapStateToProps)(Sight);
+export default connect(mapStateToProps, null)(Sight);
 

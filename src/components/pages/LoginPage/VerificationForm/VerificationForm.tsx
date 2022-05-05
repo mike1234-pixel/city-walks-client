@@ -1,15 +1,23 @@
+import React from 'react'
 import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact"
 import UserPortalNav from "../UserPortalNav"
-import axios from "axios"
+import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
 import './VerificationForm.scss'
+import EmailToVerify from '../../../../types/PostRequests/EmailToVerify'
+import GlobalState from '../../../../types/State/Global/State'
 
-const VerificationForm = (props) => {
+interface Props {
+  verificationEmail: string;
+  setVerificationEmail: Function;
+}
+
+const VerificationForm: React.FC<Props> = (props: Props) => {
 
   const { verificationEmail, setVerificationEmail } = props
 
-  const handleChangeVerification = (event) => {
+  const handleChangeVerification: (event: React.ChangeEvent<any>) => void = (event) => {
     switch (event.target.name) {
       case "verification-email":
         setVerificationEmail(event.target.value)
@@ -17,24 +25,24 @@ const VerificationForm = (props) => {
     }
   }
 
-  const handleSubmitVerification = (event) => {
+  const handleSubmitVerification: (event: React.FormEvent) => void = (event) => {
     console.log("handle submit verification")
     event.preventDefault()
 
-    const payload = {
+    const payload: EmailToVerify = {
       email: verificationEmail,
     };
 
     axios
       .post("https://city-walks.herokuapp.com/reverify-user", qs.stringify(payload))
-      .then((res, err) => {
-        if (err) {
-          console.log(err);
-        } else {
-          alert("Verification email sent. Check your inbox.")
-          setVerificationEmail("")
-          window.scrollTo(0, 0)
-        }
+      .then((res: AxiosResponse) => {
+
+        alert("Verification email sent. Check your inbox.")
+        setVerificationEmail("")
+        window.scrollTo(0, 0)
+
+      }).catch((err: AxiosError) => {
+        console.log(err)
       })
   }
 
@@ -60,13 +68,13 @@ const VerificationForm = (props) => {
   )
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: GlobalState) => ({
   verificationEmail: state.loginState.verificationEmail,
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Function) => {
   return {
-    setVerificationEmail: (verificationEmail) => dispatch({ type: 'SET_VERIFICATION_EMAIL', verificationEmail }),
+    setVerificationEmail: (verificationEmail: string) => dispatch({ type: 'SET_VERIFICATION_EMAIL', verificationEmail }),
   }
 }
 
