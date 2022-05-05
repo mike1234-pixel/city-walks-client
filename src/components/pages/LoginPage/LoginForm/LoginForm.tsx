@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from "react-router-dom"
 import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact"
 import UserPortalNav from "../UserPortalNav"
-import axios, { AxiosResponse } from "axios"
+import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
 import GlobalState from '../../../../types/State/Global/State'
@@ -66,10 +66,12 @@ const LoginForm: React.FC<Props> = (props: Props) => {
           pushSlug("/forum");
           window.scrollTo(0, 0)
         }
+      }).catch((err: AxiosError) => {
+        console.log(err)
       });
   }
 
-  // ADD .CATCH() HERE (AND TO ALL RESPONSES?)
+  // ADD .CATCH() HERE (AND TO ALL RESPONSES?) .... METHOD IS AXIOS.THEN! (READ UP ON ERROR HANDLING IN AXIOS SPECIFICALLY)
 
   return (
     <div key="user-login" className="min-page-height">

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
-import axios, { AxiosResponse } from "axios"
+import axios, { AxiosError, AxiosResponse } from "axios"
 import toTitleCase from '../../../../functions/toTitleCase'
 import SelectedWalk from "../../../../types/PostRequests/SelectedWalk"
 import './DeleteWalkForm.scss'
@@ -32,7 +32,9 @@ const DeleteWalkForm: React.FC = () => {
         } else {
           console.log("walk not deleted")
         }
-      });
+      }).catch((err: AxiosError) => {
+        console.log(err)
+      });;
 
     alert("Walk Deleted")
     setWalk("")

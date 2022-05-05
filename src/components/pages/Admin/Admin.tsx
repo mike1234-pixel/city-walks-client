@@ -1,6 +1,6 @@
 import React, { ReactNode, useState, useEffect } from "react"
 import { MDBBtn, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBHamburgerToggler, MDBCollapse, MDBIcon, MDBInput, MDBContainer } from "mdbreact";
-import axios, { AxiosResponse } from "axios"
+import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import AddWalkForm from './AddWalkForm/AddWalkForm'
 import AddCityForm from './AddCityForm/AddCityForm'
@@ -72,7 +72,9 @@ const Admin: React.FC = () => {
           setAdminPassword("")
           window.scrollTo(0, 0)
         }
-      });
+      }).catch((err: AxiosError) => {
+        console.log(err)
+      });;
 
   }
 

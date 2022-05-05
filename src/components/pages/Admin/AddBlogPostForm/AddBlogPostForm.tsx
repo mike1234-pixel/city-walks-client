@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import qs from "qs";
 import toTitleCase from '../../../../functions/toTitleCase'
 import BlogPost from "../../../../types/PostRequests/BlogPost";
@@ -53,7 +53,9 @@ const AddBlogPostForm: React.FC = () => {
         } else {
           console.log("blog not saved")
         }
-      });
+      }).catch((err: AxiosError) => {
+        console.log(err)
+      });;
 
     alert("Blog Post Submitted")
     setPostTitle("")

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import toTitleCase from '../../../../functions/toTitleCase'
 import SelectedBoard from "../../../../types/PostRequests/SelectedBoard";
 import './DeleteBoardForm.scss'
@@ -28,7 +28,9 @@ const DeleteBoardForm: React.FC = () => {
         } else {
           console.log("board not deleted")
         }
-      });
+      }).catch((err: AxiosError) => {
+        console.log(err)
+      });;
 
     alert("Board Deleted")
     setBoardName("")

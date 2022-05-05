@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import qs from "qs";
 import toTitleCase from '../../../../functions/toTitleCase'
 import Walk from '../../../../types/PostRequests/Walk'
@@ -143,7 +143,9 @@ const AddWalkForm: React.FC = () => {
         } else {
           console.log("walk not saved")
         }
-      });
+      }).catch((err: AxiosError) => {
+        console.log(err)
+      });;
 
     alert("Walk Submitted")
     setWalk("")

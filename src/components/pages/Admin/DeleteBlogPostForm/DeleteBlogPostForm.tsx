@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
-import axios, { AxiosResponse } from "axios"
+import axios, { AxiosError, AxiosResponse } from "axios"
 import toTitleCase from '../../../../functions/toTitleCase'
 import SelectedPost from "../../../../types/PostRequests/SelectedPost"
 import './DeleteBlogPostForm.scss'
@@ -32,7 +32,9 @@ const DeleteBlogPostForm: React.FC = () => {
         } else {
           console.log("response not deleted")
         }
-      });
+      }).catch((err: AxiosError) => {
+        console.log(err)
+      });;
 
     alert("Blog Post Deleted")
     setPostTitle("")

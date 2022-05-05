@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import qs from "qs";
 import toTitleCase from "../../../../functions/toTitleCase"
 import FeaturedWalks from "../../../../types/PostRequests/FeaturedWalks";
@@ -42,7 +42,9 @@ const SetFeaturedWalkForm: React.FC = () => {
         } else {
           console.log("featured walk not set")
         }
-      });
+      }).catch((err: AxiosError) => {
+        console.log(err)
+      });;
     alert("Featured walks set")
     setFeaturedWalk1("")
     setFeaturedWalk2("")

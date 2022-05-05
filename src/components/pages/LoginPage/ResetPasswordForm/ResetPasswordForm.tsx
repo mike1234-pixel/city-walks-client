@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from "react-router-dom"
 import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact"
 import UserPortalNav from "../UserPortalNav"
-import axios, { AxiosResponse } from "axios"
+import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
 import GlobalState from '../../../../types/State/Global/State'
@@ -69,7 +69,9 @@ const ResetPasswordForm: React.FC<Props> = (props: Props) => {
             pushSlug("/forum/login");
             window.scrollTo(0, 0)
           }
-        })
+        }).catch((err: AxiosError) => {
+          console.log(err)
+        });
     } else {
       alert("Passwords don't match. Please try again.")
     }

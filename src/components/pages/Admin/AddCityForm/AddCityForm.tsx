@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import qs from "qs";
 import toTitleCase from '../../../../functions/toTitleCase'
 import City from '../../../../types/PostRequests/City'
@@ -43,7 +43,9 @@ const AddCityForm: React.FC = () => {
         } else {
           console.log("city not saved")
         }
-      });
+      }).catch((err: AxiosError) => {
+        console.log(err)
+      });;
 
     alert("City Submitted")
     setCity("")
