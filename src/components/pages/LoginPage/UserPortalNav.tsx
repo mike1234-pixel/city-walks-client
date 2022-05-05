@@ -28,13 +28,13 @@ const UserPortalNav: React.FC<Props> = (props: Props) => {
 
   const [toggleLoginPanel, setToggleLoginPanel] = useState<boolean>(false);
 
-  const handleToggleLoginPanel = () => {
+  const handleToggleLoginPanel: () => void = () => {
     setToggleLoginPanel(!toggleLoginPanel);
   };
 
   const pushSlug: Function = useHistory().push
 
-  const logOut = () => {
+  const logOut: () => void = () => {
     localStorage.clear()
     localStorage.setItem('popupVisible', 'false')
     setLoggedIn(false)

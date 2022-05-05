@@ -1,12 +1,20 @@
-import BoardBox from "../LoggedInView/Components/BoardBox/BoardBox"
+import React from 'react'
+import BoardBox from "./Components/BoardBox/BoardBox"
 import { MDBContainer } from "mdbreact"
 import UserPortalNav from "../UserPortalNav"
 import { motion } from "framer-motion"
 import pageTransition from "../../../../constants/pageTransition"
 import { connect } from 'react-redux'
+import Board from '../../../../types/Boards/Board'
+import GlobalState from '../../../../types/State/Global/State'
 import './Boards.scss'
 
-const Boards = (props) => {
+interface Props {
+    boards: Array<Board>;
+    userFirstName: string;
+}
+
+const Boards: React.FC<any> = (props: Props) => {
 
     const { boards, userFirstName } = props;
 
@@ -46,7 +54,7 @@ const Boards = (props) => {
     )
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: GlobalState) => ({
     boards: state.boardsState.boards,
     userFirstName: state.loginState.userFirstName
 });

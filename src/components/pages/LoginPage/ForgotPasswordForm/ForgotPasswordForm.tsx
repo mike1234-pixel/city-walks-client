@@ -1,15 +1,22 @@
+import React from 'react'
 import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact"
 import UserPortalNav from "../UserPortalNav"
-import axios from "axios"
+import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
+import GlobalState from '../../../../types/State/Global/State'
 import './ForgotPasswordForm.scss'
 
-const ForgotPasswordForm = (props) => {
+interface Props {
+  forgotPasswordEmail: string;
+  setForgotPasswordEmail: Function;
+}
+
+const ForgotPasswordForm: React.FC<Props> = (props: Props) => {
 
   const { forgotPasswordEmail, setForgotPasswordEmail } = props
 
-  const handleChangeForgotPassword = (event) => {
+  const handleChangeForgotPassword: (event: React.ChangeEvent<any>) => void = (event) => {
     switch (event.target.name) {
       case "forgot-password-email":
         setForgotPasswordEmail(event.target.value)
@@ -17,7 +24,7 @@ const ForgotPasswordForm = (props) => {
     }
   }
 
-  const handleSubmitForgotPassword = (event) => {
+  const handleSubmitForgotPassword: (event: React.FormEvent) => void = (event) => {
     console.log("handle submit forgot password")
     event.preventDefault()
 
@@ -27,14 +34,14 @@ const ForgotPasswordForm = (props) => {
 
     axios
       .post("https://city-walks.herokuapp.com/forgot-password", qs.stringify(payload))
-      .then((res, err) => {
-        if (err) {
-          console.log(err);
-        } else {
-          alert("We have sent you an email. Please click the click in your email to reset your password")
-          setForgotPasswordEmail("")
-          window.scrollTo(0, 0)
-        }
+      .then((res: AxiosResponse) => {
+
+        alert("We have sent you an email. Please click the click in your email to reset your password")
+        setForgotPasswordEmail("")
+        window.scrollTo(0, 0)
+
+      }).catch((err: AxiosError) => {
+        console.log(err)
       })
   }
 
@@ -58,13 +65,13 @@ const ForgotPasswordForm = (props) => {
   )
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: GlobalState) => ({
   forgotPasswordEmail: state.loginState.forgotPasswordEmail,
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Function) => {
   return {
-    setForgotPasswordEmail: (forgotPasswordEmail) => dispatch({ type: 'SET_FORGOT_PASSWORD_EMAIL', forgotPasswordEmail }),
+    setForgotPasswordEmail: (forgotPasswordEmail: string) => dispatch({ type: 'SET_FORGOT_PASSWORD_EMAIL', forgotPasswordEmail }),
   }
 }
 

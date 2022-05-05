@@ -6,6 +6,7 @@ import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
 import GlobalState from '../../../../types/State/Global/State'
+import Credentials from '../../../../types/PostRequests/Credentials'
 import './LoginForm.scss'
 
 interface Props {
@@ -36,11 +37,11 @@ const LoginForm: React.FC<Props> = (props: Props) => {
     }
   }
 
-  const handleSubmitLogin = (e: { preventDefault: () => void }) => {
+  const handleSubmitLogin = (e: React.FormEvent) => {
     console.log("handle submit login triggered")
     e.preventDefault()
 
-    const payload = {
+    const payload: Credentials = {
       email: loginEmail,
       password: loginPassword
     };
@@ -70,8 +71,6 @@ const LoginForm: React.FC<Props> = (props: Props) => {
         console.log(err)
       });
   }
-
-  // ADD .CATCH() HERE (AND TO ALL RESPONSES?) .... METHOD IS AXIOS.THEN! (READ UP ON ERROR HANDLING IN AXIOS SPECIFICALLY)
 
   return (
     <div key="user-login" className="min-page-height">

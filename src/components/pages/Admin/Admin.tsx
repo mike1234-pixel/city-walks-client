@@ -11,7 +11,7 @@ import AddBoardForm from './AddBoardForm/AddBoardForm'
 import DeleteBoardForm from "./DeleteBoardForm/DeleteBoardForm"
 import AddBlogPostForm from "./AddBlogPostForm/AddBlogPostForm"
 import DeleteBlogPostForm from "./DeleteBlogPostForm/DeleteBlogPostForm"
-import AdminCredentials from "../../../types/PostRequests/AdminCredentials";
+import Credentials from "../../../types/PostRequests/Credentials";
 import './Admin.scss'
 
 const Admin: React.FC = () => {
@@ -55,7 +55,7 @@ const Admin: React.FC = () => {
   const handleSubmitAdminLogin: (event: React.FormEvent) => void = (event) => {
     event.preventDefault()
 
-    const payload: AdminCredentials = {
+    const payload: Credentials = {
       username: adminUserName,
       password: adminPassword,
     };

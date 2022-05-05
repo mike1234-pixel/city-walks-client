@@ -1,10 +1,19 @@
+import React from 'react'
 import { MDBCard, MDBCardTitle, MDBCardText } from "mdbreact"
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import urlify from "../../../../../../functions/urlify"
 import './BoardBox.scss'
 
-const BoardBox = (props) => {
+interface Props {
+    boardId: string;
+    name: string;
+    description: string;
+    index: number;
+    key: number;
+}
+
+const BoardBox: React.FC<Props> = (props: Props) => {
 
     const { name, description } = props
 

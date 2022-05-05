@@ -1,23 +1,34 @@
-import { useEffect, useState } from "react"
+import React, { ReactNode, useEffect, useState } from "react"
 import ThreadBox from "../ThreadBox/ThreadBox"
 import toTitleCase from "../../../../../../functions/toTitleCase"
 import { MDBBtn, MDBInput, MDBContainer } from "mdbreact"
-import axios from "axios"
+import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
+import Board from '../../../../../../types/Boards/Board'
+import GlobalState from "../../../../../../types/State/Global/State"
 import "./Threads.scss"
+import Thread from "../../../../../../types/PostRequests/Thread"
 
-const Threads = (props) => {
+interface Props {
+    history: any;
+    boards: Array<Board>;
+    loggedIn: boolean;
+    userId: string;
+    userFirstName: string;
+}
+
+const Threads: React.FC<any> = (props: Props) => {
 
     const { boards, loggedIn, userId, userFirstName } = props;
 
-    const boardName = toTitleCase(props.history.location.pathname.replace("/forum/", "").replace(/-/g, " "))
+    const boardName: string = toTitleCase(props.history.location.pathname.replace("/forum/", "").replace(/-/g, " "))
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    let threads = "loading";
+    let threads: string | ReactNode = "loading";
 
     if (boards.length) {
 
@@ -44,10 +55,10 @@ const Threads = (props) => {
         }
     }
 
-    const [threadName, setThreadName] = useState("")
-    const [threadContent, setThreadContent] = useState("")
+    const [threadName, setThreadName] = useState<string>("")
+    const [threadContent, setThreadContent] = useState<string>("")
 
-    const handleChange = (event) => {
+    const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
 
         switch (event.target.name) {
             case "add-thread-name":
@@ -60,10 +71,10 @@ const Threads = (props) => {
 
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit: (event: React.FormEvent) => void = (event) => {
         event.preventDefault()
 
-        let payload = {
+        let payload: Thread = {
             currentBoardName: boardName,
             userId: userId,
             userFirstName: userFirstName,
@@ -73,19 +84,19 @@ const Threads = (props) => {
 
         axios
             .post("https://city-walks.herokuapp.com/add-thread", qs.stringify(payload))
-            .then((res, err) => {
-                if (err) {
-                    console.log(err);
-                } else {
-                    alert("thread submitted.")
-                    setThreadName("")
-                    setThreadContent("")
-                    window.location.reload()
-                }
+            .then((res: AxiosResponse) => {
+
+                alert("thread submitted.")
+                setThreadName("")
+                setThreadContent("")
+                window.location.reload()
+
+            }).catch((err: AxiosError) => {
+                console.log(err)
             });
     }
 
-    const addThread =
+    const addThread: ReactNode =
         <div className="add-thread-form-container">
             <h2 className="add-thread-form-heading">Post a new discussion thread on this board:</h2>
             <form className="add-thread-form" onSubmit={handleSubmit}>
@@ -106,7 +117,7 @@ const Threads = (props) => {
     )
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: GlobalState) => ({
     boards: state.boardsState.boards,
     loggedIn: state.loginState.loggedIn,
     userId: state.loginState.userId,
