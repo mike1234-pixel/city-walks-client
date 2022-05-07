@@ -85,7 +85,7 @@ const App: React.FC<Props> = (props: Props) => {
 
   }, [])
 
-  return (<Router />)
+  return (<Router cities={[]} />)
 }
 
 const mapStateToProps = (state: GlobalState) => ({
