@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import React, { ReactNode, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import ReactPaginate from "react-paginate"
 import { MDBBtn, MDBIcon, MDBCard, MDBCardBody, MDBCardImage, MDBCardText, MDBCardTitle, MDBContainer } from "mdbreact"
@@ -6,26 +6,32 @@ import urlify from "../../../functions/urlify"
 import { motion } from "framer-motion"
 import pageTransition from "../../../constants/pageTransition"
 import { connect } from 'react-redux'
+import Sight from "../../../types/Sights/Sight"
+import GlobalState from "../../../types/State/Global/State"
 import "./Sights.scss"
 
-const Sights = (props) => {
+interface Props {
+    sights: Array<Sight>
+}
+
+const Sights: React.FC<Props> = (props: Props) => {
 
     const { sights } = props;
 
-    const removeMarkdown = (markup) => {
+    const removeMarkdown: (markup: string) => string = (markup) => {
         return markup.replace(/\**/g, "").replace(/#/g, "").replace(/<br\/>/g, "")
     }
 
-    const [pageNumber, setPageNumber] = useState(0)
+    const [pageNumber, setPageNumber] = useState<number>(0)
 
-    const sightsPerPage = 3;
-    const pagesVisited = pageNumber * sightsPerPage;
+    const sightsPerPage: number = 3;
+    const pagesVisited: number = pageNumber * sightsPerPage;
 
-    const pageCount = Math.ceil(sights.length / sightsPerPage);
+    const pageCount: number = Math.ceil(sights.length / sightsPerPage);
 
-    const displayAllSights = () => {
+    const displayAllSights: () => Array<ReactNode> = () => {
         return (
-            sights.slice(pagesVisited, pagesVisited + sightsPerPage).map((post) => {
+            sights.slice(pagesVisited, pagesVisited + sightsPerPage).map((post: Sight) => {
                 return (
                     <div key={post._id}>
                         <Link to={'/sights/' + urlify(post.title)}>
@@ -44,7 +50,7 @@ const Sights = (props) => {
         )
     }
 
-    const changePage = ({ selected }) => {
+    const changePage = ({ selected }: { selected: number }) => {
         setPageNumber(selected);
     }
 
@@ -88,8 +94,8 @@ const Sights = (props) => {
     )
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: GlobalState) => ({
     sights: state.sightsState.sights,
 });
 
-export default connect(mapStateToProps)(Sights);
+export default connect(mapStateToProps, null)(Sights);

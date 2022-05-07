@@ -9,6 +9,7 @@ import Board from '../../../../../../types/Boards/Board'
 import GlobalState from "../../../../../../types/State/Global/State"
 import "./Threads.scss"
 import Thread from "../../../../../../types/PostRequests/Thread"
+import ThreadT from '../../../../../../types/Boards/Thread'
 
 interface Props {
     history: any;
@@ -18,7 +19,7 @@ interface Props {
     userFirstName: string;
 }
 
-const Threads: React.FC<any> = (props: Props) => {
+const Threads: React.FC<Props> = (props: Props) => {
 
     const { boards, loggedIn, userId, userFirstName } = props;
 
@@ -32,12 +33,13 @@ const Threads: React.FC<any> = (props: Props) => {
 
     if (boards.length) {
 
-        const selectedBoard = boards.filter((board) => board.name === boardName)[0]
+        const selectedBoard = boards.filter((board: Board) => board.name === boardName)[0]
 
         if (selectedBoard === undefined) {
             threads = "thread not found"
         } else {
-            threads = selectedBoard.threads.map((thread, index) => {
+            threads = selectedBoard.threads.map((thread: ThreadT, index: number) => {
+
                 return (
                     <ThreadBox
                         currentBoardName={boardName}
@@ -48,8 +50,7 @@ const Threads: React.FC<any> = (props: Props) => {
                         replies={thread.replies}
                         submittedOn={thread.submittedOn}
                         userId={thread.userId}
-                        key={index}
-                    />
+                        key={index} loggedIn={false} currentUserFirstName={""} currentUserId={""} />
                 )
             }).reverse()
         }
@@ -124,4 +125,4 @@ const mapStateToProps = (state: GlobalState) => ({
     userFirstName: state.loginState.userFirstName
 });
 
-export default connect(mapStateToProps)(Threads);
+export default connect(mapStateToProps, null)(Threads);

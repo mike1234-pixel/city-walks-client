@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import React, { ReactNode, useEffect, useState } from "react"
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBContainer } from 'mdbreact'
 import { FaSearchLocation } from "react-icons/fa"
 import urlify from '../../../functions/urlify'
@@ -8,22 +8,31 @@ import { motion } from "framer-motion"
 import pageTransition from "../../../constants/pageTransition"
 import { GiWalkingBoot } from 'react-icons/gi'
 import { connect } from 'react-redux';
+import Walk from "../../../types/Walks/Walk"
+import GlobalState from "../../../types/State/Global/State"
 import './Walks.scss'
 
-const Walks = (props) => {
+interface Props {
+    searchValue: string;
+    setSearchValue: Function;
+    walks: Array<Walk>;
+}
+
+const Walks: React.FC<any> = (props: Props) => {
 
     const { searchValue, setSearchValue, walks } = props;
 
     // display all walks pagination
 
-    const [pageNumber, setPageNumber] = useState(0)
+    const [pageNumber, setPageNumber] = useState<number>(0)
+    let filteredResults: ReactNode;
 
-    const walksPerPage = 3;
-    const pagesVisited = pageNumber * walksPerPage;
+    const walksPerPage: number = 3;
+    const pagesVisited: number = pageNumber * walksPerPage;
 
-    const pageCount = Math.ceil(walks.length / walksPerPage);
+    const pageCount: number = Math.ceil(walks.length / walksPerPage);
 
-    const displayAllWalks = () => {
+    const displayAllWalks: () => Array<ReactNode> = () => {
         return (
             walks.slice(pagesVisited, pagesVisited + walksPerPage).map(v => {
                 return (
@@ -45,7 +54,7 @@ const Walks = (props) => {
         )
     }
 
-    const changePage = ({ selected }) => {
+    const changePage = ({ selected }: { selected: number }) => {
         setPageNumber(selected);
     }
 
@@ -54,7 +63,7 @@ const Walks = (props) => {
     });
 
     if (searchValue === "") {
-        return (
+        filteredResults =
             <motion.div
                 style={{ position: "relative" }}
                 exit={pageTransition.out}
@@ -87,9 +96,9 @@ const Walks = (props) => {
                     </div>
                 </MDBContainer>
             </motion.div>
-        )
-    } else if (walks.map(v => { v.walk.toLowerCase().includes(searchValue.toLowerCase()) || v.city.toLowerCase().includes(searchValue.toLowerCase()) })) {
-        return (
+
+    } else if (walks.map((v: Walk) => { v.walk.toLowerCase().includes(searchValue.toLowerCase()) || v.city.toLowerCase().includes(searchValue.toLowerCase()) })) {
+        filteredResults =
             <motion.div
                 style={{ position: "relative" }}
                 exit={pageTransition.out}
@@ -106,7 +115,7 @@ const Walks = (props) => {
                             <p data-testid="walks-search-icon" className="walks-search-icon"><FaSearchLocation className="search-location-icon" />{`  ${searchValue}`}</p>
                         </div>
                         <div className="card-container">
-                            {walks.map(v => {
+                            {walks.map((v: Walk) => {
                                 if (v.walk.toLowerCase().includes(searchValue.toLowerCase()) || v.city.toLowerCase().includes(searchValue.toLowerCase())) {
                                     return (
                                         <div key={v._id}>
@@ -130,19 +139,25 @@ const Walks = (props) => {
                     </div>
                 </MDBContainer>
             </motion.div>
-        )
+
     }
+
+    return (
+        <div>
+            {filteredResults}
+        </div>
+    )
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setSearchValue: (inputValue) => dispatch({ type: 'HANDLE_CHANGE_SEARCH', inputValue })
-    }
-}
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state: GlobalState) => ({
     walks: state.walksState.walks,
     searchValue: state.searchState.searchValue,
 });
+
+const mapDispatchToProps = (dispatch: Function) => {
+    return {
+        setSearchValue: (inputValue: string) => dispatch({ type: 'HANDLE_CHANGE_SEARCH', inputValue })
+    }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Walks);

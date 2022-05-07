@@ -19,6 +19,7 @@ strong {
 :root {
   --blue: #6495ed;
   --bone: #e3dac9;
+  --yellow: #FFE500;
   --elegant-color-dark: #212121;
   --logo-font: "Gugi";
   /* --display-font: "Averia Libre"; */
@@ -140,4 +141,10 @@ html {
 .btn-outline-default:focus {
   border-color: white !important;
   color: white !important;
+}
+
+/* text highlight selection colour */
+
+::selection {
+  background: var(--yellow);
 }

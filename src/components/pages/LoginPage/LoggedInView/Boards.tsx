@@ -14,7 +14,7 @@ interface Props {
     userFirstName: string;
 }
 
-const Boards: React.FC<any> = (props: Props) => {
+const Boards: React.FC<Props> = (props: Props) => {
 
     const { boards, userFirstName } = props;
 
@@ -59,4 +59,4 @@ const mapStateToProps = (state: GlobalState) => ({
     userFirstName: state.loginState.userFirstName
 });
 
-export default connect(mapStateToProps)(Boards);
+export default connect(mapStateToProps, null)(Boards);

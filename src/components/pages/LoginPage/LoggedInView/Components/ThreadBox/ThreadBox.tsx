@@ -20,12 +20,12 @@ interface Props {
   replies: Array<Reply>; 
   submittedOn: string; 
   userId: string; 
-  loggedIn: string; 
+  loggedIn: boolean; 
   currentUserFirstName: string; 
   currentUserId: string;
 }
 
-const ThreadBox: React.FC<any> = (props: Props) => {
+const ThreadBox: React.FC<Props> = (props: Props) => {
 
     const { currentBoardName, threadId, userFirstName, title, content, replies, submittedOn, userId, loggedIn, userFirstName: currentUserFirstName, userId: currentUserId } = props
 
@@ -143,7 +143,7 @@ const mapStateToProps = (state: GlobalState) => ({
   userId: state.loginState.userId,
 });
 
-export default connect(mapStateToProps)(ThreadBox);
+export default connect(mapStateToProps, null)(ThreadBox);
 
 
 // // setter
