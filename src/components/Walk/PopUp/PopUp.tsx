@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSpring, animated } from "react-spring"
 import { MDBContainer } from "mdbreact"
-import './PopUp.css'
+import './PopUp.scss'
 
 interface Props {
     iframeLink: string;

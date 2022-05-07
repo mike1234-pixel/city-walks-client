@@ -84,10 +84,6 @@ This app uses the SCSS version of Sass which is compiled using **node-sass** and
 
 The **react-hook-google-maps** package handles connecting to the Google JavaScript Maps API.
 
-## Animations
-
-Page transitions are handled by the **framer-motion** library.
-
 ## Testing
 
 **Jest snapshot test** files are kept in the same folders as the components they test.
@@ -104,18 +100,8 @@ To run tests for a single component run:
 
 `npm test <ComponentName>`
 
-## Future Improvements
-
-- If the database grows significantly in size then **lazy loading / infinite scrolling** should be implemented.
-
-
-## NEXT STEPS:
-- set up tslint using https://khalilstemmler.com/blogs/typescript/eslint-for-typescript/ and follow the guidance the linter gives you.
-- ensure each component is fully typesafe before moving onto the next
 
 
 
 
 
-## components to return to ts
-- Walk.tsx

@@ -3,8 +3,6 @@ import { Link } from "react-router-dom"
 import ReactPaginate from "react-paginate"
 import { MDBBtn, MDBIcon, MDBCard, MDBCardBody, MDBCardImage, MDBCardText, MDBCardTitle, MDBContainer } from "mdbreact"
 import urlify from "../../../functions/urlify"
-import { motion } from "framer-motion"
-import pageTransition from "../../../constants/pageTransition"
 import { connect } from 'react-redux'
 import Sight from "../../../types/Sights/Sight"
 import GlobalState from "../../../types/State/Global/State"
@@ -60,37 +58,28 @@ const Sights: React.FC<Props> = (props: Props) => {
 
 
     return (
-        <motion.div
-            style={{ position: "relative" }}
-            exit={pageTransition.out}
-            animate={pageTransition.in}
-            initial={pageTransition.initial}
-            transition={{ duration: 0.5 }}
-            className="motion-div"
-        >
-            <MDBContainer>
-                <div className="min-page-height">
-                    <div className="page-heading-container">
-                        <h1 className="page-heading">Sights</h1>
-                        <h2 className="page-subheading">find more sights and visitor attractions to explore</h2>
-                    </div>
-                    <div className="card-container">
-                        {displayAllSights()}
-                    </div>
-                    <ReactPaginate
-                        previousLabel={"Previous"}
-                        nextLabel={"Next"}
-                        pageCount={pageCount}
-                        onPageChange={changePage}
-                        containerClassName={"pagination-buttons"}
-                        previousLinkClassName={"previous-button"}
-                        nextLinkClassName={"next-button"}
-                        disabledClassName={"pagination-disabled"}
-                        activeClassName={"pagination-active"}
-                    />
+        <MDBContainer>
+            <div className="min-page-height">
+                <div className="page-heading-container">
+                    <h1 className="page-heading">Sights</h1>
+                    <h2 className="page-subheading">find more sights and visitor attractions to explore</h2>
                 </div>
-            </MDBContainer>
-        </motion.div>
+                <div className="card-container">
+                    {displayAllSights()}
+                </div>
+                <ReactPaginate
+                    previousLabel={"Previous"}
+                    nextLabel={"Next"}
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    containerClassName={"pagination-buttons"}
+                    previousLinkClassName={"previous-button"}
+                    nextLinkClassName={"next-button"}
+                    disabledClassName={"pagination-disabled"}
+                    activeClassName={"pagination-active"}
+                />
+            </div>
+        </MDBContainer>
     )
 }
 

@@ -7,8 +7,6 @@ import toTitleCase from "../../functions/toTitleCase"
 import { MdLocationCity } from 'react-icons/md'
 import { FaRoad, FaMapMarkerAlt } from 'react-icons/fa'
 import { IoMdTrain } from 'react-icons/io'
-import { motion } from "framer-motion"
-import pageTransition from "../../constants/pageTransition"
 import { connect } from "react-redux";
 import GlobalState from "../../types/State/Global/State"
 import WalkT from '../../types/Walks/Walk'
@@ -89,22 +87,13 @@ const Walk: React.FC<any> = (props: Props) => {
 
   return (
     <div>
-      <motion.div
-        style={{ position: "relative" }}
-        exit={pageTransition.out}
-        animate={pageTransition.in}
-        initial={pageTransition.initial}
-        transition={{ duration: 0.5 }}
-        className="motion-div"
-      >
-        <MDBContainer>
-          <div data-testid="walk-page">
-            <div className="min-page-height center">
-              {walk}
-            </div>
+      <MDBContainer>
+        <div data-testid="walk-page">
+          <div className="min-page-height center">
+            {walk}
           </div>
-        </MDBContainer>
-      </motion.div>
+        </div>
+      </MDBContainer>
       {!togglePopUp && <MDBBtn id="see-map-btn" onClick={handleClick}>
         See Map <MDBIcon icon="map-marked-alt" id="map-icon" />
       </MDBBtn>}

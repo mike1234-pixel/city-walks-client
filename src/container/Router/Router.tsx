@@ -21,10 +21,10 @@ import Footer from '../../components/Footer/Footer'
 import Walk from '../../components/Walk/Walk'
 import Threads from '../../components/pages/LoginPage/LoggedInView/Components/Threads/Threads'
 import { Route, Switch, useLocation } from "react-router-dom"
-import { AnimatePresence } from "framer-motion"
 import { connect } from "react-redux"
 import City from '../../types/Cities/City'
 import GlobalState from '../../types/State/Global/State'
+import Location from '../../types/Generic/Location'
 
 interface Props {
   cities: Array<City>;
@@ -32,16 +32,16 @@ interface Props {
 }
 
 const Router: React.FC<Props> = (props: Props) => {
-  const location = useLocation();
 
   const { cities, privacyPopupVisible } = props
+
+  const location: Location = useLocation();
 
   return (
     <div>
       <Nav />
       {privacyPopupVisible && <PrivacyPopUp />}
       <div style={{ position: "relative" }}>
-        {/* <AnimatePresence exitBeforeEnter > */}
         <Switch location={location} key={location.pathname}>
           <Route exact path="/" component={() => <Home walks={[]} />} />
           <Route path="/cities" component={() => <Cities cities={cities} />} />
@@ -65,7 +65,6 @@ const Router: React.FC<Props> = (props: Props) => {
           <Route path="/privacy" component={PrivacyPolicy} />
           <Route component={NotFound404} />
         </Switch>
-        {/* </AnimatePresence> */}
       </div>
       <Footer />
     </div>

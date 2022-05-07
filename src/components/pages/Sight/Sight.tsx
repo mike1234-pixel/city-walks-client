@@ -4,8 +4,6 @@ import { MDBInput, MDBBtn, MDBIcon, MDBCard, MDBCardTitle, MDBCardText, MDBConta
 import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import marked from "marked"
-import { motion } from "framer-motion"
-import pageTransition from "../../../constants/pageTransition"
 import SelectedComment from "../../../types/PostRequests/SelectedComment"
 import GlobalState from "../../../types/State/Global/State"
 import SightT from "../../../types/Sights/Sight"
@@ -121,28 +119,19 @@ const Sight: React.FC<Props> = (props: Props) => {
 
   if (sights) {
     return (
-      <motion.div
-        style={{ position: "relative" }}
-        exit={pageTransition.out}
-        animate={pageTransition.in}
-        initial={pageTransition.initial}
-        transition={{ duration: 0.5 }}
-        className="motion-div"
-      >
-        <MDBContainer>
-          <div>
-            <div>{post}</div>
-            {loggedIn &&
-              <form onSubmit={handleSubmit} className="add-blog-comment-form">
-                <MDBInput type="textarea" rows="5" name="comment" id="comment" value={comment} label="comment" onChange={handleChange} required />
-                <MDBBtn outline color="elegant" type="submit">
-                  Add Comment <MDBIcon icon="plus" />
-                </MDBBtn>
-              </form>
-            }
-          </div>
-        </MDBContainer>
-      </motion.div>
+      <MDBContainer>
+        <div>
+          <div>{post}</div>
+          {loggedIn &&
+            <form onSubmit={handleSubmit} className="add-blog-comment-form">
+              <MDBInput type="textarea" rows="5" name="comment" id="comment" value={comment} label="comment" onChange={handleChange} required />
+              <MDBBtn outline color="elegant" type="submit">
+                Add Comment <MDBIcon icon="plus" />
+              </MDBBtn>
+            </form>
+          }
+        </div>
+      </MDBContainer>
     )
   } else {
     return (
