@@ -6,6 +6,7 @@ import { Link } from "react-router-dom"
 import ReactPaginate from "react-paginate"
 import { GiWalkingBoot } from 'react-icons/gi'
 import { connect } from 'react-redux';
+import { Dispatch } from "redux"
 import Walk from "../../../types/Walks/Walk"
 import GlobalState from "../../../types/State/Global/State"
 import './Walks.scss'
@@ -16,7 +17,7 @@ interface Props {
     walks: Array<Walk>;
 }
 
-const Walks: React.FC<any> = (props: Props) => {
+const Walks: React.FC<Props> = (props: Props) => {
 
     const { searchValue, setSearchValue, walks } = props;
 
@@ -129,12 +130,13 @@ const Walks: React.FC<any> = (props: Props) => {
     )
 }
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps: (state: GlobalState) => void = (state) => ({
     walks: state.walksState.walks,
     searchValue: state.searchState.searchValue,
 });
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
+    console.log(dispatch)
     return {
         setSearchValue: (inputValue: string) => dispatch({ type: 'HANDLE_CHANGE_SEARCH', inputValue })
     }

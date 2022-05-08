@@ -5,6 +5,8 @@ import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
 import GlobalState from '../../../../types/State/Global/State'
+import Account from '../../../../types/PostRequests/Account'
+import { Dispatch } from 'redux'
 import './ForgotPasswordForm.scss'
 
 interface Props {
@@ -28,7 +30,7 @@ const ForgotPasswordForm: React.FC<Props> = (props: Props) => {
     console.log("handle submit forgot password")
     event.preventDefault()
 
-    const payload = {
+    const payload: Account = {
       email: forgotPasswordEmail,
     };
 
@@ -47,7 +49,7 @@ const ForgotPasswordForm: React.FC<Props> = (props: Props) => {
 
   return (
     <div key="user-forgot-password">
-      <UserPortalNav />
+      <UserPortalNav loggedIn={false} />
       <MDBContainer className="min-page-height">
         <div className="forgot-password-header-container">
           <h2 className="forgot-password-header">Forgot Your Password?</h2>
@@ -65,11 +67,11 @@ const ForgotPasswordForm: React.FC<Props> = (props: Props) => {
   )
 }
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps: (state: GlobalState) => void = (state) => ({
   forgotPasswordEmail: state.loginState.forgotPasswordEmail,
 });
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     setForgotPasswordEmail: (forgotPasswordEmail: string) => dispatch({ type: 'SET_FORGOT_PASSWORD_EMAIL', forgotPasswordEmail }),
   }

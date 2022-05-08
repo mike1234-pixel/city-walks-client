@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react"
+import React, { ReactNode, useEffect, useState } from "react"
 import { MDBIcon, MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBContainer } from 'mdbreact'
 import ReactPaginate from "react-paginate"
 import { connect } from 'react-redux'
+import { Action, Dispatch } from "redux"
 import City from "../../../types/Cities/City"
 import GlobalState from "../../../types/State/Global/State"
 import './Cities.scss'
@@ -23,12 +24,13 @@ const Cities: React.FC<any> = (props: Props) => {
 
     const pageCount: number = Math.ceil(cities.length / citiesPerPage);
 
-    function submitSearch(cityName: string) {
+    const submitSearch: (cityName: string) => void = (cityName) => {
         handleClickSearch(cityName)
         setRedirect(true)
     }
 
-    const displayAllCities = () => {
+    const displayAllCities: () => Array<ReactNode> = () => {
+
         return (
             cities.slice(pagesVisited, pagesVisited + citiesPerPage).map((city) => {
                 return (
@@ -79,11 +81,11 @@ const Cities: React.FC<any> = (props: Props) => {
     )
 }
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps: (state: GlobalState) => void = (state) => ({
     cities: state.citiesState.cities,
 });
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         handleClickSearch: (cityToSearch: string) => dispatch({ type: 'HANDLE_CLICK_SEARCH', cityToSearch }),
         setRedirect: (boolValue: boolean) => dispatch({ type: 'SET_REDIRECT', boolValue }),

@@ -24,6 +24,8 @@ const Admin: React.FC = () => {
   }
 
   let displayForm: ReactNode
+
+  // can this be a switch statement?
   if (form === "addWalk") {
     displayForm = <AddWalkForm />;
   } else if (form === "addCity") {

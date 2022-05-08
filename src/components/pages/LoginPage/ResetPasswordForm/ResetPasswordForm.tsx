@@ -5,6 +5,7 @@ import UserPortalNav from "../UserPortalNav"
 import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
 import GlobalState from '../../../../types/State/Global/State'
 import './ResetPasswordForm.scss'
 
@@ -80,7 +81,7 @@ const ResetPasswordForm: React.FC<Props> = (props: Props) => {
 
   return (
     <div>
-      <UserPortalNav />
+      <UserPortalNav loggedIn={false} />
       <MDBContainer className="min-page-height">
         <div className="reset-password-header-container">
           <h2 className="reset-password-header">Reset Password</h2>
@@ -100,14 +101,14 @@ const ResetPasswordForm: React.FC<Props> = (props: Props) => {
   )
 }
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps: (state: GlobalState) => void = (state) => ({
   resetPasswordEmail: state.loginState.resetPasswordEmail,
   resetPasswordOldPassword: state.loginState.resetPasswordOldPassword,
   resetPasswordNewPassword: state.loginState.resetPasswordNewPassword,
   resetPasswordConfirmNewPassword: state.loginState.resetPasswordConfirmNewPassword
 });
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     setResetPasswordEmail: (resetPasswordEmail: string) => dispatch({ type: 'SET_RESET_PASSWORD_EMAIL', resetPasswordEmail }),
     setResetPasswordOldPassword: (resetPasswordOldPassword: string) => dispatch({ type: 'SET_RESET_PASSWORD_OLD_PASSWORD', resetPasswordOldPassword }),

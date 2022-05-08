@@ -7,6 +7,7 @@ import qs from "qs"
 import { connect } from 'react-redux'
 import GlobalState from '../../../../types/State/Global/State'
 import Credentials from '../../../../types/PostRequests/Credentials'
+import { Dispatch } from 'redux'
 import './LoginForm.scss'
 
 interface Props {
@@ -74,7 +75,7 @@ const LoginForm: React.FC<Props> = (props: Props) => {
 
   return (
     <div key="user-login" className="min-page-height">
-      <UserPortalNav />
+      <UserPortalNav loggedIn={false} />
       <MDBContainer>
         <div className="login-header-container">
           <h2 className="login-form-header">Login</h2>
@@ -92,12 +93,12 @@ const LoginForm: React.FC<Props> = (props: Props) => {
   )
 }
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps: (state: GlobalState) => void = (state) => ({
   loginEmail: state.loginState.loginEmail,
   loginPassword: state.loginState.loginPassword,
 });
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     setLoginEmail: (loginEmail: string) => dispatch({ type: 'SET_LOGIN_EMAIL', loginEmail }),
     setLoginPassword: (loginPassword: string) => dispatch({ type: 'SET_LOGIN_PASSWORD', loginPassword }),

@@ -31,7 +31,8 @@ const Walk: React.FC<any> = (props: Props) => {
     document.addEventListener("mousedown", handleClickOutside);
   });
 
-  let walk: string | ReactNode = "loading";
+  let walk: string | ReactNode = <div><p>Loading...</p><div className="loading-bar"></div></div>
+
   let currentWalk: WalkT | { iframeLink: string; iframeTitle: string } = { iframeLink: '', iframeTitle: '' }
 
   const handleClick: () => void = () => {
@@ -103,7 +104,7 @@ const Walk: React.FC<any> = (props: Props) => {
 }
 
 //export default Walk
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps: (state: GlobalState) => void = (state) => ({
   walks: state.walksState.walks,
 });
 

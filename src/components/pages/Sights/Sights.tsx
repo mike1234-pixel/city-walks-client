@@ -83,7 +83,7 @@ const Sights: React.FC<Props> = (props: Props) => {
     )
 }
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps: (state: GlobalState) => void = (state) => ({
     sights: state.sightsState.sights,
 });
 

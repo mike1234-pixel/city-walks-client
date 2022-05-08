@@ -19,7 +19,7 @@ const Boards: React.FC<Props> = (props: Props) => {
     return (
         <div>
             <div className="page-heading-container">
-                <UserPortalNav />
+                <UserPortalNav loggedIn={false} />
                 <MDBContainer>
                     <h1 className="page-heading">Forum</h1>
                     <h2 className="login-heading">Welcome back {userFirstName}</h2>
@@ -36,14 +36,17 @@ const Boards: React.FC<Props> = (props: Props) => {
                         })}
                     </div>
                     :
-                    <p>Loading...</p>
+                    <div>
+                        <p>Loading...</p>
+                        <div className="loading-bar"></div>
+                    </div>
                 }
             </MDBContainer>
         </div>
     )
 }
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps: (state: GlobalState) => void = (state) => ({
     boards: state.boardsState.boards,
     userFirstName: state.loginState.userFirstName
 });

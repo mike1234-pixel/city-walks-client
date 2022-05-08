@@ -11,6 +11,7 @@ import {
 } from "mdbreact";
 import { Link, useHistory } from "react-router-dom"
 import { connect } from 'react-redux'
+import { Dispatch } from "redux";
 import GlobalState from "../../../types/State/Global/State"
 import "./UserPortalNav.scss"
 
@@ -128,11 +129,11 @@ const UserPortalNav: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps: (state: GlobalState) => void = (state) => ({
   loggedIn: state.loginState.loggedIn,
 });
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     setLoggedIn: (boolValue: boolean) => dispatch({ type: 'SET_LOGGED_IN', boolValue }),
     setUserId: (userID: string) => dispatch({ type: 'SET_USER_ID', userID }),

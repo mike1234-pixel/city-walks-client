@@ -2,6 +2,7 @@ import React from 'react'
 import { MDBInput } from "mdbreact"
 import { FaSearchLocation } from "react-icons/fa"
 import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
 import GlobalState from "../../types/State/Global/State"
 import './SeachBar.scss'
 
@@ -21,7 +22,7 @@ let SearchBar: React.FC<Props> = (props: Props) => {
   }
 
   function processInputValue(e: React.ChangeEvent<any>) {
-    const inputValue = e.target.value
+    const inputValue: string = e.target.value
     handleChangeSearch(inputValue)
   }
 
@@ -44,12 +45,12 @@ let SearchBar: React.FC<Props> = (props: Props) => {
   )
 }
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps: (state: GlobalState) => void = (state) => ({
   searchValue: state.searchState.searchValue,
 });
 
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     handleChangeSearch: (inputValue: string) => dispatch({ type: 'HANDLE_CHANGE_SEARCH', inputValue }),
     setRedirect: (boolValue: boolean) => dispatch({ type: 'SET_REDIRECT', boolValue }),

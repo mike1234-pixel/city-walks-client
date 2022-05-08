@@ -9,9 +9,8 @@ interface Props {
 
 const nf404: React.FC<Props> = ({ location }: { location: Location }) => {
 
-    console.log(location)
+    const errorMessage: string = `404 Error: Page not found at ${location.pathname}`
 
-    const errorMessage = `404 Error: Page not found at ${location.pathname}`
     return (
         <MDBContainer>
             <div className="nf404-page-container min-page-height">

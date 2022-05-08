@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar'
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBHamburgerToggler, MDBCollapse, MDBInput, MDBContainer, MDBRow, MDBCol } from "mdbreact"
 import { connect } from 'react-redux'
+import { Dispatch } from "redux"
 import GlobalState from "../../types/State/Global/State"
 import './Nav.scss'
 
@@ -26,7 +27,7 @@ const Nav: React.FC<Props> = (props: Props) => {
     }
   })
 
-  const handleClick = () => {
+  const handleClick: () => void = () => {
     setToggleNav(!toggleNav)
   }
 
@@ -63,7 +64,7 @@ const Nav: React.FC<Props> = (props: Props) => {
           </MDBNavbarNav>
           <MDBNavbarNav right>
             <MDBNavItem>
-              <SearchBar />
+              <SearchBar searchValue={""} />
             </MDBNavItem>
           </MDBNavbarNav>
         </MDBCollapse>
@@ -72,14 +73,14 @@ const Nav: React.FC<Props> = (props: Props) => {
   )
 }
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapStateToProps: (state: GlobalState) => void = (state) => ({
+  redirect: state.searchState.redirect,
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     setRedirect: (boolValue: boolean) => dispatch({ type: 'SET_REDIRECT', boolValue }),
   }
 }
-
-const mapStateToProps = (state: GlobalState) => ({
-  redirect: state.searchState.redirect,
-});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav);

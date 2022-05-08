@@ -137,7 +137,7 @@ const ThreadBox: React.FC<Props> = (props: Props) => {
     )
 }
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps: (state: GlobalState) => void = (state) => ({
   loggedIn: state.loginState.loggedIn,
   userFirstName: state.loginState.userFirstName,
   userId: state.loginState.userId,

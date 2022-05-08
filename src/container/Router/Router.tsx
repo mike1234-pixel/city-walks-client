@@ -39,13 +39,13 @@ const Router: React.FC<Props> = (props: Props) => {
 
   return (
     <div>
-      <Nav />
+      <Nav redirect={false} />
       {privacyPopupVisible && <PrivacyPopUp />}
       <div style={{ position: "relative" }}>
         <Switch location={location} key={location.pathname}>
           <Route exact path="/" component={() => <Home walks={[]} />} />
           <Route path="/cities" component={() => <Cities cities={cities} />} />
-          <Route exact path="/walks" component={() => <Walks />} />
+          <Route exact path="/walks" component={() => <Walks searchValue={''} walks={[]} />} />
           {/* components with a dynamic route have to passed like this (no callback) */}
           <Route path="/walks/:walks" component={Walk} />
           <Route path="/about" component={About} />
@@ -55,18 +55,18 @@ const Router: React.FC<Props> = (props: Props) => {
           {/* the render method here ensures the inputs in the forms don't lose focus */}
           {/* https://www.xspdf.com/resolution/59715158.html */}
           <Route exact path="/forum" render={() => <Boards boards={[]} userFirstName={''} />} />
-          <Route exact path="/forum/login" render={() => <LoginForm />} />
-          <Route exact path="/forum/register" render={() => <RegistrationForm registrationPassword={''} />} />
-          <Route exact path="/forum/verify" render={() => <VerificationForm />} />
-          <Route exact path="/forum/reset-password" render={() => <ResetPasswordForm />} />
-          <Route exact path="/forum/forgot-password" render={() => <ForgotPasswordForm />} />
+          <Route exact path="/forum/login" render={() => <LoginForm loginEmail={''} loginPassword={''} />} />
+          <Route exact path="/forum/register" render={() => <RegistrationForm registrationPassword={''} firstName={''} lastName={''} registrationEmail={''} activationMessageEmphasis={''} />} />
+          <Route exact path="/forum/verify" render={() => <VerificationForm verificationEmail={''} />} />
+          <Route exact path="/forum/reset-password" render={() => <ResetPasswordForm resetPasswordEmail={''} resetPasswordOldPassword={''} resetPasswordNewPassword={''} resetPasswordConfirmNewPassword={''} />} />
+          <Route exact path="/forum/forgot-password" render={() => <ForgotPasswordForm forgotPasswordEmail={''} />} />
           <Route path="/forum/:board" component={Threads} />
           <Route path="/admin" component={Admin} />
           <Route path="/privacy" component={PrivacyPolicy} />
           <Route component={NotFound404} />
         </Switch>
       </div>
-      <Footer />
+      <Footer loggedIn={false} userId={''} />
     </div>
   )
 }

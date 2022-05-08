@@ -79,14 +79,15 @@ const Home: React.FC<Props> = (props: Props) => {
         return (
             <div>
                 <MDBContainer>
-                    <p>loading...</p>
+                    <p>Loading...</p>
+                    <div className="loading-bar"></div>
                 </MDBContainer>
             </div>
         )
     }
 }
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps: (state: GlobalState) => void = (state) => ({
     walks: state.walksState.walks
 });
 

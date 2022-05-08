@@ -4,9 +4,10 @@ import UserPortalNav from "../UserPortalNav"
 import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
-import './VerificationForm.scss'
+import { Dispatch } from 'redux'
 import EmailToVerify from '../../../../types/PostRequests/EmailToVerify'
 import GlobalState from '../../../../types/State/Global/State'
+import './VerificationForm.scss'
 
 interface Props {
   verificationEmail: string;
@@ -49,7 +50,7 @@ const VerificationForm: React.FC<Props> = (props: Props) => {
 
   return (
     <div key="user-verification">
-      <UserPortalNav />
+      <UserPortalNav loggedIn={false} />
       <MDBContainer className="min-page-height">
         <div className="verification-header-container">
           <h2 className="verification-header">Activate Your Account</h2>
@@ -68,11 +69,11 @@ const VerificationForm: React.FC<Props> = (props: Props) => {
   )
 }
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps: (state: GlobalState) => void = (state) => ({
   verificationEmail: state.loginState.verificationEmail,
 });
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     setVerificationEmail: (verificationEmail: string) => dispatch({ type: 'SET_VERIFICATION_EMAIL', verificationEmail }),
   }

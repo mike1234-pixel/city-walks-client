@@ -148,3 +148,24 @@ html {
 ::selection {
   background: var(--yellow);
 }
+
+/* loading bar */
+
+.loading-bar {
+  margin-top: 8px;
+  width: 100%;
+  height: 40px;
+  background-color: var(--blue);
+  animation: loading 2s linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes loading {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}

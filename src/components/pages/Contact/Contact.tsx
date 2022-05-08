@@ -121,7 +121,7 @@ const Contact: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps: (state: GlobalState) => void = (state) => ({
   sitekey: state.recaptchaState.sitekey,
 });
 

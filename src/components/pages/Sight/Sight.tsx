@@ -81,18 +81,19 @@ const Sight: React.FC<Props> = (props: Props) => {
       });
   }
 
-  let post: string | ReactNode = "loading"
+  let post: string | ReactNode = <div><p>Loading...</p><div className="loading-bar"></div></div>
 
-  if (sights) {
+  if (sights.length) {
 
-    let selectedBlogPost: SightT | any = sights.filter((post: SightT) => post.title === blogTitle)[0]
+    let selectedBlogPost: SightT | Array<SightT> | undefined = sights.filter((post: SightT) => post.title === blogTitle)
+    selectedBlogPost = selectedBlogPost[0]
 
     const createMarkup: (markup: string) => ({ __html: string }) = (markup) => {
       return { __html: marked(markup, { breaks: true }) }
     }
 
     if (selectedBlogPost === undefined) {
-      post = "walk not found"
+      post = "sight not found"
     } else {
       post =
         <div className="blog-post-container">
@@ -103,7 +104,7 @@ const Sight: React.FC<Props> = (props: Props) => {
           <img className="blog-post-img" src={selectedBlogPost.img} />
           <div className="blog-post-content" dangerouslySetInnerHTML={createMarkup(selectedBlogPost.content)}></div>
           <p>{selectedBlogPost.submittedOn.replace('T', ' ').substring(0, 19)}</p>
-          {selectedBlogPost.comments.map((comment: Comment) => {
+          {selectedBlogPost?.comments?.map((comment: Comment) => {
             return (
               <MDBCard className="blog-post-comment-card" key={comment._id}>
                 <MDBCardTitle>{comment.userFirstName} commented:</MDBCardTitle>
@@ -135,12 +136,15 @@ const Sight: React.FC<Props> = (props: Props) => {
     )
   } else {
     return (
-      <p>loading...</p>
+      <div>
+        <p>loading...</p>
+        <div className="loading-bar"></div>
+      </div>
     )
   }
 }
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps: (state: GlobalState) => void = (state) => ({
   sights: state.sightsState.sights,
   loggedIn: state.loginState.loggedIn,
   userFirstName: state.loginState.userFirstName,

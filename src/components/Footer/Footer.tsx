@@ -2,10 +2,12 @@ import React from 'react'
 import { Link, useHistory } from "react-router-dom"
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from 'mdbreact'
 import { GiWalkingBoot } from 'react-icons/gi'
-import axios from "axios"
+import axios, { AxiosError, AxiosResponse } from "axios"
 import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
 import GlobalState from '../../types/State/Global/State'
 import './Footer.scss'
+import Account from '../../types/PostRequests/Account'
 
 interface Props {
   loggedIn: boolean;
@@ -35,15 +37,15 @@ const Footer: React.FC<Props> = (props: Props) => {
 
   const deleteAccount = () => {
 
-    const payload = {
+    const payload: Account = {
       userId: userId,
     }
 
     axios.delete("https://city-walks.herokuapp.com/delete-account", { data: payload })
-      .then((err) => {
-        if (err) {
-          console.log(err);
-        }
+      .then((res: AxiosResponse) => {
+        console.log('account deleted')
+      }).catch((err: AxiosError) => {
+        console.log(err, 'account not deleted, try again.')
       });
 
     alert("Account Deleted. You can sign up again at any time.")
@@ -114,12 +116,12 @@ const Footer: React.FC<Props> = (props: Props) => {
   );
 }
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps: (state: GlobalState) => void = (state) => ({
   loggedIn: state.loginState.loggedIn,
   userId: state.loginState.userId,
 });
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     setLoggedIn: (boolValue: boolean) => dispatch({ type: 'SET_LOGGED_IN', boolValue }),
     setUserId: (userID: string) => dispatch({ type: 'SET_USER_ID', userID }),

@@ -29,7 +29,7 @@ const Threads: React.FC<Props> = (props: Props) => {
         window.scrollTo(0, 0);
     }, []);
 
-    let threads: string | ReactNode = "loading";
+    let threads: string | ReactNode = <div><p>Loading...</p><div className="loading-bar"></div></div>
 
     if (boards.length) {
 
@@ -118,7 +118,7 @@ const Threads: React.FC<Props> = (props: Props) => {
     )
 }
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps: (state: GlobalState) => void = (state) => ({
     boards: state.boardsState.boards,
     loggedIn: state.loginState.loggedIn,
     userId: state.loginState.userId,

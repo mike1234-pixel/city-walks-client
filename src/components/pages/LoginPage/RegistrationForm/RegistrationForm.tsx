@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
 import GlobalState from '../../../../types/State/Global/State'
 import RegistrationCredentials from '../../../../types/PostRequests/RegistrationCredentials'
 import './RegistrationForm.scss'
@@ -82,7 +83,7 @@ const RegistrationForm: React.FC<Props> = (props: Props) => {
 
   return (
     <div key="user-registration">
-      <UserPortalNav />
+      <UserPortalNav loggedIn={false} />
       <MDBContainer className="min-page-height">
         <div className="registration-header-container">
           <h2 className="registration-header">Register</h2>
@@ -107,14 +108,14 @@ const RegistrationForm: React.FC<Props> = (props: Props) => {
   )
 }
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps: (state: GlobalState) => void = (state) => ({
   firstName: state.loginState.firstName,
   lastName: state.loginState.lastName,
   registrationEmail: state.loginState.registrationEmail,
   activationMessageEmphasis: state.loginState.activationMessageEmphasis
 });
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     setFirstName: (firstName: string) => dispatch({ type: 'SET_FIRST_NAME', firstName }),
     setLastName: (lastName: string) => dispatch({ type: 'SET_NAME_NAME', lastName }),
