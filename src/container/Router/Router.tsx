@@ -23,7 +23,7 @@ import Threads from '../../components/pages/LoginPage/LoggedInView/Components/Th
 import { Route, Switch, useLocation } from "react-router-dom"
 import { connect } from "react-redux"
 import City from '../../types/Cities/City'
-import GlobalState from '../../types/State/Global/State'
+import RootState from '../../types/State/Root/State'
 import Location from '../../types/Generic/Location'
 
 interface Props {
@@ -71,7 +71,7 @@ const Router: React.FC<Props> = (props: Props) => {
   )
 }
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps = (state: RootState) => ({
   privacyPopupVisible: state.privacyPopupState.privacyPopupVisible
 });
 

@@ -3,7 +3,7 @@ import { MDBInput } from "mdbreact"
 import { FaSearchLocation } from "react-icons/fa"
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import GlobalState from "../../types/State/Global/State"
+import RootState from "../../types/State/Root/State"
 import './SeachBar.scss'
 
 interface Props {
@@ -45,7 +45,7 @@ let SearchBar: React.FC<Props> = (props: Props) => {
   )
 }
 
-const mapStateToProps: (state: GlobalState) => void = (state) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
   searchValue: state.searchState.searchValue,
 });
 

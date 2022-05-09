@@ -8,7 +8,7 @@ import { GiWalkingBoot } from 'react-icons/gi'
 import { connect } from 'react-redux';
 import { Dispatch } from "redux"
 import Walk from "../../../types/Walks/Walk"
-import GlobalState from "../../../types/State/Global/State"
+import RootState from "../../../types/State/Root/State"
 import './Walks.scss'
 
 interface Props {
@@ -130,7 +130,7 @@ const Walks: React.FC<Props> = (props: Props) => {
     )
 }
 
-const mapStateToProps: (state: GlobalState) => void = (state) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
     walks: state.walksState.walks,
     searchValue: state.searchState.searchValue,
 });

@@ -9,7 +9,7 @@ import ReplyToSubmit from '../../../../../../types/PostRequests/Reply'
 import SelectedReply from "../../../../../../types/PostRequests/SelectedReply"
 import SelectedThread from "../../../../../../types/PostRequests/SelectedThread"
 import './ThreadBox.scss'
-import GlobalState from "../../../../../../types/State/Global/State"
+import RootState from "../../../../../../types/State/Root/State"
 
 interface Props {
   currentBoardName: string; 
@@ -137,7 +137,7 @@ const ThreadBox: React.FC<Props> = (props: Props) => {
     )
 }
 
-const mapStateToProps: (state: GlobalState) => void = (state) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
   loggedIn: state.loginState.loggedIn,
   userFirstName: state.loginState.userFirstName,
   userId: state.loginState.userId,

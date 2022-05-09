@@ -4,7 +4,7 @@ import UserPortalNav from "../UserPortalNav"
 import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
-import GlobalState from '../../../../types/State/Global/State'
+import RootState from '../../../../types/State/Root/State'
 import Account from '../../../../types/PostRequests/Account'
 import { Dispatch } from 'redux'
 import './ForgotPasswordForm.scss'
@@ -67,7 +67,7 @@ const ForgotPasswordForm: React.FC<Props> = (props: Props) => {
   )
 }
 
-const mapStateToProps: (state: GlobalState) => void = (state) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
   forgotPasswordEmail: state.loginState.forgotPasswordEmail,
 });
 

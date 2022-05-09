@@ -6,7 +6,7 @@ import Walk from '../types/Walks/Walk'
 import City from '../types/Cities/City'
 import Board from '../types/Boards/Board'
 import Sight from '../types/Sights/Sight'
-import GlobalState from '../types/State/Global/State'
+import RootState from '../types/State/Root/State'
 import './App.scss'
 
 interface Props {
@@ -88,7 +88,7 @@ const App: React.FC<Props> = (props: Props) => {
   return (<Router cities={[]} />)
 }
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps = (state: RootState) => ({
   sitekey: state.recaptchaState.sitekey,
 });
 

@@ -5,7 +5,7 @@ import { MDBBtn, MDBIcon, MDBCard, MDBCardBody, MDBCardImage, MDBCardText, MDBCa
 import urlify from "../../../functions/urlify"
 import { connect } from 'react-redux'
 import Sight from "../../../types/Sights/Sight"
-import GlobalState from "../../../types/State/Global/State"
+import RootState from "../../../types/State/Root/State"
 import "./Sights.scss"
 
 interface Props {
@@ -83,7 +83,7 @@ const Sights: React.FC<Props> = (props: Props) => {
     )
 }
 
-const mapStateToProps: (state: GlobalState) => void = (state) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
     sights: state.sightsState.sights,
 });
 

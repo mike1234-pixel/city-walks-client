@@ -8,7 +8,7 @@ import { MdLocationCity } from 'react-icons/md'
 import { FaRoad, FaMapMarkerAlt } from 'react-icons/fa'
 import { IoMdTrain } from 'react-icons/io'
 import { connect } from "react-redux";
-import GlobalState from "../../types/State/Global/State"
+import RootState from "../../types/State/Root/State"
 import WalkT from '../../types/Walks/Walk'
 import './Walk.scss'
 
@@ -104,7 +104,7 @@ const Walk: React.FC<any> = (props: Props) => {
 }
 
 //export default Walk
-const mapStateToProps: (state: GlobalState) => void = (state) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
   walks: state.walksState.walks,
 });
 

@@ -4,23 +4,25 @@ import { MDBCol, MDBContainer, MDBRow, MDBFooter } from 'mdbreact'
 import { GiWalkingBoot } from 'react-icons/gi'
 import axios, { AxiosError, AxiosResponse } from "axios"
 import { connect } from 'react-redux'
-import { Dispatch } from 'redux'
-import GlobalState from '../../types/State/Global/State'
-import './Footer.scss'
+import { Dispatch, Action } from 'redux'
+import RootState from '../../types/State/Root/State'
 import Account from '../../types/PostRequests/Account'
+import './Footer.scss'
 
 interface Props {
   loggedIn: boolean;
   userId: string;
-  setLoggedIn: Function;
-  setUserId: Function;
-  setUserFirstName: Function;
-  setUserLastName: Function;
+  setLoggedIn: (loggedIn: boolean) => void;
+  setUserId: (userId: string) => void;
+  setUserFirstName: (userFirstName: string) => void;
+  setUserLastName: (userLastName: string) => void;
 }
 
 const Footer: React.FC<Props> = (props: Props) => {
 
   const { loggedIn, userId, setLoggedIn, setUserId, setUserFirstName, setUserLastName } = props
+
+  console.log(setUserId)
 
   const pushSlug: Function = useHistory().push
 
@@ -116,7 +118,7 @@ const Footer: React.FC<Props> = (props: Props) => {
   );
 }
 
-const mapStateToProps: (state: GlobalState) => void = (state) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
   loggedIn: state.loginState.loggedIn,
   userId: state.loginState.userId,
 });

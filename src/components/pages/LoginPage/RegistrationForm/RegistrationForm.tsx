@@ -6,7 +6,7 @@ import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import GlobalState from '../../../../types/State/Global/State'
+import RootState from '../../../../types/State/Root/State'
 import RegistrationCredentials from '../../../../types/PostRequests/RegistrationCredentials'
 import './RegistrationForm.scss'
 
@@ -108,7 +108,7 @@ const RegistrationForm: React.FC<Props> = (props: Props) => {
   )
 }
 
-const mapStateToProps: (state: GlobalState) => void = (state) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
   firstName: state.loginState.firstName,
   lastName: state.loginState.lastName,
   registrationEmail: state.loginState.registrationEmail,

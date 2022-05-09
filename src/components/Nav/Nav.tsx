@@ -4,7 +4,7 @@ import SearchBar from '../SearchBar/SearchBar'
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBHamburgerToggler, MDBCollapse, MDBInput, MDBContainer, MDBRow, MDBCol } from "mdbreact"
 import { connect } from 'react-redux'
 import { Dispatch } from "redux"
-import GlobalState from "../../types/State/Global/State"
+import RootState from "../../types/State/Root/State"
 import './Nav.scss'
 
 interface Props {
@@ -73,7 +73,7 @@ const Nav: React.FC<Props> = (props: Props) => {
   )
 }
 
-const mapStateToProps: (state: GlobalState) => void = (state) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
   redirect: state.searchState.redirect,
 });
 

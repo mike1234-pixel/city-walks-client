@@ -11,7 +11,7 @@ import { RiArrowDropDownLine } from 'react-icons/ri'
 import { connect } from 'react-redux'
 import Walk from '../../../types/Walks/Walk'
 import './Home.scss'
-import GlobalState from "../../../types/State/Global/State"
+import RootState from "../../../types/State/Root/State"
 
 interface Props {
     walks: Array<Walk>
@@ -87,7 +87,7 @@ const Home: React.FC<Props> = (props: Props) => {
     }
 }
 
-const mapStateToProps: (state: GlobalState) => void = (state) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
     walks: state.walksState.walks
 });
 

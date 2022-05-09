@@ -7,7 +7,7 @@ import SearchState from '../Search/State'
 import SightsState from '../Sights/State'
 import WalksState from '../Walks/State'
 
-export default interface GlobalState {
+export default interface RootState {
     boardsState: BoardsState;
     citiesState: CitiesState;
     loginState: LoginState;

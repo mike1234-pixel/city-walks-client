@@ -6,7 +6,7 @@ import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
 import Board from '../../../../../../types/Boards/Board'
-import GlobalState from "../../../../../../types/State/Global/State"
+import RootState from "../../../../../../types/State/Root/State"
 import "./Threads.scss"
 import Thread from "../../../../../../types/PostRequests/Thread"
 import ThreadT from '../../../../../../types/Boards/Thread'
@@ -118,7 +118,7 @@ const Threads: React.FC<Props> = (props: Props) => {
     )
 }
 
-const mapStateToProps: (state: GlobalState) => void = (state) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
     boards: state.boardsState.boards,
     loggedIn: state.loginState.loggedIn,
     userId: state.loginState.userId,

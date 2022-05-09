@@ -6,7 +6,7 @@ import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import GlobalState from '../../../../types/State/Global/State'
+import RootState from '../../../../types/State/Root/State'
 import './ResetPasswordForm.scss'
 
 interface Props {
@@ -101,7 +101,7 @@ const ResetPasswordForm: React.FC<Props> = (props: Props) => {
   )
 }
 
-const mapStateToProps: (state: GlobalState) => void = (state) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
   resetPasswordEmail: state.loginState.resetPasswordEmail,
   resetPasswordOldPassword: state.loginState.resetPasswordOldPassword,
   resetPasswordNewPassword: state.loginState.resetPasswordNewPassword,

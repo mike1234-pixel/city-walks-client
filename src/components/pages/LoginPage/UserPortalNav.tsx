@@ -12,7 +12,7 @@ import {
 import { Link, useHistory } from "react-router-dom"
 import { connect } from 'react-redux'
 import { Dispatch } from "redux";
-import GlobalState from "../../../types/State/Global/State"
+import RootState from "../../../types/State/Root/State"
 import "./UserPortalNav.scss"
 
 interface Props {
@@ -129,7 +129,7 @@ const UserPortalNav: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps: (state: GlobalState) => void = (state) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
   loggedIn: state.loginState.loggedIn,
 });
 

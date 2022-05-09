@@ -5,7 +5,7 @@ import UserPortalNav from "../UserPortalNav"
 import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
-import GlobalState from '../../../../types/State/Global/State'
+import RootState from '../../../../types/State/Root/State'
 import Credentials from '../../../../types/PostRequests/Credentials'
 import { Dispatch } from 'redux'
 import './LoginForm.scss'
@@ -93,7 +93,7 @@ const LoginForm: React.FC<Props> = (props: Props) => {
   )
 }
 
-const mapStateToProps: (state: GlobalState) => void = (state) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
   loginEmail: state.loginState.loginEmail,
   loginPassword: state.loginState.loginPassword,
 });

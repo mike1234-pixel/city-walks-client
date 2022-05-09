@@ -4,7 +4,7 @@ import { MDBContainer } from "mdbreact"
 import UserPortalNav from "../UserPortalNav"
 import { connect } from 'react-redux'
 import Board from '../../../../types/Boards/Board'
-import GlobalState from '../../../../types/State/Global/State'
+import RootState from '../../../../types/State/Root/State'
 import './Boards.scss'
 
 interface Props {
@@ -46,7 +46,7 @@ const Boards: React.FC<Props> = (props: Props) => {
     )
 }
 
-const mapStateToProps: (state: GlobalState) => void = (state) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
     boards: state.boardsState.boards,
     userFirstName: state.loginState.userFirstName
 });

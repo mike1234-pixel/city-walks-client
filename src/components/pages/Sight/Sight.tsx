@@ -5,7 +5,7 @@ import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import marked from "marked"
 import SelectedComment from "../../../types/PostRequests/SelectedComment"
-import GlobalState from "../../../types/State/Global/State"
+import RootState from "../../../types/State/Root/State"
 import SightT from "../../../types/Sights/Sight"
 import Comment from "../../../types/Sights/Comment"
 import { connect } from 'react-redux'
@@ -144,7 +144,7 @@ const Sight: React.FC<Props> = (props: Props) => {
   }
 }
 
-const mapStateToProps: (state: GlobalState) => void = (state) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
   sights: state.sightsState.sights,
   loggedIn: state.loginState.loggedIn,
   userFirstName: state.loginState.userFirstName,

@@ -6,7 +6,7 @@ import qs from "qs"
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 import EmailToVerify from '../../../../types/PostRequests/EmailToVerify'
-import GlobalState from '../../../../types/State/Global/State'
+import RootState from '../../../../types/State/Root/State'
 import './VerificationForm.scss'
 
 interface Props {
@@ -69,7 +69,7 @@ const VerificationForm: React.FC<Props> = (props: Props) => {
   )
 }
 
-const mapStateToProps: (state: GlobalState) => void = (state) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
   verificationEmail: state.loginState.verificationEmail,
 });
 

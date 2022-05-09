@@ -4,7 +4,7 @@ import ReactPaginate from "react-paginate"
 import { connect } from 'react-redux'
 import { Action, Dispatch } from "redux"
 import City from "../../../types/Cities/City"
-import GlobalState from "../../../types/State/Global/State"
+import RootState from "../../../types/State/Root/State"
 import './Cities.scss'
 
 interface Props {
@@ -81,7 +81,7 @@ const Cities: React.FC<any> = (props: Props) => {
     )
 }
 
-const mapStateToProps: (state: GlobalState) => void = (state) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
     cities: state.citiesState.cities,
 });
 
