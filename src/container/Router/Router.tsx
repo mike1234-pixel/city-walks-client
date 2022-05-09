@@ -71,7 +71,7 @@ const Router: React.FC<Props> = (props: Props) => {
   )
 }
 
-const mapStateToProps = (state: RootState) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
   privacyPopupVisible: state.privacyPopupState.privacyPopupVisible
 });
 

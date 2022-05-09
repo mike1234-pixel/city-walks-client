@@ -8,7 +8,7 @@ import Board from '../types/Boards/Board'
 import Sight from '../types/Sights/Sight'
 import RootState from '../types/State/Root/State'
 import './App.scss'
-import { Action } from 'redux'
+import { Action, Dispatch } from 'redux'
 
 interface Props {
   sitekey: string;
@@ -87,14 +87,14 @@ const App: React.FC<Props> = (props: Props) => {
 
   }, [])
 
-  return (<Router cities={[]} />)
+  return (<Router cities={[]} privacyPopupVisible={true} />)
 }
 
-const mapStateToProps = (state: RootState) => ({
+const mapStateToProps: (state: RootState) => void = (state) => ({
   sitekey: state.recaptchaState.sitekey,
 });
 
-const mapDispatchToProps = (dispatch: Function) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     saveSights: (sights: Array<Sight>) => dispatch({ type: 'SAVE_SIGHTS', sights }),
     saveWalks: (walks: Array<Walk>) => dispatch({ type: 'SAVE_WALKS', walks }),
