@@ -2,11 +2,11 @@ import React from 'react'
 import { MDBBtn, MDBContainer } from "mdbreact"
 import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
-import { Dispatch } from 'redux'
+import { Action, Dispatch } from 'redux'
 import "./PrivacyPopUp.scss"
 
 interface Props {
-    setPrivacyPopupVisible: Function;
+    setPrivacyPopupVisible: (boolValue: boolean) => Action;
 }
 
 const PrivacyPopUp: React.FC<Props> = (props: Props) => {

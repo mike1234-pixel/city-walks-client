@@ -5,7 +5,7 @@ import UserPortalNav from "../UserPortalNav"
 import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
-import { Dispatch } from 'redux'
+import { Action, Dispatch } from 'redux'
 import RootState from '../../../../types/State/Root/State'
 import './ResetPasswordForm.scss'
 
@@ -14,10 +14,10 @@ interface Props {
   resetPasswordOldPassword: string;
   resetPasswordNewPassword: string;
   resetPasswordConfirmNewPassword: string;
-  setResetPasswordEmail: Function;
-  setResetPasswordOldPassword: Function;
-  setResetPasswordNewPassword: Function;
-  setResetPasswordConfirmNewPassword: Function
+  setResetPasswordEmail: (resetPasswordEmail: string) => Action;
+  setResetPasswordOldPassword: (resetPasswordOldPassword: string) => Action;
+  setResetPasswordNewPassword: (resetPasswordNewPassword: string) => Action;
+  setResetPasswordConfirmNewPassword: (resetPasswordConfirmNewPassword: string) => Action;
 }
 
 const ResetPasswordForm: React.FC<Props> = (props: Props) => {

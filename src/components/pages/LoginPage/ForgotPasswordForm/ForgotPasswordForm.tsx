@@ -6,12 +6,12 @@ import qs from "qs"
 import { connect } from 'react-redux'
 import RootState from '../../../../types/State/Root/State'
 import Account from '../../../../types/PostRequests/Account'
-import { Dispatch } from 'redux'
+import { Action, Dispatch } from 'redux'
 import './ForgotPasswordForm.scss'
 
 interface Props {
   forgotPasswordEmail: string;
-  setForgotPasswordEmail: Function;
+  setForgotPasswordEmail: (forgotPasswordEmail: string) => Action;
 }
 
 const ForgotPasswordForm: React.FC<Props> = (props: Props) => {

@@ -4,14 +4,14 @@ import UserPortalNav from "../UserPortalNav"
 import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
-import { Dispatch } from 'redux'
+import { Action, Dispatch } from 'redux'
 import EmailToVerify from '../../../../types/PostRequests/EmailToVerify'
 import RootState from '../../../../types/State/Root/State'
 import './VerificationForm.scss'
 
 interface Props {
   verificationEmail: string;
-  setVerificationEmail: Function;
+  setVerificationEmail: (verificationEmail: string) => Action;
 }
 
 const VerificationForm: React.FC<Props> = (props: Props) => {

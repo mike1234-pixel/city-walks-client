@@ -8,17 +8,18 @@ import Board from '../types/Boards/Board'
 import Sight from '../types/Sights/Sight'
 import RootState from '../types/State/Root/State'
 import './App.scss'
+import { Action } from 'redux'
 
 interface Props {
-  saveBoards: Function;
-  saveSights: Function;
-  saveWalks: Function;
-  saveCities: Function;
-  setPrivacyPopupVisible: Function;
-  setLoggedIn: Function;
-  setUserId: Function;
-  setUserFirstName: Function;
   sitekey: string;
+  saveBoards: (boards: Array<Board>) => Action;
+  saveSights: (sights: Array<Sight>) => Action;
+  saveWalks: (walks: Array<Walk>) => Action;
+  saveCities: (cities: Array<City>) => Action;
+  setPrivacyPopupVisible: (boolValue: boolean) => Action;
+  setLoggedIn: (boolValue: boolean) => Action;
+  setUserId: (userId: string | null) => Action;
+  setUserFirstName: (userFirstName: string | null) => Action;
 }
 
 const App: React.FC<Props> = (props: Props) => {
@@ -54,6 +55,7 @@ const App: React.FC<Props> = (props: Props) => {
 
     if (localStorage.getItem("loggedIn") !== null) {
       setLoggedIn(true)
+
       setUserId(localStorage.getItem("userId"))
       setUserFirstName(localStorage.getItem("userFirstName"))
     }
@@ -92,18 +94,16 @@ const mapStateToProps = (state: RootState) => ({
   sitekey: state.recaptchaState.sitekey,
 });
 
-// this works...
 const mapDispatchToProps = (dispatch: Function) => {
   return {
-    // don't necessarily need the loading states can just use sights.length instead
     saveSights: (sights: Array<Sight>) => dispatch({ type: 'SAVE_SIGHTS', sights }),
     saveWalks: (walks: Array<Walk>) => dispatch({ type: 'SAVE_WALKS', walks }),
     saveCities: (cities: Array<City>) => dispatch({ type: 'SAVE_CITIES', cities }),
     saveBoards: (boards: Array<Board>) => dispatch({ type: 'SAVE_BOARDS', boards }),
     setPrivacyPopupVisible: (boolValue: boolean) => dispatch({ type: 'SET_POPUP_VISIBLE', boolValue }),
     setLoggedIn: (boolValue: boolean) => dispatch({ type: 'SET_LOGGED_IN', boolValue }),
-    setUserId: (userId: string) => dispatch({ type: 'SET_USER_ID', userId }),
-    setUserFirstName: (userFirstName: string) => dispatch({ type: 'SET_USER_FIRST_NAME', userFirstName }),
+    setUserId: (userId: string | null) => dispatch({ type: 'SET_USER_ID', userId }),
+    setUserFirstName: (userFirstName: string | null) => dispatch({ type: 'SET_USER_FIRST_NAME', userFirstName }),
   }
 }
 

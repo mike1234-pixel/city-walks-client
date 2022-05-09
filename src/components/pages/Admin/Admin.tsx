@@ -11,7 +11,7 @@ import AddBoardForm from './AddBoardForm/AddBoardForm'
 import DeleteBoardForm from "./DeleteBoardForm/DeleteBoardForm"
 import AddBlogPostForm from "./AddBlogPostForm/AddBlogPostForm"
 import DeleteBlogPostForm from "./DeleteBlogPostForm/DeleteBlogPostForm"
-import Credentials from "../../../types/PostRequests/Credentials";
+import Credentials from "../../../types/PostRequests/Credentials"
 import './Admin.scss'
 
 const Admin: React.FC = () => {

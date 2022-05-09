@@ -40,7 +40,7 @@ Global state is managed by **redux** and **react-redux**.
 
 The patterns are straightforward and aim to avoid unnecessary abstraction. Action Creators for example are not included, neither are constants used to replace action types.
 
-State is managed locally by components in cases where state is only required locally, such as in **./src/components/pages/Admin/Admin.jsx**. React Hooks are used for this purpose.
+State is managed locally by components in cases where state is only required locally, such as in **./src/components/pages/Admin/Admin.jsx**. **React Hooks** are used for this purpose.
 
 The `userFirstName`, `userId` credentials and `loggedIn` state are stored in **local storage**. When the user logs out local storage is cleared and the user state reset.
 
@@ -56,7 +56,7 @@ Ajax requests are made using the **axios** and **qs** packages.
 
 ## Text Formatting
 
-Text can be saved to the database with Markdown formatting. This will be parsed on the client using the **marked** package. This applies only when adding a new Walk or BlogPost.
+Text can be saved to the database with Markdown formatting. This will be parsed on the client using the **marked** package. This applies only when adding a new Walk or Sight.
 
 ## Recaptcha
 
@@ -70,9 +70,9 @@ If the recaptcha score is less than 0.7 the server will reject the request.
 
 Routing is handled by **react-router-dom**.
 
-Dynamic routing is generated for the `Threads` and `Walk` components.
+Dynamic routing is generated for the `Threads`, `Sight` and `Walk` components.
 
-Routing logic can be found in the `Router` component in **./src/container/Router/Router.jsx**.
+Routing logic can be found in the `Router` component in **./src/container/Router/Router.tsx**.
 
 ## CSS Preprocessor
 

@@ -11,16 +11,16 @@ import {
 } from "mdbreact";
 import { Link, useHistory } from "react-router-dom"
 import { connect } from 'react-redux'
-import { Dispatch } from "redux";
+import { Action, Dispatch } from "redux";
 import RootState from "../../../types/State/Root/State"
 import "./UserPortalNav.scss"
 
 interface Props {
   loggedIn: boolean;
-  setLoggedIn: Function;
-  setUserId: Function;
-  setUserFirstName: Function;
-  setUserLastName: Function;
+  setLoggedIn: (boolValue: boolean) => Action;
+  setUserId: (userId: string) => Action;
+  setUserFirstName: (userFirstName: string) => Action;
+  setUserLastName: (userLastName: string) => Action;
 }
 
 const UserPortalNav: React.FC<Props> = (props: Props) => {

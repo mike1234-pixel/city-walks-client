@@ -3,13 +3,13 @@ import { useHistory } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar'
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBHamburgerToggler, MDBCollapse, MDBInput, MDBContainer, MDBRow, MDBCol } from "mdbreact"
 import { connect } from 'react-redux'
-import { Dispatch } from "redux"
+import { Action, Dispatch } from "redux"
 import RootState from "../../types/State/Root/State"
 import './Nav.scss'
 
 interface Props {
   redirect: boolean;
-  setRedirect: Function;
+  setRedirect: (boolValue: boolean) => Action;
 }
 
 const Nav: React.FC<Props> = (props: Props) => {

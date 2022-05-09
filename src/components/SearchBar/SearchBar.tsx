@@ -2,13 +2,13 @@ import React from 'react'
 import { MDBInput } from "mdbreact"
 import { FaSearchLocation } from "react-icons/fa"
 import { connect } from 'react-redux'
-import { Dispatch } from 'redux'
+import { Action, Dispatch } from 'redux'
 import RootState from "../../types/State/Root/State"
 import './SeachBar.scss'
 
 interface Props {
-  handleChangeSearch: Function;
-  setRedirect: Function;
+  handleChangeSearch: (inputValue: string) => Action;
+  setRedirect: (boolValue: boolean) => Action;
   searchValue: string;
 }
 

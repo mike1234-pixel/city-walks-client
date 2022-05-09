@@ -7,18 +7,18 @@ import qs from "qs"
 import { connect } from 'react-redux'
 import RootState from '../../../../types/State/Root/State'
 import Credentials from '../../../../types/PostRequests/Credentials'
-import { Dispatch } from 'redux'
+import { Action, Dispatch } from 'redux'
 import './LoginForm.scss'
 
 interface Props {
   loginEmail: string;
   loginPassword: string;
-  setLoginEmail: Function;
-  setLoginPassword: Function;
-  setLoggedIn: Function;
-  setUserId: Function;
-  setUserFirstName: Function;
-  setUserLastName: Function;
+  setLoginEmail: (loginEmail: string) => Action;
+  setLoginPassword: (loginPassword: string) => Action;
+  setLoggedIn: (boolValue: boolean) => Action;
+  setUserId: (userId: string) => Action;
+  setUserFirstName: (userFirstName: string) => Action;
+  setUserLastName: (userLastName: string) => Action;
 }
 
 const LoginForm: React.FC<Props> = (props: Props) => {

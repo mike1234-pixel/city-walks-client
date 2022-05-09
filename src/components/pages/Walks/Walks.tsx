@@ -6,14 +6,14 @@ import { Link } from "react-router-dom"
 import ReactPaginate from "react-paginate"
 import { GiWalkingBoot } from 'react-icons/gi'
 import { connect } from 'react-redux';
-import { Dispatch } from "redux"
+import { Action, Dispatch } from "redux"
 import Walk from "../../../types/Walks/Walk"
 import RootState from "../../../types/State/Root/State"
 import './Walks.scss'
 
 interface Props {
     searchValue: string;
-    setSearchValue: Function;
+    setSearchValue: (inputValue: string) => Action;
     walks: Array<Walk>;
 }
 

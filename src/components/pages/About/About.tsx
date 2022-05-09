@@ -4,7 +4,6 @@ import { MDBContainer } from "mdbreact"
 import { GiWalkingBoot } from 'react-icons/gi'
 import './About.scss'
 
-
 const About: React.FC = () => {
 
     useEffect(() => {

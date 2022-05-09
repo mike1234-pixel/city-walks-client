@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { useGoogleMaps } from "react-hook-google-maps"
 import urlify from "../../functions/urlify"
 import Walk from '../../types/Walks/Walk'
@@ -388,17 +388,19 @@ const LocatorMap: React.FC<Props> = (props: Props) => {
 
     if (map) {
         // loop walks array and create a marker for each one
-        walks.map(walk => {
+        walks.map((walk: Walk) => {
 
-            const lat = parseFloat(walk.lat)
-            const lng = parseFloat(walk.lng)
+            const lat: number = parseFloat(walk.lat)
+            const lng: number = parseFloat(walk.lng)
             // The marker
+
             const walkMarker = new google.maps.Marker({
                 position: { lat: lat, lng: lng },
                 map: map,
             });
+
             // attach infoWindows to markers
-            const infowindowContent =
+            const infowindowContent: ReactNode =
                 `<a href="/walks/${urlify(walk.walk)}">
                     <div class="map-marker-link">
                         <h3>${walk.walk}</h3>
@@ -410,6 +412,7 @@ const LocatorMap: React.FC<Props> = (props: Props) => {
             const infoWindow = new google.maps.InfoWindow({
                 content: infowindowContent,
             });
+
             // add click event to markers to open an infowindow
             walkMarker.addListener("click", () => {
                 infoWindow.open(map, walkMarker);
@@ -423,8 +426,7 @@ const LocatorMap: React.FC<Props> = (props: Props) => {
 
 
     return (
-        <div ref={ref}
-            className="locator-map" />
+        <div ref={ref} className="locator-map" />
     )
 }
 

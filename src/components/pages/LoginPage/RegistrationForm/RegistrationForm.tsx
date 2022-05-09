@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
-import { Dispatch } from 'redux'
+import { Action, Dispatch } from 'redux'
 import RootState from '../../../../types/State/Root/State'
 import RegistrationCredentials from '../../../../types/PostRequests/RegistrationCredentials'
 import './RegistrationForm.scss'
@@ -16,13 +16,13 @@ interface Props {
   registrationEmail: string;
   registrationPassword: string;
   activationMessageEmphasis: string;
-  setFirstName: Function;
-  setLastName: Function;
-  setRegistrationEmail: Function;
-  setRegistrationPassword: Function;
-  setUserFirstName: Function;
-  setUserLastName: Function;
-  setActivationMessageEmphasis: Function;
+  setFirstName: (firstName: string) => Action;
+  setLastName: (lastName: string) => Action;
+  setRegistrationEmail: (registrationEmail: string) => Action;
+  setRegistrationPassword: (registrationPassword: string) => Action;
+  setUserFirstName: (userFirstName: string) => Action;
+  setUserLastName: (userLastName: string) => Action;
+  setActivationMessageEmphasis: (activationMessageEmphasis: string) => Action;
 }
 
 const RegistrationForm: React.FC<Props> = (props: Props) => {

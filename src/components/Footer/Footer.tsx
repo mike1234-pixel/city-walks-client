@@ -12,17 +12,15 @@ import './Footer.scss'
 interface Props {
   loggedIn: boolean;
   userId: string;
-  setLoggedIn: (loggedIn: boolean) => void;
-  setUserId: (userId: string) => void;
-  setUserFirstName: (userFirstName: string) => void;
-  setUserLastName: (userLastName: string) => void;
+  setLoggedIn: (loggedIn: boolean) => Action;
+  setUserId: (userId: string) => Action;
+  setUserFirstName: (userFirstName: string) => Action;
+  setUserLastName: (userLastName: string) => Action;
 }
 
 const Footer: React.FC<Props> = (props: Props) => {
 
   const { loggedIn, userId, setLoggedIn, setUserId, setUserFirstName, setUserLastName } = props
-
-  console.log(setUserId)
 
   const pushSlug: Function = useHistory().push
 
@@ -133,3 +131,15 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Footer);
+
+
+// if you want to define action creators there is a bindActionCreators function you can use like this:
+
+// import { bindActionCreators } from 'redux'
+
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     dispatch,
+//     ...bindActionCreators({ increment, decrement, reset }, dispatch),
+//   }
+// }
