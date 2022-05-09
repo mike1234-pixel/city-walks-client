@@ -143,3 +143,5 @@ export default connect(mapStateToProps, mapDispatchToProps)(Footer);
 //     ...bindActionCreators({ increment, decrement, reset }, dispatch),
 //   }
 // }
+
+// DESIGN - LINEAR GRADIENTS?

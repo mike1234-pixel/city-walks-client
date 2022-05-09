@@ -1,0 +1,23 @@
+/** @format */
+
+.admin-portal {
+  text-align: center;
+}
+
+.admin-login-form {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.admin-panel {
+  background: black;
+  .nav-link {
+    font-size: 12px;
+  }
+}
+
+.navbar-collapse {
+  @media (max-width: 767px) {
+    text-align: left;
+  }
+}
