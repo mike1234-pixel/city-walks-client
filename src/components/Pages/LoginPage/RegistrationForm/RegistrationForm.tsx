@@ -5,7 +5,8 @@ import { Link } from "react-router-dom"
 import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
-import { Action, Dispatch } from 'redux'
+import { Action, bindActionCreators, Dispatch } from 'redux'
+import { setFirstName, setLastName, setRegistrationEmail, setRegistrationPassword, setUserFirstName, setUserLastName, setActivationMessageEmphasis } from '../../../../actions/actions'
 import RootState from '../../../../types/State/Root/State'
 import RegistrationCredentials from '../../../../types/PostRequests/RegistrationCredentials'
 import './RegistrationForm.scss'
@@ -117,13 +118,8 @@ const mapStateToProps: (state: RootState) => void = (state) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    setFirstName: (firstName: string) => dispatch({ type: 'SET_FIRST_NAME', firstName }),
-    setLastName: (lastName: string) => dispatch({ type: 'SET_NAME_NAME', lastName }),
-    setRegistrationEmail: (registrationEmail: string) => dispatch({ type: 'SET_REGISTRATION_EMAIL', registrationEmail }),
-    setRegistrationPassword: (registrationPassword: string) => dispatch({ type: 'SET_REGISTRATION_PASSWORD', registrationPassword }),
-    setUserFirstName: (userFirstName: string) => dispatch({ type: 'SET_USER_FIRST_NAME', userFirstName }),
-    setUserLastName: (userLastName: string) => dispatch({ type: 'SET_USER_LAST_NAME', userLastName }),
-    setActivationMessageEmphasis: (activationMessageEmphasis: string) => dispatch({ type: 'SET_ACTIVATION_MESSAGE_EMPHASIS', activationMessageEmphasis }),
+    dispatch,
+    ...bindActionCreators({ setFirstName, setLastName, setRegistrationEmail, setRegistrationPassword, setUserFirstName, setUserLastName, setActivationMessageEmphasis }, dispatch),
   }
 }
 

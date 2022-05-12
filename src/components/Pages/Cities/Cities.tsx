@@ -2,7 +2,8 @@ import React, { ReactNode, useEffect, useState } from "react"
 import { MDBIcon, MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBContainer } from 'mdbreact'
 import ReactPaginate from "react-paginate"
 import { connect } from 'react-redux'
-import { Action, Dispatch } from "redux"
+import { Action, bindActionCreators, Dispatch } from "redux"
+import { handleClickSearch, setRedirect } from "../../../actions/actions"
 import City from "../../../types/Cities/City"
 import RootState from "../../../types/State/Root/State"
 import './Cities.scss'
@@ -87,8 +88,8 @@ const mapStateToProps: (state: RootState) => void = (state) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        handleClickSearch: (cityToSearch: string) => dispatch({ type: 'HANDLE_CLICK_SEARCH', cityToSearch }),
-        setRedirect: (boolValue: boolean) => dispatch({ type: 'SET_REDIRECT', boolValue }),
+        dispatch,
+        ...bindActionCreators({ handleClickSearch, setRedirect }, dispatch),
     }
 }
 

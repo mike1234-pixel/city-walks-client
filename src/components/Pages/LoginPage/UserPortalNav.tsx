@@ -11,8 +11,9 @@ import {
 } from "mdbreact";
 import { Link, useHistory } from "react-router-dom"
 import { connect } from 'react-redux'
-import { Action, Dispatch } from "redux";
+import { Action, bindActionCreators, Dispatch } from "redux";
 import RootState from "../../../types/State/Root/State"
+import { setLoggedIn, setUserId, setUserFirstName, setUserLastName } from "../../../actions/actions";
 import "./UserPortalNav.scss"
 
 interface Props {
@@ -135,10 +136,8 @@ const mapStateToProps: (state: RootState) => void = (state) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    setLoggedIn: (boolValue: boolean) => dispatch({ type: 'SET_LOGGED_IN', boolValue }),
-    setUserId: (userID: string) => dispatch({ type: 'SET_USER_ID', userID }),
-    setUserFirstName: (userFirstName: string) => dispatch({ type: 'SET_USER_FIRST_NAME', userFirstName }),
-    setUserLastName: (userLastName: string) => dispatch({ type: 'SET_USER_LAST_NAME', userLastName }),
+    dispatch,
+    ...bindActionCreators({ setLoggedIn, setUserId, setUserFirstName, setUserLastName }, dispatch),
   }
 }
 

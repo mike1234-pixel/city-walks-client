@@ -4,9 +4,10 @@ import { MDBCol, MDBContainer, MDBRow, MDBFooter } from 'mdbreact'
 import { GiWalkingBoot } from 'react-icons/gi'
 import axios, { AxiosError, AxiosResponse } from "axios"
 import { connect } from 'react-redux'
-import { Dispatch, Action } from 'redux'
+import { Dispatch, Action, bindActionCreators } from 'redux'
 import RootState from '../../types/State/Root/State'
 import Account from '../../types/PostRequests/Account'
+import { setLoggedIn, setUserFirstName, setUserId, setUserLastName } from '../../actions/actions'
 import './Footer.scss'
 
 interface Props {
@@ -123,25 +124,9 @@ const mapStateToProps: (state: RootState) => void = (state) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    setLoggedIn: (boolValue: boolean) => dispatch({ type: 'SET_LOGGED_IN', boolValue }),
-    setUserId: (userID: string) => dispatch({ type: 'SET_USER_ID', userID }),
-    setUserFirstName: (userFirstName: string) => dispatch({ type: 'SET_USER_FIRST_NAME', userFirstName }),
-    setUserLastName: (userLastName: string) => dispatch({ type: 'SET_USER_LAST_NAME', userLastName }),
+    dispatch,
+    ...bindActionCreators({ setLoggedIn, setUserId, setUserFirstName, setUserLastName }, dispatch),
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Footer);
-
-
-// if you want to define action creators there is a bindActionCreators function you can use like this:
-
-// import { bindActionCreators } from 'redux'
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     dispatch,
-//     ...bindActionCreators({ increment, decrement, reset }, dispatch),
-//   }
-// }
-
-// DESIGN - LINEAR GRADIENTS?

@@ -7,7 +7,8 @@ import qs from "qs"
 import { connect } from 'react-redux'
 import RootState from '../../../../types/State/Root/State'
 import Credentials from '../../../../types/PostRequests/Credentials'
-import { Action, Dispatch } from 'redux'
+import { Action, bindActionCreators, Dispatch } from 'redux'
+import { setLoggedIn, setLoginEmail, setLoginPassword, setUserFirstName, setUserId, setUserLastName } from '../../../../actions/actions'
 import './LoginForm.scss'
 
 interface Props {
@@ -100,12 +101,8 @@ const mapStateToProps: (state: RootState) => void = (state) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    setLoginEmail: (loginEmail: string) => dispatch({ type: 'SET_LOGIN_EMAIL', loginEmail }),
-    setLoginPassword: (loginPassword: string) => dispatch({ type: 'SET_LOGIN_PASSWORD', loginPassword }),
-    setLoggedIn: (boolValue: boolean) => dispatch({ type: 'SET_LOGGED_IN', boolValue }),
-    setUserId: (userId: string) => dispatch({ type: 'SET_USER_ID', userId }),
-    setUserFirstName: (userFirstName: string) => dispatch({ type: 'SET_USER_ID', userFirstName }),
-    setUserLastName: (userLastName: string) => dispatch({ type: 'SET_USER_ID', userLastName }),
+    dispatch,
+    ...bindActionCreators({ setLoginEmail, setLoginPassword, setLoggedIn, setUserId, setUserFirstName, setUserLastName }, dispatch),
   }
 }
 

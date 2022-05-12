@@ -4,7 +4,8 @@ import UserPortalNav from "../UserPortalNav"
 import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
-import { Action, Dispatch } from 'redux'
+import { Action, bindActionCreators, Dispatch } from 'redux'
+import { setVerificationEmail } from '../../../../actions/actions'
 import EmailToVerify from '../../../../types/PostRequests/EmailToVerify'
 import RootState from '../../../../types/State/Root/State'
 import './VerificationForm.scss'
@@ -75,7 +76,8 @@ const mapStateToProps: (state: RootState) => void = (state) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    setVerificationEmail: (verificationEmail: string) => dispatch({ type: 'SET_VERIFICATION_EMAIL', verificationEmail }),
+    dispatch,
+    ...bindActionCreators({ setVerificationEmail }, dispatch),
   }
 }
 

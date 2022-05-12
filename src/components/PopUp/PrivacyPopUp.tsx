@@ -2,7 +2,8 @@ import React from 'react'
 import { MDBBtn, MDBContainer } from "mdbreact"
 import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
-import { Action, Dispatch } from 'redux'
+import { Action, bindActionCreators, Dispatch } from 'redux'
+import { setPrivacyPopupVisible } from '../../actions/actions'
 import "./PrivacyPopUp.scss"
 
 interface Props {
@@ -33,7 +34,8 @@ const PrivacyPopUp: React.FC<Props> = (props: Props) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        setPrivacyPopupVisible: (boolValue: boolean) => dispatch({ type: 'SET_POPUP_VISIBLE', boolValue }),
+        dispatch,
+        ...bindActionCreators({ setPrivacyPopupVisible }, dispatch),
     }
 }
 

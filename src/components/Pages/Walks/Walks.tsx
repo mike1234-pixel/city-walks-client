@@ -6,7 +6,8 @@ import { Link } from "react-router-dom"
 import ReactPaginate from "react-paginate"
 import { GiWalkingBoot } from 'react-icons/gi'
 import { connect } from 'react-redux';
-import { Action, Dispatch } from "redux"
+import { Action, bindActionCreators, Dispatch } from "redux"
+import { setSearchValue } from "../../../actions/actions"
 import Walk from "../../../types/Walks/Walk"
 import RootState from "../../../types/State/Root/State"
 import './Walks.scss'
@@ -136,9 +137,9 @@ const mapStateToProps: (state: RootState) => void = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
-    console.log(dispatch)
     return {
-        setSearchValue: (inputValue: string) => dispatch({ type: 'HANDLE_CHANGE_SEARCH', inputValue })
+        dispatch,
+        ...bindActionCreators({ setSearchValue }, dispatch),
     }
 }
 

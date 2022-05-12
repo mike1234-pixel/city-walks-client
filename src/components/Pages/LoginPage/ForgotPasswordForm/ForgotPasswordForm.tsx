@@ -6,7 +6,8 @@ import qs from "qs"
 import { connect } from 'react-redux'
 import RootState from '../../../../types/State/Root/State'
 import Account from '../../../../types/PostRequests/Account'
-import { Action, Dispatch } from 'redux'
+import { Action, bindActionCreators, Dispatch } from 'redux'
+import { setForgotPasswordEmail } from '../../../../actions/actions'
 import './ForgotPasswordForm.scss'
 
 interface Props {
@@ -73,7 +74,8 @@ const mapStateToProps: (state: RootState) => void = (state) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    setForgotPasswordEmail: (forgotPasswordEmail: string) => dispatch({ type: 'SET_FORGOT_PASSWORD_EMAIL', forgotPasswordEmail }),
+    dispatch,
+    ...bindActionCreators({ setForgotPasswordEmail }, dispatch),
   }
 }
 

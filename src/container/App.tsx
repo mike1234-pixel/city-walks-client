@@ -7,8 +7,9 @@ import City from '../types/Cities/City'
 import Board from '../types/Boards/Board'
 import Sight from '../types/Sights/Sight'
 import RootState from '../types/State/Root/State'
+import { Action, Dispatch, bindActionCreators } from 'redux'
+import { saveBoards, saveCities, saveSights, saveWalks, setLoggedIn, setPrivacyPopupVisible, setUserFirstName, setUserId } from '../actions/actions'
 import './App.scss'
-import { Action, Dispatch } from 'redux'
 
 interface Props {
   sitekey: string;
@@ -96,15 +97,12 @@ const mapStateToProps: (state: RootState) => void = (state) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    saveSights: (sights: Array<Sight>) => dispatch({ type: 'SAVE_SIGHTS', sights }),
-    saveWalks: (walks: Array<Walk>) => dispatch({ type: 'SAVE_WALKS', walks }),
-    saveCities: (cities: Array<City>) => dispatch({ type: 'SAVE_CITIES', cities }),
-    saveBoards: (boards: Array<Board>) => dispatch({ type: 'SAVE_BOARDS', boards }),
-    setPrivacyPopupVisible: (boolValue: boolean) => dispatch({ type: 'SET_POPUP_VISIBLE', boolValue }),
-    setLoggedIn: (boolValue: boolean) => dispatch({ type: 'SET_LOGGED_IN', boolValue }),
-    setUserId: (userId: string | null) => dispatch({ type: 'SET_USER_ID', userId }),
-    setUserFirstName: (userFirstName: string | null) => dispatch({ type: 'SET_USER_FIRST_NAME', userFirstName }),
+    dispatch,
+    ...bindActionCreators({ saveSights, saveWalks, saveCities, saveBoards, setPrivacyPopupVisible, setLoggedIn, setUserId, setUserFirstName }, dispatch),
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+
+

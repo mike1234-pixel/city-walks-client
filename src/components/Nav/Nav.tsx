@@ -3,7 +3,8 @@ import { useHistory } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar'
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBHamburgerToggler, MDBCollapse, MDBInput, MDBContainer, MDBRow, MDBCol } from "mdbreact"
 import { connect } from 'react-redux'
-import { Action, Dispatch } from "redux"
+import { Action, Dispatch, bindActionCreators } from "redux"
+import { setRedirect } from "../../actions/actions"
 import RootState from "../../types/State/Root/State"
 import './Nav.scss'
 
@@ -14,7 +15,7 @@ interface Props {
 
 const Nav: React.FC<Props> = (props: Props) => {
 
-  const [toggleNav, setToggleNav] = useState(false)
+  const [toggleNav, setToggleNav] = useState<boolean>(false)
 
   const { redirect, setRedirect } = props;
 
@@ -79,7 +80,8 @@ const mapStateToProps: (state: RootState) => void = (state) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    setRedirect: (boolValue: boolean) => dispatch({ type: 'SET_REDIRECT', boolValue }),
+    dispatch,
+    ...bindActionCreators({ setRedirect }, dispatch),
   }
 }
 

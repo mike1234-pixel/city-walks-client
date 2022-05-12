@@ -5,7 +5,9 @@ import UserPortalNav from "../UserPortalNav"
 import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
-import { Action, Dispatch } from 'redux'
+import { Action, bindActionCreators, Dispatch } from 'redux'
+import { setResetPasswordEmail, setResetPasswordOldPassword, setResetPasswordNewPassword, setResetPasswordConfirmNewPassword } from '../../../../actions/actions'
+
 import RootState from '../../../../types/State/Root/State'
 import './ResetPasswordForm.scss'
 
@@ -110,10 +112,8 @@ const mapStateToProps: (state: RootState) => void = (state) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    setResetPasswordEmail: (resetPasswordEmail: string) => dispatch({ type: 'SET_RESET_PASSWORD_EMAIL', resetPasswordEmail }),
-    setResetPasswordOldPassword: (resetPasswordOldPassword: string) => dispatch({ type: 'SET_RESET_PASSWORD_OLD_PASSWORD', resetPasswordOldPassword }),
-    setResetPasswordNewPassword: (resetPasswordNewPassword: string) => dispatch({ type: 'SET_RESET_PASSWORD_NEW_PASSWORD', resetPasswordNewPassword }),
-    setResetPasswordConfirmNewPassword: (resetPasswordConfirmNewPassword: string) => dispatch({ type: 'SET_RESET_PASSWORD_CONFIRM_NEW_PASSWORD', resetPasswordConfirmNewPassword }),
+    dispatch,
+    ...bindActionCreators({ setResetPasswordEmail, setResetPasswordOldPassword, setResetPasswordNewPassword, setResetPasswordConfirmNewPassword }, dispatch),
   }
 }
 
