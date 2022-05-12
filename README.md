@@ -38,8 +38,6 @@ To start the development server, move into the **client** directory and run:
 
 Global state is managed by **redux** and **react-redux**.
 
-The patterns are straightforward and aim to avoid unnecessary abstraction. Action Creators for example are not included, neither are constants used to replace action types.
-
 State is managed locally by components in cases where state is only required locally, such as in **./src/components/pages/Admin/Admin.jsx**. **React Hooks** are used for this purpose.
 
 The `userFirstName`, `userId` credentials and `loggedIn` state are stored in **local storage**. When the user logs out local storage is cleared and the user state reset.
