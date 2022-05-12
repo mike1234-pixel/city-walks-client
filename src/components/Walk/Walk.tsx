@@ -3,6 +3,7 @@ import { MDBIcon, MDBAnimation, MDBBtn, MDBContainer } from "mdbreact"
 import SectionA from '../SectionA/SectionA'
 import SectionB from '../SectionB/SectionB'
 import PopUp from './PopUp/PopUp'
+import LoadingBar from "../LoadingBar/LoadingBar"
 import toTitleCase from "../../functions/toTitleCase"
 import { MdLocationCity } from 'react-icons/md'
 import { FaRoad, FaMapMarkerAlt } from 'react-icons/fa'
@@ -31,7 +32,7 @@ const Walk: React.FC<any> = (props: Props) => {
     document.addEventListener("mousedown", handleClickOutside);
   });
 
-  let walk: string | ReactNode = <div><p>Loading...</p><div className="loading-bar"></div></div>
+  let walk: string | ReactNode = <LoadingBar />
 
   let currentWalk: WalkT | { iframeLink: string; iframeTitle: string } = { iframeLink: '', iframeTitle: '' }
 

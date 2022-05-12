@@ -1,5 +1,6 @@
 import React, { ReactNode, useEffect, useState } from "react"
 import ThreadBox from "../ThreadBox/ThreadBox"
+import LoadingBar from "../../../../../LoadingBar/LoadingBar"
 import toTitleCase from "../../../../../../functions/toTitleCase"
 import { MDBBtn, MDBInput, MDBContainer } from "mdbreact"
 import axios, { AxiosError, AxiosResponse } from "axios"
@@ -29,7 +30,7 @@ const Threads: React.FC<Props> = (props: Props) => {
         window.scrollTo(0, 0);
     }, []);
 
-    let threads: string | ReactNode = <div><p>Loading...</p><div className="loading-bar"></div></div>
+    let threads: string | ReactNode = <LoadingBar />
 
     if (boards.length) {
 

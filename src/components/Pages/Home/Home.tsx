@@ -6,12 +6,13 @@ import SectionA from '../../SectionA/SectionA'
 import SectionB from '../../SectionB/SectionB'
 import urlify from '../../../functions/urlify'
 import LocatorMap from "../../LocatorMap/LocatorMap"
+import LoadingBar from "../../LoadingBar/LoadingBar"
 import { GiWalkingBoot } from 'react-icons/gi'
 import { RiArrowDropDownLine } from 'react-icons/ri'
 import { connect } from 'react-redux'
 import Walk from '../../../types/Walks/Walk'
-import './Home.scss'
 import RootState from "../../../types/State/Root/State"
+import './Home.scss'
 
 interface Props {
     walks: Array<Walk>
@@ -79,8 +80,7 @@ const Home: React.FC<Props> = (props: Props) => {
         return (
             <div>
                 <MDBContainer>
-                    <p>Loading...</p>
-                    <div className="loading-bar"></div>
+                    <LoadingBar />
                 </MDBContainer>
             </div>
         )

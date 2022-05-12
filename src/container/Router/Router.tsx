@@ -76,3 +76,6 @@ const mapStateToProps: (state: RootState) => void = (state) => ({
 });
 
 export default connect(mapStateToProps)(Router);
+
+
+// redirect, loggedIn, userId etc should be coming from the redux store, as I have initial state defined in two places currently, which is unnecessary

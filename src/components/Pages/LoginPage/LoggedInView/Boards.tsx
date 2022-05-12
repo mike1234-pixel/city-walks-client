@@ -1,7 +1,8 @@
 import React from 'react'
 import BoardBox from "./Components/BoardBox/BoardBox"
-import { MDBContainer } from "mdbreact"
 import UserPortalNav from "../UserPortalNav"
+import LoadingBar from '../../../LoadingBar/LoadingBar'
+import { MDBContainer } from "mdbreact"
 import { connect } from 'react-redux'
 import Board from '../../../../types/Boards/Board'
 import RootState from '../../../../types/State/Root/State'
@@ -36,10 +37,7 @@ const Boards: React.FC<Props> = (props: Props) => {
                         })}
                     </div>
                     :
-                    <div>
-                        <p>Loading...</p>
-                        <div className="loading-bar"></div>
-                    </div>
+                    <LoadingBar />
                 }
             </MDBContainer>
         </div>

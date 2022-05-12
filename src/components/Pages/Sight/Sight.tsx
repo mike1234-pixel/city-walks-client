@@ -5,6 +5,7 @@ import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import marked from "marked"
 import SelectedComment from "../../../types/PostRequests/SelectedComment"
+import LoadingBar from "../../LoadingBar/LoadingBar"
 import RootState from "../../../types/State/Root/State"
 import SightT from "../../../types/Sights/Sight"
 import Comment from "../../../types/Sights/Comment"
@@ -81,7 +82,7 @@ const Sight: React.FC<Props> = (props: Props) => {
       });
   }
 
-  let post: string | ReactNode = <div><p>Loading...</p><div className="loading-bar"></div></div>
+  let post: string | ReactNode = <LoadingBar />
 
   if (sights.length) {
 
@@ -136,10 +137,7 @@ const Sight: React.FC<Props> = (props: Props) => {
     )
   } else {
     return (
-      <div>
-        <p>loading...</p>
-        <div className="loading-bar"></div>
-      </div>
+      <LoadingBar />
     )
   }
 }
