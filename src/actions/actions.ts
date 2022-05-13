@@ -1,26 +1,65 @@
 import Sight from "../types/Sights/Sight"
 import Walk from "../types/Walks/Walk"
-import Cities from "../types/Cities/City"
+import City from "../types/Cities/City"
 import Board from "../types/Boards/Board"
 import * as types from '../constants/constants'
+import { Dispatch } from "redux"
+import axios, { AxiosError, AxiosResponse } from "axios"
 
 // data
 
-export const saveSights = (sights: Array<Sight>) => {
-    return { type: types.SAVE_SIGHTS, sights }
-}
+export const saveSights: () => (dispatch: Dispatch) => Promise<any> = () => {
+    return (dispatch) => {
+        return axios.get('https://city-walks.herokuapp.com/blog').then(
+            (res: AxiosResponse) => {
+                let sights: Array<Sight> = res.data
+                dispatch({ type: types.SAVE_SIGHTS, sights })
+            }
+        ).catch((err: AxiosError) => {
+            console.log(err)
+        });
+    };
+};
 
-export const saveWalks = (walks: Array<Walk>) => {
-    return { type: types.SAVE_WALKS, walks }
-}
+export const saveWalks: () => (dispatch: Dispatch) => Promise<any> = () => {
+    return (dispatch) => {
+        return axios.get('https://city-walks.herokuapp.com/walks').then(
+            (res: AxiosResponse) => {
+                let walks: Array<Walk> = res.data
+                dispatch({ type: types.SAVE_WALKS, walks })
+            }
 
-export const saveCities = (cities: Array<Cities>) => {
-    return { type: types.SAVE_CITIES, cities }
-}
+        ).catch((err: AxiosError) => {
+            console.log(err)
+        });
+    };
+};
 
-export const saveBoards = (boards: Array<Board>) => {
-    return { type: types.SAVE_BOARDS, boards }
-}
+export const saveCities: () => (dispatch: Dispatch) => Promise<any> = () => {
+    return (dispatch) => {
+        return axios.get('https://city-walks.herokuapp.com/cities').then(
+            (res: AxiosResponse) => {
+                let cities: Array<City> = res.data
+                dispatch({ type: types.SAVE_CITIES, cities })
+            }
+        ).catch((err: AxiosError) => {
+            console.log(err)
+        });
+    };
+};
+
+export const saveBoards: () => (dispatch: Dispatch) => Promise<any> = () => {
+    return (dispatch) => {
+        return axios.get('https://city-walks.herokuapp.com/boards').then(
+            (res: AxiosResponse) => {
+                let boards: Array<Board> = res.data
+                dispatch({ type: types.SAVE_BOARDS, boards })
+            }
+        ).catch((err: AxiosError) => {
+            console.log(err)
+        });
+    };
+};
 
 // registration
 

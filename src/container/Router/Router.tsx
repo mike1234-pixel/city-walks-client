@@ -43,7 +43,7 @@ const Router: React.FC<Props> = (props: Props) => {
       {privacyPopupVisible && <PrivacyPopUp />}
       <div style={{ position: "relative" }}>
         <Switch location={location} key={location.pathname}>
-          <Route exact path="/" component={() => <Home walks={[]} />} />
+          <Route exact path="/" component={Home} />
           <Route path="/cities" component={() => <Cities cities={cities} />} />
           <Route exact path="/walks" component={() => <Walks searchValue={''} walks={[]} />} />
           {/* components with a dynamic route have to passed like this (no callback) */}

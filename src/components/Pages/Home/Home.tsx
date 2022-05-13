@@ -22,6 +22,8 @@ const Home: React.FC<Props> = (props: Props) => {
 
     const { walks } = props
 
+    console.log(walks)
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -87,8 +89,16 @@ const Home: React.FC<Props> = (props: Props) => {
     }
 }
 
-const mapStateToProps: (state: RootState) => void = (state) => ({
-    walks: state.walksState.walks
-});
+const mapStateToProps: (state: RootState) => void = (state) => {
+    console.log(state)
+    return {
+        walks: state.walksState.walks
+    }
+
+}
+
+
+
+    ;
 
 export default connect(mapStateToProps, null)(Home);
