@@ -50,7 +50,7 @@ In some cases where the type is tightly coupled to the componenent and will only
 
 ## Ajax
 
-Ajax requests are made using the **axios** and **qs** packages. 
+Ajax requests are made using the **axios** and **qs** packages. Requests for global app data are made inside action creators with the help of **redux-thunk**.
 
 ## Text Formatting
 

@@ -20,11 +20,12 @@ interface Props {
   setLoggedIn: (boolValue: boolean) => Action;
   setUserId: (userId: string | null) => Action;
   setUserFirstName: (userFirstName: string | null) => Action;
+  privacyPopupVisible: boolean;
 }
 
 const App: React.FC<any> = (props: Props) => {
 
-  const { saveBoards, saveSights, saveWalks, saveCities, setPrivacyPopupVisible, setLoggedIn, setUserId, setUserFirstName, sitekey } = props
+  const { saveBoards, saveSights, saveWalks, saveCities, setPrivacyPopupVisible, setLoggedIn, setUserId, setUserFirstName, sitekey, privacyPopupVisible } = props
 
   useEffect(() => {
 
@@ -72,11 +73,12 @@ const App: React.FC<any> = (props: Props) => {
 
   }, [])
 
-  return (<Router cities={[]} privacyPopupVisible={true} />)
+  return (<Router privacyPopupVisible={privacyPopupVisible} loggedIn={false} userId={''} redirect={false} />)
 }
 
 const mapStateToProps: (state: RootState) => void = (state) => ({
   sitekey: state.recaptchaState.sitekey,
+  privacyPopupVisible: state.privacyPopupState.privacyPopupVisible
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => {

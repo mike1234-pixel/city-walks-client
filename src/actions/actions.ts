@@ -68,7 +68,7 @@ export const setFirstName = (firstName: string) => {
 }
 
 export const setLastName = (lastName: string) => {
-    return { type: types.SET_NAME_NAME, lastName }
+    return { type: types.SET_LAST_NAME, lastName }
 }
 
 export const setRegistrationEmail = (registrationEmail: string) => {
