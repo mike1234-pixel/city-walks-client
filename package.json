@@ -1,5 +1,5 @@
 {
-  "homepage": "http://mike1234-pixel.github.io/city-walks-client-a",
+  "homepage": "http://mike1234-pixel.github.io/city-walks-client",
   "name": "city-walks",
   "version": "0.1.0",
   "private": true,
@@ -24,7 +24,6 @@
     "redux-thunk": "^2.4.1"
   },
   "scripts": {
-    "homepage": "http://mike1234-pixel.github.io/city-walks-client",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
