@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/city-walks-client-a/static/css/main.32a8f7f7.chunk.css",
+    "main.js": "/city-walks-client-a/static/js/main.1391e3d2.chunk.js",
+    "main.js.map": "/city-walks-client-a/static/js/main.1391e3d2.chunk.js.map",
+    "runtime-main.js": "/city-walks-client-a/static/js/runtime-main.b84d206d.js",
+    "runtime-main.js.map": "/city-walks-client-a/static/js/runtime-main.b84d206d.js.map",
+    "static/css/2.08508e63.chunk.css": "/city-walks-client-a/static/css/2.08508e63.chunk.css",
+    "static/js/2.4a3a5933.chunk.js": "/city-walks-client-a/static/js/2.4a3a5933.chunk.js",
+    "static/js/2.4a3a5933.chunk.js.map": "/city-walks-client-a/static/js/2.4a3a5933.chunk.js.map",
+    "index.html": "/city-walks-client-a/index.html",
+    "static/css/2.08508e63.chunk.css.map": "/city-walks-client-a/static/css/2.08508e63.chunk.css.map",
+    "static/css/main.32a8f7f7.chunk.css.map": "/city-walks-client-a/static/css/main.32a8f7f7.chunk.css.map",
+    "static/js/2.4a3a5933.chunk.js.LICENSE.txt": "/city-walks-client-a/static/js/2.4a3a5933.chunk.js.LICENSE.txt",
+    "static/media/mdb.css": "/city-walks-client-a/static/media/arrow_right.f7c6ac6d.svg",
+    "static/media/carousel-illustration-1-2.54c6c31d.jpg": "/city-walks-client-a/static/media/carousel-illustration-1-2.54c6c31d.jpg",
+    "static/media/carousel-illustration-2-2.78dde8a2.jpg": "/city-walks-client-a/static/media/carousel-illustration-2-2.78dde8a2.jpg",
+    "static/media/carousel-illustration-3-2.8c9c7bea.jpg": "/city-walks-client-a/static/media/carousel-illustration-3-2.8c9c7bea.jpg",
+    "static/media/all.min.css": "/city-walks-client-a/static/media/fa-solid-900.eeccf4f6.woff",
+    "static/media/john-soanes-museum-illustration.d06583ef.jpeg": "/city-walks-client-a/static/media/john-soanes-museum-illustration.d06583ef.jpeg",
+    "static/media/leeds-corn-exchange-illustration.c110a213.jpeg": "/city-walks-client-a/static/media/leeds-corn-exchange-illustration.c110a213.jpeg",
+    "static/media/App.scss": "/city-walks-client-a/static/media/leeds-trinity-illustration-background.9c1e4c43.jpg",
+    "static/media/samuel-johnsons-house-illustration.01ef75aa.jpeg": "/city-walks-client-a/static/media/samuel-johnsons-house-illustration.01ef75aa.jpeg",
+    "static/media/whitechapel-gallery-illustration.5e454e1d.jpeg": "/city-walks-client-a/static/media/whitechapel-gallery-illustration.5e454e1d.jpeg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b84d206d.js",
+    "static/css/2.08508e63.chunk.css",
+    "static/js/2.4a3a5933.chunk.js",
+    "static/css/main.32a8f7f7.chunk.css",
+    "static/js/main.1391e3d2.chunk.js"
+  ]
+}
