@@ -401,7 +401,7 @@ const LocatorMap: React.FC<Props> = (props: Props) => {
 
             // attach infoWindows to markers
             const infowindowContent: ReactNode =
-                `<a href="/#/walks/${urlify(walk.walk)}">
+                `<a href="/city-walks-client/#/walks/${urlify(walk.walk)}">
                     <div class="map-marker-link">
                         <h3>${walk.walk}</h3>
                         <h6>${walk.city}</h6>
