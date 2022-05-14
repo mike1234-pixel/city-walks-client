@@ -92,6 +92,10 @@ To run tests for a single component run:
 
 `npm test <ComponentName>`
 
+## Deploying
+
+The live site is on Github Pages. To deploy your changes, ensure `main` branch is up to date and run `npm run deploy`. This will update the build on the live `gh-pages` branch.
+
 ## Content Management System
 
 The app contains a content management system which can be accessed using the Admin Login link in the footer. This requires an administrator account. 
