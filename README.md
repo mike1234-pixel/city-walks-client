@@ -82,7 +82,7 @@ The **react-hook-google-maps** package handles the connection to the Google Java
 
 ## Testing
 
-**Jest** is used for the tests, along with **react-testing-library** for intgration tests.
+**Jest** is used for the tests, along with **react-testing-library** for integration tests.
 
 To run the tests, run:
 
