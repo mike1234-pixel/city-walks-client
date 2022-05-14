@@ -4,7 +4,7 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import App from "./container/App.tsx";
 import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter as Router } from "react-router-dom"
+import { HashRouter as Router } from "react-router-dom"
 import store from './store/index';
 import { Provider } from 'react-redux'
 
