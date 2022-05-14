@@ -33,7 +33,7 @@
     "remove-demo": "rimraf ./src/assets ./src/components ./src/pages ./src/Routes.js ./src/App.js ./src/index.css && npm run rename",
     "lint": "eslint . --ext .ts",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build"
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@testing-library/dom": "^7.29.0",
