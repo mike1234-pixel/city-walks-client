@@ -1,5 +1,4 @@
 {
-  "homepage": "http://mike1234-pixel.github.io/city-walks-client/tree/new",
   "name": "city-walks",
   "version": "0.1.0",
   "private": true,
@@ -31,9 +30,7 @@
     "eject": "react-scripts eject",
     "rename": "renamer --find App-clear.js --replace App.js ./src/App-clear.js && renamer --find style.css --replace index.css ./src/style.css ",
     "remove-demo": "rimraf ./src/assets ./src/components ./src/pages ./src/Routes.js ./src/App.js ./src/index.css && npm run rename",
-    "lint": "eslint . --ext .ts",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "lint": "eslint . --ext .ts"
   },
   "devDependencies": {
     "@testing-library/dom": "^7.29.0",
@@ -42,7 +39,6 @@
     "@types/node": "^17.0.24",
     "@types/react": "^18.0.5",
     "@types/react-dom": "^18.0.1",
-    "gh-pages": "^4.0.0",
     "react-test-renderer": "^17.0.1",
     "redux-devtools": "^3.7.0",
     "renamer": "^1.0.0",
