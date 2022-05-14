@@ -7,6 +7,7 @@
 
 .walk-heading {
   margin: 20px 0;
+  font-family: var(--logo-font);
 }
 
 .author-info-container {
@@ -20,6 +21,7 @@
   justify-content: space-between;
   font-size: 30px;
   margin-bottom: 20px;
+
   a {
     margin-right: 10px;
   }
@@ -31,12 +33,14 @@
   right: 1;
   left: 0;
   z-index: 10;
-  background-color: var(--blue) !important;
-  color: var(--elegant-color-dark);
-  border: 2px var(--elegant-color-dark) solid;
+  background: var(--linear-blue) !important;
+  color: var(--dark);
+  border: 2px var(--dark) solid;
+  transition: all 0.2s;
+  transform-origin: bottom left;
 }
 
 #see-map-btn:hover {
-  background-color: black !important;
+  transform: scale(1.2);
   color: white;
 }

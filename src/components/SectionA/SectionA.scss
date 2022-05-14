@@ -19,6 +19,7 @@
   .grid-item-a-text-box {
     margin-bottom: 30px;
   }
+
   .grid-item-a-image-box {
     margin-bottom: 30px;
   }
@@ -42,15 +43,16 @@
 .grid-item-a:hover,
 .grid-item-a:active {
   background: transparent;
-  color: var(--elegant-color-dark);
+  color: var(--dark);
   cursor: pointer;
 }
 
 .grid-item-a-text-box {
   padding: 20px;
   text-align: left;
-  background: var(--elegant-color-dark);
+  background: var(--dark);
   color: white;
+
   &:hover,
   &:focus,
   &:active {

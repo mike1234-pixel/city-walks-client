@@ -1,14 +1,14 @@
 /** @format */
 
-#board-box {
-  background-color: var(--elegant-color-dark);
+.board-box {
+  background: var(--linear-blue);
   color: white;
   width: 80%;
   margin-top: 1rem;
 }
 
-#board-box-link {
-  color: var(--blue);
+.board-link {
+  color: var(--dark);
 }
 
 .board-link:hover,

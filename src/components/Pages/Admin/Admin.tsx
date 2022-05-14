@@ -96,7 +96,7 @@ const Admin: React.FC = () => {
   }
 
   return (
-    <div className="admin-portal min-page-height">
+    <div className="admin-portal page">
       {adminLoggedIn ?
         <div>
           <MDBNavbar className="admin-panel" dark expand="md">

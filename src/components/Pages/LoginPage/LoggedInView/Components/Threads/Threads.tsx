@@ -7,10 +7,10 @@ import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
 import Board from '../../../../../../types/Boards/Board'
-import RootState from "../../../../../../types/State/Root/State"
-import "./Threads.scss"
 import Thread from "../../../../../../types/PostRequests/Thread"
 import ThreadT from '../../../../../../types/Boards/Thread'
+import RootState from "../../../../../../types/State/Root/State"
+import "./Threads.scss"
 
 interface Props {
     history: any;
@@ -51,7 +51,7 @@ const Threads: React.FC<Props> = (props: Props) => {
                         replies={thread.replies}
                         submittedOn={thread.submittedOn}
                         userId={thread.userId}
-                        key={index} loggedIn={false} currentUserFirstName={""} currentUserId={""} />
+                        key={index} loggedIn={loggedIn} currentUserFirstName={""} currentUserId={""} />
                 )
             }).reverse()
         }

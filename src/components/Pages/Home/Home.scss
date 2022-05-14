@@ -5,7 +5,7 @@
 }
 
 .featured-walks-link {
-  color: var(--elegant-color-dark);
+  color: var(--dark);
 }
 
 .featured-walks-link:hover {
@@ -29,7 +29,7 @@
 }
 
 .featured-walks-h3 {
-  background: var(--elegant-color-dark);
+  background: var(--dark);
   display: inline-block;
   color: white;
   padding: 20px;
@@ -51,7 +51,7 @@
   &:active {
     background: transparent;
     border: 2px dashed grey;
-    color: var(--elegant-color-dark);
+    color: var(--dark);
   }
 
   @media (max-width: 991px) {
@@ -60,7 +60,7 @@
 }
 
 hr {
-  border: 1px solid var(--elegant-color-dark);
+  border: 1px solid var(--dark);
 }
 
 .featured-walks-link {

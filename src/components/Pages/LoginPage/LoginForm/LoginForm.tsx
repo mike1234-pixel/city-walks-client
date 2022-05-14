@@ -75,7 +75,7 @@ const LoginForm: React.FC<Props> = (props: Props) => {
   }
 
   return (
-    <div key="user-login" className="min-page-height">
+    <div key="user-login" className="page">
       <UserPortalNav loggedIn={false} />
       <MDBContainer>
         <div className="login-header-container">

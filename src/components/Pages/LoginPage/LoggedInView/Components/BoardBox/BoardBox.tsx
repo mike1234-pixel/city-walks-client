@@ -22,7 +22,7 @@ const BoardBox: React.FC<Props> = (props: Props) => {
     });
 
     return (
-        <MDBCard className="card-body" id="board-box">
+        <MDBCard className="card-body board-box">
             <MDBCardTitle className="board-box-title">{name}</MDBCardTitle>
             <MDBCardText className="board-box-desription">
                 {description}

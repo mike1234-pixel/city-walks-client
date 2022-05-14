@@ -1,5 +1,4 @@
 import React from 'react'
-import { useSpring, animated } from "react-spring"
 import { MDBContainer } from "mdbreact"
 import './PopUp.scss'
 
@@ -12,11 +11,9 @@ const PopUp: React.FC<Props> = (props: Props) => {
 
     const { iframeLink, iframeTitle } = props
 
-    const fade = useSpring({ from: { opacity: 0 }, opacity: 1 })
-
     return (
         <MDBContainer>
-            <animated.div className="popup-container" style={fade}>
+            <div className="popup-container">
                 <div className="popup">
                     {/* orientation will be portrait */}
                     <iframe
@@ -26,7 +23,7 @@ const PopUp: React.FC<Props> = (props: Props) => {
                     >
                     </iframe>
                 </div>
-            </animated.div>
+            </div>
         </MDBContainer>
     )
 }

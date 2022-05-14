@@ -1,7 +1,10 @@
 import React, { useEffect } from "react"
-import { Link } from "react-router-dom"
 import { MDBContainer } from "mdbreact"
-import { GiWalkingBoot } from 'react-icons/gi'
+import SectionA from "../../SectionA/SectionA"
+import SectionB from "../../SectionB/SectionB"
+import aboutImage1 from "../../../assets/samuel-johnsons-house-illustration.jpeg"
+import aboutImage2 from "../../../assets/whitechapel-gallery-illustration.jpeg"
+import aboutImage3 from "../../../assets/john-soanes-museum-illustration.jpeg"
 import './About.scss'
 
 const About: React.FC = () => {
@@ -10,18 +13,22 @@ const About: React.FC = () => {
         window.scrollTo(0, 0);
     }, []);
 
+    const content1: string = "We publish illustrated guided walks."
+
+    const content2: string = "Each walk provides a guided tour of a district within a city, pointing out local attractions, accompanied by a map of the route."
+
+    const content3: string = "The walks utilise public transport for their start and end points, so are accessible to all."
+
+
     return (
         <MDBContainer>
             <div>
-                <div className="page-heading-container min-page-height">
+                <div className="page-heading-container page">
                     <h1 className="page-heading">About</h1>
                     <div className="about-page-container">
-                        <p>City Walks is a website that publishes illustrated guided walks.</p>
-                        <p>Each <Link to="/walks">Walk</Link> provides a guided tour of a district within a city, pointing out local attractions, accompanied by a map of the route.</p>
-                        <p>Some visitor atractions are described in more detail on the <Link to="/sights">Sights</Link> page, and users can share their own recommendations on the <Link to="/boards">Forum</Link>.</p>
-                        <p>It is recommended setting aside a full day for each walk to allow yourself the time to fully explore the local attractions.</p>
-                        <p>The walks utilise public transport for their start and end points.</p>
-                        <p className="walking-icon">... <GiWalkingBoot /></p>
+                        <SectionA content={content1} img={aboutImage1} alt={"samuel johnson's house"} zoom={false} waves={false} />
+                        <SectionB content={content2} img={aboutImage2} alt={"whitechapel gallery"} zoom={false} waves={false} />
+                        <SectionA content={content3} img={aboutImage3} alt={"john soane's museum"} zoom={false} waves={false} />
                     </div>
                 </div>
             </div>

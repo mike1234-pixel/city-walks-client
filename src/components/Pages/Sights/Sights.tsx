@@ -59,7 +59,7 @@ const Sights: React.FC<Props> = (props: Props) => {
 
     return (
         <MDBContainer>
-            <div className="min-page-height">
+            <div className="page">
                 <div className="page-heading-container">
                     <h1 className="page-heading">Sights</h1>
                     <h2 className="page-subheading">find more sights and visitor attractions to explore</h2>

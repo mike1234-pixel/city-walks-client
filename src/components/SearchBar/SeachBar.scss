@@ -3,6 +3,7 @@
 .search-container {
   position: relative;
   margin-right: 30px;
+  top: -10px;
 }
 
 /* hide the button element */
@@ -24,8 +25,8 @@
 @media (min-width: 991px) {
   .search-btn {
     position: absolute;
-    top: 30px;
-    right: 30px;
+    top: 10px;
+    left: -30px;
   }
 }
 

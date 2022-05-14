@@ -3,10 +3,20 @@
 .nav-container {
   min-width: 100%;
 }
+
 .nav-bar {
-  background-color: var(--elegant-color-dark);
+  background-color: var(--dark);
   color: white;
   box-shadow: none;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 20px;
+  transition: all 0.2s;
+
+  &--scroll {
+    padding: 0;
+  }
 }
 
 .logo {
@@ -24,12 +34,14 @@
 .nav-item {
   a[data-test="nav-link"] {
     font-family: var(--display-font);
+
     &:hover,
     &:focus,
     &:active {
       color: var(--blue) !important;
     }
   }
+
   .form-control {
     margin-left: 0 !important;
   }

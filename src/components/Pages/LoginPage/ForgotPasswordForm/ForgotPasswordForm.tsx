@@ -51,7 +51,7 @@ const ForgotPasswordForm: React.FC<Props> = (props: Props) => {
   return (
     <div key="user-forgot-password">
       <UserPortalNav loggedIn={false} />
-      <MDBContainer className="min-page-height">
+      <MDBContainer className="page">
         <div className="forgot-password-header-container">
           <h2 className="forgot-password-header">Forgot Your Password?</h2>
           <p>Please submit your email.</p>

@@ -13,7 +13,6 @@ const INITIAL_STATE: State = {
 const walksReducer = (state: State = INITIAL_STATE, action: Action) => {
   switch (action.type) {
     case 'SAVE_WALKS':
-      console.log(action.type, state)
       return { ...state, walks: action.walks };
     default: return state;
   }

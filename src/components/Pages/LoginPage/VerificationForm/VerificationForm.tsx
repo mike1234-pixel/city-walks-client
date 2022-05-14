@@ -52,7 +52,7 @@ const VerificationForm: React.FC<Props> = (props: Props) => {
   return (
     <div key="user-verification">
       <UserPortalNav loggedIn={false} />
-      <MDBContainer className="min-page-height">
+      <MDBContainer className="page">
         <div className="verification-header-container">
           <h2 className="verification-header">Activate Your Account</h2>
           <p>Submit your email address to resend the verification email to activate your account.</p>

@@ -60,7 +60,7 @@ const Cities: React.FC<any> = (props: Props) => {
 
     return (
         <MDBContainer>
-            <div className="cities-page-container min-page-height">
+            <div className="cities-page-container page">
                 <div data-testid="cities-page-heading" className="page-heading-container">
                     <h1 className="page-heading">Cities</h1>
                     <h2 className="page-subheading">search walks by city</h2>

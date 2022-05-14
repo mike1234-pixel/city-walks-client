@@ -27,7 +27,7 @@ interface Props {
 
 const ThreadBox: React.FC<Props> = (props: Props) => {
 
-    const { currentBoardName, threadId, userFirstName, title, content, replies, submittedOn, userId, loggedIn, userFirstName: currentUserFirstName, userId: currentUserId } = props
+    const { currentBoardName, threadId, userFirstName, title, content, replies, submittedOn, loggedIn, userFirstName: currentUserFirstName, currentUserId, userId } = props
 
     const [showAllReplies, setShowAllReplies] = useState<boolean>(false)
     const [reply, setReply] = useState<string>("")
@@ -116,7 +116,7 @@ const ThreadBox: React.FC<Props> = (props: Props) => {
     }
 
     return (
-        <MDBCard className="card-body" id="thread-box">
+        <MDBCard className="card-body thread-box">
           <div className="thread-container">
             <MDBCardTitle className="thread-box-title">{title}</MDBCardTitle>
                 <MDBCardText className="thread-box-content">
@@ -140,7 +140,7 @@ const ThreadBox: React.FC<Props> = (props: Props) => {
 const mapStateToProps: (state: RootState) => void = (state) => ({
   loggedIn: state.loginState.loggedIn,
   userFirstName: state.loginState.userFirstName,
-  userId: state.loginState.userId,
+  currentUserId: state.loginState.userId,
 });
 
 export default connect(mapStateToProps, null)(ThreadBox);

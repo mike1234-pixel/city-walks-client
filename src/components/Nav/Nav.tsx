@@ -16,6 +16,7 @@ interface Props {
 const Nav: React.FC<Props> = (props: Props) => {
 
   const [toggleNav, setToggleNav] = useState<boolean>(false)
+  const [scroll, setScroll] = useState<boolean>(false);
 
   const { redirect, setRedirect } = props;
 
@@ -26,6 +27,10 @@ const Nav: React.FC<Props> = (props: Props) => {
       pushSlug("/walks")
       setRedirect(false)
     }
+
+    window.addEventListener("scroll", () => {
+      setScroll(window.scrollY > 2);
+    });
   })
 
   const handleClick: () => void = () => {
@@ -33,7 +38,7 @@ const Nav: React.FC<Props> = (props: Props) => {
   }
 
   return (
-    <MDBNavbar className="nav-bar" dark expand="lg">
+    <MDBNavbar className={scroll ? "nav-bar nav-bar--scroll" : "nav-bar"} dark expand="lg">
       <MDBContainer>
         <MDBNavbarBrand>
           <span className="white-text"><MDBNavLink className="white-text logo" to="/">City Walks</MDBNavLink></span>

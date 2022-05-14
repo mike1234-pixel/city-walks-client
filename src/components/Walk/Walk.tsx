@@ -5,7 +5,7 @@ import SectionB from '../SectionB/SectionB'
 import PopUp from './PopUp/PopUp'
 import LoadingBar from "../LoadingBar/LoadingBar"
 import toTitleCase from "../../functions/toTitleCase"
-import { MdLocationCity } from 'react-icons/md'
+import { BsDot } from 'react-icons/bs'
 import { FaRoad, FaMapMarkerAlt } from 'react-icons/fa'
 import { IoMdTrain } from 'react-icons/io'
 import { connect } from "react-redux";
@@ -61,24 +61,21 @@ const Walk: React.FC<any> = (props: Props) => {
       walk =
         <div>
           <div className="walk-heading-container">
-            <h1 className="walk-heading display-font">{selectedWalk.walk} <MdLocationCity /> {selectedWalk.city}</h1>
+            <h1 className="walk-heading">{selectedWalk.walk} <BsDot /> {selectedWalk.city}</h1>
             <p className="walk-description"><FaMapMarkerAlt /> {selectedWalk.description}</p>
             <p className="walk-description"><IoMdTrain /> Starting Point: {selectedWalk.startingPoint}</p>
             <p className="walk-description"><FaRoad /> Length: {selectedWalk.length}</p>
           </div>
-          <SectionA content={selectedWalk.content1} img={selectedWalk.img1} alt={selectedWalk.walk} />
-          <SectionB content={selectedWalk.content2} img={selectedWalk.img2} alt={selectedWalk.walk} />
-          <SectionA content={selectedWalk.content3} img={selectedWalk.img3} alt={selectedWalk.walk} />
+          <SectionA content={selectedWalk.content1} img={selectedWalk.img1} alt={selectedWalk.walk} zoom={false} waves={false} />
+          <SectionB content={selectedWalk.content2} img={selectedWalk.img2} alt={selectedWalk.walk} zoom={false} waves={false} />
+          <SectionA content={selectedWalk.content3} img={selectedWalk.img3} alt={selectedWalk.walk} zoom={false} waves={false} />
           <div className="author-info-container">
             <p>This walk was written by {selectedWalk.author}</p>
             <p>{selectedWalk.aboutTheAuthor}</p>
             <p>Connect with {selectedWalk.author.split(" ")[0]}!</p>
             <MDBAnimation reveal type="rubberBand">
               <div className="social-links">
-                {selectedWalk.websiteLink !== undefined && <a href={selectedWalk.websiteLink} target="_blank"><MDBIcon icon="laptop" /></a>}
-                {selectedWalk.facebookLink !== undefined && <a href={selectedWalk.facebookLink} target="_blank"><MDBIcon fab icon="facebook" /></a>}
-                {selectedWalk.instagramLink !== undefined && <a href={selectedWalk.instagramLink} target="_blank"><MDBIcon fab icon="instagram" /></a>}
-                {selectedWalk.twitterLink !== undefined && <a href={selectedWalk.twitterLink} target="_blank"><MDBIcon fab icon="twitter" /></a>}
+                {selectedWalk.websiteLink !== undefined && <a href={selectedWalk.websiteLink} target="_blank"><MDBIcon fab icon="github" /></a>}
               </div>
             </MDBAnimation>
           </div>
@@ -91,7 +88,7 @@ const Walk: React.FC<any> = (props: Props) => {
     <div>
       <MDBContainer>
         <div data-testid="walk-page">
-          <div className="min-page-height center">
+          <div className="page center">
             {walk}
           </div>
         </div>

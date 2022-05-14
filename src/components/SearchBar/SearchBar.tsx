@@ -28,8 +28,8 @@ let SearchBar: React.FC<Props> = (props: Props) => {
   }
 
   return (
-    <form onSubmit={submitSearch}>
-      <span className="search-container">
+    <form onSubmit={submitSearch} className="search-container">
+      <span>
         <MDBInput
           data-testid="search-input"
           label="Search Walks"

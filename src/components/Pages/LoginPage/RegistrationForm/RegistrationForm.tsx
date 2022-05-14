@@ -85,7 +85,7 @@ const RegistrationForm: React.FC<Props> = (props: Props) => {
   return (
     <div key="user-registration">
       <UserPortalNav loggedIn={false} />
-      <MDBContainer className="min-page-height">
+      <MDBContainer className="page">
         <div className="registration-header-container">
           <h2 className="registration-header">Register</h2>
           <p>Create a new account.</p>

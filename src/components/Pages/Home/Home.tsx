@@ -22,8 +22,6 @@ const Home: React.FC<Props> = (props: Props) => {
 
     const { walks } = props
 
-    console.log(walks)
-
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -49,7 +47,7 @@ const Home: React.FC<Props> = (props: Props) => {
                         <div className="center featured-walks-h3-container" id="featured-walk-1">
                             <h3 className="featured-walks-h3">{featuredWalks[0].walk}</h3>
                         </div>
-                        <SectionA content={featuredWalks[0].content1} img={featuredWalks[0].coverImg} alt={featuredWalks[0].walk} />
+                        <SectionA content={featuredWalks[0].content1} img={featuredWalks[0].coverImg} alt={featuredWalks[0].walk} zoom={true} waves={true} />
                         <div className="center">
                             <MDBBtn data-testid="explore-btn-1" outline color="elegant" className="featured-walks-btn">Explore {featuredWalks[0].walk} <GiWalkingBoot /></MDBBtn>
                         </div>
@@ -59,7 +57,7 @@ const Home: React.FC<Props> = (props: Props) => {
                         <div className="center featured-walks-h3-container">
                             <h3 className="featured-walks-h3">{featuredWalks[1].walk}</h3>
                         </div>
-                        <SectionB content={featuredWalks[1].content1} img={featuredWalks[1].coverImg} alt={featuredWalks[1].walk} />
+                        <SectionB content={featuredWalks[1].content1} img={featuredWalks[1].coverImg} alt={featuredWalks[1].walk} zoom={true} waves={true} />
                         <div className="center">
                             <MDBBtn data-testid="explore-btn-2" className="section-b-home-btn featured-walks-btn" outline color="elegant">Explore {featuredWalks[1].walk} <GiWalkingBoot /></MDBBtn>
                         </div>
@@ -69,7 +67,7 @@ const Home: React.FC<Props> = (props: Props) => {
                         <div className="center featured-walks-h3-container">
                             <h3 className="featured-walks-h3">{featuredWalks[2].walk}</h3>
                         </div>
-                        <SectionA content={featuredWalks[2].content1} img={featuredWalks[2].coverImg} alt={featuredWalks[2].walk} />
+                        <SectionA content={featuredWalks[2].content1} img={featuredWalks[2].coverImg} alt={featuredWalks[2].walk} zoom={true} waves={true} />
                         <div className="center">
                             <MDBBtn data-testid="explore-btn-3" outline color="elegant" className="featured-walks-btn">Explore {featuredWalks[2].walk} <GiWalkingBoot /></MDBBtn>
                         </div>
@@ -89,16 +87,8 @@ const Home: React.FC<Props> = (props: Props) => {
     }
 }
 
-const mapStateToProps: (state: RootState) => void = (state) => {
-    console.log(state)
-    return {
-        walks: state.walksState.walks
-    }
-
-}
-
-
-
-    ;
+const mapStateToProps: (state: RootState) => void = (state) => ({
+    walks: state.walksState.walks
+})
 
 export default connect(mapStateToProps, null)(Home);

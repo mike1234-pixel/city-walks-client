@@ -22,7 +22,6 @@ import Walk from '../../components/Walk/Walk'
 import Threads from '../../components/Pages/LoginPage/LoggedInView/Components/Threads/Threads'
 import { Route, Switch, useLocation } from "react-router-dom"
 import { connect } from "react-redux"
-import City from '../../types/Cities/City'
 import RootState from '../../types/State/Root/State'
 import Location from '../../types/Generic/Location'
 

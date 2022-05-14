@@ -6,6 +6,7 @@ import qs from "qs"
 import { connect } from 'react-redux'
 import Message from '../../../types/PostRequests/Message'
 import RootState from '../../../types/State/Root/State'
+import contactImage from "../../../assets/leeds-corn-exchange-illustration.jpeg"
 import "./Contact.scss"
 
 interface Props {
@@ -77,44 +78,49 @@ const Contact: React.FC<Props> = (props: Props) => {
   return (
     <MDBContainer>
       <div>
-        <div className="page-heading-container min-page-height">
+        <div className="page-heading-container page">
           <h1 className="page-heading">Contact</h1>
-          <form onSubmit={handleSubmit} className="contact-form display-form">
-            <MDBInput
-              key="input-5"
-              type="text"
-              name="contact-name"
-              id="contact-name"
-              value={contactName}
-              label="name"
-              onChange={handleChange}
-              required
-            />
-            <MDBInput
-              key="input-6"
-              type="email"
-              name="contact-email"
-              id="contact-email"
-              value={contactEmail}
-              label="email"
-              onChange={handleChange}
-              required
-            />
-            <MDBInput
-              key="input-7"
-              type="textarea"
-              rows="5"
-              name="contact-message"
-              id="contact-message"
-              value={contactMessage}
-              label="message"
-              onChange={handleChange}
-              required
-            />
-            <MDBBtn outline color="elegant" type="submit" id="contact-submit-btn">
-              Send Message <MDBIcon far icon="paper-plane" />
-            </MDBBtn>
-          </form>
+          <div className="contact-grid">
+            <div className="contact-main-img">
+              <img src={contactImage} alt={"leeds corn exchange"} />
+            </div>
+            <form onSubmit={handleSubmit} className="contact-form display-form">
+              <MDBInput
+                key="input-5"
+                type="text"
+                name="contact-name"
+                id="contact-name"
+                value={contactName}
+                label="name"
+                onChange={handleChange}
+                required
+              />
+              <MDBInput
+                key="input-6"
+                type="email"
+                name="contact-email"
+                id="contact-email"
+                value={contactEmail}
+                label="email"
+                onChange={handleChange}
+                required
+              />
+              <MDBInput
+                key="input-7"
+                type="textarea"
+                rows="3"
+                name="contact-message"
+                id="contact-message"
+                value={contactMessage}
+                label="message"
+                onChange={handleChange}
+                required
+              />
+              <MDBBtn outline color="elegant" type="submit" id="contact-submit-btn">
+                Send Message <MDBIcon far icon="paper-plane" />
+              </MDBBtn>
+            </form>
+          </div>
         </div>
       </div>
     </MDBContainer>

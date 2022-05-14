@@ -20,10 +20,12 @@
     display: flex;
     flex-direction: column;
   }
+
   .grid-item-b-text-box {
     margin-bottom: 30px;
     order: 0;
   }
+
   .grid-item-b-image-box {
     margin-bottom: 30px;
     order: 1;
@@ -43,15 +45,16 @@
 .grid-item-b:hover,
 .grid-item-b:active {
   background: transparent;
-  color: var(--elegant-color-dark);
+  color: var(--dark);
   cursor: pointer;
 }
 
 .grid-item-b-text-box {
   padding: 20px;
   text-align: left;
-  background: var(--elegant-color-dark);
+  background: var(--dark);
   color: white;
+
   &:hover,
   &:focus,
   &:active {

@@ -125,7 +125,6 @@ const UserPortalNav: React.FC<Props> = (props: Props) => {
         </div>
 
       )}
-      <br />
     </div>
   );
 };

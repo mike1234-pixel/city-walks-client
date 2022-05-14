@@ -17,7 +17,7 @@ const LocatorMap: React.FC<Props> = (props: Props) => {
         "AIzaSyAIK0BvMxzAMX_JiAltdlYznF-G2NfEh7o",
         {
             center: { lat: 53.60818414548348, lng: -1.3976421011088946 },
-            zoom: 6,
+            zoom: 4,
             styles: [
                 {
                     "featureType": "all",

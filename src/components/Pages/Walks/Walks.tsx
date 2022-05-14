@@ -65,7 +65,7 @@ const Walks: React.FC<Props> = (props: Props) => {
     if (searchValue === "") {
         filteredResults =
             <MDBContainer>
-                <div className="min-page-height">
+                <div className="page">
                     <div className="page-heading-container">
                         <h1 className="page-heading">Walks</h1>
                         <MDBBtn outline color="elegant" className="city-card-btn" onClick={() => setSearchValue("")}>Show all walks</MDBBtn>
@@ -91,7 +91,7 @@ const Walks: React.FC<Props> = (props: Props) => {
     } else if (walks.map((v: Walk) => { v.walk.toLowerCase().includes(searchValue.toLowerCase()) || v.city.toLowerCase().includes(searchValue.toLowerCase()) })) {
         filteredResults =
             <MDBContainer>
-                <div className="min-page-height">
+                <div className="page">
                     <div className="page-heading-container">
                         <h1 className="page-heading" data-testid="walks-page-heading">Walks</h1>
                         <MDBBtn outline color="elegant" className="city-card-btn" onClick={() => setSearchValue("")}>Show all walks</MDBBtn>

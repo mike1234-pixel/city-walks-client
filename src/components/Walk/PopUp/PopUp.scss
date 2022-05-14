@@ -9,7 +9,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 5;
+  z-index: 101;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -52,6 +52,7 @@
     width: 95vw;
     height: 135vw;
   }
+
   .popup::after {
     left: 1vw;
   }

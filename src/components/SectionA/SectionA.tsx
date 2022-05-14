@@ -7,11 +7,13 @@ interface Props {
   content: string;
   img: string;
   alt: string;
+  zoom: boolean;
+  waves: boolean;
 }
 
 const SectionA: React.FC<Props> = (props: Props) => {
 
-  const { content, img, alt } = props
+  const { content, img, alt, zoom, waves } = props
 
   const createMarkup = (markup: string) => {
     return { __html: marked(markup) }
@@ -23,8 +25,8 @@ const SectionA: React.FC<Props> = (props: Props) => {
         <div dangerouslySetInnerHTML={createMarkup(content)}></div>
       </div>
       <div className='grid-item-a grid-item-a-image-box'>
-        <MDBView hover zoom id="grid-item-overlay" waves>
-          <img className="grid-item-a-img" src={img} alt={alt}></img>
+        <MDBView hover zoom={zoom} waves={waves} id="grid-item-overlay">
+          <img className="grid-item-a-img" src={img} alt={alt} />
         </MDBView>
       </div>
     </div>

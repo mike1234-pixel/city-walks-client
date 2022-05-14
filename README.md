@@ -82,13 +82,9 @@ The **react-hook-google-maps** package handles the connection to the Google Java
 
 ## Testing
 
-**Jest snapshot test** files are kept in the same folders as the components they test.
+**Jest** is used for the tests, along with **react-testing-library** for intgration tests.
 
-_Test data_ for the snapshot tests is contained within the _container directory_, so that snapshot tests can import data locally rather than making an ajax call.
-
-**react-testing-library integration tests** for the whole app are contained within the App.test.js file.
-
-To run the tests run:
+To run the tests, run:
 
 `npm test`
 

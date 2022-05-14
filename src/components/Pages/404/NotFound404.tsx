@@ -13,7 +13,7 @@ const nf404: React.FC<Props> = ({ location }: { location: Location }) => {
 
     return (
         <MDBContainer>
-            <div className="nf404-page-container min-page-height">
+            <div className="nf404-page-container page">
                 <div className="page-heading-container">
                     <h1 className="page-heading">{errorMessage}</h1>
                 </div>
