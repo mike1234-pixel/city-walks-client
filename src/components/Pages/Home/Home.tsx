@@ -39,7 +39,7 @@ const Home: React.FC<Props> = (props: Props) => {
                 <div>
                     <Carousel />
                     <div className="page-heading-container featured-walks-heading-container">
-                        <h2 className="page-heading"><a href="#featured-walk-1" className="featured-walks-link"><RiArrowDropDownLine /> Featured Walks <RiArrowDropDownLine /></a></h2>
+                        <h2 className="page-heading"><RiArrowDropDownLine /> Featured Walks <RiArrowDropDownLine /></h2>
                     </div>
                     <hr />
 
