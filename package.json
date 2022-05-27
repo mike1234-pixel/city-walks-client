@@ -44,6 +44,7 @@
     "@types/react-dom": "^18.0.1",
     "@types/react-test-renderer": "^18.0.0",
     "gh-pages": "^4.0.0",
+    "history": "^5.3.0",
     "react-test-renderer": "^17.0.1",
     "redux-devtools": "^3.7.0",
     "renamer": "^1.0.0",
