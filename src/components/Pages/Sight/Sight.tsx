@@ -7,15 +7,16 @@ import marked from "marked"
 import SelectedComment from "../../../types/PostRequests/SelectedComment"
 import LoadingBar from "../../LoadingBar/LoadingBar"
 import RootState from "../../../types/State/Root/State"
-import SightT from "../../../types/Sights/Sight"
+import ISight from "../../../types/Sights/Sight"
 import Comment from "../../../types/Sights/Comment"
+import { History } from 'history'
 import { connect } from 'react-redux'
 import CommentToSubmit from "../../../types/PostRequests/CommentToSubmit"
 import './Sight.scss'
 
 interface Props {
-  history: any;
-  sights: Array<SightT>;
+  history: History;
+  sights: Array<ISight>;
   loggedIn: boolean;
   userFirstName: string;
   userId: string;
@@ -86,7 +87,7 @@ const Sight: React.FC<Props> = (props: Props) => {
 
   if (sights.length) {
 
-    let selectedBlogPost: SightT | Array<SightT> | undefined = sights.filter((post: SightT) => post.title === blogTitle)
+    let selectedBlogPost: ISight | Array<ISight> | undefined = sights.filter((post: ISight) => post.title === blogTitle)
     selectedBlogPost = selectedBlogPost[0]
 
     const createMarkup: (markup: string) => ({ __html: string }) = (markup) => {

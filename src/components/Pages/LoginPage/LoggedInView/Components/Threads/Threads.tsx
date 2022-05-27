@@ -6,6 +6,7 @@ import { MDBBtn, MDBInput, MDBContainer } from "mdbreact"
 import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
+import { History } from 'history'
 import Board from '../../../../../../types/Boards/Board'
 import Thread from "../../../../../../types/PostRequests/Thread"
 import ThreadT from '../../../../../../types/Boards/Thread'
@@ -13,7 +14,7 @@ import RootState from "../../../../../../types/State/Root/State"
 import "./Threads.scss"
 
 interface Props {
-    history: any;
+    history: History;
     boards: Array<Board>;
     loggedIn: boolean;
     userId: string;

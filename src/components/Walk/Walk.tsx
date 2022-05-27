@@ -9,23 +9,24 @@ import { BsDot } from 'react-icons/bs'
 import { FaRoad, FaMapMarkerAlt } from 'react-icons/fa'
 import { IoMdTrain } from 'react-icons/io'
 import { connect } from "react-redux";
+import { History } from 'history'
 import RootState from "../../types/State/Root/State"
-import WalkT from '../../types/Walks/Walk'
+import IWalk from '../../types/Walks/Walk'
 import './Walk.scss'
 
 interface Props {
-  walks: Array<WalkT>;
-  history: any; // CAN THIS BE MORE SPECIFIC?
+  walks: Array<IWalk>;
+  history: History;
 }
 
 // change this any to correct props type
 const Walk: React.FC<any> = (props: Props) => {
 
-  const { walks } = props
+  const { walks, history } = props
 
   const [togglePopUp, setTogglePopUp] = useState<boolean>(false)
 
-  const walkName: string = toTitleCase(props.history.location.pathname.replace("/walks/", "").replace(/-/g, " "))
+  const walkName: string = toTitleCase(history.location.pathname.replace("/walks/", "").replace(/-/g, " "))
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -34,7 +35,7 @@ const Walk: React.FC<any> = (props: Props) => {
 
   let walk: string | ReactNode = <LoadingBar />
 
-  let currentWalk: WalkT | { iframeLink: string; iframeTitle: string } = { iframeLink: '', iframeTitle: '' }
+  let currentWalk: IWalk | { iframeLink: string; iframeTitle: string } = { iframeLink: '', iframeTitle: '' }
 
   const handleClick: () => void = () => {
     setTogglePopUp(!togglePopUp)
@@ -50,7 +51,7 @@ const Walk: React.FC<any> = (props: Props) => {
 
   if (walks.length) {
 
-    let selectedWalk: Array<WalkT> | WalkT | undefined = walks.filter((walk) => walk.walk === walkName)
+    let selectedWalk: Array<IWalk> | IWalk | undefined = walks.filter((walk) => walk.walk === walkName)
     selectedWalk = selectedWalk[0]
 
     currentWalk = selectedWalk
