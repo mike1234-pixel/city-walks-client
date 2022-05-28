@@ -19,7 +19,7 @@ interface Action {
     resetPasswordConfirmNewPassword?: string;
     forgotPasswordEmail?: string;
     activationMessageEmphasis?: string;
-    boolValue?: boolean;
+    isLoggedIn?: boolean;
 }
 
 const INITIAL_STATE: State = {
@@ -59,7 +59,7 @@ const loginReducer = (state: State = INITIAL_STATE, action: Action) => {
         case 'SET_LOGIN_PASSWORD':
             return { ...state, loginPassword: action.loginPassword };
         case 'SET_LOGGED_IN':
-            return { ...state, loggedIn: action.boolValue };
+            return { ...state, loggedIn: action.isLoggedIn };
         case 'SET_USER_FIRST_NAME':
             return { ...state, userFirstName: action.userFirstName };
         case 'SET_USER_LAST_NAME':

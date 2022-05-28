@@ -18,7 +18,7 @@ import "./UserPortalNav.scss"
 
 interface Props {
   loggedIn: boolean;
-  setLoggedIn: (boolValue: boolean) => Action;
+  setLoggedIn: (isLoggedIn: boolean) => Action;
   setUserId: (userId: string) => Action;
   setUserFirstName: (userFirstName: string) => Action;
   setUserLastName: (userLastName: string) => Action;

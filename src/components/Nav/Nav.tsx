@@ -10,7 +10,7 @@ import './Nav.scss'
 
 interface Props {
   redirect: boolean;
-  setRedirect: (boolValue: boolean) => Action;
+  setRedirect: (redirectIsSet: boolean) => Action;
 }
 
 const Nav: React.FC<Props> = (props: Props) => {

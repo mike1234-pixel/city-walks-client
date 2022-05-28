@@ -85,12 +85,12 @@ export const setActivationMessageEmphasis = (activationMessageEmphasis: string) 
 
 // login
 
-export const setPrivacyPopupVisible = (boolValue: boolean) => {
-    return { type: types.SET_POPUP_VISIBLE, boolValue }
+export const setPrivacyPopupVisible = (popupVisible: boolean) => {
+    return { type: types.SET_POPUP_VISIBLE, popupVisible }
 }
 
-export const setLoggedIn = (boolValue: boolean) => {
-    return { type: types.SET_LOGGED_IN, boolValue }
+export const setLoggedIn = (isLoggedIn: boolean) => {
+    return { type: types.SET_LOGGED_IN, isLoggedIn }
 }
 
 export const setUserId = (userId: string | null) => {
@@ -155,6 +155,6 @@ export const setSearchValue = (inputValue: string) => {
     return { type: types.HANDLE_CHANGE_SEARCH, inputValue }
 }
 
-export const setRedirect = (boolValue: boolean) => {
-    return { type: types.SET_REDIRECT, boolValue }
+export const setRedirect = (redirectIsSet: boolean) => {
+    return { type: types.SET_REDIRECT, redirectIsSet }
 }

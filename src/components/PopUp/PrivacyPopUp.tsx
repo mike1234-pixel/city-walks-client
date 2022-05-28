@@ -7,7 +7,7 @@ import { setPrivacyPopupVisible } from '../../actions/actions'
 import "./PrivacyPopUp.scss"
 
 interface Props {
-    setPrivacyPopupVisible: (boolValue: boolean) => Action;
+    setPrivacyPopupVisible: (popupVisible: boolean) => Action;
 }
 
 const PrivacyPopUp: React.FC<Props> = (props: Props) => {
