@@ -9,7 +9,7 @@ interface Action {
     registrationPassword?: string;
     loginEmail?: string;
     loginPassword?: string;
-    loggedIn?: false,
+    loggedIn?: boolean,
     userFirstName?: string;
     userLastName?: string;
     verificationEmail?: string;

@@ -11,7 +11,7 @@ import './Cities.scss'
 interface Props {
     cities: Array<City>;
     handleClickSearch: (cityToSearch: string) => Action;
-    setRedirect: (redirectIsSet: boolean) => Action;
+    setRedirect: (redirect: boolean) => Action;
 }
 
 const Cities: React.FC<any> = (props: Props) => {

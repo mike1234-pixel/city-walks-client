@@ -8,6 +8,13 @@ import { HashRouter as Router } from "react-router-dom"
 import store from './store/index';
 import { Provider } from 'react-redux'
 
+import WalksTestData from './container/WalksTestData.json'
+
+// console.log([WalksTestData])
+
+// store.dispatch({ type: 'SAVE_WALKS', walks: WalksTestData })
+// console.log(store.getState())
+
 ReactDOM.render(
   <Router>
     <Provider store={store}>

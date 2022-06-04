@@ -17,7 +17,7 @@ interface Props {
   saveWalks: (walks?: Array<Walk>) => Action;
   saveCities: (cities?: Array<City>) => Action;
   setPrivacyPopupVisible: (popupVisible: boolean) => Action;
-  setLoggedIn: (isLoggedIn: boolean) => Action;
+  setLoggedIn: (loggedIn: boolean) => Action;
   setUserId: (userId: string | null) => Action;
   setUserFirstName: (userFirstName: string | null) => Action;
   privacyPopupVisible: boolean;

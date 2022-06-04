@@ -9,7 +9,7 @@ import './SeachBar.scss'
 
 interface Props {
   handleChangeSearch: (inputValue: string) => Action;
-  setRedirect: (redirectIsSet: boolean) => Action;
+  setRedirect: (redirect: boolean) => Action;
   searchValue: string;
 }
 

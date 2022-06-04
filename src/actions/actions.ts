@@ -89,8 +89,8 @@ export const setPrivacyPopupVisible = (popupVisible: boolean) => {
     return { type: types.SET_POPUP_VISIBLE, popupVisible }
 }
 
-export const setLoggedIn = (isLoggedIn: boolean) => {
-    return { type: types.SET_LOGGED_IN, isLoggedIn }
+export const setLoggedIn = (loggedIn: boolean) => {
+    return { type: types.SET_LOGGED_IN, loggedIn }
 }
 
 export const setUserId = (userId: string | null) => {
@@ -155,6 +155,6 @@ export const setSearchValue = (inputValue: string) => {
     return { type: types.HANDLE_CHANGE_SEARCH, inputValue }
 }
 
-export const setRedirect = (redirectIsSet: boolean) => {
-    return { type: types.SET_REDIRECT, redirectIsSet }
+export const setRedirect = (redirect: boolean) => {
+    return { type: types.SET_REDIRECT, redirect }
 }

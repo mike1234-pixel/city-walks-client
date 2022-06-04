@@ -13,7 +13,7 @@ import './Footer.scss'
 interface Props {
   loggedIn: boolean;
   userId: string;
-  setLoggedIn: (isLoggedIn: boolean) => Action;
+  setLoggedIn: (loggedIn: boolean) => Action;
   setUserId: (userId: string) => Action;
   setUserFirstName: (userFirstName: string) => Action;
   setUserLastName: (userLastName: string) => Action;
