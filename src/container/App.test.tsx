@@ -9,19 +9,23 @@ import { BrowserRouter } from 'react-router-dom'
 import store from '../store'
 import App from "./App"
 
-// save mock data to redux store
-store.dispatch({ type: SAVE_WALKS, walks: WalksTestData })
-store.dispatch({ type: SAVE_CITIES, cities: CitiesTestData })
-store.dispatch({ type: SAVE_BOARDS, boards: BoardsTestData })
-store.dispatch({ type: SAVE_SIGHTS, sights: SightsTestData })
 
 // integration tests (simulate user interaction)
 describe("App integration tests", () => {
+
+    beforeEach(() => {
+        // save mock data to redux store
+        store.dispatch({ type: SAVE_WALKS, walks: WalksTestData })
+        store.dispatch({ type: SAVE_CITIES, cities: CitiesTestData })
+        store.dispatch({ type: SAVE_BOARDS, boards: BoardsTestData })
+        store.dispatch({ type: SAVE_SIGHTS, sights: SightsTestData })
+    })
 
     afterEach(cleanup)
     //  data-testid
 
     it("renders without crashing", () => {
+
         window.scrollTo = jest.fn()
 
         const { getByText, getByLabelText, getByTestId } = render(
@@ -37,20 +41,20 @@ describe("App integration tests", () => {
         // test is on Home page - redirect to Walk page
         // simulate redirect from homepage featured walk to the same walk
         const exploreButton = getByText("Explore Camden Markets")
-        // fireEvent.click(exploreButton)
-        // getByTestId("walk-page")
+        fireEvent.click(exploreButton)
+        getByTestId("walk-page")
 
-        // // test is on Walk page, redirect to Walks Page
-        // // simulate redirect from homepage to walks page via the search bar
-        // const searchBar = getByTestId("search-input")
-        // fireEvent.change(searchBar, { target: { value: "london" } })
-        // fireEvent.click(getByTestId("search-btn"))
-        // getByTestId("walks-page-heading")
-        // expect(getByTestId("walks-search-icon").textContent).toBe('  london')
+        // test is on Walk page, redirect to Walks Page
+        // simulate redirect from homepage to walks page via the search bar
+        const searchBar = getByTestId("search-input")
+        fireEvent.change(searchBar, { target: { value: "london" } })
+        fireEvent.click(getByTestId("search-btn"))
+        getByTestId("walks-page-heading")
+        expect(getByTestId("walks-search-icon").textContent).toBe('  london')
 
-        // // redirect to cities page
-        // fireEvent.click(getByTestId("nav-link-cities"))
-        // getByTestId("cities-page-heading")
+        // redirect to cities page
+        fireEvent.click(getByTestId("nav-link-cities"))
+        getByTestId("cities-page-heading")
 
     })
 
