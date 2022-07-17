@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { Action, bindActionCreators, Dispatch } from "redux"
 import { handleClickSearch, setRedirect } from "../../../actions/actions"
 import City from "../../../types/Cities/City"
-import RootState from "../../../types/State/Root/State"
+import { RootState } from '../../../store';
 import './Cities.scss'
 
 interface Props {

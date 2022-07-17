@@ -12,7 +12,7 @@ import {
 import { Link, useHistory } from "react-router-dom"
 import { connect } from 'react-redux'
 import { Action, bindActionCreators, Dispatch } from "redux";
-import RootState from "../../../types/State/Root/State"
+import { RootState } from '../../../store';
 import { setLoggedIn, setUserId, setUserFirstName, setUserLastName } from "../../../actions/actions";
 import "./UserPortalNav.scss"
 

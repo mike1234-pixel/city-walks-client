@@ -5,7 +5,7 @@ import axios, { AxiosError, AxiosResponse } from "axios"
 import qs from "qs"
 import { connect } from 'react-redux'
 import Message from '../../../types/PostRequests/Message'
-import RootState from '../../../types/State/Root/State'
+import { RootState } from '../../../store';
 import contactImage from "../../../assets/leeds-corn-exchange-illustration.jpeg"
 import "./Contact.scss"
 

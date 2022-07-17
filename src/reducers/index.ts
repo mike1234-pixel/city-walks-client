@@ -8,6 +8,7 @@ import searchReducer from './searchReducer';
 import privacyPopupReducer from './privacyPopupReducer';
 import loginReducer from './loginReducer';
 
+// Reducer type from redux is type any?
 const rootReducer = combineReducers({
   sightsState: sightsReducer,
   walksState: walksReducer,

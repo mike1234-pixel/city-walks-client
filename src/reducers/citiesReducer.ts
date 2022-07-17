@@ -1,19 +1,19 @@
 import City from '../types/Cities/City'
 import State from '../types/State/Cities/State'
 
-interface Action {
-    type: string,
-    cities: Array<City>
-}
-
-const INITIAL_STATE: State = {
+const initialState: State = {
     cities: [],
 };
 
-const citiesReducer = (state: State = INITIAL_STATE, action: Action) => {
+export interface SaveCitiesAction {
+    type: 'SAVE_CITIES',
+    payload: Array<City>,
+}
+
+const citiesReducer: (state: State, action: SaveCitiesAction) => State = (state = initialState, action) => {
     switch (action.type) {
         case 'SAVE_CITIES':
-            return { ...state, cities: action.cities };
+            return { ...state, cities: action.payload };
         default: return state;
     }
 }

@@ -1,18 +1,18 @@
 import State from '../types/State/PrivacyPopup/State'
 
-interface Action {
-    type: string;
-    popupVisible: boolean;
+const initialState: State = {
+    privacyPopupVisible: false,
 }
 
-const INITIAL_STATE: State = {
-    privacyPopupVisible: false,
-};
+export interface PriacyPopupVisibleAction {
+    type: 'SET_POPUP_VISIBLE';
+    payload: boolean;
+}
 
-const privacyPopupReducer = (state: State = INITIAL_STATE, action: Action) => {
+const privacyPopupReducer: (state: State, action: PriacyPopupVisibleAction) => State = (state = initialState, action) => {
     switch (action.type) {
         case 'SET_POPUP_VISIBLE':
-            return { ...state, privacyPopupVisible: action.popupVisible };
+            return { ...state, privacyPopupVisible: action.payload };
         default: return state;
     }
 }

@@ -1,28 +1,6 @@
 import State from '../types/State/Login/State'
 
-interface Action {
-    type: string;
-    firstName?: string;
-    lastName?: string;
-    userId?: string;
-    registrationEmail?: string;
-    registrationPassword?: string;
-    loginEmail?: string;
-    loginPassword?: string;
-    loggedIn?: boolean,
-    userFirstName?: string;
-    userLastName?: string;
-    verificationEmail?: string;
-    resetPasswordEmail?: string;
-    resetPasswordOldPassword?: string;
-    resetPasswordNewPassword?: string;
-    resetPasswordConfirmNewPassword?: string;
-    forgotPasswordEmail?: string;
-    activationMessageEmphasis?: string;
-    isLoggedIn?: boolean;
-}
-
-const INITIAL_STATE: State = {
+const initialState: State = {
     firstName: '',
     lastName: '',
     userId: '',
@@ -40,46 +18,149 @@ const INITIAL_STATE: State = {
     resetPasswordConfirmNewPassword: '',
     forgotPasswordEmail: '',
     activationMessageEmphasis: 'no-emphasis'
-};
+}
 
-const loginReducer = (state: State = INITIAL_STATE, action: Action) => {
+export interface RegisterFirstNameAction {
+    type: 'SET_FIRST_NAME',
+    payload: string,
+}
+
+export interface RegisterLastNameAction {
+    type: 'SET_LAST_NAME',
+    payload: string,
+}
+export interface RegisterEmailAction {
+    type: 'SET_REGISTRATION_EMAIL',
+    payload: string,
+}
+
+export interface RegisterPasswordAction {
+    type: 'SET_REGISTRATION_PASSWORD',
+    payload: string,
+}
+
+export interface ActivationMessageEmphasisAction {
+    type: 'SET_ACTIVATION_MESSAGE_EMPHASIS',
+    payload: string,
+}
+
+export interface LoggedInAction {
+    type: 'SET_LOGGED_IN',
+    payload: boolean,
+}
+
+export interface UserIdAction {
+    type: 'SET_USER_ID',
+    payload: string | null,
+}
+
+export interface LoginFirstNameAction {
+    type: 'SET_USER_FIRST_NAME',
+    payload: string | null,
+}
+
+export interface LoginLastNameAction {
+    type: 'SET_USER_LAST_NAME',
+    payload: string | null,
+}
+
+export interface LoginEmailAction {
+    type: 'SET_LOGIN_EMAIL',
+    payload: string,
+}
+
+export interface LoginPasswordAction {
+    type: 'SET_LOGIN_PASSWORD',
+    payload: string,
+}
+
+export interface ForgotPasswordAction {
+    type: 'SET_FORGOT_PASSWORD_EMAIL',
+    payload: string,
+}
+
+export interface ResetPasswordEmailAction {
+    type: 'SET_RESET_PASSWORD_EMAIL',
+    payload: string,
+}
+
+export interface ResetPasswordOldPasswordAction {
+    type: 'SET_RESET_PASSWORD_OLD_PASSWORD',
+    payload: string,
+}
+
+export interface ResetPasswordNewPasswordAction {
+    type: 'SET_RESET_PASSWORD_NEW_PASSWORD',
+    payload: string,
+}
+
+export interface ResetPasswordConfirmNewPasswordAction {
+    type: 'SET_RESET_PASSWORD_CONFIRM_NEW_PASSWORD',
+    payload: string,
+}
+
+export interface VerificationEmailAction {
+    type: 'SET_VERIFICATION_EMAIL',
+    payload: string,
+}
+
+type LoginAction =
+    RegisterFirstNameAction
+    | RegisterLastNameAction
+    | RegisterEmailAction
+    | RegisterPasswordAction
+    | ActivationMessageEmphasisAction
+    | LoggedInAction
+    | UserIdAction
+    | LoginFirstNameAction
+    | LoginLastNameAction
+    | LoginEmailAction
+    | LoginPasswordAction
+    | ForgotPasswordAction
+    | ResetPasswordEmailAction
+    | ResetPasswordOldPasswordAction
+    | ResetPasswordNewPasswordAction
+    | ResetPasswordConfirmNewPasswordAction
+    | VerificationEmailAction
+
+const loginReducer = (state: State = initialState, action: LoginAction) => {
     switch (action.type) {
         case 'SET_FIRST_NAME':
-            return { ...state, firstName: action.firstName };
+            return { ...state, firstName: action.payload };
         case 'SET_LAST_NAME':
-            return { ...state, lastName: action.lastName };
-        case 'SET_USER_ID':
-            return { ...state, userId: action.userId };
+            return { ...state, lastName: action.payload };
         case 'SET_REGISTRATION_EMAIL':
-            return { ...state, registrationEmail: action.registrationEmail };
+            return { ...state, registrationEmail: action.payload };
+        case 'SET_USER_ID':
+            return { ...state, userId: action.payload };
         case 'SET_REGISTRATION_PASSWORD':
-            return { ...state, registrationPassword: action.registrationPassword };
+            return { ...state, registrationPassword: action.payload };
         case 'SET_LOGIN_EMAIL':
-            return { ...state, loginEmail: action.loginEmail };
+            return { ...state, loginEmail: action.payload };
         case 'SET_LOGIN_PASSWORD':
-            return { ...state, loginPassword: action.loginPassword };
+            return { ...state, loginPassword: action.payload };
         case 'SET_LOGGED_IN':
-            return { ...state, loggedIn: action.isLoggedIn };
+            return { ...state, loggedIn: action.payload };
         case 'SET_USER_FIRST_NAME':
-            return { ...state, userFirstName: action.userFirstName };
+            return { ...state, userFirstName: action.payload };
         case 'SET_USER_LAST_NAME':
-            return { ...state, userLastName: action.userLastName };
+            return { ...state, userLastName: action.payload };
         case 'SET_VERIFICATION_EMAIL':
-            return { ...state, verificationEmail: action.verificationEmail };
+            return { ...state, verificationEmail: action.payload };
         case 'SET_RESET_PASSWORD_EMAIL':
-            return { ...state, resetPasswordEmail: action.resetPasswordEmail };
+            return { ...state, resetPasswordEmail: action.payload };
         case 'SET_RESET_PASSWORD_OLD_PASSWORD':
-            return { ...state, resetPasswordOldPassword: action.resetPasswordOldPassword };
+            return { ...state, resetPasswordOldPassword: action.payload };
         case 'SET_RESET_PASSWORD_NEW_PASSWORD':
-            return { ...state, resetPasswordNewPassword: action.resetPasswordNewPassword };
+            return { ...state, resetPasswordNewPassword: action.payload };
         case 'SET_RESET_PASSWORD_CONFIRM_NEW_PASSWORD':
-            return { ...state, resetPasswordConfirmNewPassword: action.resetPasswordConfirmNewPassword };
+            return { ...state, resetPasswordConfirmNewPassword: action.payload };
         case 'SET_FORGOT_PASSWORD_EMAIL':
-            return { ...state, forgotPasswordEmail: action.forgotPasswordEmail };
+            return { ...state, forgotPasswordEmail: action.payload };
         case 'SET_ACTIVATION_MESSAGE_EMPHASIS':
-            return { ...state, activationMessageEmphasis: action.activationMessageEmphasis };
+            return { ...state, activationMessageEmphasis: action.payload };
         default: return state;
     }
 }
 
-export default loginReducer;
+export default loginReducer

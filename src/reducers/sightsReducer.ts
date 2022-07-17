@@ -1,19 +1,19 @@
 import Sight from '../types/Sights/Sight'
 import State from '../types/State/Sights/State'
 
-interface Action {
-  type: string;
-  sights: Array<Sight>;
+const initialState: State = {
+  sights: [],
 }
 
-const INITIAL_STATE: State = {
-  sights: [],
-};
+export interface SaveSightsAction {
+  type: 'SAVE_SIGHTS';
+  payload: Array<Sight>;
+}
 
-const sightsReducer = (state: State = INITIAL_STATE, action: Action) => {
+const sightsReducer: (state: State, action: SaveSightsAction) => State = (state = initialState, action) => {
   switch (action.type) {
     case 'SAVE_SIGHTS':
-      return { ...state, sights: action.sights };
+      return { ...state, sights: action.payload };
     default: return state;
   }
 }

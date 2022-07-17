@@ -11,7 +11,7 @@ import { GiWalkingBoot } from 'react-icons/gi'
 import { RiArrowDropDownLine } from 'react-icons/ri'
 import { connect } from 'react-redux'
 import Walk from '../../../types/Walks/Walk'
-import RootState from "../../../types/State/Root/State"
+import { RootState } from '../../../store';
 import './Home.scss'
 
 interface Props {

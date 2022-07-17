@@ -1,18 +1,18 @@
 import State from '../types/State/Recaptcha/State'
 
-interface Action {
-    type: string;
-    sitekey: string;
+const initialState: State = {
+    sitekey: '6LdmxiUaAAAAAIYySt3c8XvwOMokTQ_SW2cYkvMw',
 }
 
-const INITIAL_STATE: State = {
-    sitekey: '6LdmxiUaAAAAAIYySt3c8XvwOMokTQ_SW2cYkvMw',
-};
+interface RecaptchaSiteKeyAction {
+    type: 'SAVE_SITEKEY',
+    payload: string,
+}
 
-const recaptchaReducer = (state: State = INITIAL_STATE, action: Action) => {
+const recaptchaReducer: (state: State, action: RecaptchaSiteKeyAction) => State = (state = initialState, action) => {
     switch (action.type) {
         case 'SAVE_SITEKEY':
-            return { ...state, sitekey: action.sitekey };
+            return { ...state, sitekey: action.payload };
         default: return state;
     }
 }

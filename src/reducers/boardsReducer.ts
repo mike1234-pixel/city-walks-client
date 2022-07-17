@@ -1,19 +1,19 @@
 import Board from '../types/Boards/Board'
 import State from '../types/State/Boards/State'
 
-interface Action {
-    type: string;
-    boards: Array<Board>;
-}
-
-const INITIAL_STATE: State = {
+const initialState: State = {
     boards: [],
 };
 
-const boardsReducer = (state: State = INITIAL_STATE, action: Action) => {
+export interface SaveBoardsAction {
+    type: 'SAVE_BOARDS',
+    payload: Array<Board>,
+}
+
+const boardsReducer: (state: State, action: SaveBoardsAction) => State = (state = initialState, action) => {
     switch (action.type) {
         case 'SAVE_BOARDS':
-            return { ...state, boards: action.boards };
+            return { ...state, boards: action.payload };
         default: return state;
     }
 }
