@@ -11,7 +11,7 @@ import React from "react";
 import "./Cities.scss";
 
 interface Props {
-  key: string;
+  id: string;
   imgSrc: string;
   name: string;
   description: string;
@@ -19,10 +19,10 @@ interface Props {
 }
 
 const CityCard: React.FC<Props> = (props: Props) => {
-  const { key, imgSrc, name, description, submitSearch } = props;
+  const { id, imgSrc, name, description, submitSearch } = props;
 
   return (
-    <div key={key}>
+    <div key={id}>
       <MDBCard className="city-card" onClick={() => submitSearch(name)}>
         <MDBCardImage
           className="cutter img-fluid"

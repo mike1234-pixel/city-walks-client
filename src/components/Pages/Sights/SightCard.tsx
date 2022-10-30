@@ -20,17 +20,17 @@ const stripMarkdown: (markup: string) => string = (markup) => {
 };
 
 interface Props {
-  key: string;
+  id: string;
   name: string;
   imgSrc: string;
   description: string;
 }
 
 const SightCard: React.FC<Props> = (props: Props) => {
-  const { key, name, description, imgSrc } = props;
+  const { id, name, description, imgSrc } = props;
 
   return (
-    <div key={key}>
+    <div key={id}>
       <Link to={"/sights/" + urlify(name)}>
         <MDBCard className="blog-card">
           <MDBCardImage

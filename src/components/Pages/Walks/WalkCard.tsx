@@ -13,7 +13,7 @@ import urlify from "../../../functions/urlify";
 import "./Walks.scss";
 
 interface Props {
-  key: string;
+  id: string;
   imgSrc: string;
   name: string;
   city: string;
@@ -21,10 +21,10 @@ interface Props {
 }
 
 const WalkCard: React.FC<Props> = (props: Props) => {
-  const { key, imgSrc, name, city, description } = props;
+  const { id, imgSrc, name, city, description } = props;
 
   return (
-    <div key={key}>
+    <div key={id}>
       <Link to={"walks/" + urlify(name)}>
         <MDBCard className="walk-card">
           <MDBCardImage

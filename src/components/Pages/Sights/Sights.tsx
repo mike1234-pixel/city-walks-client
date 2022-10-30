@@ -39,12 +39,7 @@ const Sights: React.FC<Props> = (props: Props) => {
         const { _id, img, title, content } = sight;
 
         return (
-          <SightCard
-            key={_id}
-            name={title}
-            description={content}
-            imgSrc={img}
-          />
+          <SightCard id={_id} name={title} description={content} imgSrc={img} />
         );
       })
       .reverse();

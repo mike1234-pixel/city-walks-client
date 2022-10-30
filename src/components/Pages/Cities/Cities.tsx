@@ -47,7 +47,7 @@ const Cities: React.FC<any> = (props: Props) => {
 
         return (
           <CityCard
-            key={_id}
+            id={_id}
             name={cityName}
             description={description}
             imgSrc={img}
