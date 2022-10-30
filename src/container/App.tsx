@@ -6,7 +6,7 @@ import City from "../types/Cities/City";
 import Board from "../types/Boards/Board";
 import Sight from "../types/Sights/Sight";
 import RootState from "../types/State/Root/State";
-import { Action, Dispatch, bindActionCreators } from "redux";
+import { Dispatch, bindActionCreators } from "redux";
 import {
   saveBoards,
   saveCities,
@@ -17,36 +17,19 @@ import {
   setUserFirstName,
   setUserId,
 } from "../actions/actions";
-import * as actions from "../constants/constants";
+import * as Actions from "../types/Actions";
 import "./App.scss";
-import { PayloadAction } from "@reduxjs/toolkit";
 
 interface Props {
   sitekey: string;
-  saveBoards: (
-    boards?: Array<Board>
-  ) => PayloadAction<Array<Board>, typeof actions.SAVE_BOARDS>;
-  saveSights: (
-    sights?: Array<Sight>
-  ) => PayloadAction<Array<Sight>, typeof actions.SAVE_SIGHTS>;
-  saveWalks: (
-    walks?: Array<Walk>
-  ) => PayloadAction<Array<Walk>, typeof actions.SAVE_WALKS>;
-  saveCities: (
-    cities?: Array<City>
-  ) => PayloadAction<Array<City>, typeof actions.SAVE_CITIES>;
-  setPrivacyPopupVisible: (
-    popupVisible: boolean
-  ) => PayloadAction<boolean, typeof actions.SET_POPUP_VISIBLE>;
-  setLoggedIn: (
-    loggedIn: boolean
-  ) => PayloadAction<boolean, typeof actions.SET_LOGGED_IN>;
-  setUserId: (
-    userId: string | null
-  ) => PayloadAction<string | null, typeof actions.SET_USER_ID>;
-  setUserFirstName: (
-    userFirstName: string | null
-  ) => PayloadAction<string | null, typeof actions.SET_USER_FIRST_NAME>;
+  saveBoards: (boards?: Array<Board>) => Actions.SaveBoards;
+  saveSights: (sights?: Array<Sight>) => Actions.SaveSights;
+  saveWalks: (walks?: Array<Walk>) => Actions.SaveWalks;
+  saveCities: (cities?: Array<City>) => Actions.SaveCities;
+  setPrivacyPopupVisible: (popupVisible: boolean) => Actions.SetPopupVisible;
+  setLoggedIn: (loggedIn: boolean) => Actions.SetLoggedIn;
+  setUserId: (userId: string | null) => Actions.SetUserId;
+  setUserFirstName: (userFirstName: string | null) => Actions.SetUserFirstName;
   privacyPopupVisible: boolean;
 }
 
@@ -65,7 +48,6 @@ const App: React.FC<any> = (props: Props) => {
   } = props;
 
   useEffect(() => {
-    // save data to redux store
     saveWalks();
     saveSights();
     saveCities();
@@ -82,8 +64,7 @@ const App: React.FC<any> = (props: Props) => {
       setUserFirstName(localStorage.getItem("userFirstName"));
     }
 
-    // RECAPTCHA
-
+    // recaptcha
     const loadScriptByURL: (
       id: string,
       url: string,

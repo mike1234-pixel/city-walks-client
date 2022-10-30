@@ -1,17 +1,6 @@
 import React, { ReactNode, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
-import {
-  MDBBtn,
-  MDBIcon,
-  MDBCard,
-  MDBCardBody,
-  MDBCardImage,
-  MDBCardText,
-  MDBCardTitle,
-  MDBContainer,
-} from "mdbreact";
-import urlify from "../../../functions/urlify";
+import { MDBContainer } from "mdbreact";
 import { connect } from "react-redux";
 import Sight from "../../../types/Sights/Sight";
 import RootState from "../../../types/State/Root/State";
@@ -32,19 +21,6 @@ const Sights: React.FC<Props> = (props: Props) => {
 
   const pageCount: number = Math.ceil(sights.length / sightsPerPage);
 
-  const displayAllSights: () => Array<ReactNode> = () => {
-    return sights
-      .slice(pagesVisited, pagesVisited + sightsPerPage)
-      .map((sight: Sight) => {
-        const { _id, img, title, content } = sight;
-
-        return (
-          <SightCard id={_id} name={title} description={content} imgSrc={img} />
-        );
-      })
-      .reverse();
-  };
-
   const changePage = ({ selected }: { selected: number }) => {
     setPageNumber(selected);
   };
@@ -62,7 +38,23 @@ const Sights: React.FC<Props> = (props: Props) => {
             find more sights and visitor attractions to explore
           </h2>
         </div>
-        <div className="card-container">{displayAllSights()}</div>
+        <div className="card-container">
+          {sights
+            .slice(pagesVisited, pagesVisited + sightsPerPage)
+            .map((sight: Sight) => {
+              const { _id, img, title, content } = sight;
+
+              return (
+                <SightCard
+                  id={_id}
+                  name={title}
+                  description={content}
+                  imgSrc={img}
+                />
+              );
+            })
+            .reverse()}
+        </div>
         <ReactPaginate
           previousLabel={"Previous"}
           nextLabel={"Next"}

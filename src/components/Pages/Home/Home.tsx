@@ -25,103 +25,14 @@ const Home: React.FC<Props> = (props: Props) => {
     window.scrollTo(0, 0);
   }, []);
 
-  let featuredWalks: Array<Walk> = walks.filter(
-    (walk) => walk.featuredWalk === true
-  );
+  let featuredWalks: Array<Walk> = walks.filter((walk) => walk.featuredWalk);
 
   // if there are less than 3 featured walks set in the db just use the first 3 entries in walks
   if (featuredWalks.length < 3) {
     featuredWalks = walks;
   }
 
-  if (walks.length) {
-    return (
-      <MDBContainer>
-        <div>
-          <Carousel />
-          <div className="page-heading-container featured-walks-heading-container">
-            <h2 className="page-heading">
-              <RiArrowDropDownLine /> Featured Walks <RiArrowDropDownLine />
-            </h2>
-          </div>
-          <hr />
-
-          <Link to={"/walks/" + urlify(featuredWalks[0].walk)}>
-            <div
-              className="center featured-walks-h3-container"
-              id="featured-walk-1"
-            >
-              <h3 className="featured-walks-h3">{featuredWalks[0].walk}</h3>
-            </div>
-            <SectionA
-              content={featuredWalks[0].content1}
-              img={featuredWalks[0].coverImg}
-              alt={featuredWalks[0].walk}
-              zoom={true}
-              waves={true}
-            />
-            <div className="center">
-              <MDBBtn
-                data-testid="explore-btn-1"
-                outline
-                color="elegant"
-                className="featured-walks-btn"
-              >
-                Explore {featuredWalks[0].walk} <GiWalkingBoot />
-              </MDBBtn>
-            </div>
-          </Link>
-          <hr />
-          <Link to={"/walks/" + urlify(featuredWalks[1].walk)}>
-            <div className="center featured-walks-h3-container">
-              <h3 className="featured-walks-h3">{featuredWalks[1].walk}</h3>
-            </div>
-            <SectionB
-              content={featuredWalks[1].content1}
-              img={featuredWalks[1].coverImg}
-              alt={featuredWalks[1].walk}
-              zoom={true}
-              waves={true}
-            />
-            <div className="center">
-              <MDBBtn
-                data-testid="explore-btn-2"
-                className="section-b-home-btn featured-walks-btn"
-                outline
-                color="elegant"
-              >
-                Explore {featuredWalks[1].walk} <GiWalkingBoot />
-              </MDBBtn>
-            </div>
-          </Link>
-          <hr />
-          <Link to={"/walks/" + urlify(featuredWalks[2].walk)}>
-            <div className="center featured-walks-h3-container">
-              <h3 className="featured-walks-h3">{featuredWalks[2].walk}</h3>
-            </div>
-            <SectionA
-              content={featuredWalks[2].content1}
-              img={featuredWalks[2].coverImg}
-              alt={featuredWalks[2].walk}
-              zoom={true}
-              waves={true}
-            />
-            <div className="center">
-              <MDBBtn
-                data-testid="explore-btn-3"
-                outline
-                color="elegant"
-                className="featured-walks-btn"
-              >
-                Explore {featuredWalks[2].walk} <GiWalkingBoot />
-              </MDBBtn>
-            </div>
-          </Link>
-        </div>
-        <LocatorMap walks={walks} />
-      </MDBContainer>
-    );
-  } else {
+  if (!walks.length) {
     return (
       <div>
         <MDBContainer>
@@ -130,6 +41,93 @@ const Home: React.FC<Props> = (props: Props) => {
       </div>
     );
   }
+
+  return (
+    <MDBContainer>
+      <div>
+        <Carousel />
+        <div className="page-heading-container featured-walks-heading-container">
+          <h2 className="page-heading">
+            <RiArrowDropDownLine /> Featured Walks <RiArrowDropDownLine />
+          </h2>
+        </div>
+        <hr />
+
+        <Link to={"/walks/" + urlify(featuredWalks[0].walk)}>
+          <div
+            className="center featured-walks-h3-container"
+            id="featured-walk-1"
+          >
+            <h3 className="featured-walks-h3">{featuredWalks[0].walk}</h3>
+          </div>
+          <SectionA
+            content={featuredWalks[0].content1}
+            img={featuredWalks[0].coverImg}
+            alt={featuredWalks[0].walk}
+            zoom={true}
+            waves={true}
+          />
+          <div className="center">
+            <MDBBtn
+              data-testid="explore-btn-1"
+              outline
+              color="elegant"
+              className="featured-walks-btn"
+            >
+              Explore {featuredWalks[0].walk} <GiWalkingBoot />
+            </MDBBtn>
+          </div>
+        </Link>
+        <hr />
+        <Link to={"/walks/" + urlify(featuredWalks[1].walk)}>
+          <div className="center featured-walks-h3-container">
+            <h3 className="featured-walks-h3">{featuredWalks[1].walk}</h3>
+          </div>
+          <SectionB
+            content={featuredWalks[1].content1}
+            img={featuredWalks[1].coverImg}
+            alt={featuredWalks[1].walk}
+            zoom={true}
+            waves={true}
+          />
+          <div className="center">
+            <MDBBtn
+              data-testid="explore-btn-2"
+              className="section-b-home-btn featured-walks-btn"
+              outline
+              color="elegant"
+            >
+              Explore {featuredWalks[1].walk} <GiWalkingBoot />
+            </MDBBtn>
+          </div>
+        </Link>
+        <hr />
+        <Link to={"/walks/" + urlify(featuredWalks[2].walk)}>
+          <div className="center featured-walks-h3-container">
+            <h3 className="featured-walks-h3">{featuredWalks[2].walk}</h3>
+          </div>
+          <SectionA
+            content={featuredWalks[2].content1}
+            img={featuredWalks[2].coverImg}
+            alt={featuredWalks[2].walk}
+            zoom={true}
+            waves={true}
+          />
+          <div className="center">
+            <MDBBtn
+              data-testid="explore-btn-3"
+              outline
+              color="elegant"
+              className="featured-walks-btn"
+            >
+              Explore {featuredWalks[2].walk} <GiWalkingBoot />
+            </MDBBtn>
+          </div>
+        </Link>
+      </div>
+      <LocatorMap walks={walks} />
+    </MDBContainer>
+  );
 };
 
 const mapStateToProps: (state: RootState) => void = (state) => ({

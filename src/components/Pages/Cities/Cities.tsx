@@ -2,16 +2,16 @@ import React, { ReactNode, useEffect, useState } from "react";
 import { MDBContainer } from "mdbreact";
 import ReactPaginate from "react-paginate";
 import { connect } from "react-redux";
-import { Action, bindActionCreators, Dispatch } from "redux";
+import { bindActionCreators, Dispatch } from "redux";
 import { handleClickSearch, setRedirect } from "../../../actions/actions";
-import CityT from "../../../types/Cities/City";
+import City from "../../../types/Cities/City";
 import { RootState } from "../../../store";
 import CityCard from "./CityCard";
 import * as Actions from "../../../types/Actions";
 import "./Cities.scss";
 
 interface Props {
-  cities: Array<CityT>;
+  cities: Array<City>;
   handleClickSearch: (cityToSearch: string) => Actions.HandleClickSearch;
   setRedirect: (redirect: boolean) => Actions.SetRedirect;
 }
@@ -39,24 +39,6 @@ const Cities: React.FC<any> = (props: Props) => {
     window.scrollTo(0, 0);
   }, []);
 
-  const showCities: () => Array<ReactNode> = () => {
-    return cities
-      .slice(pagesVisited, pagesVisited + citiesPerPage)
-      .map((city) => {
-        const { _id, city: cityName, description, img } = city;
-
-        return (
-          <CityCard
-            id={_id}
-            name={cityName}
-            description={description}
-            imgSrc={img}
-            submitSearch={submitSearch}
-          />
-        );
-      });
-  };
-
   return (
     <MDBContainer>
       <div className="cities-page-container page">
@@ -67,7 +49,23 @@ const Cities: React.FC<any> = (props: Props) => {
           <h1 className="page-heading">Cities</h1>
           <h2 className="page-subheading">search walks by city</h2>
         </div>
-        <div className="card-container">{showCities()}</div>
+        <div className="card-container">
+          {cities
+            .slice(pagesVisited, pagesVisited + citiesPerPage)
+            .map((city) => {
+              const { _id, city: cityName, description, img } = city;
+
+              return (
+                <CityCard
+                  id={_id}
+                  name={cityName}
+                  description={description}
+                  imgSrc={img}
+                  submitSearch={submitSearch}
+                />
+              );
+            })}
+        </div>
         <ReactPaginate
           previousLabel={"Previous"}
           nextLabel={"Next"}

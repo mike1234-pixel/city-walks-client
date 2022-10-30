@@ -9,15 +9,21 @@ import WalkCard from "./WalkCard";
 interface Props {
   searchValue: string;
   walks: Array<Walk>;
-  displayAllWalks: () => Array<ReactNode>;
   pageCount: number;
+  pagesVisited: number;
+  walksPerPage: number;
   changePage: (selected: number) => void;
 }
 
 const FilteredResults: React.FC<Props> = (props: Props) => {
-  const { searchValue, walks, displayAllWalks, pageCount, changePage } = props;
-
-  console.log(searchValue === "");
+  const {
+    searchValue,
+    walks,
+    pageCount,
+    pagesVisited,
+    walksPerPage,
+    changePage,
+  } = props;
 
   if (searchValue === "") {
     return (
@@ -38,7 +44,29 @@ const FilteredResults: React.FC<Props> = (props: Props) => {
               {`  ${searchValue}`}
             </p>
           </div>
-          <div className="card-container">{displayAllWalks()}</div>
+          <div className="card-container">
+            {walks
+              .slice(pagesVisited, pagesVisited + walksPerPage)
+              .map((walk) => {
+                const {
+                  _id,
+                  walk: walkName,
+                  city,
+                  description,
+                  coverImg,
+                } = walk;
+
+                return (
+                  <WalkCard
+                    id={_id}
+                    name={walkName}
+                    city={city}
+                    description={description}
+                    imgSrc={coverImg}
+                  />
+                );
+              })}
+          </div>
           <ReactPaginate
             previousLabel={"Previous"}
             nextLabel={"Next"}

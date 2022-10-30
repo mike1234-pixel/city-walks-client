@@ -2,7 +2,7 @@ import React from "react";
 import { MDBInput } from "mdbreact";
 import { FaSearchLocation } from "react-icons/fa";
 import { connect } from "react-redux";
-import { Action, bindActionCreators, Dispatch } from "redux";
+import { bindActionCreators, Dispatch } from "redux";
 import RootState from "../../types/State/Root/State";
 import { handleChangeSearch, setRedirect } from "../../actions/actions";
 import * as Actions from "../../types/Actions";

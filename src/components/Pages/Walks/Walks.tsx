@@ -25,24 +25,6 @@ const Walks: React.FC<Props> = (props: Props) => {
 
   const pageCount: number = Math.ceil(walks.length / walksPerPage);
 
-  const displayAllWalks: () => Array<ReactNode> = () => {
-    return walks
-      .slice(pagesVisited, pagesVisited + walksPerPage)
-      .map((walk) => {
-        const { _id, walk: walkName, city, description, coverImg } = walk;
-
-        return (
-          <WalkCard
-            id={_id}
-            name={walkName}
-            city={city}
-            description={description}
-            imgSrc={coverImg}
-          />
-        );
-      });
-  };
-
   const changePage = (selected: number) => {
     setPageNumber(selected);
   };
@@ -56,9 +38,10 @@ const Walks: React.FC<Props> = (props: Props) => {
       <FilteredResults
         searchValue={searchValue}
         walks={walks}
-        displayAllWalks={displayAllWalks}
         pageCount={pageCount}
         changePage={changePage}
+        pagesVisited={pagesVisited}
+        walksPerPage={walksPerPage}
       />
     </div>
   );
