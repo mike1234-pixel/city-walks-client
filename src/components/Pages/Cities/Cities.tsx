@@ -1,98 +1,100 @@
-import React, { ReactNode, useEffect, useState } from "react"
-import { MDBIcon, MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBContainer } from 'mdbreact'
-import ReactPaginate from "react-paginate"
-import { connect } from 'react-redux'
-import { Action, bindActionCreators, Dispatch } from "redux"
-import { handleClickSearch, setRedirect } from "../../../actions/actions"
-import City from "../../../types/Cities/City"
-import { RootState } from '../../../store';
-import './Cities.scss'
+import React, { ReactNode, useEffect, useState } from "react";
+import { MDBContainer } from "mdbreact";
+import ReactPaginate from "react-paginate";
+import { connect } from "react-redux";
+import { Action, bindActionCreators, Dispatch } from "redux";
+import { handleClickSearch, setRedirect } from "../../../actions/actions";
+import CityT from "../../../types/Cities/City";
+import { RootState } from "../../../store";
+import CityCard from "./CityCard";
+import * as actions from "../../../constants/constants";
+import "./Cities.scss";
 
 interface Props {
-    cities: Array<City>;
-    handleClickSearch: (cityToSearch: string) => Action;
-    setRedirect: (redirect: boolean) => Action;
+  cities: Array<CityT>;
+  handleClickSearch: (
+    cityToSearch: string
+  ) => Action<typeof actions.HANDLE_CLICK_SEARCH>;
+  setRedirect: (redirect: boolean) => Action<typeof actions.SET_REDIRECT>;
 }
 
 const Cities: React.FC<any> = (props: Props) => {
+  const { cities, handleClickSearch, setRedirect } = props;
 
-    const { cities, handleClickSearch, setRedirect } = props;
+  const [pageNumber, setPageNumber] = useState<number>(0);
 
-    const [pageNumber, setPageNumber] = useState<number>(0)
+  const citiesPerPage: number = 3;
+  const pagesVisited: number = pageNumber * citiesPerPage;
 
-    const citiesPerPage: number = 3;
-    const pagesVisited: number = pageNumber * citiesPerPage;
+  const pageCount: number = Math.ceil(cities.length / citiesPerPage);
 
-    const pageCount: number = Math.ceil(cities.length / citiesPerPage);
+  const submitSearch: (cityName: string) => void = (cityName) => {
+    handleClickSearch(cityName);
+    setRedirect(true);
+  };
 
-    const submitSearch: (cityName: string) => void = (cityName) => {
-        handleClickSearch(cityName)
-        setRedirect(true)
-    }
+  const changePage = ({ selected }: { selected: number }) => {
+    setPageNumber(selected);
+  };
 
-    const displayAllCities: () => Array<ReactNode> = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const showCities: () => Array<ReactNode> = () => {
+    return cities
+      .slice(pagesVisited, pagesVisited + citiesPerPage)
+      .map((city) => {
+        const { _id, city: cityName, description, img } = city;
 
         return (
-            cities.slice(pagesVisited, pagesVisited + citiesPerPage).map((city) => {
-                return (
-                    <div key={city._id}>
-                        <MDBCard className="city-card" onClick={() => submitSearch(city.city)}>
-                            <MDBCardImage className="cutter img-fluid" src={city.img} alt={city.city} waves />
-                            <MDBCardBody>
-                                <MDBCardTitle>{city.city}</MDBCardTitle>
-                                <MDBCardText>{city.description}</MDBCardText>
-                                <MDBBtn outline className="city-card-btn">Find walks <MDBIcon icon="search" /></MDBBtn>
-                            </MDBCardBody>
-                        </MDBCard>
-                    </div>
-                )
-            })
-        )
-    }
+          <CityCard
+            key={_id}
+            name={cityName}
+            description={description}
+            imgSrc={img}
+            submitSearch={submitSearch}
+          />
+        );
+      });
+  };
 
-    const changePage = ({ selected }: { selected: number }) => {
-        setPageNumber(selected);
-    }
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
-    return (
-        <MDBContainer>
-            <div className="cities-page-container page">
-                <div data-testid="cities-page-heading" className="page-heading-container">
-                    <h1 className="page-heading">Cities</h1>
-                    <h2 className="page-subheading">search walks by city</h2>
-                </div>
-                <div className="card-container">{displayAllCities()}</div>
-                <ReactPaginate
-                    previousLabel={"Previous"}
-                    nextLabel={"Next"}
-                    pageCount={pageCount}
-                    onPageChange={changePage}
-                    containerClassName={"pagination-buttons"}
-                    previousLinkClassName={"previous-button"}
-                    nextLinkClassName={"next-button"}
-                    disabledClassName={"pagination-disabled"}
-                    activeClassName={"pagination-active"}
-                />
-            </div>
-        </MDBContainer>
-    )
-}
+  return (
+    <MDBContainer>
+      <div className="cities-page-container page">
+        <div
+          data-testid="cities-page-heading"
+          className="page-heading-container"
+        >
+          <h1 className="page-heading">Cities</h1>
+          <h2 className="page-subheading">search walks by city</h2>
+        </div>
+        <div className="card-container">{showCities()}</div>
+        <ReactPaginate
+          previousLabel={"Previous"}
+          nextLabel={"Next"}
+          pageCount={pageCount}
+          onPageChange={changePage}
+          containerClassName={"pagination-buttons"}
+          previousLinkClassName={"previous-button"}
+          nextLinkClassName={"next-button"}
+          disabledClassName={"pagination-disabled"}
+          activeClassName={"pagination-active"}
+        />
+      </div>
+    </MDBContainer>
+  );
+};
 
 const mapStateToProps: (state: RootState) => void = (state) => ({
-    cities: state.citiesState.cities,
+  cities: state.citiesState.cities,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
-    return {
-        dispatch,
-        ...bindActionCreators({ handleClickSearch, setRedirect }, dispatch),
-    }
-}
+  return {
+    dispatch,
+    ...bindActionCreators({ handleClickSearch, setRedirect }, dispatch),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cities);
-
-// these cards will conduct a search and filter the walks by city -- each one will link to the walks page

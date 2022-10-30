@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react";
 import {
   MDBIcon,
   MDBNavbar,
@@ -7,26 +7,41 @@ import {
   MDBNavItem,
   MDBHamburgerToggler,
   MDBCollapse,
-  MDBContainer
+  MDBContainer,
 } from "mdbreact";
-import { Link, useHistory } from "react-router-dom"
-import { connect } from 'react-redux'
+import { Link, useHistory } from "react-router-dom";
+import { connect } from "react-redux";
 import { Action, bindActionCreators, Dispatch } from "redux";
-import { RootState } from '../../../store';
-import { setLoggedIn, setUserId, setUserFirstName, setUserLastName } from "../../../actions/actions";
-import "./UserPortalNav.scss"
+import { RootState } from "../../../store";
+import {
+  setLoggedIn,
+  setUserId,
+  setUserFirstName,
+  setUserLastName,
+} from "../../../actions/actions";
+import * as actions from "../../../constants/constants";
+import "./UserPortalNav.scss";
 
 interface Props {
   loggedIn: boolean;
-  setLoggedIn: (loggedIn: boolean) => Action;
-  setUserId: (userId: string) => Action;
-  setUserFirstName: (userFirstName: string) => Action;
-  setUserLastName: (userLastName: string) => Action;
+  setLoggedIn: (loggedIn: boolean) => Action<typeof actions.SET_LOGGED_IN>;
+  setUserId: (userId: string) => Action<typeof actions.SET_USER_ID>;
+  setUserFirstName: (
+    userFirstName: string
+  ) => Action<typeof actions.SET_USER_FIRST_NAME>;
+  setUserLastName: (
+    userLastName: string
+  ) => Action<typeof actions.SET_USER_LAST_NAME>;
 }
 
 const UserPortalNav: React.FC<Props> = (props: Props) => {
-
-  const { loggedIn, setLoggedIn, setUserId, setUserFirstName, setUserLastName } = props
+  const {
+    loggedIn,
+    setLoggedIn,
+    setUserId,
+    setUserFirstName,
+    setUserLastName,
+  } = props;
 
   const [toggleLoginPanel, setToggleLoginPanel] = useState<boolean>(false);
 
@@ -34,18 +49,18 @@ const UserPortalNav: React.FC<Props> = (props: Props) => {
     setToggleLoginPanel(!toggleLoginPanel);
   };
 
-  const pushSlug: Function = useHistory().push
+  const pushSlug: Function = useHistory().push;
 
   const logOut: () => void = () => {
-    localStorage.clear()
-    localStorage.setItem('popupVisible', 'false')
-    setLoggedIn(false)
-    setUserId('')
-    setUserFirstName('')
-    setUserLastName('')
-    alert("Logged out successfully.")
+    localStorage.clear();
+    localStorage.setItem("popupVisible", "false");
+    setLoggedIn(false);
+    setUserId("");
+    setUserFirstName("");
+    setUserLastName("");
+    alert("Logged out successfully.");
     pushSlug("/forum");
-  }
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -58,7 +73,9 @@ const UserPortalNav: React.FC<Props> = (props: Props) => {
           <MDBNavbar className="login-panel" dark expand="md">
             <MDBContainer>
               <MDBNavbarBrand>
-                <strong className="white-text user-portal-logo">User Portal</strong>
+                <strong className="white-text user-portal-logo">
+                  User Portal
+                </strong>
               </MDBNavbarBrand>
               <MDBHamburgerToggler
                 color="#fff"
@@ -84,11 +101,12 @@ const UserPortalNav: React.FC<Props> = (props: Props) => {
         </div>
       ) : (
         <div>
-
           <MDBNavbar className="login-panel" dark expand="md">
             <MDBContainer>
               <MDBNavbarBrand>
-                <strong className="white-text user-portal-logo">User Portal</strong>
+                <strong className="white-text user-portal-logo">
+                  User Portal
+                </strong>
               </MDBNavbarBrand>
               <MDBHamburgerToggler
                 color="#fff"
@@ -103,27 +121,41 @@ const UserPortalNav: React.FC<Props> = (props: Props) => {
               >
                 <MDBNavbarNav justify="true">
                   <MDBNavItem>
-                    <Link to="/forum/login" className="user-portal-link">Login <MDBIcon icon="key" /></Link>
+                    <Link to="/forum/login" className="user-portal-link">
+                      Login <MDBIcon icon="key" />
+                    </Link>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <Link to="/forum/register" className="user-portal-link">Register <MDBIcon far icon="edit" /></Link>
+                    <Link to="/forum/register" className="user-portal-link">
+                      Register <MDBIcon far icon="edit" />
+                    </Link>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <Link to="/forum/verify" className="user-portal-link">Resend Email <MDBIcon far icon="envelope" /></Link>
+                    <Link to="/forum/verify" className="user-portal-link">
+                      Resend Email <MDBIcon far icon="envelope" />
+                    </Link>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <Link to="/forum/reset-password" className="user-portal-link">Reset Password <MDBIcon icon="unlock-alt" /></Link>
+                    <Link
+                      to="/forum/reset-password"
+                      className="user-portal-link"
+                    >
+                      Reset Password <MDBIcon icon="unlock-alt" />
+                    </Link>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <Link to="/forum/forgot-password" className="user-portal-link">Forgot Password <MDBIcon far icon="question-circle" /></Link>
+                    <Link
+                      to="/forum/forgot-password"
+                      className="user-portal-link"
+                    >
+                      Forgot Password <MDBIcon far icon="question-circle" />
+                    </Link>
                   </MDBNavItem>
                 </MDBNavbarNav>
               </MDBCollapse>
             </MDBContainer>
           </MDBNavbar>
-
         </div>
-
       )}
     </div>
   );
@@ -136,8 +168,11 @@ const mapStateToProps: (state: RootState) => void = (state) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     dispatch,
-    ...bindActionCreators({ setLoggedIn, setUserId, setUserFirstName, setUserLastName }, dispatch),
-  }
-}
+    ...bindActionCreators(
+      { setLoggedIn, setUserId, setUserFirstName, setUserLastName },
+      dispatch
+    ),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserPortalNav);

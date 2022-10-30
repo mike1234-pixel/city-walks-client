@@ -1,37 +1,33 @@
-import State from '../types/State/Search/State'
+import State from "../types/State/Search/State";
+import * as actions from "../constants/constants";
+import { PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: State = {
-    redirect: false,
-    searchValue: '',
+  redirect: false,
+  searchValue: "",
 };
 
-export interface SearchChangeAction {
-    type: 'HANDLE_CHANGE_SEARCH',
-    payload: string,
-}
+type SearchAction =
+  | typeof actions.HANDLE_CHANGE_SEARCH
+  | typeof actions.HANDLE_CLICK_SEARCH;
+type RedirectAction = typeof actions.SET_REDIRECT;
 
-export interface SearchClickAction {
-    type: 'HANDLE_CLICK_SEARCH',
-    payload: string,
-}
-
-export interface RedirectAction {
-    type: 'SET_REDIRECT',
-    payload: boolean
-}
-
-type SearchAction = SearchChangeAction | SearchClickAction | RedirectAction
-
-const searchReducer: (state: State, action: SearchAction) => State = (state = initialState, action) => {
-    switch (action.type) {
-        case 'SET_REDIRECT':
-            return { ...state, redirect: action.payload };
-        case 'HANDLE_CHANGE_SEARCH':
-            return { ...state, searchValue: action.payload };
-        case 'HANDLE_CLICK_SEARCH':
-            return { ...state, searchValue: action.payload };
-        default: return state;
-    }
-}
+const searchReducer: (
+  state: State,
+  action:
+    | PayloadAction<string, SearchAction>
+    | PayloadAction<boolean, RedirectAction>
+) => State = (state = initialState, action) => {
+  switch (action.type) {
+    case "SET_REDIRECT":
+      return { ...state, redirect: action.payload };
+    case "HANDLE_CHANGE_SEARCH":
+      return { ...state, searchValue: action.payload };
+    case "HANDLE_CLICK_SEARCH":
+      return { ...state, searchValue: action.payload };
+    default:
+      return state;
+  }
+};
 
 export default searchReducer;
