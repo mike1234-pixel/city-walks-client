@@ -1,22 +1,17 @@
 import State from "../types/State/Search/State";
-import * as actions from "../constants/constants";
-import { PayloadAction } from "@reduxjs/toolkit";
+import * as Actions from "../types/Actions";
 
 const initialState: State = {
   redirect: false,
   searchValue: "",
 };
 
-type SearchAction =
-  | typeof actions.HANDLE_CHANGE_SEARCH
-  | typeof actions.HANDLE_CLICK_SEARCH;
-type RedirectAction = typeof actions.SET_REDIRECT;
-
 const searchReducer: (
   state: State,
   action:
-    | PayloadAction<string, SearchAction>
-    | PayloadAction<boolean, RedirectAction>
+    | Actions.HandleChangeSearch
+    | Actions.HandleClickSearch
+    | Actions.SetRedirect
 ) => State = (state = initialState, action) => {
   switch (action.type) {
     case "SET_REDIRECT":

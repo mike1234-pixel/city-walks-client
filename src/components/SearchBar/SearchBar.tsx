@@ -5,14 +5,12 @@ import { connect } from "react-redux";
 import { Action, bindActionCreators, Dispatch } from "redux";
 import RootState from "../../types/State/Root/State";
 import { handleChangeSearch, setRedirect } from "../../actions/actions";
-import * as actions from "../../constants/constants";
+import * as Actions from "../../types/Actions";
 import "./SeachBar.scss";
 
 interface Props {
-  handleChangeSearch: (
-    inputValue: string
-  ) => Action<typeof actions.HANDLE_CHANGE_SEARCH>;
-  setRedirect: (redirect: boolean) => Action<typeof actions.SET_REDIRECT>;
+  handleChangeSearch: (inputValue: string) => Actions.HandleChangeSearch;
+  setRedirect: (redirect: boolean) => Actions.SetRedirect;
   searchValue: string;
 }
 

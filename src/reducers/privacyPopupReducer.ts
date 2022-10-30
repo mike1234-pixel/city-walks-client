@@ -1,6 +1,5 @@
 import State from "../types/State/PrivacyPopup/State";
-import * as actions from "../constants/constants";
-import { PayloadAction } from "@reduxjs/toolkit";
+import * as Actions from "../types/Actions";
 
 const initialState: State = {
   privacyPopupVisible: false,
@@ -8,7 +7,7 @@ const initialState: State = {
 
 const privacyPopupReducer: (
   state: State,
-  action: PayloadAction<boolean, typeof actions.SET_POPUP_VISIBLE>
+  action: Actions.SetPopupVisible
 ) => State = (state = initialState, action) => {
   switch (action.type) {
     case "SET_POPUP_VISIBLE":

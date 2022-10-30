@@ -45,11 +45,7 @@ exports[`Test Footer Footer renders correctly 1`] = `
         </p>
       </div>
       <div
-        className="col-md-3"
-        data-test="col"
-      />
-      <div
-        className="col-md-3 footer-site-links"
+        className="col-md-3 offset-md-3 footer-site-links"
         data-test="col"
       >
         <h5
@@ -151,7 +147,7 @@ exports[`Test Footer Footer renders correctly 1`] = `
               href="/admin"
               onClick={[Function]}
             >
-              Admin portal
+              Admin Portal
             </a>
           </li>
           <li
@@ -177,7 +173,8 @@ exports[`Test Footer Footer renders correctly 1`] = `
     >
       © 
       2022
-       Copyright 
+       Copyright
+       
       <a
         className="footer-github-link"
         href="https://github.com/mike1234-pixel"

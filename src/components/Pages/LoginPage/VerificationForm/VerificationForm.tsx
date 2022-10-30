@@ -4,18 +4,18 @@ import UserPortalNav from "../UserPortalNav";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import qs from "qs";
 import { connect } from "react-redux";
-import { Action, bindActionCreators, Dispatch } from "redux";
+import { bindActionCreators, Dispatch } from "redux";
 import { setVerificationEmail } from "../../../../actions/actions";
 import EmailToVerify from "../../../../types/PostRequests/EmailToVerify";
 import RootState from "../../../../types/State/Root/State";
-import * as actions from "../../../../constants/constants";
+import * as Actions from "../../../../types/Actions";
 import "./VerificationForm.scss";
 
 interface Props {
   verificationEmail: string;
   setVerificationEmail: (
     verificationEmail: string
-  ) => Action<typeof actions.SET_VERIFICATION_EMAIL>;
+  ) => Actions.SetVerificationEmail;
 }
 
 const VerificationForm: React.FC<Props> = (props: Props) => {

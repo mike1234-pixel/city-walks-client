@@ -5,12 +5,12 @@ import Board from "../types/Boards/Board";
 import { Dispatch } from "redux";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import * as actions from "../constants/constants";
-import { PayloadAction } from "@reduxjs/toolkit";
+import * as Actions from "../types/Actions";
 
 // data
 
 export const saveSights: () => (
-  dispatch: Dispatch<PayloadAction<Array<Sight>, typeof actions.SAVE_SIGHTS>>
+  dispatch: Dispatch<Actions.SaveSights>
 ) => Promise<any> = () => {
   return (dispatch) => {
     return axios
@@ -26,7 +26,7 @@ export const saveSights: () => (
 };
 
 export const saveWalks: () => (
-  dispatch: Dispatch<PayloadAction<Array<Walk>, typeof actions.SAVE_WALKS>>
+  dispatch: Dispatch<Actions.SaveWalks>
 ) => Promise<any> = () => {
   return (dispatch) => {
     return axios
@@ -42,7 +42,7 @@ export const saveWalks: () => (
 };
 
 export const saveCities: () => (
-  dispatch: Dispatch<PayloadAction<Array<City>, typeof actions.SAVE_CITIES>>
+  dispatch: Dispatch<Actions.SaveCities>
 ) => Promise<any> = () => {
   return (dispatch) => {
     return axios
@@ -58,7 +58,7 @@ export const saveCities: () => (
 };
 
 export const saveBoards: () => (
-  dispatch: Dispatch<PayloadAction<Array<Board>, typeof actions.SAVE_BOARDS>>
+  dispatch: Dispatch<Actions.SaveBoards>
 ) => Promise<any> = () => {
   return (dispatch) => {
     return axios
@@ -75,39 +75,33 @@ export const saveBoards: () => (
 
 // registration
 
-export const setFirstName: (
-  payload: string
-) => PayloadAction<string, typeof actions.SET_FIRST_NAME> = (payload) => {
+export const setFirstName: (payload: string) => Actions.SetFirstName = (
+  payload
+) => {
   return { type: actions.SET_FIRST_NAME, payload };
 };
 
-export const setLastName: (
-  payload: string
-) => PayloadAction<string, typeof actions.SET_LAST_NAME> = (payload) => {
+export const setLastName: (payload: string) => Actions.SetLastName = (
+  payload
+) => {
   return { type: actions.SET_LAST_NAME, payload };
 };
 
 export const setRegistrationEmail: (
   payload: string
-) => PayloadAction<string, typeof actions.SET_REGISTRATION_EMAIL> = (
-  payload
-) => {
+) => Actions.SetRegistrationEmail = (payload) => {
   return { type: actions.SET_REGISTRATION_EMAIL, payload };
 };
 
 export const setRegistrationPassword: (
   payload: string
-) => PayloadAction<string, typeof actions.SET_REGISTRATION_PASSWORD> = (
-  payload
-) => {
+) => Actions.SetRegistrationPassword = (payload) => {
   return { type: actions.SET_REGISTRATION_PASSWORD, payload };
 };
 
 export const setActivationMessageEmphasis: (
   payload: string
-) => PayloadAction<string, typeof actions.SET_ACTIVATION_MESSAGE_EMPHASIS> = (
-  payload
-) => {
+) => Actions.SetActivationMessageEmphasis = (payload) => {
   return { type: actions.SET_ACTIVATION_MESSAGE_EMPHASIS, payload };
 };
 
@@ -115,55 +109,49 @@ export const setActivationMessageEmphasis: (
 
 export const setPrivacyPopupVisible: (
   payload: boolean
-) => PayloadAction<boolean, typeof actions.SET_POPUP_VISIBLE> = (payload) => {
+) => Actions.SetPopupVisible = (payload) => {
   return { type: actions.SET_POPUP_VISIBLE, payload };
 };
 
-export const setLoggedIn: (
-  payload: boolean
-) => PayloadAction<boolean, typeof actions.SET_LOGGED_IN> = (payload) => {
+export const setLoggedIn: (payload: boolean) => Actions.SetLoggedIn = (
+  payload
+) => {
   return { type: actions.SET_LOGGED_IN, payload };
 };
 
-export const setUserId: (
-  payload: string | null
-) => PayloadAction<string | null, typeof actions.SET_USER_ID> = (payload) => {
+export const setUserId: (payload: string | null) => Actions.SetUserId = (
+  payload
+) => {
   return { type: actions.SET_USER_ID, payload };
 };
 
 export const setUserFirstName: (
   payload: string | null
-) => PayloadAction<string | null, typeof actions.SET_USER_FIRST_NAME> = (
-  payload
-) => {
+) => Actions.SetUserFirstName = (payload) => {
   return { type: actions.SET_USER_FIRST_NAME, payload };
 };
 
 export const setUserLastName: (
   payload: string | null
-) => PayloadAction<string | null, typeof actions.SET_USER_LAST_NAME> = (
-  payload
-) => {
+) => Actions.SetUserLastName = (payload) => {
   return { type: actions.SET_USER_LAST_NAME, payload };
 };
 
-export const setLoginEmail: (
-  payload: string
-) => PayloadAction<string, typeof actions.SET_LOGIN_EMAIL> = (payload) => {
+export const setLoginEmail: (payload: string) => Actions.SetLoginEmail = (
+  payload
+) => {
   return { type: actions.SET_LOGIN_EMAIL, payload };
 };
 
-export const setLoginPassword: (
-  payload: string
-) => PayloadAction<string, typeof actions.SET_LOGIN_PASSWORD> = (payload) => {
+export const setLoginPassword: (payload: string) => Actions.SetLoginPassword = (
+  payload
+) => {
   return { type: actions.SET_LOGIN_PASSWORD, payload };
 };
 
 export const setForgotPasswordEmail: (
   payload: string
-) => PayloadAction<string, typeof actions.SET_FORGOT_PASSWORD_EMAIL> = (
-  payload
-) => {
+) => Actions.SetForgotPasswordEmail = (payload) => {
   return { type: actions.SET_FORGOT_PASSWORD_EMAIL, payload };
 };
 
@@ -171,34 +159,25 @@ export const setForgotPasswordEmail: (
 
 export const setResetPasswordEmail: (
   payload: string
-) => PayloadAction<string, typeof actions.SET_RESET_PASSWORD_EMAIL> = (
-  payload
-) => {
+) => Actions.SetResetPasswordEmail = (payload) => {
   return { type: actions.SET_RESET_PASSWORD_EMAIL, payload };
 };
 
 export const setResetPasswordOldPassword: (
   payload: string
-) => PayloadAction<string, typeof actions.SET_RESET_PASSWORD_OLD_PASSWORD> = (
-  payload
-) => {
+) => Actions.SetResetPasswordOldPassword = (payload) => {
   return { type: actions.SET_RESET_PASSWORD_OLD_PASSWORD, payload };
 };
 
 export const setResetPasswordNewPassword: (
   payload: string
-) => PayloadAction<string, typeof actions.SET_RESET_PASSWORD_NEW_PASSWORD> = (
-  payload
-) => {
+) => Actions.SetResetPasswordNewPassword = (payload) => {
   return { type: actions.SET_RESET_PASSWORD_NEW_PASSWORD, payload };
 };
 
 export const setResetPasswordConfirmNewPassword: (
   payload: string
-) => PayloadAction<
-  string,
-  typeof actions.SET_RESET_PASSWORD_CONFIRM_NEW_PASSWORD
-> = (payload) => {
+) => Actions.SetResetPasswordConfirmNewPassword = (payload) => {
   return { type: actions.SET_RESET_PASSWORD_CONFIRM_NEW_PASSWORD, payload };
 };
 
@@ -206,9 +185,7 @@ export const setResetPasswordConfirmNewPassword: (
 
 export const setVerificationEmail: (
   payload: string
-) => PayloadAction<string, typeof actions.SET_VERIFICATION_EMAIL> = (
-  payload
-) => {
+) => Actions.SetVerificationEmail = (payload) => {
   return { type: actions.SET_VERIFICATION_EMAIL, payload };
 };
 
@@ -216,24 +193,24 @@ export const setVerificationEmail: (
 
 export const handleChangeSearch: (
   payload: string
-) => PayloadAction<string, typeof actions.HANDLE_CHANGE_SEARCH> = (payload) => {
+) => Actions.HandleChangeSearch = (payload) => {
   return { type: actions.HANDLE_CHANGE_SEARCH, payload };
 };
 
 export const handleClickSearch: (
   payload: string
-) => PayloadAction<string, typeof actions.HANDLE_CLICK_SEARCH> = (payload) => {
+) => Actions.HandleClickSearch = (payload) => {
   return { type: actions.HANDLE_CLICK_SEARCH, payload };
 };
 
-export const setSearchValue: (
-  payload: string
-) => PayloadAction<string, typeof actions.HANDLE_CHANGE_SEARCH> = (payload) => {
+export const setSearchValue: (payload: string) => Actions.SetSearchValue = (
+  payload
+) => {
   return { type: actions.HANDLE_CHANGE_SEARCH, payload };
 };
 
-export const setRedirect: (
-  payload: boolean
-) => PayloadAction<boolean, typeof actions.SET_REDIRECT> = (payload) => {
+export const setRedirect: (payload: boolean) => Actions.SetRedirect = (
+  payload
+) => {
   return { type: actions.SET_REDIRECT, payload };
 };

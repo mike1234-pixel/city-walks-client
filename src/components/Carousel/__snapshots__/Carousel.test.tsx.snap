@@ -36,7 +36,7 @@ exports[`Test Carousel Carousel renders correctly 1`] = `
           style={Object {}}
         >
           <img
-            alt="First slide"
+            alt="Shoreditch"
             className="d-block w-100 carousel-img"
             src="carousel-illustration-1-2.jpg"
           />
@@ -56,6 +56,7 @@ exports[`Test Carousel Carousel renders correctly 1`] = `
           </h3>
           <p>
             the history of cities, their landmarks and hidden gems.
+            .
           </p>
         </div>
       </div>
@@ -76,7 +77,7 @@ exports[`Test Carousel Carousel renders correctly 1`] = `
           style={Object {}}
         >
           <img
-            alt="Second slide"
+            alt="Edinburgh"
             className="d-block w-100 carousel-img"
             src="carousel-illustration-2-2.jpg"
           />
@@ -96,6 +97,7 @@ exports[`Test Carousel Carousel renders correctly 1`] = `
           </h3>
           <p>
             local attractions, landmarks, museums and public spaces.
+            .
           </p>
         </div>
       </div>
@@ -116,12 +118,12 @@ exports[`Test Carousel Carousel renders correctly 1`] = `
           style={Object {}}
         >
           <img
-            alt="Third slide"
+            alt="Barbican"
             className="d-block w-100 carousel-img"
             src="carousel-illustration-3-2.jpg"
           />
           <div
-            className="mask rgba-black-slight"
+            className="mask"
             data-test="mask"
           />
         </div>
@@ -136,6 +138,7 @@ exports[`Test Carousel Carousel renders correctly 1`] = `
           </h3>
           <p>
             your experiences and recommendations.
+            .
           </p>
         </div>
       </div>

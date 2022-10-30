@@ -7,7 +7,7 @@ import qs from "qs";
 import { connect } from "react-redux";
 import RootState from "../../../../types/State/Root/State";
 import Credentials from "../../../../types/PostRequests/Credentials";
-import { Action, bindActionCreators, Dispatch } from "redux";
+import { bindActionCreators, Dispatch } from "redux";
 import {
   setLoggedIn,
   setLoginEmail,
@@ -16,24 +16,18 @@ import {
   setUserId,
   setUserLastName,
 } from "../../../../actions/actions";
-import * as actions from "../../../../constants/constants";
+import * as Actions from "../../../../types/Actions";
 import "./LoginForm.scss";
 
 interface Props {
   loginEmail: string;
   loginPassword: string;
-  setLoginEmail: (loginEmail: string) => Action<typeof actions.SET_LOGIN_EMAIL>;
-  setLoginPassword: (
-    loginPassword: string
-  ) => Action<typeof actions.SET_LOGIN_PASSWORD>;
-  setLoggedIn: (loggedIn: boolean) => Action<typeof actions.SET_LOGGED_IN>;
-  setUserId: (userId: string) => Action<typeof actions.SET_USER_ID>;
-  setUserFirstName: (
-    userFirstName: string
-  ) => Action<typeof actions.SET_USER_FIRST_NAME>;
-  setUserLastName: (
-    userLastName: string
-  ) => Action<typeof actions.SET_USER_LAST_NAME>;
+  setLoginEmail: (loginEmail: string) => Actions.SetLoginEmail;
+  setLoginPassword: (loginPassword: string) => Actions.SetLoginPassword;
+  setLoggedIn: (loggedIn: boolean) => Actions.SetLoggedIn;
+  setUserId: (userId: string) => Actions.SetUserId;
+  setUserFirstName: (userFirstName: string) => Actions.SetUserFirstName;
+  setUserLastName: (userLastName: string) => Actions.SetUserLastName;
 }
 
 const LoginForm: React.FC<Props> = (props: Props) => {

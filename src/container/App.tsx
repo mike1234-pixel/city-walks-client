@@ -19,21 +19,34 @@ import {
 } from "../actions/actions";
 import * as actions from "../constants/constants";
 import "./App.scss";
+import { PayloadAction } from "@reduxjs/toolkit";
 
 interface Props {
   sitekey: string;
-  saveBoards: (boards?: Array<Board>) => Action<typeof actions.SAVE_BOARDS>;
-  saveSights: (sights?: Array<Sight>) => Action<typeof actions.SAVE_SIGHTS>;
-  saveWalks: (walks?: Array<Walk>) => Action<typeof actions.SAVE_WALKS>;
-  saveCities: (cities?: Array<City>) => Action<typeof actions.SAVE_CITIES>;
+  saveBoards: (
+    boards?: Array<Board>
+  ) => PayloadAction<Array<Board>, typeof actions.SAVE_BOARDS>;
+  saveSights: (
+    sights?: Array<Sight>
+  ) => PayloadAction<Array<Sight>, typeof actions.SAVE_SIGHTS>;
+  saveWalks: (
+    walks?: Array<Walk>
+  ) => PayloadAction<Array<Walk>, typeof actions.SAVE_WALKS>;
+  saveCities: (
+    cities?: Array<City>
+  ) => PayloadAction<Array<City>, typeof actions.SAVE_CITIES>;
   setPrivacyPopupVisible: (
     popupVisible: boolean
-  ) => Action<typeof actions.SET_POPUP_VISIBLE>;
-  setLoggedIn: (loggedIn: boolean) => Action<typeof actions.SET_LOGGED_IN>;
-  setUserId: (userId: string | null) => Action<typeof actions.SET_USER_ID>;
+  ) => PayloadAction<boolean, typeof actions.SET_POPUP_VISIBLE>;
+  setLoggedIn: (
+    loggedIn: boolean
+  ) => PayloadAction<boolean, typeof actions.SET_LOGGED_IN>;
+  setUserId: (
+    userId: string | null
+  ) => PayloadAction<string | null, typeof actions.SET_USER_ID>;
   setUserFirstName: (
     userFirstName: string | null
-  ) => Action<typeof actions.SET_USER_FIRST_NAME>;
+  ) => PayloadAction<string | null, typeof actions.SET_USER_FIRST_NAME>;
   privacyPopupVisible: boolean;
 }
 

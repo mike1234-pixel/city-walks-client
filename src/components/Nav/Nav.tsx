@@ -9,21 +9,18 @@ import {
   MDBNavLink,
   MDBHamburgerToggler,
   MDBCollapse,
-  MDBInput,
   MDBContainer,
-  MDBRow,
-  MDBCol,
 } from "mdbreact";
 import { connect } from "react-redux";
-import { Action, Dispatch, bindActionCreators } from "redux";
+import { Dispatch, bindActionCreators } from "redux";
 import { setRedirect } from "../../actions/actions";
 import RootState from "../../types/State/Root/State";
-import * as actions from "../../constants/constants";
+import * as Actions from "../../types/Actions";
 import "./Nav.scss";
 
 interface Props {
   redirect: boolean;
-  setRedirect: (redirect: boolean) => Action<typeof actions.SET_REDIRECT>;
+  setRedirect: (redirect: boolean) => Actions.SetRedirect;
 }
 
 const Nav: React.FC<Props> = (props: Props) => {

@@ -11,7 +11,7 @@ import {
 } from "mdbreact";
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { Action, bindActionCreators, Dispatch } from "redux";
+import { bindActionCreators, Dispatch } from "redux";
 import { RootState } from "../../../store";
 import {
   setLoggedIn,
@@ -19,19 +19,15 @@ import {
   setUserFirstName,
   setUserLastName,
 } from "../../../actions/actions";
-import * as actions from "../../../constants/constants";
+import * as Actions from "../../../types/Actions";
 import "./UserPortalNav.scss";
 
 interface Props {
   loggedIn: boolean;
-  setLoggedIn: (loggedIn: boolean) => Action<typeof actions.SET_LOGGED_IN>;
-  setUserId: (userId: string) => Action<typeof actions.SET_USER_ID>;
-  setUserFirstName: (
-    userFirstName: string
-  ) => Action<typeof actions.SET_USER_FIRST_NAME>;
-  setUserLastName: (
-    userLastName: string
-  ) => Action<typeof actions.SET_USER_LAST_NAME>;
+  setLoggedIn: (loggedIn: boolean) => Actions.SetLoggedIn;
+  setUserId: (userId: string) => Actions.SetUserId;
+  setUserFirstName: (userFirstName: string) => Actions.SetUserFirstName;
+  setUserLastName: (userLastName: string) => Actions.SetUserLastName;
 }
 
 const UserPortalNav: React.FC<Props> = (props: Props) => {

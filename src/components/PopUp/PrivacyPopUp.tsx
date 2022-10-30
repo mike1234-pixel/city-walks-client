@@ -4,13 +4,11 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Action, bindActionCreators, Dispatch } from "redux";
 import { setPrivacyPopupVisible } from "../../actions/actions";
-import * as actions from "../../constants/constants";
+import * as Actions from "../../types/Actions";
 import "./PrivacyPopUp.scss";
 
 interface Props {
-  setPrivacyPopupVisible: (
-    popupVisible: boolean
-  ) => Action<typeof actions.SET_POPUP_VISIBLE>;
+  setPrivacyPopupVisible: (popupVisible: boolean) => Actions.SetPopupVisible;
 }
 
 const PrivacyPopUp: React.FC<Props> = (props: Props) => {

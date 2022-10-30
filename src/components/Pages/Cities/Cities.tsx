@@ -7,15 +7,13 @@ import { handleClickSearch, setRedirect } from "../../../actions/actions";
 import CityT from "../../../types/Cities/City";
 import { RootState } from "../../../store";
 import CityCard from "./CityCard";
-import * as actions from "../../../constants/constants";
+import * as Actions from "../../../types/Actions";
 import "./Cities.scss";
 
 interface Props {
   cities: Array<CityT>;
-  handleClickSearch: (
-    cityToSearch: string
-  ) => Action<typeof actions.HANDLE_CLICK_SEARCH>;
-  setRedirect: (redirect: boolean) => Action<typeof actions.SET_REDIRECT>;
+  handleClickSearch: (cityToSearch: string) => Actions.HandleClickSearch;
+  setRedirect: (redirect: boolean) => Actions.SetRedirect;
 }
 
 const Cities: React.FC<any> = (props: Props) => {

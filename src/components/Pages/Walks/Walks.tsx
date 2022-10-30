@@ -19,14 +19,12 @@ import { setSearchValue } from "../../../actions/actions";
 import Walk from "../../../types/Walks/Walk";
 import RootState from "../../../types/State/Root/State";
 import WalkCard from "./WalkCard";
-import * as actions from "../../../constants/constants";
+import * as Actions from "../../../types/Actions";
 import "./Walks.scss";
 
 interface Props {
   searchValue: string;
-  setSearchValue: (
-    inputValue: string
-  ) => Action<typeof actions.HANDLE_CHANGE_SEARCH>;
+  setSearchValue: (inputValue: string) => Actions.HandleChangeSearch;
   walks: Array<Walk>;
 }
 
@@ -138,32 +136,13 @@ const Walks: React.FC<Props> = (props: Props) => {
                 city.toLowerCase().includes(searchValue.toLowerCase())
               ) {
                 return (
-                  <div key={_id}>
-                    <Link to={"walks/" + urlify(walkName)}>
-                      <MDBCard className="walk-card">
-                        <MDBCardImage
-                          className="cutter img-fluid"
-                          src={coverImg}
-                          alt={walkName}
-                          waves
-                        />
-                        <MDBCardBody>
-                          <MDBCardTitle>{city}</MDBCardTitle>
-                          <MDBCardTitle className="display-font">
-                            {walkName}
-                          </MDBCardTitle>
-                          <MDBCardText>{description}</MDBCardText>
-                          <MDBBtn
-                            outline
-                            color="elegant"
-                            className="city-card-btn"
-                          >
-                            Explore <GiWalkingBoot />
-                          </MDBBtn>
-                        </MDBCardBody>
-                      </MDBCard>
-                    </Link>
-                  </div>
+                  <WalkCard
+                    key={_id}
+                    city={city}
+                    name={walkName}
+                    description={description}
+                    imgSrc={coverImg}
+                  />
                 );
               }
             })}

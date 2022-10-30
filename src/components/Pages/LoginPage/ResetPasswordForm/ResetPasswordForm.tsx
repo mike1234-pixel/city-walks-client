@@ -5,14 +5,14 @@ import UserPortalNav from "../UserPortalNav";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import qs from "qs";
 import { connect } from "react-redux";
-import { Action, bindActionCreators, Dispatch } from "redux";
+import { bindActionCreators, Dispatch } from "redux";
 import {
   setResetPasswordEmail,
   setResetPasswordOldPassword,
   setResetPasswordNewPassword,
   setResetPasswordConfirmNewPassword,
 } from "../../../../actions/actions";
-import * as actions from "../../../../constants/constants";
+import * as Actions from "../../../../types/Actions";
 import RootState from "../../../../types/State/Root/State";
 import "./ResetPasswordForm.scss";
 
@@ -23,16 +23,16 @@ interface Props {
   resetPasswordConfirmNewPassword: string;
   setResetPasswordEmail: (
     resetPasswordEmail: string
-  ) => Action<typeof actions.SET_RESET_PASSWORD_EMAIL>;
+  ) => Actions.SetResetPasswordEmail;
   setResetPasswordOldPassword: (
     resetPasswordOldPassword: string
-  ) => Action<typeof actions.SET_RESET_PASSWORD_OLD_PASSWORD>;
+  ) => Actions.SetResetPasswordOldPassword;
   setResetPasswordNewPassword: (
     resetPasswordNewPassword: string
-  ) => Action<typeof actions.SET_RESET_PASSWORD_NEW_PASSWORD>;
+  ) => Actions.SetResetPasswordNewPassword;
   setResetPasswordConfirmNewPassword: (
     resetPasswordConfirmNewPassword: string
-  ) => Action<typeof actions.SET_RESET_PASSWORD_CONFIRM_NEW_PASSWORD>;
+  ) => Actions.SetResetPasswordConfirmNewPassword;
 }
 
 const ResetPasswordForm: React.FC<Props> = (props: Props) => {

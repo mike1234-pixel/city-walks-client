@@ -8,14 +8,14 @@ import RootState from "../../../../types/State/Root/State";
 import Account from "../../../../types/PostRequests/Account";
 import { Action, bindActionCreators, Dispatch } from "redux";
 import { setForgotPasswordEmail } from "../../../../actions/actions";
-import * as actions from "../../../../constants/constants";
+import * as Actions from "../../../../types/Actions";
 import "./ForgotPasswordForm.scss";
 
 interface Props {
   forgotPasswordEmail: string;
   setForgotPasswordEmail: (
     forgotPasswordEmail: string
-  ) => Action<typeof actions.SET_FORGOT_PASSWORD_EMAIL>;
+  ) => Actions.SetForgotPasswordEmail;
 }
 
 const ForgotPasswordForm: React.FC<Props> = (props: Props) => {

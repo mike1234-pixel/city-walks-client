@@ -1,10 +1,10 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 import { GiWalkingBoot } from "react-icons/gi";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { connect } from "react-redux";
-import { Dispatch, Action, bindActionCreators } from "redux";
+import { Dispatch, bindActionCreators } from "redux";
 import RootState from "../../types/State/Root/State";
 import Account from "../../types/PostRequests/Account";
 import {
@@ -16,19 +16,15 @@ import {
 import "./Footer.scss";
 import FooterLink from "./FooterLink";
 import FooterCol from "./FooterCol";
-import * as actions from "../../constants/constants";
+import * as Actions from "../../types/Actions";
 
 interface Props {
   loggedIn: boolean;
   userId: string;
-  setLoggedIn: (loggedIn: boolean) => Action<typeof actions.SET_LOGGED_IN>;
-  setUserId: (userId: string) => Action<typeof actions.SET_USER_ID>;
-  setUserFirstName: (
-    userFirstName: string
-  ) => Action<typeof actions.SET_USER_FIRST_NAME>;
-  setUserLastName: (
-    userLastName: string
-  ) => Action<typeof actions.SET_USER_LAST_NAME>;
+  setLoggedIn: (loggedIn: boolean) => Actions.SetLoggedIn;
+  setUserId: (userId: string) => Actions.SetUserId;
+  setUserFirstName: (userFirstName: string) => Actions.SetUserFirstName;
+  setUserLastName: (userLastName: string) => Actions.SetUserLastName;
 }
 
 const Footer: React.FC<Props> = (props: Props) => {
