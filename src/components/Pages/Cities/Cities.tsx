@@ -17,21 +17,22 @@ interface CitiesProps {
 }
 
 const Cities = (props: CitiesProps) => {
+
   const { cities, handleClickSearch, setRedirect } = props;
 
   const [pageNumber, setPageNumber] = useState<number>(0);
 
-  const citiesPerPage: number = 3;
-  const pagesVisited: number = pageNumber * citiesPerPage;
+  const citiesPerPage = 3;
+  const pagesVisited = pageNumber * citiesPerPage;
 
-  const pageCount: number = Math.ceil(cities.length / citiesPerPage);
+  const pageCount = Math.ceil(cities.length / citiesPerPage);
 
-  const submitSearch: (cityName: string) => void = (cityName) => {
+  const handleSubmitSearch: (cityName: string) => void = (cityName) => {
     handleClickSearch(cityName);
     setRedirect(true);
   };
 
-  const changePage = ({ selected }: { selected: number; }) => {
+  const handlePageChange = ({ selected }: { selected: number; }) => {
     setPageNumber(selected);
   };
 
@@ -62,7 +63,7 @@ const Cities = (props: CitiesProps) => {
                     name={cityName}
                     description={description}
                     imgSrc={img}
-                    submitSearch={submitSearch}
+                    handleSubmitSearch={handleSubmitSearch}
                   />
                 </div>
               );
@@ -72,7 +73,7 @@ const Cities = (props: CitiesProps) => {
           previousLabel={"Previous"}
           nextLabel={"Next"}
           pageCount={pageCount}
-          onPageChange={changePage}
+          onPageChange={handlePageChange}
           containerClassName={"pagination-buttons"}
           previousLinkClassName={"previous-button"}
           nextLinkClassName={"next-button"}

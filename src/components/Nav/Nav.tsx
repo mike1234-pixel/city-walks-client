@@ -24,12 +24,13 @@ interface NavProps {
 }
 
 const Nav = (props: NavProps) => {
-  const [toggleNav, setToggleNav] = useState<boolean>(false);
-  const [scroll, setScroll] = useState<boolean>(false);
 
   const { redirect, setRedirect } = props;
 
-  const pushSlug: Function = useHistory().push;
+  const [toggleNav, setToggleNav] = useState<boolean>(false);
+  const [scroll, setScroll] = useState<boolean>(false);
+
+  const pushSlug = useHistory().push;
 
   useEffect(() => {
     if (redirect) {

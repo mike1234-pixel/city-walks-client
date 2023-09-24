@@ -1,8 +1,7 @@
-import React from "react";
 import { MDBBtn, MDBContainer } from "mdbreact";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { Action, bindActionCreators, Dispatch } from "redux";
+import { bindActionCreators, Dispatch } from "redux";
 import { setPrivacyPopupVisible } from "../../actions/actions";
 import * as Actions from "../../types/Actions";
 import "./PrivacyPopUp.css";
@@ -12,6 +11,7 @@ interface PrivacyPopUpProps {
 }
 
 const PrivacyPopUp = (props: PrivacyPopUpProps) => {
+
   const { setPrivacyPopupVisible } = props;
 
   const handlePrivacyPopup: () => void = () => {

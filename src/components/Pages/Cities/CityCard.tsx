@@ -15,15 +15,15 @@ interface Props {
   imgSrc: string;
   name: string;
   description: string;
-  submitSearch: (cityName: string) => void;
+  handleSubmitSearch: (cityName: string) => void;
 }
 
 const CityCard: React.FC<Props> = (props: Props) => {
-  const { id, imgSrc, name, description, submitSearch } = props;
+  const { id, imgSrc, name, description, handleSubmitSearch } = props;
 
   return (
     <div key={id}>
-      <MDBCard className='city-card' onClick={() => submitSearch(name)}>
+      <MDBCard className='city-card' onClick={() => handleSubmitSearch(name)}>
         <MDBCardImage
           className='cutter img-fluid'
           src={imgSrc}

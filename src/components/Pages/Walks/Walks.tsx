@@ -15,14 +15,14 @@ interface WalksProps {
 }
 
 const Walks = (props: WalksProps) => {
-  const { searchValue, setSearchValue, walks } = props;
+  const { searchValue, walks } = props;
 
   const [pageNumber, setPageNumber] = useState<number>(0);
 
-  const walksPerPage: number = 3;
-  const pagesVisited: number = pageNumber * walksPerPage;
+  const walksPerPage = 3;
+  const pagesVisited = pageNumber * walksPerPage;
 
-  const pageCount: number = Math.ceil(walks.length / walksPerPage);
+  const pageCount = Math.ceil(walks.length / walksPerPage);
 
   const changePage = (selected: number) => {
     setPageNumber(selected);

@@ -1,4 +1,3 @@
-/** @format */
 .featured-walks-heading-container {
   margin: 40px 0;
 }
@@ -14,6 +13,7 @@
 .featured-walks-btn {
   margin-bottom: 30px;
 }
+
 @media (max-width: 767px) {
   .featured-walks-btn {
     width: 100%;
@@ -40,6 +40,7 @@
   border: 2px solid transparent;
   transition: all 0.4s;
 }
+
 @media (max-width: 767px) {
   .featured-walks-h3 {
     width: 100%;
@@ -47,11 +48,15 @@
     padding: 10px;
   }
 }
-.featured-walks-h3:hover, .featured-walks-h3:focus, .featured-walks-h3:active {
+
+.featured-walks-h3:hover,
+.featured-walks-h3:focus,
+.featured-walks-h3:active {
   background: transparent;
   border: 2px dashed grey;
   color: var(--dark);
 }
+
 @media (max-width: 991px) {
   .featured-walks-h3 {
     margin-bottom: 30px;
@@ -67,5 +72,3 @@ hr {
     display: none;
   }
 }
-
-/*# sourceMappingURL=Home.css.map */

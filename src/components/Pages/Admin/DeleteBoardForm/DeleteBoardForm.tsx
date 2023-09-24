@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact";
 import axios, { AxiosError, AxiosResponse } from "axios";
-import toTitleCase from "../../../../functions/toTitleCase";
+import toTitleCase from "../../../../utils/toTitleCase";
 import SelectedBoard from "../../../../types/PostRequests/SelectedBoard";
 import "./DeleteBoardForm.css";
 
 const DeleteBoardForm = () => {
+
   const [boardName, setBoardName] = useState<string>("");
 
   const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
@@ -20,7 +21,7 @@ const DeleteBoardForm = () => {
     };
 
     axios
-      .delete("https://city-walks.herokuapp.com/delete-board", {
+      .delete("https://city-walks-production.up.railway.app/delete-board", {
         data: payload,
       })
       .then((res: AxiosResponse) => {

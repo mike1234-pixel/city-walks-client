@@ -12,12 +12,12 @@ const About = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const content1: string = "We publish illustrated guided walks.";
+  const content1 = "We publish illustrated guided walks.";
 
-  const content2: string =
+  const content2 =
     "Each walk provides a guided tour of a district within a city, pointing out local attractions, accompanied by a map of the route.";
 
-  const content3: string =
+  const content3 =
     "The walks utilise public transport for their start and end points, so are accessible to all.";
 
   return (

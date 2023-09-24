@@ -7,6 +7,7 @@ interface PopUpProps {
 }
 
 const PopUp = (props: PopUpProps) => {
+
   const { iframeLink, iframeTitle } = props;
 
   return (

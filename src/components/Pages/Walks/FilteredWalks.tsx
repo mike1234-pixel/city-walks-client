@@ -1,4 +1,3 @@
-import React, { ReactNode } from "react";
 import { MDBContainer, MDBBtn } from "mdbreact";
 import ReactPaginate from "react-paginate";
 import { FaSearchLocation } from "react-icons/fa";
@@ -16,6 +15,7 @@ interface FilteredResultsProps {
 }
 
 const FilteredResults = (props: FilteredResultsProps) => {
+
   const {
     searchValue,
     walks,

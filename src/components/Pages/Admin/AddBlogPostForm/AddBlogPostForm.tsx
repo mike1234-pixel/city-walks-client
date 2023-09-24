@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import qs from "qs";
-import toTitleCase from "../../../../functions/toTitleCase";
+import toTitleCase from "../../../../utils/toTitleCase";
 import BlogPost from "../../../../types/PostRequests/BlogPost";
 import "./AddBlogPostForm.css";
 
 const AddBlogPostForm = () => {
+
   const [postTitle, setPostTitle] = useState<string>("");
   const [postSubTitle, setPostSubTitle] = useState<string>("");
   const [postContent, setPostContent] = useState<string>("");
@@ -46,7 +47,7 @@ const AddBlogPostForm = () => {
 
     axios
       .post(
-        "https://city-walks.herokuapp.com/add-blog-post",
+        "https://city-walks-production.up.railway.app/add-blog-post",
         qs.stringify(payload)
       )
       .then((res: AxiosResponse) => {

@@ -1,10 +1,8 @@
 import { Dispatch } from "redux"
-import axios, { AxiosError, AxiosResponse } from "axios"
+import axios from "axios"
 import * as actions from "../constants/constants"
 import * as Actions from "../types/Actions"
 import * as Response from "../types/Response"
-
-// data
 
 export const saveSights: () => (
   dispatch: Dispatch<Actions.SaveSights>
@@ -70,15 +68,11 @@ export const saveBoards: () => (
   }
 }
 
-// privacy
-
 export const setPrivacyPopupVisible: (
   payload: boolean
 ) => Actions.SetPopupVisible = (payload) => {
   return { type: actions.SET_POPUP_VISIBLE, payload }
 }
-
-// search
 
 export const handleChangeSearch: (
   payload: string

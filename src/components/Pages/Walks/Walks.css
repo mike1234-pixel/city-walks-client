@@ -1,6 +1,5 @@
-/** @format */
 .walk-card {
-  transition: transform 0.2s; /* Animation */
+  transition: transform 0.2s;
 }
 
 .walk-card:hover {
@@ -57,5 +56,3 @@
   color: white;
   border-radius: 2px;
 }
-
-/*# sourceMappingURL=Walks.css.map */

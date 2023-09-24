@@ -1,8 +1,8 @@
 import { MDBCarousel, MDBCarouselInner } from "mdbreact";
-import Slide from "./Slide";
 import carouselImage1 from "./assets/carousel-illustration-1-2.jpg";
 import carouselImage2 from "./assets/carousel-illustration-2-2.jpg";
 import carouselImage3 from "./assets/carousel-illustration-3-2.jpg";
+import Slide from "./Slide";
 import "./Carousel.css";
 
 const Carousel = () => {

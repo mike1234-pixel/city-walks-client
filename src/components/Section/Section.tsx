@@ -2,6 +2,10 @@ import { MDBView } from "mdbreact";
 import marked from "marked";
 import "./Section.css";
 
+const createMarkup = (markup: string) => {
+    return { __html: marked(markup) };
+};
+
 interface SectionProps {
     content: string;
     img: string;
@@ -13,10 +17,6 @@ interface SectionProps {
 
 const Section = (props: SectionProps) => {
     const { content, img, alt, zoom, waves, imageLeft } = props;
-
-    const createMarkup = (markup: string) => {
-        return { __html: marked(markup) };
-    };
 
     return (
         <div className='section grid-container'>

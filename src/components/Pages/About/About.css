@@ -1,8 +1,8 @@
-/** @format */
 .about-page-container {
   font-size: 20px;
   text-align: left;
 }
+
 @media (min-width: 992px) {
   .about-page-container {
     margin-top: -30px;
@@ -12,5 +12,3 @@
 .walking-icon {
   font-size: 50px;
 }
-
-/*# sourceMappingURL=About.css.map */

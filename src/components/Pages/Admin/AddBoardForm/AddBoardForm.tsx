@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import qs from "qs";
-import toTitleCase from "../../../../functions/toTitleCase";
+import toTitleCase from "../../../../utils/toTitleCase";
 import Board from "../../../../types/PostRequests/Board";
 import "./AddBoardForm.css";
 
 const AddBoardForm = () => {
+
   const [boardName, setBoardName] = useState<string>("");
   const [boardDescription, setBoardDescription] = useState<string>("");
 
@@ -30,7 +31,7 @@ const AddBoardForm = () => {
     };
 
     axios
-      .post("https://city-walks.herokuapp.com/add-board", qs.stringify(payload))
+      .post("https://city-walks-production.up.railway.app/add-board", qs.stringify(payload))
       .then((res: AxiosResponse) => {
         if (res.data === "board saved") {
           console.log("board saved");

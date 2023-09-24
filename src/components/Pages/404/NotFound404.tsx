@@ -10,7 +10,7 @@ const nf404 = (props: nf404Props) => {
 
   const { location } = props;
 
-  const errorMessage: string = `404 Error: Page not found at ${location.pathname}`;
+  const errorMessage = `404 Error: Page not found at ${location.pathname}`;
 
   return (
     <MDBContainer>

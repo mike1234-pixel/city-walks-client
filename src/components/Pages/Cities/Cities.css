@@ -1,8 +1,6 @@
 .city-card {
   transition: transform 0.2s;
-  /* Animation */
   background: var(--dark);
-  /* background: blue; */
   color: white;
 }
 
@@ -13,5 +11,3 @@
 .city-card:hover {
   transform: scale(1.05);
 }
-
-/*# sourceMappingURL=Cities.css.map */

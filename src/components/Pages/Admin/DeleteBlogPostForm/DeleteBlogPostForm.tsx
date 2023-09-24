@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact";
 import axios, { AxiosError, AxiosResponse } from "axios";
-import toTitleCase from "../../../../functions/toTitleCase";
+import toTitleCase from "../../../../utils/toTitleCase";
 import SelectedPost from "../../../../types/PostRequests/SelectedPost";
 import "./DeleteBlogPostForm.css";
 
 const DeleteBlogPostForm = () => {
+
   const [postTitle, setPostTitle] = useState<string>("");
 
   const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
@@ -24,7 +25,7 @@ const DeleteBlogPostForm = () => {
     };
 
     axios
-      .delete("https://city-walks.herokuapp.com/delete-blog-post", {
+      .delete("https://city-walks-production.up.railway.app/delete-blog-post", {
         data: payload,
       })
       .then((res: AxiosResponse) => {

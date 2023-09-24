@@ -27,6 +27,7 @@ interface AppProps {
 }
 
 const App: React.FC<any> = (props: AppProps) => {
+
   const {
     saveBoards,
     saveSights,

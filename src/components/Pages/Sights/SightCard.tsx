@@ -8,7 +8,7 @@ import {
   MDBIcon,
 } from "mdbreact";
 import { Link } from "react-router-dom";
-import urlify from "../../../functions/urlify";
+import urlify from "../../../utils/urlify";
 import "./Sights.css";
 
 const stripMarkdown: (markup: string) => string = (markup) => {

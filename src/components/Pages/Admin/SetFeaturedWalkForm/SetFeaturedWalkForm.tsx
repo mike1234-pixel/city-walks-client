@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import qs from "qs";
-import toTitleCase from "../../../../functions/toTitleCase";
+import toTitleCase from "../../../../utils/toTitleCase";
 import FeaturedWalks from "../../../../types/PostRequests/FeaturedWalks";
 import "./SetFeaturedWalkForm.css";
 
 const SetFeaturedWalkForm = () => {
+
   const [featuredWalk1, setFeaturedWalk1] = useState<string>("");
   const [featuredWalk2, setFeaturedWalk2] = useState<string>("");
   const [featuredWalk3, setFeaturedWalk3] = useState<string>("");
@@ -36,7 +37,7 @@ const SetFeaturedWalkForm = () => {
 
     axios
       .patch(
-        "https://city-walks.herokuapp.com/set-featured-walk",
+        "https://city-walks-production.up.railway.app/set-featured-walk",
         qs.stringify(payload)
       )
       .then((res: AxiosResponse) => {

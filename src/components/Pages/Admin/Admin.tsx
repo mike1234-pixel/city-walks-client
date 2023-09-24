@@ -19,20 +19,20 @@ import "./Admin.css";
 import DisplayForm from "./DisplayForm";
 
 const Admin = () => {
+
   const [form, setForm] = useState<string>("");
   const [toggleAdminPanel, setToggleAdminPanel] = useState<boolean>(false);
-
-  const handleToggleAdminPanel: () => void = () => {
-    setToggleAdminPanel(!toggleAdminPanel);
-  };
+  const [adminUserName, setAdminUserName] = useState<string>("");
+  const [adminPassword, setAdminPassword] = useState<string>("");
+  const [adminLoggedIn, setAdminLoggedIn] = useState<boolean>(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   });
 
-  const [adminUserName, setAdminUserName] = useState<string>("");
-  const [adminPassword, setAdminPassword] = useState<string>("");
-  const [adminLoggedIn, setAdminLoggedIn] = useState<boolean>(false);
+  const handleToggleAdminPanel: () => void = () => {
+    setToggleAdminPanel(!toggleAdminPanel);
+  };
 
   const handleSubmitAdminLogin: (event: React.FormEvent) => void = (event) => {
     event.preventDefault();
@@ -44,7 +44,7 @@ const Admin = () => {
 
     axios
       .post(
-        "https://city-walks.herokuapp.com/admin-login",
+        "https://city-walks-production.up.railway.app/admin-login",
         qs.stringify(payload)
       )
       .then((res: AxiosResponse) => {

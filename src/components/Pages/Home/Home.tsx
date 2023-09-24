@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { MDBBtn, MDBContainer } from "mdbreact";
 import { Link } from "react-router-dom";
 import Carousel from "../../Carousel/Carousel";
-import urlify from "../../../functions/urlify";
+import urlify from "../../../utils/urlify";
 import LocatorMap from "../../LocatorMap/LocatorMap";
 import LoadingBar from "../../LoadingBar/LoadingBar";
 import { GiWalkingBoot } from "react-icons/gi";
@@ -10,8 +10,8 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import { connect } from "react-redux";
 import Walk from "../../../types/Walks/Walk";
 import { RootState } from "../../../store";
-import "./Home.css";
 import Section from "../../Section/Section";
+import "./Home.css";
 
 interface HomeProps {
   walks: Array<Walk>;

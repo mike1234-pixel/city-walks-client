@@ -1,5 +1,4 @@
 @charset "UTF-8";
-/** @format */
 .popup-container {
   position: relative;
 }
@@ -31,7 +30,7 @@
   bottom: 0;
   left: 30px;
   right: 10;
-  content: "❌ Hide Map";
+  content: "❌ Hide Map";
   font-size: 30px;
   color: #fff;
   line-height: 100px;
@@ -61,7 +60,3 @@
     height: 65vw;
   }
 }
-/* sample map img */
-/* https://coding-video.s3.eu-west-2.amazonaws.com/mapimg.JPG */
-
-/*# sourceMappingURL=PopUp.css.map */

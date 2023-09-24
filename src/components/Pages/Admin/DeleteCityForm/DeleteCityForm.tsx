@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact";
 import axios, { AxiosError, AxiosResponse } from "axios";
-import toTitleCase from "../../../../functions/toTitleCase";
+import toTitleCase from "../../../../utils/toTitleCase";
 import SelectedCity from "../../../../types/PostRequests/SelectedCity";
 import "./DeleteCityForm.css";
 
 const DeleteCityForm = () => {
+
   const [city, setCity] = useState<string>("");
 
   const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
@@ -24,7 +25,7 @@ const DeleteCityForm = () => {
     };
 
     axios
-      .delete("https://city-walks.herokuapp.com/delete-city", { data: payload })
+      .delete("https://city-walks-production.up.railway.app/delete-city", { data: payload })
       .then((res: AxiosResponse) => {
         if (res.data === "city deleted") {
           console.log("city deleted");

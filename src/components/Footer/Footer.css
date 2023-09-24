@@ -1,9 +1,7 @@
-/** @format */
 .footer {
   background-color: #212121;
 }
 
-/* removes bootstrap margin on footer */
 .mt-4 {
   margin-top: 0 !important;
 }
@@ -29,8 +27,7 @@
 .footer-github-link {
   color: rgba(255, 255, 255, 0.6) !important;
 }
+
 .footer-github-link:hover {
   color: var(--blue) !important;
 }
-
-/*# sourceMappingURL=Footer.css.map */

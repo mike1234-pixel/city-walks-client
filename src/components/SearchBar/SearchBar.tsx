@@ -18,18 +18,18 @@ let SearchBar = (props: SearchBarProps) => {
 
   const { handleChangeSearch, setRedirect, searchValue } = props;
 
-  function submitSearch(e: React.FormEvent) {
+  function handleSubmitSearch(e: React.FormEvent) {
     e.preventDefault();
     setRedirect(true);
   }
 
-  function processInputValue(e: React.ChangeEvent<any>) {
+  function handleProcessInputValue(e: React.ChangeEvent<any>) {
     const inputValue: string = e.target.value;
     handleChangeSearch(inputValue);
   }
 
   return (
-    <form onSubmit={submitSearch} className='search-container'>
+    <form onSubmit={handleSubmitSearch} className='search-container'>
       <span>
         <MDBInput
           data-testid='search-input'
@@ -40,7 +40,7 @@ let SearchBar = (props: SearchBarProps) => {
           placeholder='Search'
           className='search-input'
           value={searchValue}
-          onChange={processInputValue}
+          onChange={handleProcessInputValue}
         />
         <button type='submit' data-testid='search-btn' className='search-btn'>
           <FaSearchLocation

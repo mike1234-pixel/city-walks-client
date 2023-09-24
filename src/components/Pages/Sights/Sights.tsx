@@ -4,8 +4,8 @@ import { MDBContainer } from "mdbreact";
 import { connect } from "react-redux";
 import Sight from "../../../types/Sights/Sight";
 import RootState from "../../../types/State/Root/State";
-import "./Sights.css";
 import SightCard from "./SightCard";
+import "./Sights.css";
 
 interface SightsProps {
   sights: Array<Sight>;
@@ -17,10 +17,10 @@ const Sights = (props: SightsProps) => {
 
   const [pageNumber, setPageNumber] = useState<number>(0);
 
-  const sightsPerPage: number = 3;
-  const pagesVisited: number = pageNumber * sightsPerPage;
+  const sightsPerPage = 3;
+  const pagesVisited = pageNumber * sightsPerPage;
 
-  const pageCount: number = Math.ceil(sights.length / sightsPerPage);
+  const pageCount = Math.ceil(sights.length / sightsPerPage);
 
   const changePage = ({ selected }: { selected: number; }) => {
     setPageNumber(selected);

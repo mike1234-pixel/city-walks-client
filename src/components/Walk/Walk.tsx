@@ -2,7 +2,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { MDBIcon, MDBAnimation, MDBBtn, MDBContainer } from "mdbreact";
 import PopUp from "./PopUp/PopUp";
 import LoadingBar from "../LoadingBar/LoadingBar";
-import toTitleCase from "../../functions/toTitleCase";
+import toTitleCase from "../../utils/toTitleCase";
 import { BsDot } from "react-icons/bs";
 import { FaRoad, FaMapMarkerAlt } from "react-icons/fa";
 import { IoMdTrain } from "react-icons/io";
@@ -10,8 +10,8 @@ import { connect } from "react-redux";
 import { History } from "history";
 import RootState from "../../types/State/Root/State";
 import WalkI from "../../types/Walks/Walk";
-import "./Walk.css";
 import Section from "../Section/Section";
+import "./Walk.css";
 
 interface WalkProps {
   walks: Array<WalkI>;
@@ -19,6 +19,7 @@ interface WalkProps {
 }
 
 const Walk = (props: WalkProps) => {
+
   const { walks, history } = props;
 
   const [togglePopUp, setTogglePopUp] = useState<boolean>(false);
@@ -57,6 +58,7 @@ const Walk = (props: WalkProps) => {
     let selectedWalk: Array<WalkI> | WalkI | undefined = walks.filter(
       (walk) => walk.walk === walkName
     );
+
     selectedWalk = selectedWalk[0];
 
     currentWalk = selectedWalk;

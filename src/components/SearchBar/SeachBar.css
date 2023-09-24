@@ -1,11 +1,9 @@
-/** @format */
 .search-container {
   position: relative;
   margin-right: 30px;
   top: -10px;
 }
 
-/* hide the button element */
 .search-btn {
   background: none;
   padding: 5px;
@@ -34,5 +32,3 @@
     margin-bottom: 15px !important;
   }
 }
-
-/*# sourceMappingURL=SeachBar.css.map */

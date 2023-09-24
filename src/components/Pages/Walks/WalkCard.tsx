@@ -8,7 +8,7 @@ import {
 } from "mdbreact";
 import { Link } from "react-router-dom";
 import { GiWalkingBoot } from "react-icons/gi";
-import urlify from "../../../functions/urlify";
+import urlify from "../../../utils/urlify";
 import "./Walks.css";
 
 interface WalkCardProps {

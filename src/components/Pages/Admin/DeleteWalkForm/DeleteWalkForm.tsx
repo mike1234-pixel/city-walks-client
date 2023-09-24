@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact";
 import axios, { AxiosError, AxiosResponse } from "axios";
-import toTitleCase from "../../../../functions/toTitleCase";
+import toTitleCase from "../../../../utils/toTitleCase";
 import SelectedWalk from "../../../../types/PostRequests/SelectedWalk";
 import "./DeleteWalkForm.css";
 
 const DeleteWalkForm = () => {
+
   const [walk, setWalk] = useState<string>("");
 
   const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
@@ -24,7 +25,7 @@ const DeleteWalkForm = () => {
     };
 
     axios
-      .delete("https://city-walks.herokuapp.com/delete-walk", { data: payload })
+      .delete("https://city-walks-production.up.railway.app/delete-walk", { data: payload })
       .then((res: AxiosResponse) => {
         if (res.data === "walk deleted") {
           console.log("walk deleted");

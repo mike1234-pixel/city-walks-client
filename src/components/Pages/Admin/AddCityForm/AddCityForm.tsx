@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import qs from "qs";
-import toTitleCase from "../../../../functions/toTitleCase";
+import toTitleCase from "../../../../utils/toTitleCase";
 import City from "../../../../types/PostRequests/City";
 import "./AddCityForm.css";
 
 const AddCityForm = () => {
+
   const [city, setCity] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [img, setImg] = useState<string>("");
@@ -35,7 +36,7 @@ const AddCityForm = () => {
     };
 
     axios
-      .post("https://city-walks.herokuapp.com/add-city", qs.stringify(payload))
+      .post("https://city-walks-production.up.railway.app/add-city", qs.stringify(payload))
       .then((res: AxiosResponse) => {
         if (res.data === "city saved") {
           console.log("city saved");
