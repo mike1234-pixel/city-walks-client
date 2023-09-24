@@ -32,13 +32,7 @@ const Home = (props: HomeProps) => {
   }
 
   if (!walks.length) {
-    return (
-      <div>
-        <MDBContainer>
-          <LoadingBar />
-        </MDBContainer>
-      </div>
-    );
+    return <MDBContainer><LoadingBar /></MDBContainer>;
   }
 
   return (

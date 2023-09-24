@@ -27,43 +27,42 @@ const Sight = (props: SightProps) => {
     props.history.location.pathname.replace("/sights/", "").replace(/-/g, " ")
   );
 
-  let post: string | ReactNode = <LoadingBar />;
+  let selectedBlogPost: SightI | undefined = sights.find(
+    (post: SightI) => post.title === blogTitle
+  );
 
-  if (sights.length) {
-    let selectedBlogPost: SightI | undefined = sights.find(
-      (post: SightI) => post.title === blogTitle
-    );
-
-    if (selectedBlogPost) {
-      const createMarkup: (markup: string) => { __html: string; } = (markup) => {
-        return { __html: marked(markup, { breaks: true }) };
-      };
-
-      return (
-        <MDBContainer>
-          <div>
-            <div className='blog-post-container'>
-              <div>
-                <h1 className='page-heading'>{selectedBlogPost.title}</h1>
-                <h2 className='blog-subtitle page-subheading'>
-                  {selectedBlogPost.subtitle}
-                </h2>
-              </div>
-              <img className='blog-post-img' src={selectedBlogPost.img} alt={selectedBlogPost.title} />
-              <div
-                className='blog-post-content'
-                dangerouslySetInnerHTML={createMarkup(selectedBlogPost.content)}
-              />
-            </div>
-          </div>
-        </MDBContainer>
-      );
-    } else {
-      return <MDBContainer><p>Sight not found</p></MDBContainer>;
-    }
+  if (!sights.length) {
+    return <MDBContainer><LoadingBar /></MDBContainer>;
   }
 
-  return <LoadingBar />;
+  if (selectedBlogPost) {
+    const createMarkup: (markup: string) => { __html: string; } = (markup) => {
+      return { __html: marked(markup, { breaks: true }) };
+    };
+
+    return (
+      <MDBContainer>
+        <div>
+          <div className='blog-post-container'>
+            <div>
+              <h1 className='page-heading'>{selectedBlogPost.title}</h1>
+              <h2 className='blog-subtitle page-subheading'>
+                {selectedBlogPost.subtitle}
+              </h2>
+            </div>
+            <img className='blog-post-img' src={selectedBlogPost.img} alt={selectedBlogPost.title} />
+            <div
+              className='blog-post-content'
+              dangerouslySetInnerHTML={createMarkup(selectedBlogPost.content)}
+            />
+          </div>
+        </div>
+      </MDBContainer>
+    );
+  } else {
+    return <MDBContainer><p>Sight not found</p></MDBContainer>;
+  }
+
 };
 
 
