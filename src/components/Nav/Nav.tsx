@@ -74,6 +74,11 @@ const Nav: React.FC<Props> = (props: Props) => {
               </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
+              <MDBNavLink className='white-text' to='/about'>
+                About
+              </MDBNavLink>
+            </MDBNavItem>
+            <MDBNavItem>
               <MDBNavLink
                 data-testid='nav-link-cities'
                 className='white-text'
@@ -90,21 +95,6 @@ const Nav: React.FC<Props> = (props: Props) => {
             <MDBNavItem>
               <MDBNavLink className='white-text' to='/sights'>
                 Sights
-              </MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink className='white-text' to='/forum'>
-                Forum
-              </MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink className='white-text' to='/about'>
-                About
-              </MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink className='white-text' to='/contact'>
-                Contact
               </MDBNavLink>
             </MDBNavItem>
           </MDBNavbarNav>

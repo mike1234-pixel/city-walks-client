@@ -6,20 +6,12 @@ import Walks from "../../components/Pages/Walks/Walks";
 import About from "../../components/Pages/About/About";
 import Sights from "../../components/Pages/Sights/Sights";
 import Sight from "../../components/Pages/Sight/Sight";
-import Contact from "../../components/Pages/Contact/Contact";
-import Boards from "../../components/Pages/LoginPage/LoggedInView/Boards";
-import LoginForm from "../../components/Pages/LoginPage/LoginForm/LoginForm";
-import RegistrationForm from "../../components/Pages/LoginPage/RegistrationForm/RegistrationForm";
-import VerificationForm from "../../components/Pages/LoginPage/VerificationForm/VerificationForm";
-import ResetPasswordForm from "../../components/Pages/LoginPage/ResetPasswordForm/ResetPasswordForm";
-import ForgotPasswordForm from "../../components/Pages/LoginPage/ForgotPasswordForm/ForgotPasswordForm";
 import Admin from "../../components/Pages/Admin/Admin";
 import NotFound404 from "../../components/Pages/404/NotFound404";
 import PrivacyPolicy from "../../components/Pages/PrivacyPolicy/PrivacyPolicy";
 import PrivacyPopUp from "../../components/PopUp/PrivacyPopUp";
 import Footer from "../../components/Footer/Footer";
 import Walk from "../../components/Walk/Walk";
-import Threads from "../../components/Pages/LoginPage/LoggedInView/Components/Threads/Threads";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 import RootState from "../../types/State/Root/State";
@@ -47,24 +39,8 @@ const Router: React.FC<Props> = (props: Props) => {
         <Route exact path="/walks" component={Walks} />
         <Route path="/walks/:walks" component={Walk} />
         <Route path="/about" component={About} />
-        <Route path="/contact" component={Contact} />
         <Route exact path="/sights" component={Sights} />
         <Route path="/sights/:sight" component={Sight} />
-        <Route exact path="/forum" component={Boards} />
-        <Route exact path="/forum/login" component={LoginForm} />
-        <Route exact path="/forum/register" component={RegistrationForm} />
-        <Route exact path="/forum/verify" component={VerificationForm} />
-        <Route
-          exact
-          path="/forum/reset-password"
-          component={ResetPasswordForm}
-        />
-        <Route
-          exact
-          path="/forum/forgot-password"
-          component={ForgotPasswordForm}
-        />
-        <Route path="/forum/:board" component={Threads} />
         <Route path="/admin" component={Admin} />
         <Route path="/privacy" component={PrivacyPolicy} />
         <Route component={NotFound404} />
