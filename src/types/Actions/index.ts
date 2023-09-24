@@ -13,10 +13,6 @@ export type SaveSights = PayloadAction<Array<Sight>, typeof actions.SAVE_SIGHTS>
 
 export type SaveBoards = PayloadAction<Array<Board>, typeof actions.SAVE_BOARDS>
 
-export type SetFirstName = PayloadAction<string, typeof actions.SET_FIRST_NAME>
-
-export type SetLastName = PayloadAction<string, typeof actions.SET_LAST_NAME>
-
 export type SetPopupVisible = PayloadAction<
   boolean,
   typeof actions.SET_POPUP_VISIBLE

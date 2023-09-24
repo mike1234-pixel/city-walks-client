@@ -44,7 +44,6 @@ const Walk: React.FC<Props> = (props: Props) => {
     setTogglePopUp(!togglePopUp);
   };
 
-  // THIS EVENT SHOULD HAVE A MORE SPECIFIC TYPE
   const handleClickOutside: (e: any) => void = (e) => {
     if (
       e.target.id !== "popup-img" &&

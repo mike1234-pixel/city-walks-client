@@ -1,14 +1,14 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { useGoogleMaps } from "react-hook-google-maps";
 import urlify from "../../functions/urlify";
 import Walk from "../../types/Walks/Walk";
 import "./LocatorMap.css";
 
-interface Props {
+interface LocatorMapProps {
   walks: Array<Walk>;
 }
 
-const LocatorMap: React.FC<Props> = (props: Props) => {
+const LocatorMap = (props: LocatorMapProps) => {
   const { walks } = props;
 
   const { ref, map, google } = useGoogleMaps(
@@ -390,8 +390,8 @@ const LocatorMap: React.FC<Props> = (props: Props) => {
     walks.map((walk: Walk) => {
       const lat: number = parseFloat(walk.lat);
       const lng: number = parseFloat(walk.lng);
-      // The marker
 
+      // The marker
       const walkMarker = new google.maps.Marker({
         position: { lat: lat, lng: lng },
         map: map,
@@ -408,6 +408,7 @@ const LocatorMap: React.FC<Props> = (props: Props) => {
         }" style="height: 75px; width: 150px; margin-top: 10px; border-radius: 2px;"/>
                     </div>
                 </a>`;
+
       // declare infowindow and insert content
       const infoWindow = new google.maps.InfoWindow({
         content: infowindowContent,
