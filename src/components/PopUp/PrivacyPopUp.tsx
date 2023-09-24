@@ -32,15 +32,6 @@ const PrivacyPopUp: React.FC<Props> = (props: Props) => {
             , including cookie policy.
           </p>
           <p className='popup-google-note'>
-            This site is protected by reCAPTCHA and the{" "}
-            <a
-              target='_blank'
-              href='https://policies.google.com/privacy'
-              className='popup-link'
-            >
-              Google Privacy Policy
-            </a>{" "}
-            and{" "}
             <a
               target='_blank'
               href='https://policies.google.com/terms'

@@ -64,36 +64,6 @@ const App: React.FC<any> = (props: Props) => {
       setUserFirstName(localStorage.getItem("userFirstName"));
     }
 
-    // recaptcha
-    const loadScriptByURL: (
-      id: string,
-      url: string,
-      callback: Function
-    ) => void = (id, url, callback) => {
-      const doesScriptExist = document.getElementById(id);
-
-      if (!doesScriptExist) {
-        const script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = url;
-        script.id = id;
-        script.onload = function () {
-          if (callback) callback();
-        };
-        document.body.appendChild(script);
-      }
-
-      if (doesScriptExist && callback) callback();
-    };
-
-    // load the script by passing the URL
-    loadScriptByURL(
-      "recaptcha-key",
-      `https://www.google.com/recaptcha/api.js?render=${sitekey}`,
-      () => {
-        console.log("recaptcha script loaded!");
-      }
-    );
   }, []);
 
   return (
@@ -107,7 +77,6 @@ const App: React.FC<any> = (props: Props) => {
 };
 
 const mapStateToProps: (state: RootState) => void = (state) => ({
-  sitekey: state.recaptchaState.sitekey,
   privacyPopupVisible: state.privacyPopupState.privacyPopupVisible,
 });
 

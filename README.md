@@ -56,14 +56,6 @@ Ajax requests are made using the **axios** and **qs** packages. Requests for glo
 
 Text can be saved to the database with Markdown formatting. This will be parsed on the client using the **marked** package. This applies only when adding a new Walk or Sight.
 
-## Recaptcha
-
-Google recaptcha is set up in **./src/components/page/Contact/Contact.jsx**.
-
-In cases where the user is logged in with an activated account where the user's email has been verified, recaptcha is not used. 
-
-If the recaptcha score is less than 0.7 the server will reject the request.
-
 ## Routing
 
 Routing is handled by **react-router-dom**.
@@ -98,8 +90,4 @@ The live site is on Github Pages. To deploy your changes, ensure `main` branch i
 
 ## Content Management System
 
-The app contains a content management system which can be accessed using the Admin Login link in the footer. This requires an administrator account. 
-
-
-
-
+The app contains a content management system which can be accessed using the Admin Login link in the footer. This requires an administrator account.
