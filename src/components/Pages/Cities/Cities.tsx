@@ -56,13 +56,15 @@ const Cities: React.FC<any> = (props: Props) => {
               const { _id, city: cityName, description, img } = city;
 
               return (
-                <CityCard
-                  id={_id}
-                  name={cityName}
-                  description={description}
-                  imgSrc={img}
-                  submitSearch={submitSearch}
-                />
+                <div key={_id}>
+                  <CityCard
+                    id={_id}
+                    name={cityName}
+                    description={description}
+                    imgSrc={img}
+                    submitSearch={submitSearch}
+                  />
+                </div>
               );
             })}
         </div>

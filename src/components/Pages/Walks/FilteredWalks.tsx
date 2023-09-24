@@ -57,13 +57,15 @@ const FilteredResults: React.FC<Props> = (props: Props) => {
                 } = walk;
 
                 return (
-                  <WalkCard
-                    id={_id}
-                    name={walkName}
-                    city={city}
-                    description={description}
-                    imgSrc={coverImg}
-                  />
+                  <div key={_id}>
+                    <WalkCard
+                      id={_id}
+                      name={walkName}
+                      city={city}
+                      description={description}
+                      imgSrc={coverImg}
+                    />
+                  </div>
                 );
               })}
           </div>
@@ -112,13 +114,15 @@ const FilteredResults: React.FC<Props> = (props: Props) => {
               city.toLowerCase().includes(searchValue.toLowerCase())
             ) {
               return (
-                <WalkCard
-                  id={_id}
-                  city={city}
-                  name={walkName}
-                  description={description}
-                  imgSrc={coverImg}
-                />
+                <div key={_id}>
+                  <WalkCard
+                    id={_id}
+                    city={city}
+                    name={walkName}
+                    description={description}
+                    imgSrc={coverImg}
+                  />
+                </div>
               );
             }
           })}
