@@ -14,16 +14,20 @@ strong {
 /* variables */
 :root {
   --blue: rgb(64, 156, 211);
-  --linear-blue: linear-gradient(159deg, rgb(0, 96, 134) 0%, rgb(64, 156, 211) 100%);
+  --linear-blue: linear-gradient(
+    159deg,
+    rgb(0, 96, 134) 0%,
+    rgb(64, 156, 211) 100%
+  );
   --bone: #e3dac9;
-  --yellow: #FFE500;
+  --yellow: #ffe500;
   --dark: #212121;
   --logo-font: "Bungee Hairline";
   --display-font: "Sen";
 }
 
 #root {
-  background-image: url("../assets/leeds-trinity-illustration-background.jpg");
+  background-image: url("./assets/leeds-trinity-illustration-background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;

@@ -1,6 +1,6 @@
+import * as actions from "../../constants/constants"
 import { PayloadAction } from "@reduxjs/toolkit"
 import Walk from "../Walks/Walk"
-import * as actions from "../../constants/constants"
 import City from "../Cities/City"
 import Sight from "../Sights/Sight"
 import Board from "../Boards/Board"

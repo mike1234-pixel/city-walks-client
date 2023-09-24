@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { MDBContainer } from "mdbreact";
 import SectionA from "../../SectionA/SectionA";
 import SectionB from "../../SectionB/SectionB";
-import aboutImage1 from "../../../assets/samuel-johnsons-house-illustration.jpeg";
-import aboutImage2 from "../../../assets/whitechapel-gallery-illustration.jpeg";
-import aboutImage3 from "../../../assets/john-soanes-museum-illustration.jpeg";
+import aboutImage1 from "./assets/samuel-johnsons-house-illustration.jpeg";
+import aboutImage2 from "./assets/whitechapel-gallery-illustration.jpeg";
+import aboutImage3 from "./assets/john-soanes-museum-illustration.jpeg";
 import "./About.css";
 
 const About: React.FC = () => {
