@@ -13,18 +13,18 @@ import {
   setUserId,
   setUserLastName,
 } from "../../actions/actions"
-import "./Footer.scss"
+import "./Footer.css"
 import FooterLink from "./FooterLink"
 import FooterCol from "./FooterCol"
 import * as Actions from "../../types/Actions"
 
 interface Props {
-  loggedIn: boolean
-  userId: string
-  setLoggedIn: (loggedIn: boolean) => Actions.SetLoggedIn
-  setUserId: (userId: string) => Actions.SetUserId
-  setUserFirstName: (userFirstName: string) => Actions.SetUserFirstName
-  setUserLastName: (userLastName: string) => Actions.SetUserLastName
+  loggedIn: boolean;
+  userId: string;
+  setLoggedIn: (loggedIn: boolean) => Actions.SetLoggedIn;
+  setUserId: (userId: string) => Actions.SetUserId;
+  setUserFirstName: (userFirstName: string) => Actions.SetUserFirstName;
+  setUserLastName: (userLastName: string) => Actions.SetUserLastName;
 }
 
 const Footer: React.FC<Props> = (props: Props) => {

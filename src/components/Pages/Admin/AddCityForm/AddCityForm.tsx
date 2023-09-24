@@ -1,13 +1,12 @@
 import React, { useState } from "react"
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
-import axios, { AxiosError, AxiosResponse } from "axios";
-import qs from "qs";
-import toTitleCase from '../../../../functions/toTitleCase'
-import City from '../../../../types/PostRequests/City'
-import './AddCityForm.scss'
+import axios, { AxiosError, AxiosResponse } from "axios"
+import qs from "qs"
+import toTitleCase from "../../../../functions/toTitleCase"
+import City from "../../../../types/PostRequests/City"
+import "./AddCityForm.css"
 
 const AddCityForm: React.FC = () => {
-
   const [city, setCity] = useState<string>("")
   const [description, setDescription] = useState<string>("")
   const [img, setImg] = useState<string>("")
@@ -16,13 +15,13 @@ const AddCityForm: React.FC = () => {
     switch (event.target.name) {
       case "city":
         setCity(event.target.value)
-        break;
+        break
       case "description":
         setDescription(event.target.value)
-        break;
+        break
       case "img":
         setImg(event.target.value)
-        break;
+        break
     }
   }
 
@@ -32,8 +31,8 @@ const AddCityForm: React.FC = () => {
     let payload: City = {
       city: toTitleCase(city),
       description: description,
-      img: img
-    };
+      img: img,
+    }
 
     axios
       .post("https://city-walks.herokuapp.com/add-city", qs.stringify(payload))
@@ -43,27 +42,54 @@ const AddCityForm: React.FC = () => {
         } else {
           console.log("city not saved")
         }
-      }).catch((err: AxiosError) => {
+      })
+      .catch((err: AxiosError) => {
         console.log(err)
-      });;
+      })
 
     alert("City Submitted")
     setCity("")
     setDescription("")
     setImg("")
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0)
   }
 
   return (
     <div>
       <h2>Add City</h2>
-      <form onSubmit={handleSubmit} className="add-city-form">
-        <MDBInput type="text" name="city" id="city" value={city} label="city" onChange={handleChange} maxLength="70" required />
-        <MDBInput type="text" name="description" id="description" value={description} label="description" onChange={handleChange} maxLength="136" required />
-        <MDBInput type="text" name="img" id="img" value={img} label="image link" onChange={handleChange} required />
-        <MDBBtn outline color="elegant" type="submit">
+      <form onSubmit={handleSubmit} className='add-city-form'>
+        <MDBInput
+          type='text'
+          name='city'
+          id='city'
+          value={city}
+          label='city'
+          onChange={handleChange}
+          maxLength='70'
+          required
+        />
+        <MDBInput
+          type='text'
+          name='description'
+          id='description'
+          value={description}
+          label='description'
+          onChange={handleChange}
+          maxLength='136'
+          required
+        />
+        <MDBInput
+          type='text'
+          name='img'
+          id='img'
+          value={img}
+          label='image link'
+          onChange={handleChange}
+          required
+        />
+        <MDBBtn outline color='elegant' type='submit'>
           Send City
-          <MDBIcon far icon="paper-plane" className="ml-2" />
+          <MDBIcon far icon='paper-plane' className='ml-2' />
         </MDBBtn>
       </form>
     </div>

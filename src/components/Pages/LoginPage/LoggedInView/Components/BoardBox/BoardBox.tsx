@@ -3,7 +3,7 @@ import { MDBCard, MDBCardTitle, MDBCardText } from "mdbreact";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import urlify from "../../../../../../functions/urlify";
-import "./BoardBox.scss";
+import "./BoardBox.css";
 
 interface Props {
   boardId: string;
@@ -19,11 +19,11 @@ const BoardBox: React.FC<Props> = (props: Props) => {
   });
 
   return (
-    <MDBCard className="card-body board-box">
-      <MDBCardTitle className="board-box-title">{name}</MDBCardTitle>
-      <MDBCardText className="board-box-desription">{description}</MDBCardText>
-      <div className="flex-row">
-        <Link to={"forum/" + urlify(name)} className="board-link">
+    <MDBCard className='card-body board-box'>
+      <MDBCardTitle className='board-box-title'>{name}</MDBCardTitle>
+      <MDBCardText className='board-box-desription'>{description}</MDBCardText>
+      <div className='flex-row'>
+        <Link to={"forum/" + urlify(name)} className='board-link'>
           Read More...
         </Link>
       </div>

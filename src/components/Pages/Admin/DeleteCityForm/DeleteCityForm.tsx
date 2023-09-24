@@ -1,19 +1,18 @@
 import React, { useState } from "react"
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
 import axios, { AxiosError, AxiosResponse } from "axios"
-import toTitleCase from '../../../../functions/toTitleCase'
+import toTitleCase from "../../../../functions/toTitleCase"
 import SelectedCity from "../../../../types/PostRequests/SelectedCity"
-import './DeleteCityForm.scss'
+import "./DeleteCityForm.css"
 
 const DeleteCityForm: React.FC = () => {
-
   const [city, setCity] = useState<string>("")
 
   const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
     switch (event.target.name) {
       case "city":
         setCity(event.target.value)
-        break;
+        break
     }
   }
 
@@ -21,8 +20,8 @@ const DeleteCityForm: React.FC = () => {
     event.preventDefault()
 
     let payload: SelectedCity = {
-      city: toTitleCase(city)
-    };
+      city: toTitleCase(city),
+    }
 
     axios
       .delete("https://city-walks.herokuapp.com/delete-city", { data: payload })
@@ -32,22 +31,31 @@ const DeleteCityForm: React.FC = () => {
         } else {
           console.log("city not deleted")
         }
-      }).catch((err: AxiosError) => {
+      })
+      .catch((err: AxiosError) => {
         console.log(err)
-      });;
+      })
 
     alert("City Deleted")
     setCity("")
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0)
   }
 
   return (
     <div>
       <h2>Delete City</h2>
-      <form onSubmit={handleSubmit} className="delete-city-form">
-        <MDBInput type="text" name="city" id="city" value={city} label="city name" onChange={handleChange} required />
-        <MDBBtn outline color="elegant" type="submit">
-          Delete City <MDBIcon icon="trash" />
+      <form onSubmit={handleSubmit} className='delete-city-form'>
+        <MDBInput
+          type='text'
+          name='city'
+          id='city'
+          value={city}
+          label='city name'
+          onChange={handleChange}
+          required
+        />
+        <MDBBtn outline color='elegant' type='submit'>
+          Delete City <MDBIcon icon='trash' />
         </MDBBtn>
       </form>
     </div>

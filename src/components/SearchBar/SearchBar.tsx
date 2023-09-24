@@ -6,7 +6,7 @@ import { bindActionCreators, Dispatch } from "redux";
 import RootState from "../../types/State/Root/State";
 import { handleChangeSearch, setRedirect } from "../../actions/actions";
 import * as Actions from "../../types/Actions";
-import "./SeachBar.scss";
+import "./SeachBar.css";
 
 interface Props {
   handleChangeSearch: (inputValue: string) => Actions.HandleChangeSearch;
@@ -28,23 +28,23 @@ let SearchBar: React.FC<Props> = (props: Props) => {
   }
 
   return (
-    <form onSubmit={submitSearch} className="search-container">
+    <form onSubmit={submitSearch} className='search-container'>
       <span>
         <MDBInput
-          data-testid="search-input"
-          label="Search Walks"
-          name="search-input"
-          id="search-input"
-          type="text"
-          placeholder="Search"
-          className="search-input"
+          data-testid='search-input'
+          label='Search Walks'
+          name='search-input'
+          id='search-input'
+          type='text'
+          placeholder='Search'
+          className='search-input'
           value={searchValue}
           onChange={processInputValue}
         />
-        <button type="submit" data-testid="search-btn" className="search-btn">
+        <button type='submit' data-testid='search-btn' className='search-btn'>
           <FaSearchLocation
-            id="search-btn-icon"
-            className="search-location-icon"
+            id='search-btn-icon'
+            className='search-location-icon'
           />
         </button>
       </span>

@@ -8,7 +8,7 @@ import {
   MDBIcon,
 } from "mdbreact";
 import React from "react";
-import "./Cities.scss";
+import "./Cities.css";
 
 interface Props {
   id: string;
@@ -23,9 +23,9 @@ const CityCard: React.FC<Props> = (props: Props) => {
 
   return (
     <div key={id}>
-      <MDBCard className="city-card" onClick={() => submitSearch(name)}>
+      <MDBCard className='city-card' onClick={() => submitSearch(name)}>
         <MDBCardImage
-          className="cutter img-fluid"
+          className='cutter img-fluid'
           src={imgSrc}
           alt={name}
           waves
@@ -33,8 +33,8 @@ const CityCard: React.FC<Props> = (props: Props) => {
         <MDBCardBody>
           <MDBCardTitle>{name}</MDBCardTitle>
           <MDBCardText>{description}</MDBCardText>
-          <MDBBtn outline className="city-card-btn">
-            Find walks <MDBIcon icon="search" />
+          <MDBBtn outline className='city-card-btn'>
+            Find walks <MDBIcon icon='search' />
           </MDBBtn>
         </MDBCardBody>
       </MDBCard>

@@ -18,7 +18,7 @@ import {
   setUserId,
 } from "../actions/actions";
 import * as Actions from "../types/Actions";
-import "./App.scss";
+import "./App.css";
 
 interface Props {
   sitekey: string;

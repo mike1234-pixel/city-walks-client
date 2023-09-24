@@ -1,0 +1,12 @@
+/** @format */
+.verification-header-container {
+  width: 100%;
+  text-align: center;
+}
+
+.verification-header {
+  font-family: var(--logo-font);
+  margin-top: 30px;
+}
+
+/*# sourceMappingURL=VerificationForm.css.map */

@@ -12,7 +12,7 @@ import { connect } from "react-redux";
 import { History } from "history";
 import RootState from "../../types/State/Root/State";
 import WalkI from "../../types/Walks/Walk";
-import "./Walk.scss";
+import "./Walk.css";
 
 interface Props {
   walks: Array<WalkI>;
@@ -35,7 +35,7 @@ const Walk: React.FC<Props> = (props: Props) => {
 
   let walk: string | ReactNode = <LoadingBar />;
 
-  let currentWalk: WalkI | { iframeLink: string; iframeTitle: string } = {
+  let currentWalk: WalkI | { iframeLink: string; iframeTitle: string; } = {
     iframeLink: "",
     iframeTitle: "",
   };
@@ -68,17 +68,17 @@ const Walk: React.FC<Props> = (props: Props) => {
     } else {
       walk = (
         <div>
-          <div className="walk-heading-container">
-            <h1 className="walk-heading">
+          <div className='walk-heading-container'>
+            <h1 className='walk-heading'>
               {selectedWalk.walk} <BsDot /> {selectedWalk.city}
             </h1>
-            <p className="walk-description">
+            <p className='walk-description'>
               <FaMapMarkerAlt /> {selectedWalk.description}
             </p>
-            <p className="walk-description">
+            <p className='walk-description'>
               <IoMdTrain /> Starting Point: {selectedWalk.startingPoint}
             </p>
-            <p className="walk-description">
+            <p className='walk-description'>
               <FaRoad /> Length: {selectedWalk.length}
             </p>
           </div>
@@ -103,15 +103,15 @@ const Walk: React.FC<Props> = (props: Props) => {
             zoom={false}
             waves={false}
           />
-          <div className="author-info-container">
+          <div className='author-info-container'>
             <p>This walk was written by {selectedWalk.author}</p>
             <p>{selectedWalk.aboutTheAuthor}</p>
             <p>Connect with {selectedWalk.author.split(" ")[0]}!</p>
-            <MDBAnimation reveal type="rubberBand">
-              <div className="social-links">
+            <MDBAnimation reveal type='rubberBand'>
+              <div className='social-links'>
                 {selectedWalk.websiteLink !== undefined && (
-                  <a href={selectedWalk.websiteLink} target="_blank">
-                    <MDBIcon fab icon="github" />
+                  <a href={selectedWalk.websiteLink} target='_blank'>
+                    <MDBIcon fab icon='github' />
                   </a>
                 )}
               </div>
@@ -125,13 +125,13 @@ const Walk: React.FC<Props> = (props: Props) => {
   return (
     <div>
       <MDBContainer>
-        <div data-testid="walk-page">
-          <div className="page center">{walk}</div>
+        <div data-testid='walk-page'>
+          <div className='page center'>{walk}</div>
         </div>
       </MDBContainer>
       {!togglePopUp && (
-        <MDBBtn id="see-map-btn" onClick={handleClick}>
-          See Map <MDBIcon icon="map-marked-alt" id="map-icon" />
+        <MDBBtn id='see-map-btn' onClick={handleClick}>
+          See Map <MDBIcon icon='map-marked-alt' id='map-icon' />
         </MDBBtn>
       )}
       {togglePopUp && (

@@ -10,7 +10,7 @@ import {
 } from "mdbreact";
 import { Link } from "react-router-dom";
 import urlify from "../../../functions/urlify";
-import "./Sights.scss";
+import "./Sights.css";
 
 const stripMarkdown: (markup: string) => string = (markup) => {
   return markup
@@ -32,20 +32,20 @@ const SightCard: React.FC<Props> = (props: Props) => {
   return (
     <div key={id}>
       <Link to={"/sights/" + urlify(name)}>
-        <MDBCard className="blog-card">
+        <MDBCard className='blog-card'>
           <MDBCardImage
-            className="cutter img-fluid"
+            className='cutter img-fluid'
             src={imgSrc}
             alt={name}
             waves
           />
           <MDBCardBody>
-            <MDBCardTitle className="display-font">{name}</MDBCardTitle>
+            <MDBCardTitle className='display-font'>{name}</MDBCardTitle>
             <MDBCardText>
               {stripMarkdown(description.slice(0, 199) + "...")}
             </MDBCardText>
-            <MDBBtn outline color="elegant" className="city-card-btn">
-              Read <MDBIcon icon="book-open" />
+            <MDBBtn outline color='elegant' className='city-card-btn'>
+              Read <MDBIcon icon='book-open' />
             </MDBBtn>
           </MDBCardBody>
         </MDBCard>

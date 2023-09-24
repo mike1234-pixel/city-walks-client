@@ -1,13 +1,12 @@
 import React, { useState } from "react"
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
-import axios, { AxiosError, AxiosResponse } from "axios";
-import qs from "qs";
-import toTitleCase from '../../../../functions/toTitleCase'
-import Walk from '../../../../types/PostRequests/Walk'
-import './AddWalkForm.scss'
+import axios, { AxiosError, AxiosResponse } from "axios"
+import qs from "qs"
+import toTitleCase from "../../../../functions/toTitleCase"
+import Walk from "../../../../types/PostRequests/Walk"
+import "./AddWalkForm.css"
 
 const AddWalkForm: React.FC = () => {
-
   const [walk, setWalk] = useState<string>("")
   const [city, setCity] = useState<string>("")
   const [description, setDescription] = useState<string>("")
@@ -36,73 +35,73 @@ const AddWalkForm: React.FC = () => {
     switch (event.target.name) {
       case "walk":
         setWalk(event.target.value)
-        break;
+        break
       case "city":
         setCity(event.target.value)
-        break;
+        break
       case "description":
         setDescription(event.target.value)
-        break;
+        break
       case "starting-point":
         setStartingPoint(event.target.value)
-        break;
+        break
       case "content1":
         setContent1(event.target.value)
-        break;
+        break
       case "content2":
         setContent2(event.target.value)
-        break;
+        break
       case "content3":
         setContent3(event.target.value)
-        break;
+        break
       case "cover-img":
         setCoverImg(event.target.value)
-        break;
+        break
       case "map-img":
         setMapImg(event.target.value)
-        break;
+        break
       case "img1":
         setImg1(event.target.value)
-        break;
+        break
       case "img2":
         setImg2(event.target.value)
-        break;
+        break
       case "img3":
         setImg3(event.target.value)
-        break;
+        break
       case "author":
         setAuthor(event.target.value)
-        break;
+        break
       case "about-the-author":
         setAboutTheAuthor(event.target.value)
-        break;
+        break
       case "website-link":
         setWebsiteLink(event.target.value)
-        break;
+        break
       case "instagram-link":
         setInstagramLink(event.target.value)
-        break;
+        break
       case "facebook-link":
         setFacebookLink(event.target.value)
-        break;
+        break
       case "twitter-link":
         setTwitterLink(event.target.value)
-        break;
+        break
       case "lat":
         setLat(event.target.value)
-        break;
+        break
       case "lng":
         setLng(event.target.value)
-        break;
+        break
       case "length":
         setLength(event.target.value)
-        break;
+        break
       case "iframe-link":
         setIframeLink(event.target.value)
-        break;
+        break
       case "iframe-title":
         setIframeTitle(event.target.value)
-        break;
+        break
     }
   }
 
@@ -132,8 +131,8 @@ const AddWalkForm: React.FC = () => {
       lng,
       length,
       iframeLink,
-      iframeTitle
-    };
+      iframeTitle,
+    }
 
     axios
       .post("https://city-walks.herokuapp.com/add-walk", qs.stringify(payload))
@@ -143,9 +142,10 @@ const AddWalkForm: React.FC = () => {
         } else {
           console.log("walk not saved")
         }
-      }).catch((err: AxiosError) => {
+      })
+      .catch((err: AxiosError) => {
         console.log(err)
-      });;
+      })
 
     alert("Walk Submitted")
     setWalk("")
@@ -170,39 +170,229 @@ const AddWalkForm: React.FC = () => {
     setLength("")
     setIframeLink("")
     setIframeTitle("")
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0)
   }
 
   return (
     <div>
       <h2>Add Walk</h2>
-      <form onSubmit={handleSubmit} className="add-walk-form">
-        <MDBInput type="text" name="walk" id="walk" value={walk} label="walk, title-case only e.g. 'Baker Street To Bond Street'" onChange={handleChange} maxLength="70" required />
-        <MDBInput type="text" name="city" id="city" value={city} label="city" onChange={handleChange} maxLength="70" required />
-        <MDBInput type="text" name="description" id="description" value={description} label="description" onChange={handleChange} maxLength="136" required />
-        <MDBInput type="text" name="starting-point" id="starting-point" value={startingPoint} label="starting point" onChange={handleChange} maxLength="100" required />
-        <MDBInput type="textarea" rows="4" name="content1" id="content1" value={content1} label="paragraph 1 (569 character limit - excl formatting). Format using Markdown." onChange={handleChange} maxLength="700" required />
-        <MDBInput type="textarea" rows="4" name="content2" id="content2" value={content2} label="paragraph 2 (569 character limit - excl formatting). Format using Markdown." onChange={handleChange} maxLength="700" required />
-        <MDBInput type="textarea" rows="4" name="content3" id="content3" value={content3} label="paragraph 3 (569 character limit - excl formatting). Format using Markdown." onChange={handleChange} maxLength="700" required />
-        <MDBInput type="text" name="cover-img" id="cover-img" value={coverImg} label="cover image link" onChange={handleChange} required />
-        <MDBInput type="text" name="map-img" id="map-img" value={mapImg} label="map image link" onChange={handleChange} required />
-        <MDBInput type="text" name="img1" id="img1" value={img1} label="image 1 link" onChange={handleChange} required />
-        <MDBInput type="text" name="img2" id="img2" value={img2} label="image 2 link" onChange={handleChange} required />
-        <MDBInput type="text" name="img3" id="img3" value={img3} label="image 3 link" onChange={handleChange} required />
-        <MDBInput type="text" name="author" id="author" value={author} label="author" onChange={handleChange} required />
-        <MDBInput type="text" name="about-the-author" id="about-the-author" value={aboutTheAuthor} label="about the author" onChange={handleChange} required />
-        <MDBInput type="text" name="website-link" id="website-link" value={websiteLink} label="website link (optional)" onChange={handleChange} />
-        <MDBInput type="text" name="instagram-link" id="instagram-link" value={instagramLink} label="instagram link (optional)" onChange={handleChange} />
-        <MDBInput type="text" name="facebook-link" id="facebook-link" value={facebookLink} label="facebook link (optional)" onChange={handleChange} />
-        <MDBInput type="text" name="twitter-link" id="twitter-link" value={twitterLink} label="twitter link (optional)" onChange={handleChange} />
-        <MDBInput type="text" name="lat" id="lat" value={lat} label="latitude" onChange={handleChange} required />
-        <MDBInput type="text" name="lng" id="lng" value={lng} label="longitude" onChange={handleChange} required />
-        <MDBInput type="text" name="length" id="length" value={length} label="walk length (e.g. '3.5 km / 2.1 miles')" onChange={handleChange} required />
-        <MDBInput type="text" name="iframe-link" id="iframe-link" value={iframeLink} label="iframe link (should include '/maps/d/embed?')" onChange={handleChange} required />
-        <MDBInput type="text" name="iframe-title" id="iframe-title" value={iframeTitle} label="iframe title (e.g. 'Canterbury Cathedral Google Map')" onChange={handleChange} required />
-        <MDBBtn outline color="elegant" type="submit">
+      <form onSubmit={handleSubmit} className='add-walk-form'>
+        <MDBInput
+          type='text'
+          name='walk'
+          id='walk'
+          value={walk}
+          label="walk, title-case only e.g. 'Baker Street To Bond Street'"
+          onChange={handleChange}
+          maxLength='70'
+          required
+        />
+        <MDBInput
+          type='text'
+          name='city'
+          id='city'
+          value={city}
+          label='city'
+          onChange={handleChange}
+          maxLength='70'
+          required
+        />
+        <MDBInput
+          type='text'
+          name='description'
+          id='description'
+          value={description}
+          label='description'
+          onChange={handleChange}
+          maxLength='136'
+          required
+        />
+        <MDBInput
+          type='text'
+          name='starting-point'
+          id='starting-point'
+          value={startingPoint}
+          label='starting point'
+          onChange={handleChange}
+          maxLength='100'
+          required
+        />
+        <MDBInput
+          type='textarea'
+          rows='4'
+          name='content1'
+          id='content1'
+          value={content1}
+          label='paragraph 1 (569 character limit - excl formatting). Format using Markdown.'
+          onChange={handleChange}
+          maxLength='700'
+          required
+        />
+        <MDBInput
+          type='textarea'
+          rows='4'
+          name='content2'
+          id='content2'
+          value={content2}
+          label='paragraph 2 (569 character limit - excl formatting). Format using Markdown.'
+          onChange={handleChange}
+          maxLength='700'
+          required
+        />
+        <MDBInput
+          type='textarea'
+          rows='4'
+          name='content3'
+          id='content3'
+          value={content3}
+          label='paragraph 3 (569 character limit - excl formatting). Format using Markdown.'
+          onChange={handleChange}
+          maxLength='700'
+          required
+        />
+        <MDBInput
+          type='text'
+          name='cover-img'
+          id='cover-img'
+          value={coverImg}
+          label='cover image link'
+          onChange={handleChange}
+          required
+        />
+        <MDBInput
+          type='text'
+          name='map-img'
+          id='map-img'
+          value={mapImg}
+          label='map image link'
+          onChange={handleChange}
+          required
+        />
+        <MDBInput
+          type='text'
+          name='img1'
+          id='img1'
+          value={img1}
+          label='image 1 link'
+          onChange={handleChange}
+          required
+        />
+        <MDBInput
+          type='text'
+          name='img2'
+          id='img2'
+          value={img2}
+          label='image 2 link'
+          onChange={handleChange}
+          required
+        />
+        <MDBInput
+          type='text'
+          name='img3'
+          id='img3'
+          value={img3}
+          label='image 3 link'
+          onChange={handleChange}
+          required
+        />
+        <MDBInput
+          type='text'
+          name='author'
+          id='author'
+          value={author}
+          label='author'
+          onChange={handleChange}
+          required
+        />
+        <MDBInput
+          type='text'
+          name='about-the-author'
+          id='about-the-author'
+          value={aboutTheAuthor}
+          label='about the author'
+          onChange={handleChange}
+          required
+        />
+        <MDBInput
+          type='text'
+          name='website-link'
+          id='website-link'
+          value={websiteLink}
+          label='website link (optional)'
+          onChange={handleChange}
+        />
+        <MDBInput
+          type='text'
+          name='instagram-link'
+          id='instagram-link'
+          value={instagramLink}
+          label='instagram link (optional)'
+          onChange={handleChange}
+        />
+        <MDBInput
+          type='text'
+          name='facebook-link'
+          id='facebook-link'
+          value={facebookLink}
+          label='facebook link (optional)'
+          onChange={handleChange}
+        />
+        <MDBInput
+          type='text'
+          name='twitter-link'
+          id='twitter-link'
+          value={twitterLink}
+          label='twitter link (optional)'
+          onChange={handleChange}
+        />
+        <MDBInput
+          type='text'
+          name='lat'
+          id='lat'
+          value={lat}
+          label='latitude'
+          onChange={handleChange}
+          required
+        />
+        <MDBInput
+          type='text'
+          name='lng'
+          id='lng'
+          value={lng}
+          label='longitude'
+          onChange={handleChange}
+          required
+        />
+        <MDBInput
+          type='text'
+          name='length'
+          id='length'
+          value={length}
+          label="walk length (e.g. '3.5 km / 2.1 miles')"
+          onChange={handleChange}
+          required
+        />
+        <MDBInput
+          type='text'
+          name='iframe-link'
+          id='iframe-link'
+          value={iframeLink}
+          label="iframe link (should include '/maps/d/embed?')"
+          onChange={handleChange}
+          required
+        />
+        <MDBInput
+          type='text'
+          name='iframe-title'
+          id='iframe-title'
+          value={iframeTitle}
+          label="iframe title (e.g. 'Canterbury Cathedral Google Map')"
+          onChange={handleChange}
+          required
+        />
+        <MDBBtn outline color='elegant' type='submit'>
           Send Walk
-          <MDBIcon far icon="paper-plane" className="ml-2" />
+          <MDBIcon far icon='paper-plane' className='ml-2' />
         </MDBBtn>
       </form>
     </div>

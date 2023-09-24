@@ -1,5 +1,5 @@
-import React, { ReactNode, useEffect, useState } from "react"
-import toTitleCase from "../../../functions/toTitleCase"
+import React, { ReactNode, useEffect, useState } from "react";
+import toTitleCase from "../../../functions/toTitleCase";
 import {
   MDBInput,
   MDBBtn,
@@ -8,53 +8,53 @@ import {
   MDBCardTitle,
   MDBCardText,
   MDBContainer,
-} from "mdbreact"
-import axios, { AxiosError, AxiosResponse } from "axios"
-import qs from "qs"
-import marked from "marked"
-import SelectedComment from "../../../types/PostRequests/SelectedComment"
-import LoadingBar from "../../LoadingBar/LoadingBar"
-import RootState from "../../../types/State/Root/State"
-import SightI from "../../../types/Sights/Sight"
-import Comment from "../../../types/Sights/Comment"
-import { History } from "history"
-import { connect } from "react-redux"
-import CommentToSubmit from "../../../types/PostRequests/CommentToSubmit"
-import "./Sight.scss"
+} from "mdbreact";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import qs from "qs";
+import marked from "marked";
+import SelectedComment from "../../../types/PostRequests/SelectedComment";
+import LoadingBar from "../../LoadingBar/LoadingBar";
+import RootState from "../../../types/State/Root/State";
+import SightI from "../../../types/Sights/Sight";
+import Comment from "../../../types/Sights/Comment";
+import { History } from "history";
+import { connect } from "react-redux";
+import CommentToSubmit from "../../../types/PostRequests/CommentToSubmit";
+import "./Sight.css";
 
 interface Props {
-  history: History
-  sights: Array<SightI>
-  loggedIn: boolean
-  userFirstName: string
-  userId: string
+  history: History;
+  sights: Array<SightI>;
+  loggedIn: boolean;
+  userFirstName: string;
+  userId: string;
 }
 
 const Sight: React.FC<Props> = (props: Props) => {
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-  const { sights, loggedIn, userFirstName, userId } = props
+    window.scrollTo(0, 0);
+  }, []);
+  const { sights, loggedIn, userFirstName, userId } = props;
 
   const blogTitle: string = toTitleCase(
     props.history.location.pathname.replace("/sights/", "").replace(/-/g, " ")
-  )
+  );
 
-  const [comment, setComment] = useState<string>("")
+  const [comment, setComment] = useState<string>("");
 
   const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
-    setComment(event.target.value)
-  }
+    setComment(event.target.value);
+  };
 
   const handleSubmit: (event: React.FormEvent) => void = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     let payload: CommentToSubmit = {
       currentBlogTitle: blogTitle,
       comment: comment,
       userFirstName: userFirstName,
       userId: userId,
-    }
+    };
 
     axios
       .post(
@@ -63,25 +63,25 @@ const Sight: React.FC<Props> = (props: Props) => {
       )
       .then((res: AxiosResponse) => {
         if (res.data === "comment submitted") {
-          console.log("comment submitted")
+          console.log("comment submitted");
         } else {
-          console.log("comment not submitted")
+          console.log("comment not submitted");
         }
       })
       .catch((err: AxiosError) => {
-        console.log(err)
-      })
+        console.log(err);
+      });
 
-    alert("Comment Submitted")
-    setComment("")
-    window.location.reload()
-  }
+    alert("Comment Submitted");
+    setComment("");
+    window.location.reload();
+  };
 
   const handleDeleteComment: (commentId: string) => void = (commentId) => {
     let payload: SelectedComment = {
       currentBlogTitle: blogTitle,
       commentId: commentId,
-    }
+    };
 
     axios
       .delete(
@@ -91,28 +91,28 @@ const Sight: React.FC<Props> = (props: Props) => {
         }
       )
       .then((res: AxiosResponse) => {
-        alert("comment deleted.")
-        window.location.reload()
+        alert("comment deleted.");
+        window.location.reload();
       })
       .catch((err: AxiosError) => {
-        console.log(err)
-      })
-  }
+        console.log(err);
+      });
+  };
 
-  let post: string | ReactNode = <LoadingBar />
+  let post: string | ReactNode = <LoadingBar />;
 
   if (sights.length) {
     let selectedBlogPost: SightI | Array<SightI> | undefined = sights.filter(
       (post: SightI) => post.title === blogTitle
-    )
-    selectedBlogPost = selectedBlogPost[0]
+    );
+    selectedBlogPost = selectedBlogPost[0];
 
-    const createMarkup: (markup: string) => { __html: string } = (markup) => {
-      return { __html: marked(markup, { breaks: true }) }
-    }
+    const createMarkup: (markup: string) => { __html: string; } = (markup) => {
+      return { __html: marked(markup, { breaks: true }) };
+    };
 
     if (!selectedBlogPost) {
-      post = "sight not found"
+      post = "sight not found";
     } else {
       post = (
         <div className='blog-post-container'>
@@ -147,10 +147,10 @@ const Sight: React.FC<Props> = (props: Props) => {
                   </MDBBtn>
                 )}
               </MDBCard>
-            )
+            );
           })}
         </div>
-      )
+      );
     }
   }
 
@@ -178,17 +178,17 @@ const Sight: React.FC<Props> = (props: Props) => {
           )}
         </div>
       </MDBContainer>
-    )
+    );
   } else {
-    return <LoadingBar />
+    return <LoadingBar />;
   }
-}
+};
 
 const mapStateToProps: (state: RootState) => void = (state) => ({
   sights: state.sightsState.sights,
   loggedIn: state.loginState.loggedIn,
   userFirstName: state.loginState.userFirstName,
   userId: state.loginState.userId,
-})
+});
 
-export default connect(mapStateToProps, null)(Sight)
+export default connect(mapStateToProps, null)(Sight);

@@ -8,7 +8,7 @@ import City from "../../../types/Cities/City";
 import { RootState } from "../../../store";
 import CityCard from "./CityCard";
 import * as Actions from "../../../types/Actions";
-import "./Cities.scss";
+import "./Cities.css";
 
 interface Props {
   cities: Array<City>;
@@ -31,7 +31,7 @@ const Cities: React.FC<any> = (props: Props) => {
     setRedirect(true);
   };
 
-  const changePage = ({ selected }: { selected: number }) => {
+  const changePage = ({ selected }: { selected: number; }) => {
     setPageNumber(selected);
   };
 
@@ -41,15 +41,15 @@ const Cities: React.FC<any> = (props: Props) => {
 
   return (
     <MDBContainer>
-      <div className="cities-page-container page">
+      <div className='cities-page-container page'>
         <div
-          data-testid="cities-page-heading"
-          className="page-heading-container"
+          data-testid='cities-page-heading'
+          className='page-heading-container'
         >
-          <h1 className="page-heading">Cities</h1>
-          <h2 className="page-subheading">search walks by city</h2>
+          <h1 className='page-heading'>Cities</h1>
+          <h2 className='page-subheading'>search walks by city</h2>
         </div>
-        <div className="card-container">
+        <div className='card-container'>
           {cities
             .slice(pagesVisited, pagesVisited + citiesPerPage)
             .map((city) => {

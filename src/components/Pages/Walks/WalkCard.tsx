@@ -10,7 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import { GiWalkingBoot } from "react-icons/gi";
 import urlify from "../../../functions/urlify";
-import "./Walks.scss";
+import "./Walks.css";
 
 interface Props {
   id: string;
@@ -26,18 +26,18 @@ const WalkCard: React.FC<Props> = (props: Props) => {
   return (
     <div key={id}>
       <Link to={"walks/" + urlify(name)}>
-        <MDBCard className="walk-card">
+        <MDBCard className='walk-card'>
           <MDBCardImage
-            className="cutter img-fluid"
+            className='cutter img-fluid'
             src={imgSrc}
             alt={name}
             waves
           />
           <MDBCardBody>
             <MDBCardTitle>{city}</MDBCardTitle>
-            <MDBCardTitle className="display-font">{name}</MDBCardTitle>
+            <MDBCardTitle className='display-font'>{name}</MDBCardTitle>
             <MDBCardText>{description}</MDBCardText>
-            <MDBBtn outline color="elegant" className="city-card-btn">
+            <MDBBtn outline color='elegant' className='city-card-btn'>
               Explore <GiWalkingBoot />
             </MDBBtn>
           </MDBCardBody>

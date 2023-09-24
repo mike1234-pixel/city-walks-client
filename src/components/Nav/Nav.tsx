@@ -16,7 +16,7 @@ import { Dispatch, bindActionCreators } from "redux";
 import { setRedirect } from "../../actions/actions";
 import RootState from "../../types/State/Root/State";
 import * as Actions from "../../types/Actions";
-import "./Nav.scss";
+import "./Nav.css";
 
 interface Props {
   redirect: boolean;
@@ -50,60 +50,60 @@ const Nav: React.FC<Props> = (props: Props) => {
     <MDBNavbar
       className={scroll ? "nav-bar nav-bar--scroll" : "nav-bar"}
       dark
-      expand="lg"
+      expand='lg'
     >
       <MDBContainer>
         <MDBNavbarBrand>
-          <span className="white-text">
-            <MDBNavLink className="white-text logo" to="/">
+          <span className='white-text'>
+            <MDBNavLink className='white-text logo' to='/'>
               City Walks
             </MDBNavLink>
           </span>
         </MDBNavbarBrand>
         <MDBHamburgerToggler
-          color="#fff"
-          className="hamburger1"
-          id="hamburger1"
+          color='#fff'
+          className='hamburger1'
+          id='hamburger1'
           onClick={handleClick}
         />
-        <MDBCollapse id="navbarCollapse3" isOpen={toggleNav} navbar>
+        <MDBCollapse id='navbarCollapse3' isOpen={toggleNav} navbar>
           <MDBNavbarNav left>
             <MDBNavItem>
-              <MDBNavLink className="white-text" to="/">
+              <MDBNavLink className='white-text' to='/'>
                 Home
               </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
               <MDBNavLink
-                data-testid="nav-link-cities"
-                className="white-text"
-                to="/cities"
+                data-testid='nav-link-cities'
+                className='white-text'
+                to='/cities'
               >
                 Cities
               </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink className="white-text" to="/walks">
+              <MDBNavLink className='white-text' to='/walks'>
                 Walks
               </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink className="white-text" to="/sights">
+              <MDBNavLink className='white-text' to='/sights'>
                 Sights
               </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink className="white-text" to="/forum">
+              <MDBNavLink className='white-text' to='/forum'>
                 Forum
               </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink className="white-text" to="/about">
+              <MDBNavLink className='white-text' to='/about'>
                 About
               </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink className="white-text" to="/contact">
+              <MDBNavLink className='white-text' to='/contact'>
                 Contact
               </MDBNavLink>
             </MDBNavItem>

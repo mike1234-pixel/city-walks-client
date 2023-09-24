@@ -1,13 +1,12 @@
 import React, { useState } from "react"
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
-import axios, { AxiosError, AxiosResponse } from "axios";
-import qs from "qs";
-import toTitleCase from '../../../../functions/toTitleCase'
-import Board from '../../../../types/PostRequests/Board'
-import './AddBoardForm.scss'
+import axios, { AxiosError, AxiosResponse } from "axios"
+import qs from "qs"
+import toTitleCase from "../../../../functions/toTitleCase"
+import Board from "../../../../types/PostRequests/Board"
+import "./AddBoardForm.css"
 
 const AddBoardForm: React.FC = () => {
-
   const [boardName, setBoardName] = useState<string>("")
   const [boardDescription, setBoardDescription] = useState<string>("")
 
@@ -15,10 +14,10 @@ const AddBoardForm: React.FC = () => {
     switch (event.target.name) {
       case "board-name":
         setBoardName(event.target.value)
-        break;
+        break
       case "board-description":
         setBoardDescription(event.target.value)
-        break;
+        break
     }
   }
 
@@ -27,8 +26,8 @@ const AddBoardForm: React.FC = () => {
 
     let payload: Board = {
       name: toTitleCase(boardName),
-      description: boardDescription
-    };
+      description: boardDescription,
+    }
 
     axios
       .post("https://city-walks.herokuapp.com/add-board", qs.stringify(payload))
@@ -38,24 +37,41 @@ const AddBoardForm: React.FC = () => {
         } else {
           console.log("board not saved")
         }
-      }).catch((err: AxiosError) => {
+      })
+      .catch((err: AxiosError) => {
         console.log(err)
-      });;
+      })
 
     alert("Board Submitted")
     setBoardName("")
     setBoardDescription("")
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0)
   }
 
   return (
     <div>
       <h2>Add Board</h2>
-      <form onSubmit={handleSubmit} className="add-board-form">
-        <MDBInput type="text" name="board-name" id="board-name" value={boardName} label="board name" onChange={handleChange} required />
-        <MDBInput type="text" name="board-description" id="board-description" value={boardDescription} label="board description" onChange={handleChange} required />
-        <MDBBtn outline color="elegant" type="submit">
-          Add Board <MDBIcon icon="plus" />
+      <form onSubmit={handleSubmit} className='add-board-form'>
+        <MDBInput
+          type='text'
+          name='board-name'
+          id='board-name'
+          value={boardName}
+          label='board name'
+          onChange={handleChange}
+          required
+        />
+        <MDBInput
+          type='text'
+          name='board-description'
+          id='board-description'
+          value={boardDescription}
+          label='board description'
+          onChange={handleChange}
+          required
+        />
+        <MDBBtn outline color='elegant' type='submit'>
+          Add Board <MDBIcon icon='plus' />
         </MDBBtn>
       </form>
     </div>

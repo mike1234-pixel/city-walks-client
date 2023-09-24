@@ -1,42 +1,42 @@
-import React from "react"
-import { useHistory } from "react-router-dom"
-import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact"
-import UserPortalNav from "../UserPortalNav"
-import axios, { AxiosError, AxiosResponse } from "axios"
-import qs from "qs"
-import { connect } from "react-redux"
-import { bindActionCreators, Dispatch } from "redux"
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact";
+import UserPortalNav from "../UserPortalNav";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import qs from "qs";
+import { connect } from "react-redux";
+import { bindActionCreators, Dispatch } from "redux";
 import {
   setResetPasswordEmail,
   setResetPasswordOldPassword,
   setResetPasswordNewPassword,
   setResetPasswordConfirmNewPassword,
-} from "../../../../actions/actions"
-import * as Actions from "../../../../types/Actions"
-import RootState from "../../../../types/State/Root/State"
-import "./ResetPasswordForm.scss"
+} from "../../../../actions/actions";
+import * as Actions from "../../../../types/Actions";
+import RootState from "../../../../types/State/Root/State";
+import "./ResetPasswordForm.css";
 
 interface Props {
-  resetPasswordEmail: string
-  resetPasswordOldPassword: string
-  resetPasswordNewPassword: string
-  resetPasswordConfirmNewPassword: string
+  resetPasswordEmail: string;
+  resetPasswordOldPassword: string;
+  resetPasswordNewPassword: string;
+  resetPasswordConfirmNewPassword: string;
   setResetPasswordEmail: (
     resetPasswordEmail: string
-  ) => Actions.SetResetPasswordEmail
+  ) => Actions.SetResetPasswordEmail;
   setResetPasswordOldPassword: (
     resetPasswordOldPassword: string
-  ) => Actions.SetResetPasswordOldPassword
+  ) => Actions.SetResetPasswordOldPassword;
   setResetPasswordNewPassword: (
     resetPasswordNewPassword: string
-  ) => Actions.SetResetPasswordNewPassword
+  ) => Actions.SetResetPasswordNewPassword;
   setResetPasswordConfirmNewPassword: (
     resetPasswordConfirmNewPassword: string
-  ) => Actions.SetResetPasswordConfirmNewPassword
+  ) => Actions.SetResetPasswordConfirmNewPassword;
 }
 
 const ResetPasswordForm: React.FC<Props> = (props: Props) => {
-  const pushSlug: Function = useHistory().push
+  const pushSlug: Function = useHistory().push;
 
   const {
     resetPasswordEmail,
@@ -47,34 +47,34 @@ const ResetPasswordForm: React.FC<Props> = (props: Props) => {
     setResetPasswordOldPassword,
     setResetPasswordNewPassword,
     setResetPasswordConfirmNewPassword,
-  } = props
+  } = props;
 
   const handleChangeResetPassword = (event: React.ChangeEvent<any>) => {
     switch (event.target.name) {
       case "reset-email":
-        setResetPasswordEmail(event.target.value)
-        break
+        setResetPasswordEmail(event.target.value);
+        break;
       case "old-password":
-        setResetPasswordOldPassword(event.target.value)
-        break
+        setResetPasswordOldPassword(event.target.value);
+        break;
       case "new-password":
-        setResetPasswordNewPassword(event.target.value)
-        break
+        setResetPasswordNewPassword(event.target.value);
+        break;
       case "confirm-new-password":
-        setResetPasswordConfirmNewPassword(event.target.value)
-        break
+        setResetPasswordConfirmNewPassword(event.target.value);
+        break;
     }
-  }
+  };
 
   const handleSubmitResetPassword = (event: React.FormEvent<any>) => {
-    console.log("handle submit reset password")
-    event.preventDefault()
+    console.log("handle submit reset password");
+    event.preventDefault();
 
     const payload = {
       email: resetPasswordEmail,
       oldPassword: resetPasswordOldPassword,
       newPassword: resetPasswordNewPassword,
-    }
+    };
 
     if (resetPasswordNewPassword === resetPasswordConfirmNewPassword) {
       axios
@@ -84,30 +84,30 @@ const ResetPasswordForm: React.FC<Props> = (props: Props) => {
         )
         .then((res: AxiosResponse) => {
           if (res.data === "user not found") {
-            alert("We could not find your account. Please try again.")
+            alert("We could not find your account. Please try again.");
           } else if (
             res.data === "old password does not match password in the database"
           ) {
             alert(
               "The password you entered does not match the account. Please try again or use the Forgot Password option."
-            )
+            );
           } else if (res.data === "password successfully updated") {
-            alert("Password reset. You can now login.")
-            setResetPasswordEmail("")
-            setResetPasswordOldPassword("")
-            setResetPasswordNewPassword("")
-            setResetPasswordConfirmNewPassword("")
-            pushSlug("/forum/login")
-            window.scrollTo(0, 0)
+            alert("Password reset. You can now login.");
+            setResetPasswordEmail("");
+            setResetPasswordOldPassword("");
+            setResetPasswordNewPassword("");
+            setResetPasswordConfirmNewPassword("");
+            pushSlug("/forum/login");
+            window.scrollTo(0, 0);
           }
         })
         .catch((err: AxiosError) => {
-          console.log(err)
-        })
+          console.log(err);
+        });
     } else {
-      alert("Passwords don't match. Please try again.")
+      alert("Passwords don't match. Please try again.");
     }
-  }
+  };
 
   return (
     <div>
@@ -169,8 +169,8 @@ const ResetPasswordForm: React.FC<Props> = (props: Props) => {
         </form>
       </MDBContainer>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps: (state: RootState) => void = (state) => ({
   resetPasswordEmail: state.loginState.resetPasswordEmail,
@@ -178,7 +178,7 @@ const mapStateToProps: (state: RootState) => void = (state) => ({
   resetPasswordNewPassword: state.loginState.resetPasswordNewPassword,
   resetPasswordConfirmNewPassword:
     state.loginState.resetPasswordConfirmNewPassword,
-})
+});
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
@@ -192,7 +192,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
       },
       dispatch
     ),
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ResetPasswordForm)
+export default connect(mapStateToProps, mapDispatchToProps)(ResetPasswordForm);

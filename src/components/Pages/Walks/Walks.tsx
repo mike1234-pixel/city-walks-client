@@ -7,7 +7,7 @@ import Walk from "../../../types/Walks/Walk";
 import RootState from "../../../types/State/Root/State";
 import WalkCard from "./WalkCard";
 import * as Actions from "../../../types/Actions";
-import "./Walks.scss";
+import "./Walks.css";
 
 interface Props {
   searchValue: string;

@@ -1,46 +1,46 @@
-import React, { ReactNode, useEffect, useState } from "react"
-import ThreadBox from "../ThreadBox/ThreadBox"
-import LoadingBar from "../../../../../LoadingBar/LoadingBar"
-import toTitleCase from "../../../../../../functions/toTitleCase"
-import { MDBBtn, MDBInput, MDBContainer } from "mdbreact"
-import axios, { AxiosError, AxiosResponse } from "axios"
-import qs from "qs"
-import { connect } from "react-redux"
-import { History } from "history"
-import Board from "../../../../../../types/Boards/Board"
-import Thread from "../../../../../../types/PostRequests/Thread"
-import ThreadT from "../../../../../../types/Boards/Thread"
-import RootState from "../../../../../../types/State/Root/State"
-import "./Threads.scss"
+import React, { ReactNode, useEffect, useState } from "react";
+import ThreadBox from "../ThreadBox/ThreadBox";
+import LoadingBar from "../../../../../LoadingBar/LoadingBar";
+import toTitleCase from "../../../../../../functions/toTitleCase";
+import { MDBBtn, MDBInput, MDBContainer } from "mdbreact";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import qs from "qs";
+import { connect } from "react-redux";
+import { History } from "history";
+import Board from "../../../../../../types/Boards/Board";
+import Thread from "../../../../../../types/PostRequests/Thread";
+import ThreadT from "../../../../../../types/Boards/Thread";
+import RootState from "../../../../../../types/State/Root/State";
+import "./Threads.css";
 
 interface Props {
-  history: History
-  boards: Array<Board>
-  loggedIn: boolean
-  userId: string
-  userFirstName: string
+  history: History;
+  boards: Array<Board>;
+  loggedIn: boolean;
+  userId: string;
+  userFirstName: string;
 }
 
 const Threads: React.FC<Props> = (props: Props) => {
-  const { boards, loggedIn, userId, userFirstName } = props
+  const { boards, loggedIn, userId, userFirstName } = props;
 
   const boardName: string = toTitleCase(
     props.history.location.pathname.replace("/forum/", "").replace(/-/g, " ")
-  )
+  );
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
-  let threads: string | ReactNode = <LoadingBar />
+  let threads: string | ReactNode = <LoadingBar />;
 
   if (boards.length) {
     const selectedBoard = boards.filter(
       (board: Board) => board.name === boardName
-    )[0]
+    )[0];
 
     if (selectedBoard === undefined) {
-      threads = "thread not found"
+      threads = "thread not found";
     } else {
       threads = selectedBoard.threads
         .map((thread: ThreadT, index: number) => {
@@ -59,28 +59,28 @@ const Threads: React.FC<Props> = (props: Props) => {
               currentUserFirstName={""}
               currentUserId={""}
             />
-          )
+          );
         })
-        .reverse()
+        .reverse();
     }
   }
 
-  const [threadName, setThreadName] = useState<string>("")
-  const [threadContent, setThreadContent] = useState<string>("")
+  const [threadName, setThreadName] = useState<string>("");
+  const [threadContent, setThreadContent] = useState<string>("");
 
   const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
     switch (event.target.name) {
       case "add-thread-name":
-        setThreadName(event.target.value)
-        break
+        setThreadName(event.target.value);
+        break;
       case "add-thread-content":
-        setThreadContent(event.target.value)
-        break
+        setThreadContent(event.target.value);
+        break;
     }
-  }
+  };
 
   const handleSubmit: (event: React.FormEvent) => void = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     let payload: Thread = {
       currentBoardName: boardName,
@@ -88,7 +88,7 @@ const Threads: React.FC<Props> = (props: Props) => {
       userFirstName: userFirstName,
       title: threadName,
       content: threadContent,
-    }
+    };
 
     axios
       .post(
@@ -96,15 +96,15 @@ const Threads: React.FC<Props> = (props: Props) => {
         qs.stringify(payload)
       )
       .then((res: AxiosResponse) => {
-        alert("thread submitted.")
-        setThreadName("")
-        setThreadContent("")
-        window.location.reload()
+        alert("thread submitted.");
+        setThreadName("");
+        setThreadContent("");
+        window.location.reload();
       })
       .catch((err: AxiosError) => {
-        console.log(err)
-      })
-  }
+        console.log(err);
+      });
+  };
 
   const addThread: ReactNode = (
     <div className='add-thread-form-container'>
@@ -134,7 +134,7 @@ const Threads: React.FC<Props> = (props: Props) => {
         </MDBBtn>
       </form>
     </div>
-  )
+  );
 
   return (
     <MDBContainer>
@@ -144,14 +144,14 @@ const Threads: React.FC<Props> = (props: Props) => {
         <div>{threads}</div>
       </div>
     </MDBContainer>
-  )
-}
+  );
+};
 
 const mapStateToProps: (state: RootState) => void = (state) => ({
   boards: state.boardsState.boards,
   loggedIn: state.loginState.loggedIn,
   userId: state.loginState.userId,
   userFirstName: state.loginState.userFirstName,
-})
+});
 
-export default connect(mapStateToProps, null)(Threads)
+export default connect(mapStateToProps, null)(Threads);

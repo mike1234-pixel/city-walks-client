@@ -1,11 +1,11 @@
-import React from "react"
-import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact"
-import UserPortalNav from "../UserPortalNav"
-import { Link } from "react-router-dom"
-import axios, { AxiosError, AxiosResponse } from "axios"
-import qs from "qs"
-import { connect } from "react-redux"
-import { bindActionCreators, Dispatch } from "redux"
+import React from "react";
+import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact";
+import UserPortalNav from "../UserPortalNav";
+import { Link } from "react-router-dom";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import qs from "qs";
+import { connect } from "react-redux";
+import { bindActionCreators, Dispatch } from "redux";
 import {
   setFirstName,
   setLastName,
@@ -14,31 +14,31 @@ import {
   setUserFirstName,
   setUserLastName,
   setActivationMessageEmphasis,
-} from "../../../../actions/actions"
-import RootState from "../../../../types/State/Root/State"
-import RegistrationCredentials from "../../../../types/PostRequests/RegistrationCredentials"
-import * as Actions from "../../../../types/Actions"
-import "./RegistrationForm.scss"
+} from "../../../../actions/actions";
+import RootState from "../../../../types/State/Root/State";
+import RegistrationCredentials from "../../../../types/PostRequests/RegistrationCredentials";
+import * as Actions from "../../../../types/Actions";
+import "./RegistrationForm.css";
 
 interface Props {
-  firstName: string
-  lastName: string
-  registrationEmail: string
-  registrationPassword: string
-  activationMessageEmphasis: string
-  setFirstName: (firstName: string) => Actions.SetFirstName
-  setLastName: (lastName: string) => Actions.SetLastName
+  firstName: string;
+  lastName: string;
+  registrationEmail: string;
+  registrationPassword: string;
+  activationMessageEmphasis: string;
+  setFirstName: (firstName: string) => Actions.SetFirstName;
+  setLastName: (lastName: string) => Actions.SetLastName;
   setRegistrationEmail: (
     registrationEmail: string
-  ) => Actions.SetRegistrationEmail
+  ) => Actions.SetRegistrationEmail;
   setRegistrationPassword: (
     registrationPassword: string
-  ) => Actions.SetRegistrationPassword
-  setUserFirstName: (userFirstName: string) => Actions.SetUserFirstName
-  setUserLastName: (userLastName: string) => Actions.SetUserLastName
+  ) => Actions.SetRegistrationPassword;
+  setUserFirstName: (userFirstName: string) => Actions.SetUserFirstName;
+  setUserLastName: (userLastName: string) => Actions.SetUserLastName;
   setActivationMessageEmphasis: (
     activationMessageEmphasis: string
-  ) => Actions.SetActivationMessageEmphasis
+  ) => Actions.SetActivationMessageEmphasis;
 }
 
 const RegistrationForm: React.FC<Props> = (props: Props) => {
@@ -55,38 +55,38 @@ const RegistrationForm: React.FC<Props> = (props: Props) => {
     setUserFirstName,
     setUserLastName,
     setActivationMessageEmphasis,
-  } = props
+  } = props;
 
   const handleChangeRegistration: (event: React.ChangeEvent<any>) => void = (
     event
   ) => {
     switch (event.target.name) {
       case "registration-fname":
-        setFirstName(event.target.value)
-        break
+        setFirstName(event.target.value);
+        break;
       case "registration-lname":
-        setLastName(event.target.value)
-        break
+        setLastName(event.target.value);
+        break;
       case "registration-email":
-        setRegistrationEmail(event.target.value)
-        break
+        setRegistrationEmail(event.target.value);
+        break;
       case "registration-password":
-        setRegistrationPassword(event.target.value)
-        break
+        setRegistrationPassword(event.target.value);
+        break;
     }
-  }
+  };
 
   const handleSubmitRegistration: (event: React.FormEvent) => void = (
     event
   ) => {
-    event.preventDefault()
+    event.preventDefault();
 
     const payload: RegistrationCredentials = {
       fname: firstName,
       lname: lastName,
       email: registrationEmail,
       password: registrationPassword,
-    }
+    };
 
     axios
       .post(
@@ -95,30 +95,30 @@ const RegistrationForm: React.FC<Props> = (props: Props) => {
       )
       .then((res: AxiosResponse) => {
         if (res.data === "An account with this email already exists.") {
-          alert("An account with this email already exists.")
+          alert("An account with this email already exists.");
         } else if (
           res.data ===
           "We have sent you an email. Please verify your account by clicking the link in the mail."
         ) {
           alert(
             "We have sent you an email. Please verify your account by clicking the link in the email. (This code expires after 10 minutes)"
-          )
-          setFirstName("")
-          setLastName("")
-          setRegistrationEmail("")
-          setRegistrationPassword("")
-          setUserFirstName(res.data.fname)
-          setUserLastName(res.data.lname)
-          setActivationMessageEmphasis("emphasis")
-          window.scrollTo(0, 0)
+          );
+          setFirstName("");
+          setLastName("");
+          setRegistrationEmail("");
+          setRegistrationPassword("");
+          setUserFirstName(res.data.fname);
+          setUserLastName(res.data.lname);
+          setActivationMessageEmphasis("emphasis");
+          window.scrollTo(0, 0);
         } else {
-          alert("Registration Complete")
+          alert("Registration Complete");
         }
       })
       .catch((err: AxiosError) => {
-        console.log(err)
-      })
-  }
+        console.log(err);
+      });
+  };
 
   return (
     <div key='user-registration'>
@@ -195,15 +195,15 @@ const RegistrationForm: React.FC<Props> = (props: Props) => {
         </form>
       </MDBContainer>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps: (state: RootState) => void = (state) => ({
   firstName: state.loginState.firstName,
   lastName: state.loginState.lastName,
   registrationEmail: state.loginState.registrationEmail,
   activationMessageEmphasis: state.loginState.activationMessageEmphasis,
-})
+});
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
@@ -220,7 +220,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
       },
       dispatch
     ),
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegistrationForm)
+export default connect(mapStateToProps, mapDispatchToProps)(RegistrationForm);

@@ -1,0 +1,61 @@
+/** @format */
+.walk-card {
+  transition: transform 0.2s; /* Animation */
+}
+
+.walk-card:hover {
+  transform: scale(1.05);
+}
+
+.walks-search-icon {
+  margin: 25px 0;
+}
+
+.pagination-buttons {
+  margin-top: 60px;
+  height: 40px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+}
+
+.pagination-buttons a {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #212529;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  transition: all 0.3s linear;
+}
+
+.pagination-buttons a:hover {
+  color: white;
+  background: var(--blue);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  transition: all 0.2s linear;
+}
+
+.pagination-buttons a:active {
+  color: #fff;
+  background-color: var(--blue);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  transition: all 0.2s linear;
+}
+
+.pagination-active a,
+.pagination-active a:hover {
+  background: var(--blue);
+  color: white;
+  border-radius: 2px;
+}
+
+/*# sourceMappingURL=Walks.css.map */

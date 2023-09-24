@@ -1,0 +1,29 @@
+/** @format */
+.blog-post-container {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+}
+
+.blog-subtitle {
+  font-size: 20px;
+}
+
+.blog-post-img {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.blog-post-comment-card {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  width: 100%;
+}
+
+.add-blog-comment-form {
+  padding: 50px;
+}
+
+/*# sourceMappingURL=Sight.css.map */

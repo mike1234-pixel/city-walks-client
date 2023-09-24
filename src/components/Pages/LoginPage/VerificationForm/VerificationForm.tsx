@@ -1,45 +1,45 @@
-import React from "react"
-import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact"
-import UserPortalNav from "../UserPortalNav"
-import axios, { AxiosError, AxiosResponse } from "axios"
-import qs from "qs"
-import { connect } from "react-redux"
-import { bindActionCreators, Dispatch } from "redux"
-import { setVerificationEmail } from "../../../../actions/actions"
-import EmailToVerify from "../../../../types/PostRequests/EmailToVerify"
-import RootState from "../../../../types/State/Root/State"
-import * as Actions from "../../../../types/Actions"
-import "./VerificationForm.scss"
+import React from "react";
+import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact";
+import UserPortalNav from "../UserPortalNav";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import qs from "qs";
+import { connect } from "react-redux";
+import { bindActionCreators, Dispatch } from "redux";
+import { setVerificationEmail } from "../../../../actions/actions";
+import EmailToVerify from "../../../../types/PostRequests/EmailToVerify";
+import RootState from "../../../../types/State/Root/State";
+import * as Actions from "../../../../types/Actions";
+import "./VerificationForm.css";
 
 interface Props {
-  verificationEmail: string
+  verificationEmail: string;
   setVerificationEmail: (
     verificationEmail: string
-  ) => Actions.SetVerificationEmail
+  ) => Actions.SetVerificationEmail;
 }
 
 const VerificationForm: React.FC<Props> = (props: Props) => {
-  const { verificationEmail, setVerificationEmail } = props
+  const { verificationEmail, setVerificationEmail } = props;
 
   const handleChangeVerification: (event: React.ChangeEvent<any>) => void = (
     event
   ) => {
     switch (event.target.name) {
       case "verification-email":
-        setVerificationEmail(event.target.value)
-        break
+        setVerificationEmail(event.target.value);
+        break;
     }
-  }
+  };
 
   const handleSubmitVerification: (event: React.FormEvent) => void = (
     event
   ) => {
-    console.log("handle submit verification")
-    event.preventDefault()
+    console.log("handle submit verification");
+    event.preventDefault();
 
     const payload: EmailToVerify = {
       email: verificationEmail,
-    }
+    };
 
     axios
       .post(
@@ -47,14 +47,14 @@ const VerificationForm: React.FC<Props> = (props: Props) => {
         qs.stringify(payload)
       )
       .then((res: AxiosResponse) => {
-        alert("Verification email sent. Check your inbox.")
-        setVerificationEmail("")
-        window.scrollTo(0, 0)
+        alert("Verification email sent. Check your inbox.");
+        setVerificationEmail("");
+        window.scrollTo(0, 0);
       })
       .catch((err: AxiosError) => {
-        console.log(err)
-      })
-  }
+        console.log(err);
+      });
+  };
 
   return (
     <div key='user-verification'>
@@ -95,18 +95,18 @@ const VerificationForm: React.FC<Props> = (props: Props) => {
         </form>
       </MDBContainer>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps: (state: RootState) => void = (state) => ({
   verificationEmail: state.loginState.verificationEmail,
-})
+});
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     dispatch,
     ...bindActionCreators({ setVerificationEmail }, dispatch),
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(VerificationForm)
+export default connect(mapStateToProps, mapDispatchToProps)(VerificationForm);

@@ -20,7 +20,7 @@ import {
   setUserLastName,
 } from "../../../actions/actions";
 import * as Actions from "../../../types/Actions";
-import "./UserPortalNav.scss";
+import "./UserPortalNav.css";
 
 interface Props {
   loggedIn: boolean;
@@ -63,31 +63,31 @@ const UserPortalNav: React.FC<Props> = (props: Props) => {
   }, []);
 
   return (
-    <div className="user-portal" key="login-page">
+    <div className='user-portal' key='login-page'>
       {loggedIn ? (
         <div>
-          <MDBNavbar className="login-panel" dark expand="md">
+          <MDBNavbar className='login-panel' dark expand='md'>
             <MDBContainer>
               <MDBNavbarBrand>
-                <strong className="white-text user-portal-logo">
+                <strong className='white-text user-portal-logo'>
                   User Portal
                 </strong>
               </MDBNavbarBrand>
               <MDBHamburgerToggler
-                color="#fff"
-                className="hamburger1"
-                id="hamburger2"
+                color='#fff'
+                className='hamburger1'
+                id='hamburger2'
                 onClick={handleToggleLoginPanel}
               />
               <MDBCollapse
-                id="navbarCollapse3"
+                id='navbarCollapse3'
                 isOpen={toggleLoginPanel}
                 navbar
               >
                 <MDBNavbarNav right>
                   <MDBNavItem>
-                    <a className="user-portal-link" onClick={logOut}>
-                      Logout <MDBIcon icon="key" />
+                    <a className='user-portal-link' onClick={logOut}>
+                      Logout <MDBIcon icon='key' />
                     </a>
                   </MDBNavItem>
                 </MDBNavbarNav>
@@ -97,54 +97,54 @@ const UserPortalNav: React.FC<Props> = (props: Props) => {
         </div>
       ) : (
         <div>
-          <MDBNavbar className="login-panel" dark expand="md">
+          <MDBNavbar className='login-panel' dark expand='md'>
             <MDBContainer>
               <MDBNavbarBrand>
-                <strong className="white-text user-portal-logo">
+                <strong className='white-text user-portal-logo'>
                   User Portal
                 </strong>
               </MDBNavbarBrand>
               <MDBHamburgerToggler
-                color="#fff"
-                className="hamburger1"
-                id="hamburger2"
+                color='#fff'
+                className='hamburger1'
+                id='hamburger2'
                 onClick={handleToggleLoginPanel}
               />
               <MDBCollapse
-                id="navbarCollapse3"
+                id='navbarCollapse3'
                 isOpen={toggleLoginPanel}
                 navbar
               >
-                <MDBNavbarNav justify="true">
+                <MDBNavbarNav justify='true'>
                   <MDBNavItem>
-                    <Link to="/forum/login" className="user-portal-link">
-                      Login <MDBIcon icon="key" />
+                    <Link to='/forum/login' className='user-portal-link'>
+                      Login <MDBIcon icon='key' />
                     </Link>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <Link to="/forum/register" className="user-portal-link">
-                      Register <MDBIcon far icon="edit" />
+                    <Link to='/forum/register' className='user-portal-link'>
+                      Register <MDBIcon far icon='edit' />
                     </Link>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <Link to="/forum/verify" className="user-portal-link">
-                      Resend Email <MDBIcon far icon="envelope" />
-                    </Link>
-                  </MDBNavItem>
-                  <MDBNavItem>
-                    <Link
-                      to="/forum/reset-password"
-                      className="user-portal-link"
-                    >
-                      Reset Password <MDBIcon icon="unlock-alt" />
+                    <Link to='/forum/verify' className='user-portal-link'>
+                      Resend Email <MDBIcon far icon='envelope' />
                     </Link>
                   </MDBNavItem>
                   <MDBNavItem>
                     <Link
-                      to="/forum/forgot-password"
-                      className="user-portal-link"
+                      to='/forum/reset-password'
+                      className='user-portal-link'
                     >
-                      Forgot Password <MDBIcon far icon="question-circle" />
+                      Reset Password <MDBIcon icon='unlock-alt' />
+                    </Link>
+                  </MDBNavItem>
+                  <MDBNavItem>
+                    <Link
+                      to='/forum/forgot-password'
+                      className='user-portal-link'
+                    >
+                      Forgot Password <MDBIcon far icon='question-circle' />
                     </Link>
                   </MDBNavItem>
                 </MDBNavbarNav>

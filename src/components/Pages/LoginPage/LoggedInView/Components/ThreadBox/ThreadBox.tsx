@@ -1,28 +1,28 @@
-import { ReactNode, useState } from "react"
-import React from "react"
-import { MDBInput, MDBBtn, MDBCard, MDBCardTitle, MDBCardText } from "mdbreact"
-import axios, { AxiosError, AxiosResponse } from "axios"
-import qs from "qs"
-import { connect } from "react-redux"
-import Reply from "../../../../../../types/Boards/Reply"
-import ReplyToSubmit from "../../../../../../types/PostRequests/Reply"
-import SelectedReply from "../../../../../../types/PostRequests/SelectedReply"
-import SelectedThread from "../../../../../../types/PostRequests/SelectedThread"
-import "./ThreadBox.scss"
-import RootState from "../../../../../../types/State/Root/State"
+import { ReactNode, useState } from "react";
+import React from "react";
+import { MDBInput, MDBBtn, MDBCard, MDBCardTitle, MDBCardText } from "mdbreact";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import qs from "qs";
+import { connect } from "react-redux";
+import Reply from "../../../../../../types/Boards/Reply";
+import ReplyToSubmit from "../../../../../../types/PostRequests/Reply";
+import SelectedReply from "../../../../../../types/PostRequests/SelectedReply";
+import SelectedThread from "../../../../../../types/PostRequests/SelectedThread";
+import "./ThreadBox.css";
+import RootState from "../../../../../../types/State/Root/State";
 
 interface Props {
-  currentBoardName: string
-  threadId: string
-  userFirstName: string
-  title: string
-  content: string
-  replies: Array<Reply>
-  submittedOn: string
-  userId: string
-  loggedIn: boolean
-  currentUserFirstName: string
-  currentUserId: string
+  currentBoardName: string;
+  threadId: string;
+  userFirstName: string;
+  title: string;
+  content: string;
+  replies: Array<Reply>;
+  submittedOn: string;
+  userId: string;
+  loggedIn: boolean;
+  currentUserFirstName: string;
+  currentUserId: string;
 }
 
 const ThreadBox: React.FC<Props> = (props: Props) => {
@@ -38,18 +38,18 @@ const ThreadBox: React.FC<Props> = (props: Props) => {
     userFirstName: currentUserFirstName,
     currentUserId,
     userId,
-  } = props
+  } = props;
 
-  const [showAllReplies, setShowAllReplies] = useState<boolean>(false)
-  const [reply, setReply] = useState<string>("")
+  const [showAllReplies, setShowAllReplies] = useState<boolean>(false);
+  const [reply, setReply] = useState<string>("");
 
   const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
-    setReply(event.target.value)
-  }
+    setReply(event.target.value);
+  };
 
   const handleSubmit: (event: React.FormEvent) => void = (event) => {
-    event.preventDefault()
-    setReply("")
+    event.preventDefault();
+    setReply("");
 
     let payload: ReplyToSubmit = {
       currentBoardName: currentBoardName,
@@ -57,7 +57,7 @@ const ThreadBox: React.FC<Props> = (props: Props) => {
       userId: currentUserId,
       userFirstName: currentUserFirstName,
       reply: reply, // send current user id
-    }
+    };
 
     axios
       .post(
@@ -65,52 +65,52 @@ const ThreadBox: React.FC<Props> = (props: Props) => {
         qs.stringify(payload)
       )
       .then((res: AxiosResponse) => {
-        alert("reply submitted.")
-        window.location.reload()
+        alert("reply submitted.");
+        window.location.reload();
       })
       .catch((err: AxiosError) => {
-        console.log(err)
-      })
-  }
+        console.log(err);
+      });
+  };
 
   const handleDeleteReply: (replyId: string) => void = (replyId) => {
     let payload: SelectedReply = {
       currentBoardName: currentBoardName,
       threadId: threadId,
       replyId: replyId,
-    }
+    };
 
     axios
       .delete("https://city-walks-production.up.railway.app/delete-reply", {
         data: payload,
       })
       .then((res: AxiosResponse) => {
-        alert("reply deleted.")
-        window.location.reload()
+        alert("reply deleted.");
+        window.location.reload();
       })
       .catch((err: AxiosError) => {
-        console.log(err)
-      })
-  }
+        console.log(err);
+      });
+  };
 
   const handleDeleteThread: (threadId: string) => void = (threadId) => {
     let payload: SelectedThread = {
       currentBoardName: currentBoardName,
       threadId: threadId,
-    }
+    };
 
     axios
       .delete("https://city-walks-production.up.railway.app/delete-thread", {
         data: payload,
       })
       .then((res: AxiosResponse) => {
-        alert("thread deleted.")
-        window.location.reload()
+        alert("thread deleted.");
+        window.location.reload();
       })
       .catch((err: AxiosError) => {
-        console.log(err)
-      })
-  }
+        console.log(err);
+      });
+  };
 
   const replyComponents: Array<ReactNode> = replies.map(
     (reply: Reply, index: number) => {
@@ -125,16 +125,16 @@ const ThreadBox: React.FC<Props> = (props: Props) => {
             </MDBBtn>
           )}
         </div>
-      )
+      );
     }
-  )
+  );
 
-  let displayReplies: Array<ReactNode>
+  let displayReplies: Array<ReactNode>;
   if (showAllReplies) {
-    displayReplies = replyComponents
+    displayReplies = replyComponents;
   } else {
     // if end is greater than array length, slice uses the array length as the last index
-    displayReplies = replyComponents.slice(0, 3)
+    displayReplies = replyComponents.slice(0, 3);
   }
 
   return (
@@ -187,16 +187,16 @@ const ThreadBox: React.FC<Props> = (props: Props) => {
         )}
       </form>
     </MDBCard>
-  )
-}
+  );
+};
 
 const mapStateToProps: (state: RootState) => void = (state) => ({
   loggedIn: state.loginState.loggedIn,
   userFirstName: state.loginState.userFirstName,
   currentUserId: state.loginState.userId,
-})
+});
 
-export default connect(mapStateToProps, null)(ThreadBox)
+export default connect(mapStateToProps, null)(ThreadBox);
 
 // // setter
 // localStorage.setItem('myData', data);

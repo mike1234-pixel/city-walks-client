@@ -1,13 +1,12 @@
 import React, { useState } from "react"
 import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
-import axios, { AxiosError, AxiosResponse } from "axios";
-import qs from "qs";
-import toTitleCase from '../../../../functions/toTitleCase'
-import BlogPost from "../../../../types/PostRequests/BlogPost";
-import './AddBlogPostForm.scss'
+import axios, { AxiosError, AxiosResponse } from "axios"
+import qs from "qs"
+import toTitleCase from "../../../../functions/toTitleCase"
+import BlogPost from "../../../../types/PostRequests/BlogPost"
+import "./AddBlogPostForm.css"
 
 const AddBlogPostForm: React.FC = () => {
-
   const [postTitle, setPostTitle] = useState<string>("")
   const [postSubTitle, setPostSubTitle] = useState<string>("")
   const [postContent, setPostContent] = useState<string>("")
@@ -18,19 +17,19 @@ const AddBlogPostForm: React.FC = () => {
     switch (event.target.name) {
       case "post-title":
         setPostTitle(event.target.value)
-        break;
+        break
       case "post-subtitle":
         setPostSubTitle(event.target.value)
-        break;
+        break
       case "post-content":
         setPostContent(event.target.value)
-        break;
+        break
       case "post-img-link":
         setPostImgLink(event.target.value)
-        break;
+        break
       case "post-author":
         setPostAuthor(event.target.value)
-        break;
+        break
     }
   }
 
@@ -42,20 +41,24 @@ const AddBlogPostForm: React.FC = () => {
       subtitle: toTitleCase(postSubTitle),
       content: postContent,
       img: postImgLink,
-      author: toTitleCase(postAuthor)
-    };
+      author: toTitleCase(postAuthor),
+    }
 
     axios
-      .post("https://city-walks.herokuapp.com/add-blog-post", qs.stringify(payload))
+      .post(
+        "https://city-walks.herokuapp.com/add-blog-post",
+        qs.stringify(payload)
+      )
       .then((res: AxiosResponse) => {
         if (res.data === "blog post saved") {
           console.log("blog post saved.")
         } else {
           console.log("blog not saved")
         }
-      }).catch((err: AxiosError) => {
+      })
+      .catch((err: AxiosError) => {
         console.log(err)
-      });;
+      })
 
     alert("Blog Post Submitted")
     setPostTitle("")
@@ -63,20 +66,61 @@ const AddBlogPostForm: React.FC = () => {
     setPostContent("")
     setPostImgLink("")
     setPostAuthor("")
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0)
   }
 
   return (
     <div>
       <h2>Add Blog Post</h2>
-      <form onSubmit={handleSubmit} className="add-blog-post-form">
-        <MDBInput type="text" name="post-title" id="post-title" value={postTitle} label="post title" onChange={handleChange} required />
-        <MDBInput type="text" name="post-subtitle" id="post-subtitle" value={postSubTitle} label="post sub-title" onChange={handleChange} required />
-        <MDBInput type="textarea" rows="10" name="post-content" id="post-content" value={postContent} label="post content" onChange={handleChange} required />
-        <MDBInput type="text" name="post-img-link" id="post-img-link" value={postImgLink} label="post image link" onChange={handleChange} required />
-        <MDBInput type="text" name="post-author" id="post-author" value={postAuthor} label="post author" onChange={handleChange} required />
-        <MDBBtn outline color="elegant" type="submit">
-          Add Blog Post <MDBIcon icon="plus" />
+      <form onSubmit={handleSubmit} className='add-blog-post-form'>
+        <MDBInput
+          type='text'
+          name='post-title'
+          id='post-title'
+          value={postTitle}
+          label='post title'
+          onChange={handleChange}
+          required
+        />
+        <MDBInput
+          type='text'
+          name='post-subtitle'
+          id='post-subtitle'
+          value={postSubTitle}
+          label='post sub-title'
+          onChange={handleChange}
+          required
+        />
+        <MDBInput
+          type='textarea'
+          rows='10'
+          name='post-content'
+          id='post-content'
+          value={postContent}
+          label='post content'
+          onChange={handleChange}
+          required
+        />
+        <MDBInput
+          type='text'
+          name='post-img-link'
+          id='post-img-link'
+          value={postImgLink}
+          label='post image link'
+          onChange={handleChange}
+          required
+        />
+        <MDBInput
+          type='text'
+          name='post-author'
+          id='post-author'
+          value={postAuthor}
+          label='post author'
+          onChange={handleChange}
+          required
+        />
+        <MDBBtn outline color='elegant' type='submit'>
+          Add Blog Post <MDBIcon icon='plus' />
         </MDBBtn>
       </form>
     </div>

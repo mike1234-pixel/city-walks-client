@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"
 import {
   MDBBtn,
   MDBNavbar,
@@ -11,36 +11,36 @@ import {
   MDBIcon,
   MDBInput,
   MDBContainer,
-} from "mdbreact";
-import axios, { AxiosError, AxiosResponse } from "axios";
-import qs from "qs";
-import Credentials from "../../../types/PostRequests/Credentials";
-import "./Admin.scss";
-import DisplayForm from "./DisplayForm";
+} from "mdbreact"
+import axios, { AxiosError, AxiosResponse } from "axios"
+import qs from "qs"
+import Credentials from "../../../types/PostRequests/Credentials"
+import "./Admin.css"
+import DisplayForm from "./DisplayForm"
 
 const Admin: React.FC = () => {
-  const [form, setForm] = useState<string>("");
-  const [toggleAdminPanel, setToggleAdminPanel] = useState<boolean>(false);
+  const [form, setForm] = useState<string>("")
+  const [toggleAdminPanel, setToggleAdminPanel] = useState<boolean>(false)
 
   const handleToggleAdminPanel: () => void = () => {
-    setToggleAdminPanel(!toggleAdminPanel);
-  };
+    setToggleAdminPanel(!toggleAdminPanel)
+  }
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  });
+    window.scrollTo(0, 0)
+  })
 
-  const [adminUserName, setAdminUserName] = useState<string>("");
-  const [adminPassword, setAdminPassword] = useState<string>("");
-  const [adminLoggedIn, setAdminLoggedIn] = useState<boolean>(false);
+  const [adminUserName, setAdminUserName] = useState<string>("")
+  const [adminPassword, setAdminPassword] = useState<string>("")
+  const [adminLoggedIn, setAdminLoggedIn] = useState<boolean>(false)
 
   const handleSubmitAdminLogin: (event: React.FormEvent) => void = (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     const payload: Credentials = {
       username: adminUserName,
       password: adminPassword,
-    };
+    }
 
     axios
       .post(
@@ -49,104 +49,104 @@ const Admin: React.FC = () => {
       )
       .then((res: AxiosResponse) => {
         if (res.data === "unsuccessful login attempt") {
-          alert("Unsuccessful Login Attempt. Please Try Again.");
+          alert("Unsuccessful Login Attempt. Please Try Again.")
         } else {
-          alert("Successfully Logged In");
-          setAdminLoggedIn(true);
-          setAdminUserName("");
-          setAdminPassword("");
-          window.scrollTo(0, 0);
+          alert("Successfully Logged In")
+          setAdminLoggedIn(true)
+          setAdminUserName("")
+          setAdminPassword("")
+          window.scrollTo(0, 0)
         }
       })
       .catch((err: AxiosError) => {
-        console.log(err);
-      });
-  };
+        console.log(err)
+      })
+  }
 
   const handleChangeAdminLogin: (event: React.ChangeEvent<any>) => void = (
     event
   ) => {
     switch (event.target.name) {
       case "admin-username":
-        setAdminUserName(event.target.value);
-        break;
+        setAdminUserName(event.target.value)
+        break
       case "admin-password":
-        setAdminPassword(event.target.value);
-        break;
+        setAdminPassword(event.target.value)
+        break
     }
-  };
+  }
 
   const adminLogOut: () => void = () => {
-    setAdminLoggedIn(false);
-  };
+    setAdminLoggedIn(false)
+  }
 
   return (
-    <div className="admin-portal page">
+    <div className='admin-portal page'>
       {adminLoggedIn ? (
         <div>
-          <MDBNavbar className="admin-panel" dark expand="md">
+          <MDBNavbar className='admin-panel' dark expand='md'>
             <MDBContainer>
               <MDBNavbarBrand>
-                <strong className="white-text">Admin Portal</strong>
+                <strong className='white-text'>Admin Portal</strong>
               </MDBNavbarBrand>
               <MDBHamburgerToggler
-                color="#fff"
-                className="hamburger1"
-                id="hamburger2"
+                color='#fff'
+                className='hamburger1'
+                id='hamburger2'
                 onClick={handleToggleAdminPanel}
               />
               <MDBCollapse
-                id="navbarCollapse3"
+                id='navbarCollapse3'
                 isOpen={toggleAdminPanel}
                 navbar
               >
                 <MDBNavbarNav left>
                   <MDBNavItem>
-                    <MDBNavLink to="#!" onClick={() => setForm("addWalk")}>
+                    <MDBNavLink to='#!' onClick={() => setForm("addWalk")}>
                       Add Walk
                     </MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to="#!" onClick={() => setForm("addCity")}>
+                    <MDBNavLink to='#!' onClick={() => setForm("addCity")}>
                       Add City
                     </MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
                     <MDBNavLink
-                      to="#!"
+                      to='#!'
                       onClick={() => setForm("setFeaturedWalk")}
                     >
                       Set Featured Walk
                     </MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to="#!" onClick={() => setForm("deleteWalk")}>
+                    <MDBNavLink to='#!' onClick={() => setForm("deleteWalk")}>
                       Delete Walk
                     </MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to="#!" onClick={() => setForm("deleteCity")}>
+                    <MDBNavLink to='#!' onClick={() => setForm("deleteCity")}>
                       Delete City
                     </MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to="#!" onClick={() => setForm("addBoard")}>
+                    <MDBNavLink to='#!' onClick={() => setForm("addBoard")}>
                       Add Board
                     </MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to="#!" onClick={() => setForm("deleteBoard")}>
+                    <MDBNavLink to='#!' onClick={() => setForm("deleteBoard")}>
                       Delete Board
                     </MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to="#!" onClick={() => setForm("addBlogPost")}>
+                    <MDBNavLink to='#!' onClick={() => setForm("addBlogPost")}>
                       Add Blog Post
                     </MDBNavLink>
                   </MDBNavItem>
                   <MDBNavItem>
                     <MDBNavLink
-                      to="#!"
+                      to='#!'
                       onClick={() => setForm("deleteBlogPost")}
                     >
                       Delete Blog Post
@@ -155,7 +155,7 @@ const Admin: React.FC = () => {
                 </MDBNavbarNav>
                 <MDBNavbarNav right>
                   <MDBNavItem>
-                    <MDBNavLink to="#!" onClick={() => adminLogOut()}>
+                    <MDBNavLink to='#!' onClick={() => adminLogOut()}>
                       Admin Logout
                     </MDBNavLink>
                   </MDBNavItem>
@@ -172,35 +172,35 @@ const Admin: React.FC = () => {
         </div>
       ) : (
         <MDBContainer>
-          <form className="admin-login-form" onSubmit={handleSubmitAdminLogin}>
+          <form className='admin-login-form' onSubmit={handleSubmitAdminLogin}>
             <MDBInput
-              type="text"
-              name="admin-username"
-              id="admin-username"
+              type='text'
+              name='admin-username'
+              id='admin-username'
               value={adminUserName}
-              label="admin username"
+              label='admin username'
               onChange={handleChangeAdminLogin}
-              maxLength="70"
+              maxLength='70'
               required
             />
             <MDBInput
-              type="password"
-              name="admin-password"
-              id="admin-password"
+              type='password'
+              name='admin-password'
+              id='admin-password'
               value={adminPassword}
-              label="admin password"
+              label='admin password'
               onChange={handleChangeAdminLogin}
-              maxLength="70"
+              maxLength='70'
               required
             />
-            <MDBBtn outline color="elegant" type="submit">
-              Administrator Login <MDBIcon icon="sign-in-alt" />
+            <MDBBtn outline color='elegant' type='submit'>
+              Administrator Login <MDBIcon icon='sign-in-alt' />
             </MDBBtn>
           </form>
         </MDBContainer>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Admin;
+export default Admin

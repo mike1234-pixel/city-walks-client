@@ -6,7 +6,7 @@ import { MDBContainer } from "mdbreact";
 import { connect } from "react-redux";
 import Board from "../../../../types/Boards/Board";
 import RootState from "../../../../types/State/Root/State";
-import "./Boards.scss";
+import "./Boards.css";
 
 interface Props {
   boards: Array<Board>;
@@ -18,11 +18,11 @@ const Boards: React.FC<Props> = (props: Props) => {
 
   return (
     <div>
-      <div className="page-heading-container">
+      <div className='page-heading-container'>
         <UserPortalNav loggedIn={false} />
         <MDBContainer>
-          <h1 className="page-heading">Forum</h1>
-          <h2 className="login-heading">Welcome back {userFirstName}</h2>
+          <h1 className='page-heading'>Forum</h1>
+          <h2 className='login-heading'>Welcome back {userFirstName}</h2>
           <p>
             Here you can join in the discussion and put forward your own
             recomendations. Discussions are subdivided by category:
@@ -31,7 +31,7 @@ const Boards: React.FC<Props> = (props: Props) => {
       </div>
       <MDBContainer>
         {boards.length ? (
-          <div className="boards-container">
+          <div className='boards-container'>
             {boards.map((board) => {
               return (
                 <BoardBox
