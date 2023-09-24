@@ -52,6 +52,10 @@
     "ts-loader": "^9.2.8",
     "typescript": "^4.6.3"
   },
+  "engines": {
+    "node": "16.20.2",
+    "npm": "8.19.4"
+  },
   "proxy": "https://city-walks-production.up.railway.app",
   "browserslist": [
     ">0.2%",
