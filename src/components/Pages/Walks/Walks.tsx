@@ -1,21 +1,20 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import FilteredResults from "./FilteredWalks";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { setSearchValue } from "../../../actions/actions";
 import Walk from "../../../types/Walks/Walk";
 import RootState from "../../../types/State/Root/State";
-import WalkCard from "./WalkCard";
 import * as Actions from "../../../types/Actions";
 import "./Walks.css";
 
-interface Props {
+interface WalksProps {
   searchValue: string;
   setSearchValue: (inputValue: string) => Actions.HandleChangeSearch;
   walks: Array<Walk>;
 }
 
-const Walks: React.FC<Props> = (props: Props) => {
+const Walks = (props: WalksProps) => {
   const { searchValue, setSearchValue, walks } = props;
 
   const [pageNumber, setPageNumber] = useState<number>(0);

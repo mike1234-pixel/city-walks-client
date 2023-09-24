@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import {
@@ -18,12 +18,12 @@ import RootState from "../../types/State/Root/State";
 import * as Actions from "../../types/Actions";
 import "./Nav.css";
 
-interface Props {
+interface NavProps {
   redirect: boolean;
   setRedirect: (redirect: boolean) => Actions.SetRedirect;
 }
 
-const Nav: React.FC<Props> = (props: Props) => {
+const Nav = (props: NavProps) => {
   const [toggleNav, setToggleNav] = useState<boolean>(false);
   const [scroll, setScroll] = useState<boolean>(false);
 

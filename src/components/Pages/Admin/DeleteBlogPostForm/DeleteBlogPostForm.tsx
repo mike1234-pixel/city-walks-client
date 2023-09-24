@@ -1,27 +1,27 @@
-import React, { useState } from "react"
-import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
-import axios, { AxiosError, AxiosResponse } from "axios"
-import toTitleCase from "../../../../functions/toTitleCase"
-import SelectedPost from "../../../../types/PostRequests/SelectedPost"
-import "./DeleteBlogPostForm.css"
+import React, { useState } from "react";
+import { MDBInput, MDBBtn, MDBIcon } from "mdbreact";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import toTitleCase from "../../../../functions/toTitleCase";
+import SelectedPost from "../../../../types/PostRequests/SelectedPost";
+import "./DeleteBlogPostForm.css";
 
-const DeleteBlogPostForm: React.FC = () => {
-  const [postTitle, setPostTitle] = useState<string>("")
+const DeleteBlogPostForm = () => {
+  const [postTitle, setPostTitle] = useState<string>("");
 
   const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
     switch (event.target.name) {
       case "post-title":
-        setPostTitle(event.target.value)
-        break
+        setPostTitle(event.target.value);
+        break;
     }
-  }
+  };
 
   const handleSubmit: (event: React.FormEvent) => void = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     let payload: SelectedPost = {
       postTitle: toTitleCase(postTitle),
-    }
+    };
 
     axios
       .delete("https://city-walks.herokuapp.com/delete-blog-post", {
@@ -29,19 +29,19 @@ const DeleteBlogPostForm: React.FC = () => {
       })
       .then((res: AxiosResponse) => {
         if (res.data === "blog post deleted") {
-          console.log("blog post deleted")
+          console.log("blog post deleted");
         } else {
-          console.log("response not deleted")
+          console.log("response not deleted");
         }
       })
       .catch((err: AxiosError) => {
-        console.log(err)
-      })
+        console.log(err);
+      });
 
-    alert("Blog Post Deleted")
-    setPostTitle("")
-    window.scrollTo(0, 0)
-  }
+    alert("Blog Post Deleted");
+    setPostTitle("");
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div>
@@ -61,7 +61,7 @@ const DeleteBlogPostForm: React.FC = () => {
         </MDBBtn>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default DeleteBlogPostForm
+export default DeleteBlogPostForm;

@@ -1,14 +1,16 @@
-import { MDBContainer } from "mdbreact"
-import React from "react"
-import Location from "../../../types/Generic/Location"
-import "./NotFound404.css"
+import { MDBContainer } from "mdbreact";
+import Location from "../../../types/Generic/Location";
+import "./NotFound404.css";
 
-interface Props {
-  location: Location
+interface nf404Props {
+  location: Location;
 }
 
-const nf404: React.FC<Props> = ({ location }: { location: Location }) => {
-  const errorMessage: string = `404 Error: Page not found at ${location.pathname}`
+const nf404 = (props: nf404Props) => {
+
+  const { location } = props;
+
+  const errorMessage: string = `404 Error: Page not found at ${location.pathname}`;
 
   return (
     <MDBContainer>
@@ -18,7 +20,7 @@ const nf404: React.FC<Props> = ({ location }: { location: Location }) => {
         </div>
       </div>
     </MDBContainer>
-  )
-}
+  );
+};
 
-export default nf404
+export default nf404;

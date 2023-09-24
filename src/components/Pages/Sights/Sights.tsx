@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { MDBContainer } from "mdbreact";
 import { connect } from "react-redux";
@@ -7,11 +7,12 @@ import RootState from "../../../types/State/Root/State";
 import "./Sights.css";
 import SightCard from "./SightCard";
 
-interface Props {
+interface SightsProps {
   sights: Array<Sight>;
 }
 
-const Sights: React.FC<Props> = (props: Props) => {
+const Sights = (props: SightsProps) => {
+
   const { sights } = props;
 
   const [pageNumber, setPageNumber] = useState<number>(0);

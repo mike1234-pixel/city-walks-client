@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { MDBContainer } from "mdbreact";
 import ReactPaginate from "react-paginate";
 import { connect } from "react-redux";
@@ -10,13 +10,13 @@ import CityCard from "./CityCard";
 import * as Actions from "../../../types/Actions";
 import "./Cities.css";
 
-interface Props {
+interface CitiesProps {
   cities: Array<City>;
   handleClickSearch: (cityToSearch: string) => Actions.HandleClickSearch;
   setRedirect: (redirect: boolean) => Actions.SetRedirect;
 }
 
-const Cities: React.FC<any> = (props: Props) => {
+const Cities = (props: CitiesProps) => {
   const { cities, handleClickSearch, setRedirect } = props;
 
   const [pageNumber, setPageNumber] = useState<number>(0);

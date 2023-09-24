@@ -4,9 +4,8 @@ import {
   MDBMask,
   MDBView,
 } from "mdbreact";
-import React from "react";
 
-interface Props {
+interface SlideProps {
   slideNumber: number;
   imageSrc: string;
   imageDescription: string;
@@ -14,7 +13,7 @@ interface Props {
   description: string;
 }
 
-const Slide: React.FC<Props> = (props: Props) => {
+const Slide = (props: SlideProps) => {
   const { slideNumber, imageSrc, imageDescription, title, description } = props;
 
   return (

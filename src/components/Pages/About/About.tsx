@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { MDBContainer } from "mdbreact";
 import SectionA from "../../SectionA/SectionA";
 import SectionB from "../../SectionB/SectionB";
@@ -7,7 +7,8 @@ import aboutImage2 from "./assets/whitechapel-gallery-illustration.jpeg";
 import aboutImage3 from "./assets/john-soanes-museum-illustration.jpeg";
 import "./About.css";
 
-const About: React.FC = () => {
+const About = () => {
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

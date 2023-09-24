@@ -1,13 +1,12 @@
-import React from "react";
 import { MDBContainer } from "mdbreact";
 import "./PopUp.css";
 
-interface Props {
+interface PopUpProps {
   iframeLink: string;
   iframeTitle: string;
 }
 
-const PopUp: React.FC<Props> = (props: Props) => {
+const PopUp = (props: PopUpProps) => {
   const { iframeLink, iframeTitle } = props;
 
   return (

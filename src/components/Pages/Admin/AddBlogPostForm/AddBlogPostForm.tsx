@@ -1,40 +1,40 @@
-import React, { useState } from "react"
-import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
-import axios, { AxiosError, AxiosResponse } from "axios"
-import qs from "qs"
-import toTitleCase from "../../../../functions/toTitleCase"
-import BlogPost from "../../../../types/PostRequests/BlogPost"
-import "./AddBlogPostForm.css"
+import React, { useState } from "react";
+import { MDBInput, MDBBtn, MDBIcon } from "mdbreact";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import qs from "qs";
+import toTitleCase from "../../../../functions/toTitleCase";
+import BlogPost from "../../../../types/PostRequests/BlogPost";
+import "./AddBlogPostForm.css";
 
-const AddBlogPostForm: React.FC = () => {
-  const [postTitle, setPostTitle] = useState<string>("")
-  const [postSubTitle, setPostSubTitle] = useState<string>("")
-  const [postContent, setPostContent] = useState<string>("")
-  const [postImgLink, setPostImgLink] = useState<string>("")
-  const [postAuthor, setPostAuthor] = useState<string>("")
+const AddBlogPostForm = () => {
+  const [postTitle, setPostTitle] = useState<string>("");
+  const [postSubTitle, setPostSubTitle] = useState<string>("");
+  const [postContent, setPostContent] = useState<string>("");
+  const [postImgLink, setPostImgLink] = useState<string>("");
+  const [postAuthor, setPostAuthor] = useState<string>("");
 
   const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
     switch (event.target.name) {
       case "post-title":
-        setPostTitle(event.target.value)
-        break
+        setPostTitle(event.target.value);
+        break;
       case "post-subtitle":
-        setPostSubTitle(event.target.value)
-        break
+        setPostSubTitle(event.target.value);
+        break;
       case "post-content":
-        setPostContent(event.target.value)
-        break
+        setPostContent(event.target.value);
+        break;
       case "post-img-link":
-        setPostImgLink(event.target.value)
-        break
+        setPostImgLink(event.target.value);
+        break;
       case "post-author":
-        setPostAuthor(event.target.value)
-        break
+        setPostAuthor(event.target.value);
+        break;
     }
-  }
+  };
 
   const handleSubmit: (event: React.FormEvent) => void = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     let payload: BlogPost = {
       title: toTitleCase(postTitle),
@@ -42,7 +42,7 @@ const AddBlogPostForm: React.FC = () => {
       content: postContent,
       img: postImgLink,
       author: toTitleCase(postAuthor),
-    }
+    };
 
     axios
       .post(
@@ -51,23 +51,23 @@ const AddBlogPostForm: React.FC = () => {
       )
       .then((res: AxiosResponse) => {
         if (res.data === "blog post saved") {
-          console.log("blog post saved.")
+          console.log("blog post saved.");
         } else {
-          console.log("blog not saved")
+          console.log("blog not saved");
         }
       })
       .catch((err: AxiosError) => {
-        console.log(err)
-      })
+        console.log(err);
+      });
 
-    alert("Blog Post Submitted")
-    setPostTitle("")
-    setPostSubTitle("")
-    setPostContent("")
-    setPostImgLink("")
-    setPostAuthor("")
-    window.scrollTo(0, 0)
-  }
+    alert("Blog Post Submitted");
+    setPostTitle("");
+    setPostSubTitle("");
+    setPostContent("");
+    setPostImgLink("");
+    setPostAuthor("");
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div>
@@ -124,7 +124,7 @@ const AddBlogPostForm: React.FC = () => {
         </MDBBtn>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default AddBlogPostForm
+export default AddBlogPostForm;

@@ -1,38 +1,38 @@
-import React, { useState } from "react"
-import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
-import axios, { AxiosError, AxiosResponse } from "axios"
-import qs from "qs"
-import toTitleCase from "../../../../functions/toTitleCase"
-import FeaturedWalks from "../../../../types/PostRequests/FeaturedWalks"
-import "./SetFeaturedWalkForm.css"
+import React, { useState } from "react";
+import { MDBInput, MDBBtn, MDBIcon } from "mdbreact";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import qs from "qs";
+import toTitleCase from "../../../../functions/toTitleCase";
+import FeaturedWalks from "../../../../types/PostRequests/FeaturedWalks";
+import "./SetFeaturedWalkForm.css";
 
-const SetFeaturedWalkForm: React.FC = () => {
-  const [featuredWalk1, setFeaturedWalk1] = useState<string>("")
-  const [featuredWalk2, setFeaturedWalk2] = useState<string>("")
-  const [featuredWalk3, setFeaturedWalk3] = useState<string>("")
+const SetFeaturedWalkForm = () => {
+  const [featuredWalk1, setFeaturedWalk1] = useState<string>("");
+  const [featuredWalk2, setFeaturedWalk2] = useState<string>("");
+  const [featuredWalk3, setFeaturedWalk3] = useState<string>("");
 
   const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
     switch (event.target.name) {
       case "featured-walk-1":
-        setFeaturedWalk1(event.target.value)
-        break
+        setFeaturedWalk1(event.target.value);
+        break;
       case "featured-walk-2":
-        setFeaturedWalk2(event.target.value)
-        break
+        setFeaturedWalk2(event.target.value);
+        break;
       case "featured-walk-3":
-        setFeaturedWalk3(event.target.value)
-        break
+        setFeaturedWalk3(event.target.value);
+        break;
     }
-  }
+  };
 
   const handleSubmit: (event: React.FormEvent) => void = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     let payload: FeaturedWalks = {
       featuredWalk1: toTitleCase(featuredWalk1),
       featuredWalk2: toTitleCase(featuredWalk2),
       featuredWalk3: toTitleCase(featuredWalk3),
-    }
+    };
 
     axios
       .patch(
@@ -41,20 +41,20 @@ const SetFeaturedWalkForm: React.FC = () => {
       )
       .then((res: AxiosResponse) => {
         if (res.data === "featured walk set") {
-          console.log("featured walk set")
+          console.log("featured walk set");
         } else {
-          console.log("featured walk not set")
+          console.log("featured walk not set");
         }
       })
       .catch((err: AxiosError) => {
-        console.log(err)
-      })
-    alert("Featured walks set")
-    setFeaturedWalk1("")
-    setFeaturedWalk2("")
-    setFeaturedWalk3("")
-    window.scrollTo(0, 0)
-  }
+        console.log(err);
+      });
+    alert("Featured walks set");
+    setFeaturedWalk1("");
+    setFeaturedWalk2("");
+    setFeaturedWalk3("");
+    window.scrollTo(0, 0);
+  };
   return (
     <div>
       <h2>Set Featured Walks</h2>
@@ -101,7 +101,7 @@ const SetFeaturedWalkForm: React.FC = () => {
         </MDBBtn>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default SetFeaturedWalkForm
+export default SetFeaturedWalkForm;

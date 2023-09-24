@@ -1,58 +1,58 @@
-import React, { useState } from "react"
-import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
-import axios, { AxiosError, AxiosResponse } from "axios"
-import qs from "qs"
-import toTitleCase from "../../../../functions/toTitleCase"
-import City from "../../../../types/PostRequests/City"
-import "./AddCityForm.css"
+import React, { useState } from "react";
+import { MDBInput, MDBBtn, MDBIcon } from "mdbreact";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import qs from "qs";
+import toTitleCase from "../../../../functions/toTitleCase";
+import City from "../../../../types/PostRequests/City";
+import "./AddCityForm.css";
 
-const AddCityForm: React.FC = () => {
-  const [city, setCity] = useState<string>("")
-  const [description, setDescription] = useState<string>("")
-  const [img, setImg] = useState<string>("")
+const AddCityForm = () => {
+  const [city, setCity] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [img, setImg] = useState<string>("");
 
   const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
     switch (event.target.name) {
       case "city":
-        setCity(event.target.value)
-        break
+        setCity(event.target.value);
+        break;
       case "description":
-        setDescription(event.target.value)
-        break
+        setDescription(event.target.value);
+        break;
       case "img":
-        setImg(event.target.value)
-        break
+        setImg(event.target.value);
+        break;
     }
-  }
+  };
 
   const handleSubmit: (event: React.FormEvent) => void = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     let payload: City = {
       city: toTitleCase(city),
       description: description,
       img: img,
-    }
+    };
 
     axios
       .post("https://city-walks.herokuapp.com/add-city", qs.stringify(payload))
       .then((res: AxiosResponse) => {
         if (res.data === "city saved") {
-          console.log("city saved")
+          console.log("city saved");
         } else {
-          console.log("city not saved")
+          console.log("city not saved");
         }
       })
       .catch((err: AxiosError) => {
-        console.log(err)
-      })
+        console.log(err);
+      });
 
-    alert("City Submitted")
-    setCity("")
-    setDescription("")
-    setImg("")
-    window.scrollTo(0, 0)
-  }
+    alert("City Submitted");
+    setCity("");
+    setDescription("");
+    setImg("");
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div>
@@ -93,7 +93,7 @@ const AddCityForm: React.FC = () => {
         </MDBBtn>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default AddCityForm
+export default AddCityForm;

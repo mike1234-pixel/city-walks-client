@@ -1,23 +1,23 @@
-import React, { useState } from "react"
-import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
-import axios, { AxiosError, AxiosResponse } from "axios"
-import toTitleCase from "../../../../functions/toTitleCase"
-import SelectedBoard from "../../../../types/PostRequests/SelectedBoard"
-import "./DeleteBoardForm.css"
+import React, { useState } from "react";
+import { MDBInput, MDBBtn, MDBIcon } from "mdbreact";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import toTitleCase from "../../../../functions/toTitleCase";
+import SelectedBoard from "../../../../types/PostRequests/SelectedBoard";
+import "./DeleteBoardForm.css";
 
-const DeleteBoardForm: React.FC = () => {
-  const [boardName, setBoardName] = useState<string>("")
+const DeleteBoardForm = () => {
+  const [boardName, setBoardName] = useState<string>("");
 
   const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
-    setBoardName(event.target.value)
-  }
+    setBoardName(event.target.value);
+  };
 
   const handleSubmit: (event: React.FormEvent) => void = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     const payload: SelectedBoard = {
       boardName: toTitleCase(boardName),
-    }
+    };
 
     axios
       .delete("https://city-walks.herokuapp.com/delete-board", {
@@ -25,19 +25,19 @@ const DeleteBoardForm: React.FC = () => {
       })
       .then((res: AxiosResponse) => {
         if (res.data === "board deleted") {
-          console.log("board deleted")
+          console.log("board deleted");
         } else {
-          console.log("board not deleted")
+          console.log("board not deleted");
         }
       })
       .catch((err: AxiosError) => {
-        console.log(err)
-      })
+        console.log(err);
+      });
 
-    alert("Board Deleted")
-    setBoardName("")
-    window.scrollTo(0, 0)
-  }
+    alert("Board Deleted");
+    setBoardName("");
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div>
@@ -57,7 +57,7 @@ const DeleteBoardForm: React.FC = () => {
         </MDBBtn>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default DeleteBoardForm
+export default DeleteBoardForm;

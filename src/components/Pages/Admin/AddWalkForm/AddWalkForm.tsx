@@ -1,112 +1,112 @@
-import React, { useState } from "react"
-import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
-import axios, { AxiosError, AxiosResponse } from "axios"
-import qs from "qs"
-import toTitleCase from "../../../../functions/toTitleCase"
-import Walk from "../../../../types/PostRequests/Walk"
-import "./AddWalkForm.css"
+import React, { useState } from "react";
+import { MDBInput, MDBBtn, MDBIcon } from "mdbreact";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import qs from "qs";
+import toTitleCase from "../../../../functions/toTitleCase";
+import Walk from "../../../../types/PostRequests/Walk";
+import "./AddWalkForm.css";
 
-const AddWalkForm: React.FC = () => {
-  const [walk, setWalk] = useState<string>("")
-  const [city, setCity] = useState<string>("")
-  const [description, setDescription] = useState<string>("")
-  const [startingPoint, setStartingPoint] = useState<string>("")
-  const [content1, setContent1] = useState<string>("")
-  const [content2, setContent2] = useState<string>("")
-  const [content3, setContent3] = useState<string>("")
-  const [coverImg, setCoverImg] = useState<string>("")
-  const [mapImg, setMapImg] = useState<string>("")
-  const [img1, setImg1] = useState<string>("")
-  const [img2, setImg2] = useState<string>("")
-  const [img3, setImg3] = useState<string>("")
-  const [author, setAuthor] = useState<string>("")
-  const [aboutTheAuthor, setAboutTheAuthor] = useState<string>("")
-  const [websiteLink, setWebsiteLink] = useState<string>("")
-  const [instagramLink, setInstagramLink] = useState<string>("")
-  const [facebookLink, setFacebookLink] = useState<string>("")
-  const [twitterLink, setTwitterLink] = useState<string>("")
-  const [lat, setLat] = useState<string>("")
-  const [lng, setLng] = useState<string>("")
-  const [length, setLength] = useState<string>("")
-  const [iframeLink, setIframeLink] = useState<string>("")
-  const [iframeTitle, setIframeTitle] = useState<string>("")
+const AddWalkForm = () => {
+  const [walk, setWalk] = useState<string>("");
+  const [city, setCity] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [startingPoint, setStartingPoint] = useState<string>("");
+  const [content1, setContent1] = useState<string>("");
+  const [content2, setContent2] = useState<string>("");
+  const [content3, setContent3] = useState<string>("");
+  const [coverImg, setCoverImg] = useState<string>("");
+  const [mapImg, setMapImg] = useState<string>("");
+  const [img1, setImg1] = useState<string>("");
+  const [img2, setImg2] = useState<string>("");
+  const [img3, setImg3] = useState<string>("");
+  const [author, setAuthor] = useState<string>("");
+  const [aboutTheAuthor, setAboutTheAuthor] = useState<string>("");
+  const [websiteLink, setWebsiteLink] = useState<string>("");
+  const [instagramLink, setInstagramLink] = useState<string>("");
+  const [facebookLink, setFacebookLink] = useState<string>("");
+  const [twitterLink, setTwitterLink] = useState<string>("");
+  const [lat, setLat] = useState<string>("");
+  const [lng, setLng] = useState<string>("");
+  const [length, setLength] = useState<string>("");
+  const [iframeLink, setIframeLink] = useState<string>("");
+  const [iframeTitle, setIframeTitle] = useState<string>("");
 
   const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
     switch (event.target.name) {
       case "walk":
-        setWalk(event.target.value)
-        break
+        setWalk(event.target.value);
+        break;
       case "city":
-        setCity(event.target.value)
-        break
+        setCity(event.target.value);
+        break;
       case "description":
-        setDescription(event.target.value)
-        break
+        setDescription(event.target.value);
+        break;
       case "starting-point":
-        setStartingPoint(event.target.value)
-        break
+        setStartingPoint(event.target.value);
+        break;
       case "content1":
-        setContent1(event.target.value)
-        break
+        setContent1(event.target.value);
+        break;
       case "content2":
-        setContent2(event.target.value)
-        break
+        setContent2(event.target.value);
+        break;
       case "content3":
-        setContent3(event.target.value)
-        break
+        setContent3(event.target.value);
+        break;
       case "cover-img":
-        setCoverImg(event.target.value)
-        break
+        setCoverImg(event.target.value);
+        break;
       case "map-img":
-        setMapImg(event.target.value)
-        break
+        setMapImg(event.target.value);
+        break;
       case "img1":
-        setImg1(event.target.value)
-        break
+        setImg1(event.target.value);
+        break;
       case "img2":
-        setImg2(event.target.value)
-        break
+        setImg2(event.target.value);
+        break;
       case "img3":
-        setImg3(event.target.value)
-        break
+        setImg3(event.target.value);
+        break;
       case "author":
-        setAuthor(event.target.value)
-        break
+        setAuthor(event.target.value);
+        break;
       case "about-the-author":
-        setAboutTheAuthor(event.target.value)
-        break
+        setAboutTheAuthor(event.target.value);
+        break;
       case "website-link":
-        setWebsiteLink(event.target.value)
-        break
+        setWebsiteLink(event.target.value);
+        break;
       case "instagram-link":
-        setInstagramLink(event.target.value)
-        break
+        setInstagramLink(event.target.value);
+        break;
       case "facebook-link":
-        setFacebookLink(event.target.value)
-        break
+        setFacebookLink(event.target.value);
+        break;
       case "twitter-link":
-        setTwitterLink(event.target.value)
-        break
+        setTwitterLink(event.target.value);
+        break;
       case "lat":
-        setLat(event.target.value)
-        break
+        setLat(event.target.value);
+        break;
       case "lng":
-        setLng(event.target.value)
-        break
+        setLng(event.target.value);
+        break;
       case "length":
-        setLength(event.target.value)
-        break
+        setLength(event.target.value);
+        break;
       case "iframe-link":
-        setIframeLink(event.target.value)
-        break
+        setIframeLink(event.target.value);
+        break;
       case "iframe-title":
-        setIframeTitle(event.target.value)
-        break
+        setIframeTitle(event.target.value);
+        break;
     }
-  }
+  };
 
   const handleSubmit: (event: React.FormEvent) => void = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     let payload: Walk = {
       walk: toTitleCase(walk),
@@ -132,46 +132,46 @@ const AddWalkForm: React.FC = () => {
       length,
       iframeLink,
       iframeTitle,
-    }
+    };
 
     axios
       .post("https://city-walks.herokuapp.com/add-walk", qs.stringify(payload))
       .then((res: AxiosResponse) => {
         if (res.data === "walk saved") {
-          console.log("walk saved")
+          console.log("walk saved");
         } else {
-          console.log("walk not saved")
+          console.log("walk not saved");
         }
       })
       .catch((err: AxiosError) => {
-        console.log(err)
-      })
+        console.log(err);
+      });
 
-    alert("Walk Submitted")
-    setWalk("")
-    setCity("")
-    setDescription("")
-    setStartingPoint("")
-    setContent1("")
-    setContent2("")
-    setContent3("")
-    setCoverImg("")
-    setImg1("")
-    setImg2("")
-    setImg3("")
-    setAuthor("")
-    setAboutTheAuthor("")
-    setWebsiteLink("")
-    setInstagramLink("")
-    setFacebookLink("")
-    setTwitterLink("")
-    setLat("")
-    setLng("")
-    setLength("")
-    setIframeLink("")
-    setIframeTitle("")
-    window.scrollTo(0, 0)
-  }
+    alert("Walk Submitted");
+    setWalk("");
+    setCity("");
+    setDescription("");
+    setStartingPoint("");
+    setContent1("");
+    setContent2("");
+    setContent3("");
+    setCoverImg("");
+    setImg1("");
+    setImg2("");
+    setImg3("");
+    setAuthor("");
+    setAboutTheAuthor("");
+    setWebsiteLink("");
+    setInstagramLink("");
+    setFacebookLink("");
+    setTwitterLink("");
+    setLat("");
+    setLng("");
+    setLength("");
+    setIframeLink("");
+    setIframeTitle("");
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div>
@@ -396,7 +396,7 @@ const AddWalkForm: React.FC = () => {
         </MDBBtn>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default AddWalkForm
+export default AddWalkForm;

@@ -1,16 +1,10 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 import { GiWalkingBoot } from "react-icons/gi";
-import { connect } from "react-redux";
-import RootState from "../../types/State/Root/State";
 import FooterLink from "./FooterLink";
 import FooterCol from "./FooterCol";
 import "./Footer.css";
 
-const Footer: React.FC = () => {
-
-  const pushSlug: Function = useHistory().push;
+const Footer = () => {
 
   return (
     <MDBFooter className='font-small pt-4 mt-4 footer'>

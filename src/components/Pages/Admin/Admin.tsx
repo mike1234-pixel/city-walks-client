@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react";
 import {
   MDBBtn,
   MDBNavbar,
@@ -11,36 +11,36 @@ import {
   MDBIcon,
   MDBInput,
   MDBContainer,
-} from "mdbreact"
-import axios, { AxiosError, AxiosResponse } from "axios"
-import qs from "qs"
-import Credentials from "../../../types/PostRequests/Credentials"
-import "./Admin.css"
-import DisplayForm from "./DisplayForm"
+} from "mdbreact";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import qs from "qs";
+import Credentials from "../../../types/PostRequests/Credentials";
+import "./Admin.css";
+import DisplayForm from "./DisplayForm";
 
-const Admin: React.FC = () => {
-  const [form, setForm] = useState<string>("")
-  const [toggleAdminPanel, setToggleAdminPanel] = useState<boolean>(false)
+const Admin = () => {
+  const [form, setForm] = useState<string>("");
+  const [toggleAdminPanel, setToggleAdminPanel] = useState<boolean>(false);
 
   const handleToggleAdminPanel: () => void = () => {
-    setToggleAdminPanel(!toggleAdminPanel)
-  }
+    setToggleAdminPanel(!toggleAdminPanel);
+  };
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  })
+    window.scrollTo(0, 0);
+  });
 
-  const [adminUserName, setAdminUserName] = useState<string>("")
-  const [adminPassword, setAdminPassword] = useState<string>("")
-  const [adminLoggedIn, setAdminLoggedIn] = useState<boolean>(false)
+  const [adminUserName, setAdminUserName] = useState<string>("");
+  const [adminPassword, setAdminPassword] = useState<string>("");
+  const [adminLoggedIn, setAdminLoggedIn] = useState<boolean>(false);
 
   const handleSubmitAdminLogin: (event: React.FormEvent) => void = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     const payload: Credentials = {
       username: adminUserName,
       password: adminPassword,
-    }
+    };
 
     axios
       .post(
@@ -49,36 +49,36 @@ const Admin: React.FC = () => {
       )
       .then((res: AxiosResponse) => {
         if (res.data === "unsuccessful login attempt") {
-          alert("Unsuccessful Login Attempt. Please Try Again.")
+          alert("Unsuccessful Login Attempt. Please Try Again.");
         } else {
-          alert("Successfully Logged In")
-          setAdminLoggedIn(true)
-          setAdminUserName("")
-          setAdminPassword("")
-          window.scrollTo(0, 0)
+          alert("Successfully Logged In");
+          setAdminLoggedIn(true);
+          setAdminUserName("");
+          setAdminPassword("");
+          window.scrollTo(0, 0);
         }
       })
       .catch((err: AxiosError) => {
-        console.log(err)
-      })
-  }
+        console.log(err);
+      });
+  };
 
   const handleChangeAdminLogin: (event: React.ChangeEvent<any>) => void = (
     event
   ) => {
     switch (event.target.name) {
       case "admin-username":
-        setAdminUserName(event.target.value)
-        break
+        setAdminUserName(event.target.value);
+        break;
       case "admin-password":
-        setAdminPassword(event.target.value)
-        break
+        setAdminPassword(event.target.value);
+        break;
     }
-  }
+  };
 
   const adminLogOut: () => void = () => {
-    setAdminLoggedIn(false)
-  }
+    setAdminLoggedIn(false);
+  };
 
   return (
     <div className='admin-portal page'>
@@ -200,7 +200,7 @@ const Admin: React.FC = () => {
         </MDBContainer>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Admin
+export default Admin;

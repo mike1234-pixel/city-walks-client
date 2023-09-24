@@ -1,12 +1,11 @@
-import React from "react"
-import { MDBCarousel, MDBCarouselInner } from "mdbreact"
-import Slide from "./Slide"
-import carouselImage1 from "./assets/carousel-illustration-1-2.jpg"
-import carouselImage2 from "./assets/carousel-illustration-2-2.jpg"
-import carouselImage3 from "./assets/carousel-illustration-3-2.jpg"
-import "./Carousel.css"
+import { MDBCarousel, MDBCarouselInner } from "mdbreact";
+import Slide from "./Slide";
+import carouselImage1 from "./assets/carousel-illustration-1-2.jpg";
+import carouselImage2 from "./assets/carousel-illustration-2-2.jpg";
+import carouselImage3 from "./assets/carousel-illustration-3-2.jpg";
+import "./Carousel.css";
 
-const Carousel: React.FC = () => {
+const Carousel = () => {
   return (
     <div className='home-carousel'>
       <MDBCarousel
@@ -41,7 +40,7 @@ const Carousel: React.FC = () => {
         </MDBCarouselInner>
       </MDBCarousel>
     </div>
-  )
-}
+  );
+};
 
-export default Carousel
+export default Carousel;

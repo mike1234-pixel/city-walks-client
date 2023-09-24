@@ -1,4 +1,3 @@
-import React from "react";
 import {
   MDBCard,
   MDBCardImage,
@@ -12,7 +11,7 @@ import { GiWalkingBoot } from "react-icons/gi";
 import urlify from "../../../functions/urlify";
 import "./Walks.css";
 
-interface Props {
+interface WalkCardProps {
   id: string;
   imgSrc: string;
   name: string;
@@ -20,7 +19,7 @@ interface Props {
   description: string;
 }
 
-const WalkCard: React.FC<Props> = (props: Props) => {
+const WalkCard = (props: WalkCardProps) => {
   const { id, imgSrc, name, city, description } = props;
 
   return (

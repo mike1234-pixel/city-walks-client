@@ -1,11 +1,12 @@
-import React, { useEffect } from "react"
-import { MDBContainer } from "mdbreact"
-import "./PrivacyPolicy.css"
+import { useEffect } from "react";
+import { MDBContainer } from "mdbreact";
+import "./PrivacyPolicy.css";
 
-const PrivacyPolicy: React.FC = () => {
+const PrivacyPolicy = () => {
+
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <MDBContainer>
@@ -206,7 +207,7 @@ const PrivacyPolicy: React.FC = () => {
         <p>Helpline: 0303 123 1113</p>
       </div>
     </MDBContainer>
-  )
-}
+  );
+};
 
-export default PrivacyPolicy
+export default PrivacyPolicy;

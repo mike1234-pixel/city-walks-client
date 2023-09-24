@@ -1,13 +1,12 @@
-import React from "react"
-import "./LoadingBar.css"
+import "./LoadingBar.css";
 
-const LoadingBar: React.FC = () => {
+const LoadingBar = () => {
   return (
     <div className='loading-bar__container'>
       <p>Loading...</p>
       <div className='loading-bar'></div>
     </div>
-  )
-}
+  );
+};
 
-export default LoadingBar
+export default LoadingBar;

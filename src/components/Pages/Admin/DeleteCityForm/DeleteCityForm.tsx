@@ -1,45 +1,45 @@
-import React, { useState } from "react"
-import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
-import axios, { AxiosError, AxiosResponse } from "axios"
-import toTitleCase from "../../../../functions/toTitleCase"
-import SelectedCity from "../../../../types/PostRequests/SelectedCity"
-import "./DeleteCityForm.css"
+import React, { useState } from "react";
+import { MDBInput, MDBBtn, MDBIcon } from "mdbreact";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import toTitleCase from "../../../../functions/toTitleCase";
+import SelectedCity from "../../../../types/PostRequests/SelectedCity";
+import "./DeleteCityForm.css";
 
-const DeleteCityForm: React.FC = () => {
-  const [city, setCity] = useState<string>("")
+const DeleteCityForm = () => {
+  const [city, setCity] = useState<string>("");
 
   const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
     switch (event.target.name) {
       case "city":
-        setCity(event.target.value)
-        break
+        setCity(event.target.value);
+        break;
     }
-  }
+  };
 
   const handleSubmit: (event: React.FormEvent) => void = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     let payload: SelectedCity = {
       city: toTitleCase(city),
-    }
+    };
 
     axios
       .delete("https://city-walks.herokuapp.com/delete-city", { data: payload })
       .then((res: AxiosResponse) => {
         if (res.data === "city deleted") {
-          console.log("city deleted")
+          console.log("city deleted");
         } else {
-          console.log("city not deleted")
+          console.log("city not deleted");
         }
       })
       .catch((err: AxiosError) => {
-        console.log(err)
-      })
+        console.log(err);
+      });
 
-    alert("City Deleted")
-    setCity("")
-    window.scrollTo(0, 0)
-  }
+    alert("City Deleted");
+    setCity("");
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div>
@@ -59,7 +59,7 @@ const DeleteCityForm: React.FC = () => {
         </MDBBtn>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default DeleteCityForm
+export default DeleteCityForm;

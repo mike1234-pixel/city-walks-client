@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { MDBIcon, MDBAnimation, MDBBtn, MDBContainer } from "mdbreact";
 import SectionA from "../SectionA/SectionA";
 import SectionB from "../SectionB/SectionB";
@@ -14,12 +14,12 @@ import RootState from "../../types/State/Root/State";
 import WalkI from "../../types/Walks/Walk";
 import "./Walk.css";
 
-interface Props {
+interface WalkProps {
   walks: Array<WalkI>;
   history: History;
 }
 
-const Walk: React.FC<Props> = (props: Props) => {
+const Walk = (props: WalkProps) => {
   const { walks, history } = props;
 
   const [togglePopUp, setTogglePopUp] = useState<boolean>(false);

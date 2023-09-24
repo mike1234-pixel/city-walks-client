@@ -1,4 +1,3 @@
-import React from "react";
 import AddBlogPostForm from "./AddBlogPostForm/AddBlogPostForm";
 import AddCityForm from "./AddCityForm/AddCityForm";
 import AddWalkForm from "./AddWalkForm/AddWalkForm";
@@ -8,11 +7,11 @@ import DeleteCityForm from "./DeleteCityForm/DeleteCityForm";
 import DeleteWalkForm from "./DeleteWalkForm/DeleteWalkForm";
 import SetFeaturedWalkForm from "./SetFeaturedWalkForm/SetFeaturedWalkForm";
 
-interface Props {
+interface DisplayFormProps {
   form: string;
 }
 
-const DisplayForm: React.FC<Props> = (props: Props) => {
+const DisplayForm = (props: DisplayFormProps) => {
   const { form } = props;
 
   switch (form) {

@@ -17,7 +17,7 @@ import {
 import * as Actions from "../types/Actions";
 import "./App.css";
 
-interface Props {
+interface AppProps {
   saveBoards: (boards?: Array<Board>) => Actions.SaveBoards;
   saveSights: (sights?: Array<Sight>) => Actions.SaveSights;
   saveWalks: (walks?: Array<Walk>) => Actions.SaveWalks;
@@ -26,7 +26,7 @@ interface Props {
   privacyPopupVisible: boolean;
 }
 
-const App: React.FC<any> = (props: Props) => {
+const App: React.FC<any> = (props: AppProps) => {
   const {
     saveBoards,
     saveSights,

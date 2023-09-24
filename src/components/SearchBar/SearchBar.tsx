@@ -8,13 +8,14 @@ import { handleChangeSearch, setRedirect } from "../../actions/actions";
 import * as Actions from "../../types/Actions";
 import "./SeachBar.css";
 
-interface Props {
+interface SearchBarProps {
   handleChangeSearch: (inputValue: string) => Actions.HandleChangeSearch;
   setRedirect: (redirect: boolean) => Actions.SetRedirect;
   searchValue: string;
 }
 
-let SearchBar: React.FC<Props> = (props: Props) => {
+let SearchBar = (props: SearchBarProps) => {
+
   const { handleChangeSearch, setRedirect, searchValue } = props;
 
   function submitSearch(e: React.FormEvent) {

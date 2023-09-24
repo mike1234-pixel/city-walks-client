@@ -1,35 +1,35 @@
-import React, { useEffect } from "react"
-import { MDBBtn, MDBContainer } from "mdbreact"
-import { Link } from "react-router-dom"
-import Carousel from "../../Carousel/Carousel"
-import SectionA from "../../SectionA/SectionA"
-import SectionB from "../../SectionB/SectionB"
-import urlify from "../../../functions/urlify"
-import LocatorMap from "../../LocatorMap/LocatorMap"
-import LoadingBar from "../../LoadingBar/LoadingBar"
-import { GiWalkingBoot } from "react-icons/gi"
-import { RiArrowDropDownLine } from "react-icons/ri"
-import { connect } from "react-redux"
-import Walk from "../../../types/Walks/Walk"
-import { RootState } from "../../../store"
-import "./Home.css"
+import { useEffect } from "react";
+import { MDBBtn, MDBContainer } from "mdbreact";
+import { Link } from "react-router-dom";
+import Carousel from "../../Carousel/Carousel";
+import SectionA from "../../SectionA/SectionA";
+import SectionB from "../../SectionB/SectionB";
+import urlify from "../../../functions/urlify";
+import LocatorMap from "../../LocatorMap/LocatorMap";
+import LoadingBar from "../../LoadingBar/LoadingBar";
+import { GiWalkingBoot } from "react-icons/gi";
+import { RiArrowDropDownLine } from "react-icons/ri";
+import { connect } from "react-redux";
+import Walk from "../../../types/Walks/Walk";
+import { RootState } from "../../../store";
+import "./Home.css";
 
-interface Props {
-  walks: Array<Walk>
+interface HomeProps {
+  walks: Array<Walk>;
 }
 
-const Home: React.FC<Props> = (props: Props) => {
-  const { walks } = props
+const Home = (props: HomeProps) => {
+  const { walks } = props;
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
-  let featuredWalks: Array<Walk> = walks.filter((walk) => walk.featuredWalk)
+  let featuredWalks: Array<Walk> = walks.filter((walk) => walk.featuredWalk);
 
   // if there are less than 3 featured walks set in the db just use the first 3 entries in walks
   if (featuredWalks.length < 3) {
-    featuredWalks = walks
+    featuredWalks = walks;
   }
 
   if (!walks.length) {
@@ -39,7 +39,7 @@ const Home: React.FC<Props> = (props: Props) => {
           <LoadingBar />
         </MDBContainer>
       </div>
-    )
+    );
   }
 
   return (
@@ -127,11 +127,11 @@ const Home: React.FC<Props> = (props: Props) => {
       </div>
       <LocatorMap walks={walks} />
     </MDBContainer>
-  )
-}
+  );
+};
 
 const mapStateToProps: (state: RootState) => void = (state) => ({
   walks: state.walksState.walks,
-})
+});
 
-export default connect(mapStateToProps, null)(Home)
+export default connect(mapStateToProps, null)(Home);

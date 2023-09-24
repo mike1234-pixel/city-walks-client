@@ -1,4 +1,3 @@
-import React from "react";
 import {
   MDBCard,
   MDBCardImage,
@@ -19,14 +18,14 @@ const stripMarkdown: (markup: string) => string = (markup) => {
     .replace(/<br\/>/g, "");
 };
 
-interface Props {
+interface SightCardProps {
   id: string;
   name: string;
   imgSrc: string;
   description: string;
 }
 
-const SightCard: React.FC<Props> = (props: Props) => {
+const SightCard = (props: SightCardProps) => {
   const { id, name, description, imgSrc } = props;
 
   return (

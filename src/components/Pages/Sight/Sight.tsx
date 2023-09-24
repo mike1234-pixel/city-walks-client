@@ -11,12 +11,12 @@ import { History } from "history";
 import { connect } from "react-redux";
 import "./Sight.css";
 
-interface Props {
+interface SightProps {
   history: History;
   sights: Array<SightI>;
 }
 
-const Sight: React.FC<Props> = (props: Props) => {
+const Sight = (props: SightProps) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

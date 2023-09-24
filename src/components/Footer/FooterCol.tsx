@@ -1,11 +1,11 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 
-interface Props {
+interface FooterColProps {
   children: ReactNode;
   title: string;
 }
 
-const FooterCol: React.FC<Props> = (props: Props) => {
+const FooterCol = (props: FooterColProps) => {
   const { title } = props;
 
   return (

@@ -6,7 +6,7 @@ import { setSearchValue } from "../../../actions/actions";
 import Walk from "../../../types/Walks/Walk";
 import WalkCard from "./WalkCard";
 
-interface Props {
+interface FilteredResultsProps {
   searchValue: string;
   walks: Array<Walk>;
   pageCount: number;
@@ -15,7 +15,7 @@ interface Props {
   changePage: (selected: number) => void;
 }
 
-const FilteredResults: React.FC<Props> = (props: Props) => {
+const FilteredResults = (props: FilteredResultsProps) => {
   const {
     searchValue,
     walks,

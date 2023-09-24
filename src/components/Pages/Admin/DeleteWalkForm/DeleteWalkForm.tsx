@@ -1,45 +1,45 @@
-import React, { useState } from "react"
-import { MDBInput, MDBBtn, MDBIcon } from "mdbreact"
-import axios, { AxiosError, AxiosResponse } from "axios"
-import toTitleCase from "../../../../functions/toTitleCase"
-import SelectedWalk from "../../../../types/PostRequests/SelectedWalk"
-import "./DeleteWalkForm.css"
+import React, { useState } from "react";
+import { MDBInput, MDBBtn, MDBIcon } from "mdbreact";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import toTitleCase from "../../../../functions/toTitleCase";
+import SelectedWalk from "../../../../types/PostRequests/SelectedWalk";
+import "./DeleteWalkForm.css";
 
-const DeleteWalkForm: React.FC = () => {
-  const [walk, setWalk] = useState<string>("")
+const DeleteWalkForm = () => {
+  const [walk, setWalk] = useState<string>("");
 
   const handleChange: (event: React.ChangeEvent<any>) => void = (event) => {
     switch (event.target.name) {
       case "walk":
-        setWalk(event.target.value)
-        break
+        setWalk(event.target.value);
+        break;
     }
-  }
+  };
 
   const handleSubmit: (event: React.FormEvent) => void = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     let payload: SelectedWalk = {
       walk: toTitleCase(walk),
-    }
+    };
 
     axios
       .delete("https://city-walks.herokuapp.com/delete-walk", { data: payload })
       .then((res: AxiosResponse) => {
         if (res.data === "walk deleted") {
-          console.log("walk deleted")
+          console.log("walk deleted");
         } else {
-          console.log("walk not deleted")
+          console.log("walk not deleted");
         }
       })
       .catch((err: AxiosError) => {
-        console.log(err)
-      })
+        console.log(err);
+      });
 
-    alert("Walk Deleted")
-    setWalk("")
-    window.scrollTo(0, 0)
-  }
+    alert("Walk Deleted");
+    setWalk("");
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div>
@@ -59,7 +59,7 @@ const DeleteWalkForm: React.FC = () => {
         </MDBBtn>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default DeleteWalkForm
+export default DeleteWalkForm;
