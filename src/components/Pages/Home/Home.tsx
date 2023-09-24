@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import { MDBBtn, MDBContainer } from "mdbreact";
 import { Link } from "react-router-dom";
 import Carousel from "../../Carousel/Carousel";
-import SectionA from "../../SectionA/SectionA";
-import SectionB from "../../SectionB/SectionB";
 import urlify from "../../../functions/urlify";
 import LocatorMap from "../../LocatorMap/LocatorMap";
 import LoadingBar from "../../LoadingBar/LoadingBar";
@@ -13,6 +11,7 @@ import { connect } from "react-redux";
 import Walk from "../../../types/Walks/Walk";
 import { RootState } from "../../../store";
 import "./Home.css";
+import Section from "../../Section/Section";
 
 interface HomeProps {
   walks: Array<Walk>;
@@ -60,7 +59,7 @@ const Home = (props: HomeProps) => {
           >
             <h3 className='featured-walks-h3'>{featuredWalks[0].walk}</h3>
           </div>
-          <SectionA
+          <Section
             content={featuredWalks[0].content1}
             img={featuredWalks[0].coverImg}
             alt={featuredWalks[0].walk}
@@ -83,12 +82,13 @@ const Home = (props: HomeProps) => {
           <div className='center featured-walks-h3-container'>
             <h3 className='featured-walks-h3'>{featuredWalks[1].walk}</h3>
           </div>
-          <SectionB
+          <Section
             content={featuredWalks[1].content1}
             img={featuredWalks[1].coverImg}
             alt={featuredWalks[1].walk}
             zoom={true}
             waves={true}
+            imageLeft={true}
           />
           <div className='center'>
             <MDBBtn
@@ -106,7 +106,7 @@ const Home = (props: HomeProps) => {
           <div className='center featured-walks-h3-container'>
             <h3 className='featured-walks-h3'>{featuredWalks[2].walk}</h3>
           </div>
-          <SectionA
+          <Section
             content={featuredWalks[2].content1}
             img={featuredWalks[2].coverImg}
             alt={featuredWalks[2].walk}

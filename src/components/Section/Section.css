@@ -1,11 +1,11 @@
 /** @format */
-.section-b {
+.section {
   width: 100%;
   max-width: 100%;
 }
 
 @media (min-width: 991px) {
-  .grid-container-b {
+  .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 100%;
@@ -14,20 +14,14 @@
   }
 }
 @media (max-width: 992px) {
-  .grid-container-b {
-    display: flex;
-    flex-direction: column;
-  }
-  .grid-item-b-text-box {
+  .grid-item-text-box {
     margin-bottom: 30px;
-    order: 0;
   }
-  .grid-item-b-image-box {
+  .grid-item-image-box {
     margin-bottom: 30px;
-    order: 1;
   }
 }
-.grid-item-b {
+.grid-item {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,26 +31,44 @@
   border: 2px solid transparent;
 }
 
-.grid-item-b:hover,
-.grid-item-b:active {
+#grid-item-overlay {
+  height: 100%;
+  width: 100%;
+}
+
+.grid-item1 {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.grid-item2 {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.grid-item:hover,
+.grid-item:active {
   background: transparent;
   color: var(--dark);
   cursor: pointer;
 }
 
-.grid-item-b-text-box {
+.grid-item-text-box {
+  height: 100%;
   padding: 20px;
   text-align: left;
   background: var(--dark);
   color: white;
 }
-.grid-item-b-text-box:hover, .grid-item-b-text-box:focus, .grid-item-b-text-box:active {
+.grid-item-text-box:hover,
+.grid-item-text-box:focus,
+.grid-item-text-box:active {
   border: 2px dashed grey;
 }
 
-.grid-item-b-img {
+.grid-item-img {
   width: 100%;
   height: 100%;
 }
 
-/*# sourceMappingURL=SectionB.css.map */
+/*# sourceMappingURL=SectionA.css.map */

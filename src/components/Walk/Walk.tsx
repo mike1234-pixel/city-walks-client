@@ -1,7 +1,5 @@
 import { ReactNode, useEffect, useState } from "react";
 import { MDBIcon, MDBAnimation, MDBBtn, MDBContainer } from "mdbreact";
-import SectionA from "../SectionA/SectionA";
-import SectionB from "../SectionB/SectionB";
 import PopUp from "./PopUp/PopUp";
 import LoadingBar from "../LoadingBar/LoadingBar";
 import toTitleCase from "../../functions/toTitleCase";
@@ -13,6 +11,7 @@ import { History } from "history";
 import RootState from "../../types/State/Root/State";
 import WalkI from "../../types/Walks/Walk";
 import "./Walk.css";
+import Section from "../Section/Section";
 
 interface WalkProps {
   walks: Array<WalkI>;
@@ -81,21 +80,22 @@ const Walk = (props: WalkProps) => {
               <FaRoad /> Length: {selectedWalk.length}
             </p>
           </div>
-          <SectionA
+          <Section
             content={selectedWalk.content1}
             img={selectedWalk.img1}
             alt={selectedWalk.walk}
             zoom={false}
             waves={false}
           />
-          <SectionB
+          <Section
             content={selectedWalk.content2}
             img={selectedWalk.img2}
             alt={selectedWalk.walk}
             zoom={false}
             waves={false}
+            imageLeft={true}
           />
-          <SectionA
+          <Section
             content={selectedWalk.content3}
             img={selectedWalk.img3}
             alt={selectedWalk.walk}

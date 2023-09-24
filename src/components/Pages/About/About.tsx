@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import { MDBContainer } from "mdbreact";
-import SectionA from "../../SectionA/SectionA";
-import SectionB from "../../SectionB/SectionB";
 import aboutImage1 from "./assets/samuel-johnsons-house-illustration.jpeg";
 import aboutImage2 from "./assets/whitechapel-gallery-illustration.jpeg";
 import aboutImage3 from "./assets/john-soanes-museum-illustration.jpeg";
 import "./About.css";
+import Section from "../../Section/Section";
 
 const About = () => {
 
@@ -26,21 +25,22 @@ const About = () => {
       <div className="page-heading-container page">
         <h1 className="page-heading">About</h1>
         <div className="about-page-container">
-          <SectionA
+          <Section
             content={content1}
             img={aboutImage1}
             alt={"samuel johnson's house"}
             zoom={false}
             waves={false}
           />
-          <SectionB
+          <Section
             content={content2}
             img={aboutImage2}
             alt={"whitechapel gallery"}
             zoom={false}
             waves={false}
+            imageLeft={true}
           />
-          <SectionA
+          <Section
             content={content3}
             img={aboutImage3}
             alt={"john soane's museum"}
