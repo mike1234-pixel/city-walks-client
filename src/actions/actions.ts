@@ -1,11 +1,8 @@
-import Sight from "../types/Sights/Sight";
-import Walk from "../types/Walks/Walk";
-import City from "../types/Cities/City";
-import Board from "../types/Boards/Board";
 import { Dispatch } from "redux";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import * as actions from "../constants/constants";
 import * as Actions from "../types/Actions";
+import * as Response from "../types/Response";
 
 // data
 
@@ -15,11 +12,11 @@ export const saveSights: () => (
   return (dispatch) => {
     return axios
       .get("https://city-walks.herokuapp.com/blog")
-      .then((res: AxiosResponse) => {
-        let sights: Array<Sight> = res.data;
+      .then((res: Response.SightsResponse) => {
+        let sights = res.data;
         dispatch({ type: actions.SAVE_SIGHTS, payload: sights });
       })
-      .catch((err: AxiosError) => {
+      .catch((err: Response.SightsError) => {
         console.error(err);
       });
   };
@@ -31,11 +28,11 @@ export const saveWalks: () => (
   return (dispatch) => {
     return axios
       .get("https://city-walks.herokuapp.com/walks")
-      .then((res: AxiosResponse) => {
-        let walks: Array<Walk> = res.data;
+      .then((res: Response.WalksResponse) => {
+        let walks = res.data;
         dispatch({ type: actions.SAVE_WALKS, payload: walks });
       })
-      .catch((err: AxiosError) => {
+      .catch((err: Response.WalksError) => {
         console.error(err);
       });
   };
@@ -47,11 +44,11 @@ export const saveCities: () => (
   return (dispatch) => {
     return axios
       .get("https://city-walks.herokuapp.com/cities")
-      .then((res: AxiosResponse) => {
-        let cities: Array<City> = res.data;
+      .then((res: Response.CitiesResponse) => {
+        let cities = res.data;
         dispatch({ type: actions.SAVE_CITIES, payload: cities });
       })
-      .catch((err: AxiosError) => {
+      .catch((err: Response.CitiesError) => {
         console.error(err);
       });
   };
@@ -63,11 +60,11 @@ export const saveBoards: () => (
   return (dispatch) => {
     return axios
       .get("https://city-walks.herokuapp.com/boards")
-      .then((res: AxiosResponse) => {
-        let boards: Array<Board> = res.data;
+      .then((res: Response.BoardsResponse) => {
+        let boards = res.data;
         dispatch({ type: actions.SAVE_BOARDS, payload: boards });
       })
-      .catch((err: AxiosError) => {
+      .catch((err: Response.BoardsError) => {
         console.error(err);
       });
   };

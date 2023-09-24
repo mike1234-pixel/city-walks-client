@@ -68,7 +68,7 @@ const Sight: React.FC<Props> = (props: Props) => {
           console.log("comment not submitted");
         }
       })
-      .catch((err: AxiosResponse) => {
+      .catch((err: AxiosError) => {
         console.log(err);
       });
 
