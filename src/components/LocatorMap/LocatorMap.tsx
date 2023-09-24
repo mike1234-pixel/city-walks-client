@@ -1,15 +1,15 @@
-import React, { ReactNode } from "react"
-import { useGoogleMaps } from "react-hook-google-maps"
-import urlify from "../../functions/urlify"
-import Walk from "../../types/Walks/Walk"
-import "./LocatorMap.css"
+import React, { ReactNode } from "react";
+import { useGoogleMaps } from "react-hook-google-maps";
+import urlify from "../../functions/urlify";
+import Walk from "../../types/Walks/Walk";
+import "./LocatorMap.css";
 
 interface Props {
-  walks: Array<Walk>
+  walks: Array<Walk>;
 }
 
 const LocatorMap: React.FC<Props> = (props: Props) => {
-  const { walks } = props
+  const { walks } = props;
 
   const { ref, map, google } = useGoogleMaps(
     // enable billing and restrict this api key to the production app
@@ -383,45 +383,44 @@ const LocatorMap: React.FC<Props> = (props: Props) => {
         },
       ],
     }
-  )
+  );
 
   if (map) {
     // loop walks array and create a marker for each one
     walks.map((walk: Walk) => {
-      const lat: number = parseFloat(walk.lat)
-      const lng: number = parseFloat(walk.lng)
+      const lat: number = parseFloat(walk.lat);
+      const lng: number = parseFloat(walk.lng);
       // The marker
 
       const walkMarker = new google.maps.Marker({
         position: { lat: lat, lng: lng },
         map: map,
-      })
+      });
 
       // attach infoWindows to markers
-      const infowindowContent: ReactNode = `<a href="/city-walks-client/#/walks/${urlify(
+      const infowindowContent: ReactNode = `<a href="/walks/${urlify(
         walk.walk
       )}">
                     <div class="map-marker-link">
                         <h3>${walk.walk}</h3>
                         <h6>${walk.city}</h6>
-                        <img src="${
-                          walk.coverImg
-                        }" style="height: 75px; width: 150px; margin-top: 10px; border-radius: 2px;"/>
+                        <img src="${walk.coverImg
+        }" style="height: 75px; width: 150px; margin-top: 10px; border-radius: 2px;"/>
                     </div>
-                </a>`
+                </a>`;
       // declare infowindow and insert content
       const infoWindow = new google.maps.InfoWindow({
         content: infowindowContent,
-      })
+      });
 
       // add click event to markers to open an infowindow
       walkMarker.addListener("click", () => {
-        infoWindow.open(map, walkMarker)
-      })
-    })
+        infoWindow.open(map, walkMarker);
+      });
+    });
   }
 
-  return <div ref={ref} className='locator-map' />
-}
+  return <div ref={ref} className='locator-map' />;
+};
 
-export default LocatorMap
+export default LocatorMap;

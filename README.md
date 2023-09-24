@@ -40,8 +40,6 @@ Global state is managed by **redux** and **react-redux**.
 
 State is managed locally by components in cases where state is only required locally, such as in **./src/components/pages/Admin/Admin.jsx**. **React Hooks** are used for this purpose.
 
-The `userFirstName`, `userId` credentials and `loggedIn` state are stored in **local storage**. When the user logs out local storage is cleared and the user state reset.
-
 ## Typescript
 
 Typescript is used across the application and most types can be found in the `types` directory.

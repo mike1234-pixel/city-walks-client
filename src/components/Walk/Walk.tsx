@@ -144,7 +144,6 @@ const Walk: React.FC<Props> = (props: Props) => {
   );
 };
 
-//export default Walk
 const mapStateToProps: (state: RootState) => void = (state) => ({
   walks: state.walksState.walks,
 });

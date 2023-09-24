@@ -18,14 +18,12 @@ import RootState from "../../types/State/Root/State";
 import Location from "../../types/Generic/Location";
 
 interface Props {
-  loggedIn: boolean;
-  userId: string;
   redirect: boolean;
   privacyPopupVisible: boolean;
 }
 
 const Router: React.FC<Props> = (props: Props) => {
-  const { loggedIn, userId, redirect, privacyPopupVisible } = props;
+  const { redirect, privacyPopupVisible } = props;
 
   const location: Location = useLocation();
 
@@ -45,15 +43,13 @@ const Router: React.FC<Props> = (props: Props) => {
         <Route path="/privacy" component={PrivacyPolicy} />
         <Route component={NotFound404} />
       </Switch>
-      <Footer loggedIn={loggedIn} userId={userId} />
+      <Footer />
     </div>
   );
 };
 
 const mapStateToProps: (state: RootState) => void = (state) => ({
   privacyPopupVisible: state.privacyPopupState.privacyPopupVisible,
-  loggedIn: state.loginState.loggedIn,
-  userId: state.loginState.userId,
   redirect: state.searchState.redirect,
 });
 

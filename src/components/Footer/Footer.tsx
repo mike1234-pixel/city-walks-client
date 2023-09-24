@@ -2,74 +2,15 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 import { GiWalkingBoot } from "react-icons/gi";
-import axios, { AxiosError, AxiosResponse } from "axios";
 import { connect } from "react-redux";
-import { Dispatch, bindActionCreators } from "redux";
 import RootState from "../../types/State/Root/State";
-import Account from "../../types/PostRequests/Account";
-import {
-  setLoggedIn,
-  setUserFirstName,
-  setUserId,
-  setUserLastName,
-} from "../../actions/actions";
-import "./Footer.css";
 import FooterLink from "./FooterLink";
 import FooterCol from "./FooterCol";
-import * as Actions from "../../types/Actions";
+import "./Footer.css";
 
-interface Props {
-  loggedIn: boolean;
-  userId: string;
-  setLoggedIn: (loggedIn: boolean) => Actions.SetLoggedIn;
-  setUserId: (userId: string) => Actions.SetUserId;
-  setUserFirstName: (userFirstName: string) => Actions.SetUserFirstName;
-  setUserLastName: (userLastName: string) => Actions.SetUserLastName;
-}
-
-const Footer: React.FC<Props> = (props: Props) => {
-  const {
-    loggedIn,
-    userId,
-    setLoggedIn,
-    setUserId,
-    setUserFirstName,
-    setUserLastName,
-  } = props;
+const Footer: React.FC = () => {
 
   const pushSlug: Function = useHistory().push;
-
-  const logOut = () => {
-    localStorage.clear();
-    localStorage.setItem("popupVisible", "false");
-    setLoggedIn(false);
-    setUserId("");
-    setUserFirstName("");
-    setUserLastName("");
-    alert("Logged out successfully.");
-    pushSlug("/forum");
-  };
-
-  const deleteAccount = () => {
-    const payload: Account = {
-      userId: userId,
-    };
-
-    axios
-      .delete("https://city-walks-production.up.railway.app/delete-account", {
-        data: payload,
-      })
-      .then((res: AxiosResponse) => {
-        console.log("account deleted");
-      })
-      .catch((err: AxiosError) => {
-        console.log(err, "account not deleted, try again.");
-      });
-
-    alert("Account Deleted. You can sign up again at any time.");
-    logOut();
-    window.scrollTo(0, 0);
-  };
 
   return (
     <MDBFooter className='font-small pt-4 mt-4 footer'>
@@ -117,19 +58,4 @@ const Footer: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps: (state: RootState) => void = (state) => ({
-  loggedIn: state.loginState.loggedIn,
-  userId: state.loginState.userId,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch) => {
-  return {
-    dispatch,
-    ...bindActionCreators(
-      { setLoggedIn, setUserId, setUserFirstName, setUserLastName },
-      dispatch
-    ),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Footer);
+export default Footer;
