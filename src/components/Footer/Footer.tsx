@@ -40,7 +40,7 @@ const Footer = () => {
         <MDBContainer fluid>
           &copy; {new Date().getFullYear()} Copyright{" "}
           <a
-            href='https://github.com/mike1234-pixel'
+            href='https://www.michaeltandy.me.uk'
             target='_blank'
             className='footer-github-link'
           >
