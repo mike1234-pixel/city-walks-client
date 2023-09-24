@@ -1,13 +1,13 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
-import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact";
-import UserPortalNav from "../UserPortalNav";
-import axios, { AxiosError, AxiosResponse } from "axios";
-import qs from "qs";
-import { connect } from "react-redux";
-import RootState from "../../../../types/State/Root/State";
-import Credentials from "../../../../types/PostRequests/Credentials";
-import { bindActionCreators, Dispatch } from "redux";
+import React from "react"
+import { useHistory } from "react-router-dom"
+import { MDBInput, MDBBtn, MDBIcon, MDBContainer } from "mdbreact"
+import UserPortalNav from "../UserPortalNav"
+import axios, { AxiosError, AxiosResponse } from "axios"
+import qs from "qs"
+import { connect } from "react-redux"
+import RootState from "../../../../types/State/Root/State"
+import Credentials from "../../../../types/PostRequests/Credentials"
+import { bindActionCreators, Dispatch } from "redux"
 import {
   setLoggedIn,
   setLoginEmail,
@@ -15,19 +15,19 @@ import {
   setUserFirstName,
   setUserId,
   setUserLastName,
-} from "../../../../actions/actions";
-import * as Actions from "../../../../types/Actions";
-import "./LoginForm.scss";
+} from "../../../../actions/actions"
+import * as Actions from "../../../../types/Actions"
+import "./LoginForm.scss"
 
 interface Props {
-  loginEmail: string;
-  loginPassword: string;
-  setLoginEmail: (loginEmail: string) => Actions.SetLoginEmail;
-  setLoginPassword: (loginPassword: string) => Actions.SetLoginPassword;
-  setLoggedIn: (loggedIn: boolean) => Actions.SetLoggedIn;
-  setUserId: (userId: string) => Actions.SetUserId;
-  setUserFirstName: (userFirstName: string) => Actions.SetUserFirstName;
-  setUserLastName: (userLastName: string) => Actions.SetUserLastName;
+  loginEmail: string
+  loginPassword: string
+  setLoginEmail: (loginEmail: string) => Actions.SetLoginEmail
+  setLoginPassword: (loginPassword: string) => Actions.SetLoginPassword
+  setLoggedIn: (loggedIn: boolean) => Actions.SetLoggedIn
+  setUserId: (userId: string) => Actions.SetUserId
+  setUserFirstName: (userFirstName: string) => Actions.SetUserFirstName
+  setUserLastName: (userLastName: string) => Actions.SetUserLastName
 }
 
 const LoginForm: React.FC<Props> = (props: Props) => {
@@ -40,33 +40,33 @@ const LoginForm: React.FC<Props> = (props: Props) => {
     setUserId,
     setUserFirstName,
     setUserLastName,
-  } = props;
+  } = props
 
-  const pushSlug: Function = useHistory().push;
+  const pushSlug: Function = useHistory().push
 
   const handleChangeLogin = (e: React.ChangeEvent<any>) => {
     switch (e.target.name) {
       case "login-email":
-        setLoginEmail(e.target.value);
-        break;
+        setLoginEmail(e.target.value)
+        break
       case "login-password":
-        setLoginPassword(e.target.value);
-        break;
+        setLoginPassword(e.target.value)
+        break
     }
-  };
+  }
 
   const handleSubmitLogin = (e: React.FormEvent) => {
-    console.log("handle submit login triggered");
-    e.preventDefault();
+    console.log("handle submit login triggered")
+    e.preventDefault()
 
     const payload: Credentials = {
       email: loginEmail,
       password: loginPassword,
-    };
+    }
 
     axios
       .post(
-        "https://city-walks.herokuapp.com/login-user",
+        "https://city-walks-production.up.railway.app/login-user",
         qs.stringify(payload)
       )
       .then((res: AxiosResponse) => {
@@ -76,75 +76,75 @@ const LoginForm: React.FC<Props> = (props: Props) => {
         ) {
           alert(
             "Your account exists but is not activated. Please click 'verify account' for email verification."
-          );
+          )
         } else if (res.data === "unsuccessful login attempt") {
-          alert("Unsuccessful Login Attempt. Please Try Again.");
+          alert("Unsuccessful Login Attempt. Please Try Again.")
         } else {
-          alert("Login Complete");
-          setLoggedIn(true);
-          setLoginEmail("");
-          setLoginPassword("");
-          setUserId(res.data._id);
-          setUserFirstName(res.data.fname);
-          setUserLastName(res.data.lname);
-          localStorage.setItem("loggedIn", "true");
-          localStorage.setItem("userId", res.data._id);
-          localStorage.setItem("userFirstName", res.data.fname);
-          pushSlug("/forum");
-          window.scrollTo(0, 0);
+          alert("Login Complete")
+          setLoggedIn(true)
+          setLoginEmail("")
+          setLoginPassword("")
+          setUserId(res.data._id)
+          setUserFirstName(res.data.fname)
+          setUserLastName(res.data.lname)
+          localStorage.setItem("loggedIn", "true")
+          localStorage.setItem("userId", res.data._id)
+          localStorage.setItem("userFirstName", res.data.fname)
+          pushSlug("/forum")
+          window.scrollTo(0, 0)
         }
       })
       .catch((err: AxiosError) => {
-        console.log(err);
-      });
-  };
+        console.log(err)
+      })
+  }
 
   return (
-    <div key="user-login" className="page">
+    <div key='user-login' className='page'>
       <UserPortalNav loggedIn={false} />
       <MDBContainer>
-        <div className="login-header-container">
-          <h2 className="login-form-header">Login</h2>
+        <div className='login-header-container'>
+          <h2 className='login-form-header'>Login</h2>
           <p>Login to Your Account.</p>
         </div>
         <form
           onSubmit={handleSubmitLogin}
-          className="user-login-form display-form"
+          className='user-login-form display-form'
         >
           <MDBInput
-            key="input-5"
-            type="email"
-            name="login-email"
-            id="login-email"
+            key='input-5'
+            type='email'
+            name='login-email'
+            id='login-email'
             value={loginEmail}
-            label="email"
+            label='email'
             onChange={handleChangeLogin}
             required
           />
           <MDBInput
-            key="input-6"
-            type="password"
-            name="login-password"
-            id="login-password"
+            key='input-6'
+            type='password'
+            name='login-password'
+            id='login-password'
             value={loginPassword}
-            label="password"
+            label='password'
             onChange={handleChangeLogin}
-            minLength="8"
+            minLength='8'
             required
           />
-          <MDBBtn outline color="elegant" type="submit">
-            Login <MDBIcon icon="sign-in-alt" />
+          <MDBBtn outline color='elegant' type='submit'>
+            Login <MDBIcon icon='sign-in-alt' />
           </MDBBtn>
         </form>
       </MDBContainer>
     </div>
-  );
-};
+  )
+}
 
 const mapStateToProps: (state: RootState) => void = (state) => ({
   loginEmail: state.loginState.loginEmail,
   loginPassword: state.loginState.loginPassword,
-});
+})
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
@@ -160,7 +160,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
       },
       dispatch
     ),
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
