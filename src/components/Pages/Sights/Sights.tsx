@@ -4,8 +4,9 @@ import { MDBContainer } from "mdbreact";
 import { connect } from "react-redux";
 import Sight from "../../../types/Sights/Sight";
 import RootState from "../../../types/State/Root/State";
-import SightCard from "./SightCard";
+
 import "./Sights.css";
+import SightCard from "./SightCard";
 
 interface SightsProps {
   sights: Array<Sight>;

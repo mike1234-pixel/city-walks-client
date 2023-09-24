@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import FilteredResults from "./FilteredWalks";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { setSearchValue } from "../../../actions/actions";
@@ -7,6 +6,7 @@ import Walk from "../../../types/Walks/Walk";
 import RootState from "../../../types/State/Root/State";
 import * as Actions from "../../../types/Actions";
 import "./Walks.css";
+import FilteredResults from "./FilteredWalks";
 
 interface WalksProps {
   searchValue: string;

@@ -1,21 +1,21 @@
 import React from "react";
-import Nav from "../../components/Nav/Nav";
-import Home from "../../components/Pages/Home/Home";
-import Cities from "../../components/Pages/Cities/Cities";
-import Walks from "../../components/Pages/Walks/Walks";
-import About from "../../components/Pages/About/About";
-import Sights from "../../components/Pages/Sights/Sights";
-import Sight from "../../components/Pages/Sight/Sight";
-import Admin from "../../components/Pages/Admin/Admin";
-import NotFound404 from "../../components/Pages/404/NotFound404";
-import PrivacyPolicy from "../../components/Pages/PrivacyPolicy/PrivacyPolicy";
-import PrivacyPopUp from "../../components/PopUp/PrivacyPopUp";
-import Footer from "../../components/Footer/Footer";
-import Walk from "../../components/Walk/Walk";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
+import Home from "../../components/pages/Home/Home";
+import Cities from "../../components/pages/Cities/Cities";
+import Walks from "../../components/pages/Walks/Walks";
+import About from "../../components/pages/About/About";
+import Sights from "../../components/pages/Sights/Sights";
+import Sight from "../../components/pages/Sight/Sight";
+import Admin from "../../components/pages/Admin/Admin";
+import NotFound404 from "../../components/pages/404/NotFound404";
+import PrivacyPolicy from "../../components/pages/PrivacyPolicy/PrivacyPolicy";
 import RootState from "../../types/State/Root/State";
 import Location from "../../types/Generic/Location";
+import Footer from "../../components/common/Footer/Footer";
+import Nav from "../../components/common/Nav/Nav";
+import PrivacyPopUp from "../../components/common/PopUp/PrivacyPopUp";
+import Walk from "../../components/common/Walk/Walk";
 
 interface Props {
   redirect: boolean;

@@ -1,6 +1,6 @@
 import { useGoogleMaps } from "react-hook-google-maps";
-import urlify from "../../utils/urlify";
-import Walk from "../../types/Walks/Walk";
+import urlify from "../../../utils/urlify";
+import Walk from "../../../types/Walks/Walk";
 import { mapConfig } from "./mapConfig";
 import "./LocatorMap.css";
 

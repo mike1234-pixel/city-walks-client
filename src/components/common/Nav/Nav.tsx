@@ -13,9 +13,9 @@ import {
 } from "mdbreact";
 import { connect } from "react-redux";
 import { Dispatch, bindActionCreators } from "redux";
-import { setRedirect } from "../../actions/actions";
-import RootState from "../../types/State/Root/State";
-import * as Actions from "../../types/Actions";
+import { setRedirect } from "../../../actions/actions";
+import RootState from "../../../types/State/Root/State";
+import * as Actions from "../../../types/Actions";
 import "./Nav.css";
 
 interface NavProps {

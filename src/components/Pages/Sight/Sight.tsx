@@ -4,12 +4,12 @@ import {
   MDBContainer,
 } from "mdbreact";
 import marked from "marked";
-import LoadingBar from "../../LoadingBar/LoadingBar";
 import RootState from "../../../types/State/Root/State";
 import SightI from "../../../types/Sights/Sight";
 import { History } from "history";
 import { connect } from "react-redux";
 import "./Sight.css";
+import LoadingBar from "../../common/LoadingBar/LoadingBar";
 
 const createMarkup: (markup: string) => { __html: string; } = (markup) => {
   return { __html: marked(markup, { breaks: true }) };

@@ -2,8 +2,8 @@ import { MDBBtn, MDBContainer } from "mdbreact";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import { setPrivacyPopupVisible } from "../../actions/actions";
-import * as Actions from "../../types/Actions";
+import { setPrivacyPopupVisible } from "../../../actions/actions";
+import * as Actions from "../../../types/Actions";
 import "./PrivacyPopUp.css";
 
 interface PrivacyPopUpProps {

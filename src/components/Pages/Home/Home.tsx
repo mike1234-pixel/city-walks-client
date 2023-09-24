@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 import { MDBBtn, MDBContainer } from "mdbreact";
 import { Link } from "react-router-dom";
-import Carousel from "../../Carousel/Carousel";
+import Carousel from "../../common/Carousel/Carousel";
 import urlify from "../../../utils/urlify";
-import LocatorMap from "../../LocatorMap/LocatorMap";
-import LoadingBar from "../../LoadingBar/LoadingBar";
 import { GiWalkingBoot } from "react-icons/gi";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { connect } from "react-redux";
 import Walk from "../../../types/Walks/Walk";
 import { RootState } from "../../../store";
-import Section from "../../Section/Section";
+import LoadingBar from "../../common/LoadingBar/LoadingBar";
+import LocatorMap from "../../common/LocatorMap/LocatorMap";
+import Section from "../../common/Section/Section";
 import "./Home.css";
 
 interface HomeProps {

@@ -2,14 +2,14 @@ import { ReactNode, useEffect, useState } from "react";
 import { MDBIcon, MDBAnimation, MDBBtn, MDBContainer } from "mdbreact";
 import PopUp from "./PopUp/PopUp";
 import LoadingBar from "../LoadingBar/LoadingBar";
-import toTitleCase from "../../utils/toTitleCase";
+import toTitleCase from "../../../utils/toTitleCase";
 import { BsDot } from "react-icons/bs";
 import { FaRoad, FaMapMarkerAlt } from "react-icons/fa";
 import { IoMdTrain } from "react-icons/io";
 import { connect } from "react-redux";
 import { History } from "history";
-import RootState from "../../types/State/Root/State";
-import WalkI from "../../types/Walks/Walk";
+import RootState from "../../../types/State/Root/State";
+import WalkI from "../../../types/Walks/Walk";
 import Section from "../Section/Section";
 import "./Walk.css";
 
