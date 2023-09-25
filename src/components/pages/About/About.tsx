@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { MDBContainer } from "mdbreact";
-import aboutImage1 from "./assets/samuel-johnsons-house-illustration.jpeg";
-import aboutImage2 from "./assets/whitechapel-gallery-illustration.jpeg";
-import aboutImage3 from "./assets/john-soanes-museum-illustration.jpeg";
+import aboutImage1 from "./assets/samuel-johnsons-house-illustration.jpg";
+import aboutImage2 from "./assets/whitechapel-gallery-illustration.jpg";
+import aboutImage3 from "./assets/john-soanes-museum-illustration.jpg";
 import Section from "../../common/Section/Section";
 import "./About.css";
 
