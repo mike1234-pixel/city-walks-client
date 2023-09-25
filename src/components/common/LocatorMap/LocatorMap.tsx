@@ -11,9 +11,10 @@ interface LocatorMapProps {
 const LocatorMap = (props: LocatorMapProps) => {
   const { walks } = props;
 
+  const googleMapsApiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+
   const { ref, map, google } = useGoogleMaps(
-    // enable billing and restrict this api key to the production app
-    "AIzaSyAIK0BvMxzAMX_JiAltdlYznF-G2NfEh7o",
+    String(googleMapsApiKey),
     mapConfig
   );
 
