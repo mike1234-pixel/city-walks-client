@@ -1,0 +1,13 @@
+.city-card {
+  transition: transform 0.2s;
+  background: var(--dark);
+  color: white;
+}
+
+.view {
+  background: var(--linear-blue);
+}
+
+.city-card:hover {
+  transform: scale(1.05);
+}

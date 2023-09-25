@@ -12,38 +12,28 @@ import {
   saveCities,
   saveSights,
   saveWalks,
-  setLoggedIn,
   setPrivacyPopupVisible,
-  setUserFirstName,
-  setUserId,
 } from "../actions/actions";
 import * as Actions from "../types/Actions";
 import "./App.css";
 
-interface Props {
-  sitekey: string;
+interface AppProps {
   saveBoards: (boards?: Array<Board>) => Actions.SaveBoards;
   saveSights: (sights?: Array<Sight>) => Actions.SaveSights;
   saveWalks: (walks?: Array<Walk>) => Actions.SaveWalks;
   saveCities: (cities?: Array<City>) => Actions.SaveCities;
   setPrivacyPopupVisible: (popupVisible: boolean) => Actions.SetPopupVisible;
-  setLoggedIn: (loggedIn: boolean) => Actions.SetLoggedIn;
-  setUserId: (userId: string | null) => Actions.SetUserId;
-  setUserFirstName: (userFirstName: string | null) => Actions.SetUserFirstName;
   privacyPopupVisible: boolean;
 }
 
-const App: React.FC<any> = (props: Props) => {
+const App: React.FC<any> = (props: AppProps) => {
+
   const {
     saveBoards,
     saveSights,
     saveWalks,
     saveCities,
     setPrivacyPopupVisible,
-    setLoggedIn,
-    setUserId,
-    setUserFirstName,
-    sitekey,
     privacyPopupVisible,
   } = props;
 
@@ -57,57 +47,17 @@ const App: React.FC<any> = (props: Props) => {
       setPrivacyPopupVisible(true);
     }
 
-    if (localStorage.getItem("loggedIn") !== null) {
-      setLoggedIn(true);
-
-      setUserId(localStorage.getItem("userId"));
-      setUserFirstName(localStorage.getItem("userFirstName"));
-    }
-
-    // recaptcha
-    const loadScriptByURL: (
-      id: string,
-      url: string,
-      callback: Function
-    ) => void = (id, url, callback) => {
-      const doesScriptExist = document.getElementById(id);
-
-      if (!doesScriptExist) {
-        const script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = url;
-        script.id = id;
-        script.onload = function () {
-          if (callback) callback();
-        };
-        document.body.appendChild(script);
-      }
-
-      if (doesScriptExist && callback) callback();
-    };
-
-    // load the script by passing the URL
-    loadScriptByURL(
-      "recaptcha-key",
-      `https://www.google.com/recaptcha/api.js?render=${sitekey}`,
-      () => {
-        console.log("recaptcha script loaded!");
-      }
-    );
   }, []);
 
   return (
     <Router
       privacyPopupVisible={privacyPopupVisible}
-      loggedIn={false}
-      userId={""}
       redirect={false}
     />
   );
 };
 
 const mapStateToProps: (state: RootState) => void = (state) => ({
-  sitekey: state.recaptchaState.sitekey,
   privacyPopupVisible: state.privacyPopupState.privacyPopupVisible,
 });
 
@@ -121,9 +71,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         saveCities,
         saveBoards,
         setPrivacyPopupVisible,
-        setLoggedIn,
-        setUserId,
-        setUserFirstName,
       },
       dispatch
     ),
