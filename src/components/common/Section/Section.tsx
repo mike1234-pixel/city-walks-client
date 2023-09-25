@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { MDBView } from "mdbreact";
 import marked from "marked";
 import "./Section.css";
@@ -8,15 +9,14 @@ const createMarkup = (markup: string) => {
 
 interface SectionProps {
     content: string;
-    img: string;
-    alt: string;
     zoom: boolean;
     waves: boolean;
     imageLeft?: boolean;
+    children?: ReactNode | ReactNode[];
 }
 
 const Section = (props: SectionProps) => {
-    const { content, img, alt, zoom, waves, imageLeft } = props;
+    const { content, zoom, waves, imageLeft, children } = props;
 
     return (
         <div className='section grid-container'>
@@ -25,7 +25,7 @@ const Section = (props: SectionProps) => {
             </div>
             <div className={`grid-item grid-item-image-box ${imageLeft && 'grid-item1'}`}>
                 <MDBView hover zoom={zoom} waves={waves} id='grid-item-overlay'>
-                    <img className='grid-item-img' src={img} alt={alt} />
+                    {children}
                 </MDBView>
             </div>
         </div>

@@ -55,11 +55,11 @@ const Home = (props: HomeProps) => {
           </div>
           <Section
             content={featuredWalks[0].content1}
-            img={featuredWalks[0].coverImg}
-            alt={featuredWalks[0].walk}
             zoom={true}
             waves={true}
-          />
+          >
+            <img className='grid-item-img' src={featuredWalks[0].coverImg} alt={featuredWalks[0].walk} />
+          </Section>
           <div className='center'>
             <MDBBtn
               data-testid='explore-btn-1'
@@ -78,12 +78,12 @@ const Home = (props: HomeProps) => {
           </div>
           <Section
             content={featuredWalks[1].content1}
-            img={featuredWalks[1].coverImg}
-            alt={featuredWalks[1].walk}
             zoom={true}
             waves={true}
             imageLeft={true}
-          />
+          >
+            <img className='grid-item-img' src={featuredWalks[1].coverImg} alt={featuredWalks[1].walk} />
+          </Section>
           <div className='center'>
             <MDBBtn
               data-testid='explore-btn-2'
@@ -102,11 +102,11 @@ const Home = (props: HomeProps) => {
           </div>
           <Section
             content={featuredWalks[2].content1}
-            img={featuredWalks[2].coverImg}
-            alt={featuredWalks[2].walk}
             zoom={true}
             waves={true}
-          />
+          >
+            <img className='grid-item-img' src={featuredWalks[2].coverImg} alt={featuredWalks[2].walk} />
+          </Section>
           <div className='center'>
             <MDBBtn
               data-testid='explore-btn-3'

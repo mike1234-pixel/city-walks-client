@@ -18,25 +18,37 @@ const Carousel = () => {
         <MDBCarouselInner>
           <Slide
             slideNumber={1}
-            imageSrc={carouselImage1}
-            imageDescription='Shoreditch'
             title='Explore'
             description='the history of cities, their landmarks and hidden gems.'
-          />
+          >
+            <img
+              className="d-block w-100 carousel-img"
+              src={carouselImage1}
+              alt='Shoreditch'
+            />
+          </Slide>
           <Slide
             slideNumber={2}
-            imageSrc={carouselImage2}
-            imageDescription='Edinburgh'
             title='Discover'
             description='local attractions, landmarks, museums and public spaces.'
-          />
+          >
+            <img
+              className="d-block w-100 carousel-img"
+              src={carouselImage2}
+              alt='Edinburgh'
+            />
+          </Slide>
           <Slide
             slideNumber={3}
-            imageSrc={carouselImage3}
-            imageDescription='Barbican'
             title='Share'
             description='your experiences and recommendations.'
-          />
+          >
+            <img
+              className="d-block w-100 carousel-img"
+              src={carouselImage3}
+              alt='Barbican'
+            />
+          </Slide>
         </MDBCarouselInner>
       </MDBCarousel>
     </div>

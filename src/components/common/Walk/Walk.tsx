@@ -84,26 +84,26 @@ const Walk = (props: WalkProps) => {
           </div>
           <Section
             content={selectedWalk.content1}
-            img={selectedWalk.img1}
-            alt={selectedWalk.walk}
             zoom={false}
             waves={false}
-          />
+          >
+            <img className='grid-item-img' src={selectedWalk.img1} alt={selectedWalk.walk} />
+          </Section>
           <Section
             content={selectedWalk.content2}
-            img={selectedWalk.img2}
-            alt={selectedWalk.walk}
             zoom={false}
             waves={false}
             imageLeft={true}
-          />
+          >
+            <img className='grid-item-img' src={selectedWalk.img2} alt={selectedWalk.walk} />
+          </Section>
           <Section
             content={selectedWalk.content3}
-            img={selectedWalk.img3}
-            alt={selectedWalk.walk}
             zoom={false}
             waves={false}
-          />
+          >
+            <img className='grid-item-img' src={selectedWalk.img3} alt={selectedWalk.walk} />
+          </Section>
           <div className='author-info-container'>
             <p>This walk was written by {selectedWalk.author}</p>
             <p>{selectedWalk.aboutTheAuthor}</p>

@@ -3,8 +3,8 @@ import { MDBContainer } from "mdbreact";
 import aboutImage1 from "./assets/samuel-johnsons-house-illustration.jpeg";
 import aboutImage2 from "./assets/whitechapel-gallery-illustration.jpeg";
 import aboutImage3 from "./assets/john-soanes-museum-illustration.jpeg";
-import "./About.css";
 import Section from "../../common/Section/Section";
+import "./About.css";
 
 const About = () => {
 
@@ -27,26 +27,26 @@ const About = () => {
         <div className="about-page-container">
           <Section
             content={content1}
-            img={aboutImage1}
-            alt={"samuel johnson's house"}
             zoom={false}
             waves={false}
-          />
+          >
+            <img className='grid-item-img' src={aboutImage1} alt="samuel johnson's house" />
+          </Section>
           <Section
             content={content2}
-            img={aboutImage2}
-            alt={"whitechapel gallery"}
             zoom={false}
             waves={false}
             imageLeft={true}
-          />
+          >
+            <img className='grid-item-img' src={aboutImage2} alt="whitechapel gallery" />
+          </Section>
           <Section
             content={content3}
-            img={aboutImage3}
-            alt={"john soane's museum"}
             zoom={false}
             waves={false}
-          />
+          >
+            <img className='grid-item-img' src={aboutImage3} alt="john soane's museum" />
+          </Section>
         </div>
       </div>
     </MDBContainer>

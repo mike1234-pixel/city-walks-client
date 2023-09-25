@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import {
   MDBCarouselCaption,
   MDBCarouselItem,
@@ -7,23 +8,18 @@ import {
 
 interface SlideProps {
   slideNumber: number;
-  imageSrc: string;
-  imageDescription: string;
   title: string;
   description: string;
+  children?: ReactNode | ReactNode[];
 }
 
 const Slide = (props: SlideProps) => {
-  const { slideNumber, imageSrc, imageDescription, title, description } = props;
+  const { slideNumber, title, description, children } = props;
 
   return (
     <MDBCarouselItem itemId={slideNumber}>
       <MDBView className="carousel-view">
-        <img
-          className="d-block w-100 carousel-img"
-          src={imageSrc}
-          alt={imageDescription}
-        />
+        {children}
         <MDBMask />
       </MDBView>
       <MDBCarouselCaption className="carousel-caption">
