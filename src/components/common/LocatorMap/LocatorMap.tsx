@@ -19,7 +19,7 @@ const LocatorMap = (props: LocatorMapProps) => {
   );
 
   if (map) {
-    // loop walks array and create a marker for each one.
+    // loop walks array and create a marker for each one
     walks.map((walk: Walk) => {
       const lat = parseFloat(walk.lat);
       const lng = parseFloat(walk.lng);
